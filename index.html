@@ -1,393 +1,529 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MaxProd Soluções Empresariais | Consultoria, Melhoria Contínua e IA</title>
-  <meta name="description" content="MaxProd Soluções Empresariais: consultoria industrial, melhoria contínua, qualidade, produtividade e soluções com IA para operações." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>MaxProd Soluções Empresariais | Consultoria Industrial</title>
+
+  <meta name="description" content="Consultoria industrial focada em produtividade, qualidade, redução de custos e melhoria contínua. Execução prática no chão de fábrica." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b1220;
+      --bg-light: #0f1a33;
+      --card: #121c3a;
+      --text: #eef2ff;
+      --muted: #b7c2e6;
+      --brand: #4f8cff;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, var(--bg), var(--bg-light));
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11,18,32,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand strong {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .brand span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .menu {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .menu a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .menu a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #4f8cff, #6f5bff);
+      color: #050b1d;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      display: inline-block;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 40px;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .hero-card h3 {
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .hero-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 64px 0;
+    }
+
+    .section-alt {
+      background: rgba(255,255,255,0.03);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+    }
+
+    .section-header h2 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .card p, .card ul {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card ul {
+      padding-left: 18px;
+      margin-top: 8px;
+    }
+
+    /* METHOD */
+    .steps {
+      display: grid;
+      gap: 16px;
+      max-width: 820px;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .step span {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(79,140,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    /* CONTACT */
+    .contact {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+
+    .contact-box strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .contact-form label {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    footer {
+      padding: 24px 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-3,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#top" aria-label="Ir para o início">
-        <span class="brand-mark">MP</span>
-        <span class="brand-name">MaxProd</span>
-        <span class="brand-sub">Soluções Empresariais</span>
-      </a>
 
-      <nav class="menu" aria-label="Menu">
-        <a href="#servicos">Serviços</a>
-        <a href="#diferenciais">Diferenciais</a>
-        <a href="#casos">Casos</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#contato" class="btn btn-small">Contato</a>
-      </nav>
-
-      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <strong>MaxProd</strong>
+      <span>Soluções Empresariais</span>
     </div>
 
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <div class="container mobile-menu-inner">
-        <a href="#servicos">Serviços</a>
-        <a href="#diferenciais">Diferenciais</a>
-        <a href="#casos">Casos</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#contato" class="btn">Contato</a>
-      </div>
-    </div>
-  </header>
+    <nav class="menu">
+      <a href="#servicos">Serviços</a>
+      <a href="#metodo">Método</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#contato" class="btn">Contato</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="pill">
-            <span class="dot"></span>
-            Consultoria Industrial • Melhoria Contínua • IA aplicada
-          </div>
+<main>
 
-          <h1>
-            Resultados reais em <span class="grad">qualidade</span>, <span class="grad">produtividade</span> e <span class="grad">custos</span>.
-          </h1>
-
-          <p class="lead">
-            A MaxProd Soluções Empresariais acelera performance operacional com método, dados e execução:
-            Lean/WCM, melhoria contínua, qualidade e soluções de automação/IA para a rotina de fábrica.
-          </p>
-
-          <div class="cta-row">
-            <a class="btn" href="#contato">Quero conversar</a>
-            <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
-          </div>
-
-          <div class="trust">
-            <div class="trust-item">
-              <div class="trust-num">+12 anos</div>
-              <div class="trust-txt">em manufatura e melhoria contínua</div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-num">A3 • PDCA</div>
-              <div class="trust-txt">disciplina de gestão e execução</div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-num">IA na prática</div>
-              <div class="trust-txt">visão computacional e operação</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <div class="card">
-            <div class="card-top">
-              <div class="badge">Diagnóstico rápido</div>
-              <div class="status">
-                <span class="pulse"></span> Disponível para projetos
-              </div>
-            </div>
-
-            <div class="kpis">
-              <div class="kpi">
-                <div class="kpi-label">Foco</div>
-                <div class="kpi-value">Gargalos, perdas, falhas e custo</div>
-              </div>
-              <div class="kpi">
-                <div class="kpi-label">Entrega</div>
-                <div class="kpi-value">Plano de ação + execução acompanhada</div>
-              </div>
-              <div class="kpi">
-                <div class="kpi-label">Formato</div>
-                <div class="kpi-value">On-site • Remoto • Híbrido</div>
-              </div>
-            </div>
-
-            <div class="card-cta">
-              <a class="btn btn-wide" href="#contato">Solicitar proposta</a>
-              <p class="small muted">
-                Resposta em até 24–48h úteis.
-              </p>
-            </div>
-          </div>
-
-          <div class="glow"></div>
-        </div>
-      </div>
-
-      <div class="bg-orb orb-1"></div>
-      <div class="bg-orb orb-2"></div>
-    </section>
-
-    <!-- SERVIÇOS -->
-    <section id="servicos" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Serviços</h2>
-          <p class="muted">
-            Escolha um pacote ou combine módulos conforme sua necessidade (planta, linha, célula ou área).
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <article class="tile">
-            <h3>Melhoria Contínua (Lean/WCM)</h3>
-            <p class="muted">
-              Diagnóstico de perdas, padronização, OEE, fluxo, balanceamento, 5S, SMED e rotina de gestão.
-            </p>
-            <ul class="list">
-              <li>Mapa de perdas + Pareto</li>
-              <li>Plano de ação (A3 / 7 Steps)</li>
-              <li>Treinamento objetivo + prática</li>
-            </ul>
-          </article>
-
-          <article class="tile">
-            <h3>Qualidade e Processos</h3>
-            <p class="muted">
-              Redução de defeitos, contenção, análise de causa raiz, robustez de processo e auditorias.
-            </p>
-            <ul class="list">
-              <li>PFMEA/Control Plan (apoio)</li>
-              <li>8D / Ishikawa / 5 Porquês</li>
-              <li>Padronização e treinabilidade</li>
-            </ul>
-          </article>
-
-          <article class="tile">
-            <h3>IA aplicada à Operação</h3>
-            <p class="muted">
-              Soluções práticas para reduzir “by pass” e variabilidade operacional com visão computacional.
-            </p>
-            <ul class="list">
-              <li>Detecção de etapas e conformidade</li>
-              <li>Monitoramento de padrões operacionais</li>
-              <li>Provas de conceito rápidas</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- DIFERENCIAIS -->
-    <section id="diferenciais" class="section section-alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Diferenciais</h2>
-          <p class="muted">Não é só diagnóstico: é método + entrega + acompanhamento.</p>
-        </div>
-
-        <div class="grid-2">
-          <div class="feature">
-            <div class="icon">⚙️</div>
-            <div>
-              <h3>Execução orientada a resultado</h3>
-              <p class="muted">Plano claro, dono, prazo e acompanhamento semanal com evidências.</p>
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="icon">📈</div>
-            <div>
-              <h3>Dados e chão de fábrica</h3>
-              <p class="muted">Métricas simples e úteis (OEE, perdas, sucata, retrabalho, lead time).</p>
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="icon">🧠</div>
-            <div>
-              <h3>IA com pé no real</h3>
-              <p class="muted">Aplicações focadas em reduzir desvios operacionais, não “IA por IA”.</p>
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="icon">🤝</div>
-            <div>
-              <h3>Transferência de conhecimento</h3>
-              <p class="muted">Treinamento objetivo e material para manter o ganho após o projeto.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CASOS -->
-    <section id="casos" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Casos e Resultados</h2>
-          <p class="muted">Alguns exemplos do tipo de impacto que buscamos gerar.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="case">
-            <div class="case-tag">Produtividade</div>
-            <h3>+57% de produtividade</h3>
-            <p class="muted">
-              Mudança de abastecimento de aço: de blank/chapas para refile (rolos), eliminando manuseio manual e
-              estabilizando alimentação automática na prensa.
-            </p>
-          </article>
-
-          <article class="case">
-            <div class="case-tag">Sustentabilidade</div>
-            <h3>Reaproveitamento + impacto social</h3>
-            <p class="muted">
-              Projeto de reaproveitamento de materiais com ONG (com autorização global), reduzindo descarte e
-              gerando valor social na comunidade.
-            </p>
-          </article>
-
-          <article class="case">
-            <div class="case-tag">Qualidade</div>
-            <h3>Padronização e redução de desvios</h3>
-            <p class="muted">
-              Estruturação de padrões operacionais e rotinas de controle para reduzir variabilidade e retrabalho.
-            </p>
-          </article>
-        </div>
-
-        <p class="small muted note">
-          *Os resultados variam conforme contexto, baseline e disciplina de execução.
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Consultoria industrial com foco em resultado.</h1>
+        <p>
+          A MaxProd atua na melhoria contínua de processos industriais,
+          aumentando produtividade, reduzindo custos e elevando a qualidade
+          com método, dados e execução no chão de fábrica.
         </p>
-      </div>
-    </section>
 
-    <!-- COMO FUNCIONA -->
-    <section id="como-funciona" class="section section-alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Como funciona</h2>
-          <p class="muted">Um fluxo simples e objetivo, do diagnóstico à sustentação.</p>
-        </div>
-
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div>
-              <h3>Entendimento e meta</h3>
-              <p class="muted">Visita/briefing, definição de escopo e alvo (KPIs e baseline).</p>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-num">2</div>
-            <div>
-              <h3>Diagnóstico no Gemba</h3>
-              <p class="muted">Mapeamento de perdas, causa raiz e priorização (Pareto).</p>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-num">3</div>
-            <div>
-              <h3>Plano e execução</h3>
-              <p class="muted">Ações com dono e prazo, acompanhamento e validação por evidência.</p>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-num">4</div>
-            <div>
-              <h3>Padronização e sustentação</h3>
-              <p class="muted">Treinamento, padrão operacional e rotina para manter os ganhos.</p>
-            </div>
-          </div>
+        <div class="hero-actions">
+          <a href="#contato" class="btn">Solicitar diagnóstico</a>
+          <a href="#servicos" class="btn secondary">Conhecer serviços</a>
         </div>
       </div>
-    </section>
 
-    <!-- CONTATO -->
-    <section id="contato" class="section">
-      <div class="container">
-        <div class="contact">
+      <div class="hero-card">
+        <h3>Diagnóstico rápido</h3>
+        <ul>
+          <li>Mapeamento de perdas e gargalos</li>
+          <li>Análise de indicadores (OEE, scrap, retrabalho)</li>
+          <li>Plano de ação priorizado</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="container">
+      <div class="section-header">
+        <h2>Serviços</h2>
+        <p>Projetos práticos, com metas claras e acompanhamento direto na operação.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Produtividade & OEE</h3>
+          <p>Eliminação de perdas, balanceamento e padronização operacional.</p>
+          <ul>
+            <li>Gestão diária</li>
+            <li>Trabalho padrão</li>
+            <li>Fluxo e capacidade</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Qualidade & Processos</h3>
+          <p>Estabilidade de processo e prevenção de defeitos.</p>
+          <ul>
+            <li>5 Porquês e Ishikawa</li>
+            <li>Plano de controle</li>
+            <li>Auditorias e conformidade</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Redução de Custos</h3>
+          <p>Kaizens focados em ganho real e rápido.</p>
+          <ul>
+            <li>SMED</li>
+            <li>Sucata e retrabalho</li>
+            <li>Payback mensurável</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo" class="section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Como trabalhamos</h2>
+        <p>Consultoria orientada à execução, não a apresentações.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span>1</span>
           <div>
-            <h2>Contato</h2>
-            <p class="muted">
-              Me diga seu desafio (linha, área, planta) e eu te retorno com uma proposta objetiva.
-            </p>
-
-            <div class="contact-cards">
-              <div class="contact-card">
-                <div class="label">E-mail</div>
-                <a href="mailto:maxprodsolucoes@gmail.com">maxprodsolucoes@gmail.com</a>
-              </div>
-
-              <div class="contact-card">
-                <div class="label">Telefone / WhatsApp</div>
-                <a href="https://wa.me/5531992793411" target="_blank" rel="noreferrer">(31) 99279-3411</a>
-              </div>
-
-              <div class="contact-card">
-                <div class="label">CNPJ</div>
-                <div>58.892.549/0001-39</div>
-              </div>
-            </div>
-
-            <p class="small muted">
-              Se preferir, mande uma mensagem com: “objetivo”, “prazo”, “turno”, “produto/processo” e “dor principal”.
-            </p>
-          </div>
-
-          <form class="form" id="leadForm">
-            <div class="form-row">
-              <label>Seu nome</label>
-              <input required name="name" placeholder="Ex.: Marcelo" />
-            </div>
-
-            <div class="form-row">
-              <label>Empresa</label>
-              <input name="company" placeholder="Ex.: Indústria X" />
-            </div>
-
-            <div class="form-row">
-              <label>Seu WhatsApp ou e-mail</label>
-              <input required name="contact" placeholder="Ex.: (31) 9xxxx-xxxx ou email@empresa.com" />
-            </div>
-
-            <div class="form-row">
-              <label>Desafio / objetivo</label>
-              <textarea required name="message" rows="5" placeholder="Explique rapidamente o problema e onde acontece."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-wide">Enviar mensagem</button>
-            <p class="small muted">
-              *Este formulário abre o WhatsApp com a mensagem preenchida (não armazena dados).
-            </p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div class="footer-left">
-          <div class="footer-brand">
-            <span class="brand-mark">MP</span>
-            <div>
-              <div class="footer-title">MaxProd Soluções Empresariais</div>
-              <div class="small muted">Consultoria industrial • Melhoria contínua • IA aplicada</div>
-            </div>
+            <strong>Diagnóstico</strong>
+            <p>Análise técnica do processo, dados e rotina operacional.</p>
           </div>
         </div>
 
-        <div class="footer-right">
-          <div class="small muted">© <span id="year"></span> MaxProd. Todos os direitos reservados.</div>
-          <div class="small muted">Desenvolvido por: MaxProd Soluções Empresariais</div>
+        <div class="step">
+          <span>2</span>
+          <div>
+            <strong>Plano de ação</strong>
+            <p>Priorização por impacto, esforço e retorno financeiro.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span>3</span>
+          <div>
+            <strong>Execução e sustentação</strong>
+            <p>Implementação, acompanhamento e padronização.</p>
+          </div>
         </div>
       </div>
-    </footer>
-  </main>
+    </div>
+  </section>
 
-  <script src="script.js"></script>
+  <section id="resultados">
+    <div class="container">
+      <div class="section-header">
+        <h2>Resultados típicos</h2>
+        <p>Indicadores alcançados em projetos de melhoria contínua.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>+20% produtividade</h3>
+          <p>Melhoria de fluxo, balanceamento e gestão diária.</p>
+        </div>
+
+        <div class="card">
+          <h3>-30% retrabalho</h3>
+          <p>Estabilização de processo e causas raiz.</p>
+        </div>
+
+        <div class="card">
+          <h3>Payback rápido</h3>
+          <p>Projetos focados em custo, sucata e setup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="section-alt">
+    <div class="container contact">
+      <div class="contact-info">
+        <h2>Vamos conversar</h2>
+        <p>
+          Descreva seu cenário e retornaremos com uma avaliação técnica
+          e próximos passos.
+        </p>
+
+        <div class="contact-box">
+          <strong>Email</strong>
+          maxprodsolucoes@gmail.com
+        </div>
+
+        <div class="contact-box">
+          <strong>WhatsApp</strong>
+          +55 (31) 99279-3411
+        </div>
+
+        <div class="contact-box">
+          <strong>CNPJ</strong>
+          58.892.549/0001-39
+        </div>
+      </div>
+
+      <form class="contact-form"
+        onsubmit="
+          event.preventDefault();
+          const msg =
+            'Olá, meu nome é ' + this.nome.value +
+            '. Empresa: ' + this.empresa.value +
+            '. Mensagem: ' + this.mensagem.value;
+          window.open(
+            'https://wa.me/5531992793411?text=' + encodeURIComponent(msg),
+            '_blank'
+          );
+        ">
+        <label>Nome</label>
+        <input name="nome" required />
+
+        <label>Empresa</label>
+        <input name="empresa" />
+
+        <label>Mensagem</label>
+        <textarea name="mensagem" rows="4" required></textarea>
+
+        <button type="submit" class="btn">Enviar via WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="ano"></span> MaxProd Soluções Empresariais
+</footer>
+
+<script>
+  document.getElementById("ano").innerText = new Date().getFullYear();
+</script>
+
 </body>
 </html>
