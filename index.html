@@ -606,7 +606,7 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
 
         <aside class="sideCard assess" aria-label="Autoavaliação rápida">
           <h3>Autoavaliação rápida</h3>
-          <p class="assessSub">Marque o que é verdade hoje na sua operação.</p>
+          <p class="assessSub">Avalie os desafios atuais da sua operação.</p>
 
           <div class="assessMeta">
             <span class="assessCount">
@@ -648,7 +648,7 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
 
           <div class="assessFooter">
             <div class="assessMsg" id="assessMsg">
-              Se você se identificou com mais de um ponto, vale uma conversa objetiva.
+              Se você se identificou com mais de um desafio, vale uma conversa objetiva.
             </div>
 
             <div class="assessActions">
@@ -935,14 +935,14 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
       const isFit = selected >= 2;
 
       if(isFit){
-        msgEl.textContent = "Se você se identificou com mais de um ponto, vale uma conversa objetiva.";
+        msgEl.textContent = "Se você se identificou com mais de um desafio, vale uma conversa objetiva.";
         if(hintEl) hintEl.textContent = "Bom fit detectado (2+).";
         ctaEl.textContent = "Solicitar diagnóstico";
         ctaEl.href = "#diagnostico";
         altEl.textContent = "Ver nossa abordagem";
         altEl.href = "#metodologia";
       }else{
-        msgEl.textContent = "Se apenas 0–1 ponto faz sentido, comece por cases e serviços.";
+        msgEl.textContent = "Identificou menos de 2 desafios? Conheça soluções proativas que previnem problemas antes deles surgirem.";
         if(hintEl) hintEl.textContent = "Selecione 2+ para indicar melhor fit";
         ctaEl.textContent = "Explorar cases";
         ctaEl.href = "#cases";
