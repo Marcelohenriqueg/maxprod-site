@@ -229,7 +229,7 @@
     .sideCard ul{margin:0; padding-left:18px; color:var(--muted); line-height:1.7; position:relative}
     .sideCard li{margin:4px 0}
 
-    /* Proof bar */
+    /* Proof bar (compactado para caber na dobra) */
     .proof{ padding:10px 0 6px; }
     .proofBar{
       display:grid;
@@ -244,7 +244,7 @@
     }
     .metric .big{
       font-weight:800;
-      font-size:20px;
+      font-size:18px;
       letter-spacing:-.2px;
       margin-bottom:2px;
     }
@@ -413,135 +413,107 @@
       .grid4{grid-template-columns:1fr}
       .finalCta{flex-direction:column; align-items:flex-start}
     }
+
     /* === Self-assessment (card hero direita) === */
-.assess{ padding:18px 18px 16px; }
-.assess h3{ margin:0 0 6px; font-size:16px; }
-.assessSub{
-  margin:0 0 12px;
-  color: var(--muted2);
-  font-size:12.5px;
-}
+    .assess{ padding:18px 18px 16px; }
+    .assess h3{ margin:0 0 6px; font-size:16px; }
+    .assessSub{
+      margin:0 0 12px;
+      color: var(--muted2);
+      font-size:12.5px;
+    }
 
-.assessMeta{
-  display:flex; justify-content:space-between;
-  margin: 8px 0 10px;
-}
-.assessCount{ color: var(--muted); font-size:12px; }
-.assessHint{ color: var(--muted2); font-size:12px; }
+    .assessMeta{
+      display:flex; justify-content:space-between;
+      margin: 8px 0 10px;
+    }
+    .assessCount{ color: var(--muted); font-size:12px; }
+    .assessHint{ color: var(--muted2); font-size:12px; }
 
-.assessBar{
-  height:8px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.03);
-  overflow:hidden;
-  margin-bottom:12px;
-}
-.assessBar span{
-  display:block;
-  height:100%;
-  width:0%;
-  background: linear-gradient(90deg, rgba(47,107,255,.55), rgba(47,107,255,.95));
-  transition: width .35s ease;
-}
+    .assessBar{
+      height:8px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      margin-bottom:12px;
+    }
+    .assessBar span{
+      display:block;
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(47,107,255,.55), rgba(47,107,255,.95));
+      transition: width .35s ease;
+    }
 
-.assessItem{
-  display:flex;
-  gap:10px;
-  padding:10px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.02);
-  cursor:pointer;
-  transition:.18s ease;
-}
-.assessItem:hover{
-  background: rgba(255,255,255,.04);
-  transform: translateY(-1px);
-}
-.assessItem span{
-  color: var(--muted);
-  font-size:13px;
-}
+    .assessItem{
+      display:flex;
+      gap:10px;
+      padding:10px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      cursor:pointer;
+      transition:.18s ease;
+    }
+    .assessItem:hover{
+      background: rgba(255,255,255,.04);
+      transform: translateY(-1px);
+    }
+    .assessItem span{
+      color: var(--muted);
+      font-size:13px;
+    }
 
-.assessFooter{
-  margin-top:12px;
-  padding-top:12px;
-  border-top:1px solid rgba(255,255,255,.08);
-}
+    .assessFooter{
+      margin-top:12px;
+      padding-top:12px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
 
-.assessReveal{
-  opacity:0;
-  transform: translateY(10px);
-  animation: assessReveal .55s ease forwards;
-}
-@keyframes assessReveal{
-  to{ opacity:1; transform: translateY(0); }
-}
+    .assessReveal{
+      opacity:0;
+      transform: translateY(10px);
+      animation: assessReveal .55s ease forwards;
+    }
+    @keyframes assessReveal{
+      to{ opacity:1; transform: translateY(0); }
+    }
 
-.assessPulse{
-  animation: assessPulse .55s ease;
-}
-@keyframes assessPulse{
-  40%{ transform: scale(1.01); }
-}
+    .assessPulse{
+      animation: assessPulse .55s ease;
+    }
+    @keyframes assessPulse{
+      40%{ transform: scale(1.01); }
+    }
+
     section { scroll-margin-top: 90px; }
-    /* ===============================
-   SELF-ASSESSMENT (HERO CARD)
-   =============================== */
 
-.assessHint{
-  display:none; /* remove "Selecione 2+ para indicar fit" */
-}
+    /* remove "Selecione 2+..." (mantendo o elemento no HTML p/ não quebrar o JS) */
+    .assessHint{
+      display:none;
+    }
 
-.assessMsg{
-  text-align:center;
-  font-size:12px;
-  line-height:1.45;
-  color: var(--muted2);
-  max-width:34ch;
-  margin: 6px auto 12px;
-}
+    .assessMsg{
+      text-align:center;
+      font-size:12px;
+      line-height:1.45;
+      color: var(--muted2);
+      max-width:34ch;
+      margin: 6px auto 12px;
+    }
 
-.assessActions{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
+    .assessActions{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
 
-/* Ajuste fino de espaçamento do card */
-.assessList{
-  display:grid;
-  gap:10px;
-}
-    /* ===============================
-   HERO PROOF STRIP
-   =============================== */
-
-.heroProof{
-  margin-top: 26px;
-}
-
-.heroProof .proofBar{
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.heroProof .metric{
-  background: rgba(255,255,255,.02);
-  border: 1px solid rgba(255,255,255,.06);
-  box-shadow: none;
-}
-
-@media (max-width: 980px){
-  .heroProof .proofBar{
-    grid-template-columns: 1fr;
-  }
-}
-    .heroProof{
-  grid-column: 1 / -1;
-  margin-top: 16px;
-}
+    .assessList{
+      display:grid;
+      gap:10px;
+    }
   </style>
 </head>
 
@@ -569,13 +541,13 @@
           <a href="#cases">Cases</a>
           <a href="#opera-guard">Opera Guard</a>
 
-     <div class="dropdown">
-  <button class="dropBtn" type="button">Empresa ▾</button>
-  <div class="dropMenu">
-    <a href="#quem-somos">Quem somos</a>
-    <a href="#esg">Impacto &amp; ESG</a>
-  </div>
-</div>
+          <div class="dropdown">
+            <button class="dropBtn" type="button">Empresa ▾</button>
+            <div class="dropMenu">
+              <a href="#quem-somos">Quem somos</a>
+              <a href="#esg">Impacto &amp; ESG</a>
+            </div>
+          </div>
 
           <div class="dropdown">
             <button class="dropBtn" type="button">Conteúdo ▾</button>
@@ -608,76 +580,91 @@
           <div class="heroActions">
             <a class="btn btnPrimary" href="#cases">Ver cases</a>
             <a class="btn" href="#contato">Fale conosco</a>
-            <div class="heroProof">
-  <div class="proofBar">
-    <div class="metric">
-      <div class="big">500+ projetos</div>
-      <div class="small">em ambientes industriais complexos</div>
-      <div class="small">(chão de fábrica + scm + gestão)</div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-    <aside class="sideCard assess" aria-label="Autoavaliação rápida">
-  <h3>Autoavaliação rápida</h3>
-  <p class="assessSub">Marque o que é verdade hoje na sua operação.</p>
 
-  <div class="assessMeta">
-    <span class="assessCount">
-      <strong id="assessCount">0</strong>/5 sinais
-    </span>
-  </div>
+        <aside class="sideCard assess" aria-label="Autoavaliação rápida">
+          <h3>Autoavaliação rápida</h3>
+          <p class="assessSub">Marque o que é verdade hoje na sua operação.</p>
 
-  <div class="assessBar" aria-hidden="true">
-    <span id="assessBarFill"></span>
-  </div>
+          <div class="assessMeta">
+            <span class="assessCount">
+              <strong id="assessCount">0</strong>/5 sinais
+            </span>
+            <span class="assessHint" id="assessHint">Selecione 2+ para indicar melhor fit</span>
+          </div>
 
-  <div class="assessList" role="group" aria-label="Sinais">
-    <label class="assessItem">
-      <input type="checkbox" class="assessCheck" />
-      <span>O problema já impacta <strong>custo, entrega ou qualidade</strong>.</span>
-    </label>
+          <div class="assessBar" aria-hidden="true">
+            <span id="assessBarFill"></span>
+          </div>
 
-    <label class="assessItem">
-      <input type="checkbox" class="assessCheck" />
-      <span>A causa <strong>não é óbvia</strong> ou envolve múltiplos fatores.</span>
-    </label>
+          <div class="assessList" role="group" aria-label="Sinais">
+            <label class="assessItem">
+              <input type="checkbox" class="assessCheck" />
+              <span>O problema já impacta <strong>custo, entrega ou qualidade</strong>.</span>
+            </label>
 
-    <label class="assessItem">
-      <input type="checkbox" class="assessCheck" />
-      <span>Já houve tentativas anteriores <strong>sem sustentação</strong>.</span>
-    </label>
+            <label class="assessItem">
+              <input type="checkbox" class="assessCheck" />
+              <span>A causa <strong>não é óbvia</strong> ou envolve múltiplos fatores.</span>
+            </label>
 
-    <label class="assessItem">
-      <input type="checkbox" class="assessCheck" />
-      <span>A operação depende fortemente de <strong>pessoas e rotina</strong>.</span>
-    </label>
+            <label class="assessItem">
+              <input type="checkbox" class="assessCheck" />
+              <span>Já houve tentativas anteriores <strong>sem sustentação</strong>.</span>
+            </label>
 
-    <label class="assessItem">
-      <input type="checkbox" class="assessCheck" />
-      <span>O que se busca é <strong>decisão e execução</strong> — não relatório.</span>
-    </label>
-  </div>
+            <label class="assessItem">
+              <input type="checkbox" class="assessCheck" />
+              <span>A operação depende fortemente de <strong>pessoas e rotina</strong>.</span>
+            </label>
 
-  <div class="assessFooter">
-    <div class="assessMsg" id="assessMsg">
-      Se você se identificou com mais de um ponto, vale uma conversa objetiva.
-    </div>
+            <label class="assessItem">
+              <input type="checkbox" class="assessCheck" />
+              <span>O que se busca é <strong>decisão e execução</strong> — não relatório.</span>
+            </label>
+          </div>
 
-    <div class="assessActions">
-      <a class="btn btnPrimary" href="#diagnostico" id="assessCta">
-        Solicitar diagnóstico
-      </a>
-      <a class="btn btnGhost" href="#cases" id="assessAlt">
-        Ver cases
-      </a>
-    </div>
-  </div>
-</aside>
+          <div class="assessFooter">
+            <div class="assessMsg" id="assessMsg">
+              Se você se identificou com mais de um ponto, vale uma conversa objetiva.
+            </div>
+
+            <div class="assessActions">
+              <a class="btn btnPrimary" href="#diagnostico" id="assessCta">
+                Solicitar diagnóstico
+              </a>
+              <a class="btn btnGhost" href="#cases" id="assessAlt">
+                Ver cases
+              </a>
+            </div>
+          </div>
+        </aside>
 
       </div>
     </div>
   </main>
+
+  <!-- PROOF BAR (voltou a aparecer, 3 cards, compacto) -->
+  <div class="proof">
+    <div class="container">
+      <div class="proofBar" aria-label="Provas de credibilidade">
+        <div class="metric">
+          <div class="big">+R$ 35 milhões</div>
+          <div class="small">em hard savings e cost avoidance</div>
+        </div>
+        <div class="metric">
+          <div class="big">500+ projetos</div>
+          <div class="small">em ambientes industriais complexos</div>
+          <div class="small">(chão de fábrica + scm + gestão)</div>
+        </div>
+        <div class="metric">
+          <div class="big">Multi-setor</div>
+          <div class="small">manufatura • supply chain • operações • pessoas</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- COMO PODEMOS AJUDAR -->
   <section id="como-podemos-ajudar">
@@ -817,33 +804,34 @@
       </div>
     </div>
   </section>
-<!-- DIAGNÓSTICO (destino do CTA do header) -->
-<section id="diagnostico">
-  <div class="container">
-    <div class="finalCta">
-      <div>
-        <h3>Solicite um diagnóstico operacional inicial.</h3>
-        <p>
-          Em uma conversa curta, mapeamos o problema, o impacto e os próximos passos.
-          Sem compromisso.
-        </p>
-      </div>
 
-      <div style="display:flex; gap:10px; flex-wrap:wrap">
-        <a class="btn btnPrimary"
-           href="mailto:maxprodsolucoes@gmail.com?subject=Diagnóstico%20Operacional%20-%20MaxProd">
-          Solicitar por e-mail
-        </a>
+  <!-- DIAGNÓSTICO (destino do CTA do header) -->
+  <section id="diagnostico">
+    <div class="container">
+      <div class="finalCta">
+        <div>
+          <h3>Solicite um diagnóstico operacional inicial.</h3>
+          <p>
+            Em uma conversa curta, mapeamos o problema, o impacto e os próximos passos.
+            Sem compromisso.
+          </p>
+        </div>
 
-        <a class="btn"
-           href="https://wa.me/5531992793411"
-           target="_blank" rel="noopener">
-          WhatsApp
-        </a>
+        <div style="display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn btnPrimary"
+             href="mailto:maxprodsolucoes@gmail.com?subject=Diagnóstico%20Operacional%20-%20MaxProd">
+            Solicitar por e-mail
+          </a>
+
+          <a class="btn"
+             href="https://wa.me/5531992793411"
+             target="_blank" rel="noopener">
+            WhatsApp
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- CTA FINAL -->
   <section id="contato">
@@ -927,14 +915,14 @@
 
       if(isFit){
         msgEl.textContent = "Se você se identificou com mais de um ponto, vale uma conversa objetiva.";
-        hintEl.textContent = "Bom fit detectado (2+).";
+        if(hintEl) hintEl.textContent = "Bom fit detectado (2+).";
         ctaEl.textContent = "Solicitar diagnóstico";
         ctaEl.href = "#diagnostico";
         altEl.textContent = "Ver nossa abordagem";
         altEl.href = "#metodologia";
       }else{
         msgEl.textContent = "Se apenas 0–1 ponto faz sentido, comece por cases e serviços.";
-        hintEl.textContent = "Selecione 2+ para indicar melhor fit";
+        if(hintEl) hintEl.textContent = "Selecione 2+ para indicar melhor fit";
         ctaEl.textContent = "Explorar cases";
         ctaEl.href = "#cases";
         altEl.textContent = "Ver serviços";
@@ -952,6 +940,6 @@
     checks.forEach(c => c.addEventListener("change", update));
     update();
   })();
-</script>
+  </script>
 </body>
 </html>
