@@ -8,47 +8,47 @@
 
   <style>
     :root{
-  /* FUNDOS – Industrial Premium */
-  --bg:#0b0f14;          /* grafite profundo */
-  --bg2:#0e1622;         /* azul petróleo escuro */
+      /* FUNDOS – Industrial Premium */
+      --bg:#0b0f14;
+      --bg2:#0e1622;
 
-  /* PAINÉIS / CARDS */
-  --panel: rgba(255,255,255,.03);
-  --panel2: rgba(255,255,255,.05);
-  --stroke: rgba(255,255,255,.08);
+      /* PAINÉIS / CARDS */
+      --panel: rgba(255,255,255,.03);
+      --panel2: rgba(255,255,255,.05);
+      --stroke: rgba(255,255,255,.08);
 
-  /* TEXTO */
-  --text:#eef2f8;        /* branco frio */
-  --muted:#b2bccb;       /* cinza técnico */
-  --muted2:#8e99ab;
+      /* TEXTO */
+      --text:#eef2f8;
+      --muted:#b2bccb;
+      --muted2:#8e99ab;
 
-  /* COR PRINCIPAL (azul técnico, sem roxo) */
-  --brand:#2f6bff;       /* azul industrial */
-  --brand2:#1f4fd8;
+      /* COR PRINCIPAL */
+      --brand:#2f6bff;
+      --brand2:#1f4fd8;
 
-  /* SEMÂNTICA */
-  --ok:#38d39f;          /* verde sucesso (bem controlado) */
+      /* SEMÂNTICA */
+      --ok:#38d39f;
 
-  /* SOMBRAS */
-  --shadow: 0 30px 80px rgba(0,0,0,.6);
+      /* SOMBRAS */
+      --shadow: 0 30px 80px rgba(0,0,0,.6);
 
-  /* RADIUS */
-  --radius:18px;
-  --radius2:24px;
+      /* RADIUS */
+      --radius:18px;
+      --radius2:24px;
 
-  /* LAYOUT */
-  --max:1180px;
-        /* GLOWS CONTROLADOS (Industrial Premium) */
-  --brandGlow: rgba(47,107,255,.18);
-  --brandGlow2: rgba(47,107,255,.10);
-  --okGlow: rgba(56,211,159,.30);
+      /* LAYOUT */
+      --max:1180px;
 
-  /* FUNDOS MAIS “SÓLIDOS” (menos glass) */
-  --glass: rgba(255,255,255,.028);
-  --glass2: rgba(255,255,255,.045);
-  --line: rgba(255,255,255,.09);
+      /* GLOWS */
+      --brandGlow: rgba(47,107,255,.18);
+      --brandGlow2: rgba(47,107,255,.10);
+      --okGlow: rgba(56,211,159,.30);
 
-}
+      /* GLASS */
+      --glass: rgba(255,255,255,.028);
+      --glass2: rgba(255,255,255,.045);
+      --line: rgba(255,255,255,.09);
+    }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -80,32 +80,74 @@
     }
     .brand{
       display:flex; align-items:center; gap:10px;
-      min-width:210px;
+      white-space:nowrap;
     }
-    .logoMark{
-      width:34px; height:55px; border-radius:12px;
-      background:
-        radial-gradient(12px 12px at 28% 28%, rgba(255,255,255,.18), rgba(0,0,0,0)),
-        linear-gradient(135deg, rgba(107,124,255,.95), rgba(79,99,255,.60));
-      box-shadow: 0 16px 40px rgba(107,124,255,.25);
-      border:1px solid rgba(255,255,255,.10);
-    }
-    .brandText{
-      line-height:1.1;
-    }
+    .brandText{ line-height:1.1; }
     .brandText strong{display:block; font-size:14px; letter-spacing:.2px}
     .brandText span{display:block; font-size:12px; color:var(--muted2)}
+
     .menu{
-      display:flex; align-items:center; gap:18px;
+      display:flex; align-items:center; gap:10px;
       color:var(--muted);
       font-size:14px;
+      flex: 1;
+      justify-content:center;
+      white-space:nowrap;
     }
-    .menu a{padding:8px 10px; border-radius:12px}
+    .menu a{
+      padding:8px 12px;
+      border-radius:12px;
+      transition:.18s ease;
+    }
     .menu a:hover{background: rgba(255,255,255,.05); color:var(--text)}
+
+    /* Dropdown (desktop) */
+    .dropdown{ position:relative; display:inline-flex; align-items:center; }
+    .dropBtn{
+      border:0;
+      background: transparent;
+      color: var(--muted);
+      font-size:14px;
+      padding:8px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      transition:.18s ease;
+    }
+    .dropBtn:hover{
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+    }
+    .dropMenu{
+      display:none;
+      position:absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      min-width: 220px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(10,14,22,.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+      overflow:hidden;
+      z-index: 60;
+    }
+    .dropMenu a{
+      display:block;
+      padding:10px 12px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .dropMenu a:first-child{ border-top:0; }
+    .dropMenu a:hover{ background: rgba(255,255,255,.05); color: var(--text); }
+    .dropdown:hover .dropMenu{ display:block; }
+
     .cta{
       display:flex; align-items:center; gap:10px;
-      min-width:210px;
       justify-content:flex-end;
+      white-space:nowrap;
     }
     .btn{
       border:1px solid rgba(255,255,255,.10);
@@ -127,14 +169,10 @@
       box-shadow: 0 22px 60px rgba(79,99,255,.25);
     }
     .btnPrimary:hover{background: linear-gradient(135deg, #7a88ff, #5a6cff)}
-    .btnGhost{
-      background: rgba(255,255,255,.02);
-    }
+    .btnGhost{ background: rgba(255,255,255,.02); }
 
     /* Hero */
-    .hero{
-      padding:64px 0 28px;
-    }
+    .hero{ padding:64px 0 28px; }
     .heroGrid{
       display:grid;
       grid-template-columns: 1.22fr .78fr;
@@ -192,9 +230,7 @@
     .sideCard li{margin:4px 0}
 
     /* Proof bar */
-    .proof{
-      padding:14px 0 10px;
-    }
+    .proof{ padding:14px 0 10px; }
     .proofBar{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -221,11 +257,7 @@
       gap:12px;
       margin-bottom:16px;
     }
-    .sectionTitle h2{
-      margin:0;
-      font-size:22px;
-      letter-spacing:-.2px;
-    }
+    .sectionTitle h2{ margin:0; font-size:22px; letter-spacing:-.2px; }
     .sectionTitle p{margin:0; color:var(--muted2); font-size:13px}
 
     /* Problem cards */
@@ -365,7 +397,7 @@
     .smallLinks a{padding:6px 10px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.02)}
     .smallLinks a:hover{background: rgba(255,255,255,.05)}
 
-    /* Responsive */
+    /* Responsive (mantido como estava) */
     @media (max-width: 980px){
       .heroGrid{grid-template-columns:1fr; }
       .cta{min-width:auto}
@@ -390,33 +422,43 @@
     <div class="container">
       <div class="nav">
         <a class="brand" href="#topo" aria-label="MaxProd - Home">
-         <img 
-  src="assets/img/LOGO - MAXPROD.png" 
-  alt="MaxProd Soluções Empresariais"
-  style="
-    height:55px;
-    width:auto;
-    border-radius:8px;
-  "
-/>
-
+          <img
+            src="assets/img/LOGO - MAXPROD.png"
+            alt="MaxProd Soluções Empresariais"
+            style="height:55px; width:auto; border-radius:8px;"
+          />
           <div class="brandText">
             <strong>MaxProd</strong>
             <span>Soluções Empresariais</span>
           </div>
         </a>
 
-       <nav class="menu" aria-label="Navegação">
-  <a href="#como-">Como podemos ajudar</a>
-  <a href="#quem-somos">Quem somos</a>
-  <a href="#servicos">Serviços</a>
-  <a href="#cases">Cases</a>
-  <a href="#opera-guard">Opera Guard</a>
-  <a href="#metodologia">Metodologia</a>
-  <a href="#esg">Impacto &amp; ESG</a>
-  <a href="#insights">Insights</a>
-  <a href="#contato">Contato</a>
-</nav>
+        <!-- MENU (benchmark: poucos itens + clusters) -->
+        <nav class="menu" aria-label="Navegação">
+          <a href="#como-podemos-ajudar">Como podemos ajudar</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#cases">Cases</a>
+          <a href="#opera-guard">Opera Guard</a>
+
+          <div class="dropdown">
+            <button class="dropBtn" type="button">Empresa ▾</button>
+            <div class="dropMenu">
+              <a href="#quem-somos">Quem somos</a>
+              <a href="#metodologia">Metodologia</a>
+              <a href="#esg">Impacto &amp; ESG</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <button class="dropBtn" type="button">Conteúdo ▾</button>
+            <div class="dropMenu">
+              <a href="#insights">Insights</a>
+            </div>
+          </div>
+
+          <a href="#contato">Contato</a>
+        </nav>
+
         <div class="cta">
           <a class="btn btnGhost" href="#cases">Ver cases</a>
           <a class="btn btnPrimary" href="#contato">Falar comigo</a>
@@ -431,13 +473,10 @@
       <div class="heroGrid">
         <div>
           <div class="kicker"><span class="dot"></span> Decisão em 30–60 segundos: o que faço, que problema resolvo, por que confiar</div>
-
           <h1>Transformação operacional com foco em resultado, confiabilidade e execução perfeita.</h1>
-
           <p class="sub">
             Consultoria, capacitação e soluções digitais para ambientes industriais complexos — do diagnóstico à sustentação dos resultados.
           </p>
-
           <div class="heroActions">
             <a class="btn btnPrimary" href="#cases">Ver cases</a>
             <a class="btn" href="#contato">Falar comigo</a>
@@ -492,38 +531,40 @@
           <div class="tag">Capacidade &amp; Gargalos</div>
           <h3>Aumentar throughput sem CAPEX desnecessário.</h3>
           <p>Identifico restrições, quebras de fluxo e desperdícios que travam a capacidade real da operação.</p>
-          <div class="link">Ver como podemos ajudar  <span class="arrow">→</span></div>
+          <div class="link">Ver como podemos ajudar <span class="arrow">→</span></div>
         </a>
 
         <a class="card" href="#contato" aria-label="Custo & Eficiência">
           <div class="tag">Custo &amp; Eficiência</div>
           <h3>Reduzir custo estrutural sem comprometer qualidade.</h3>
           <p>Ataco custo onde ele se esconde (processo, variabilidade, perdas, setup, retrabalho, compras).</p>
-          <div class="link">Ver como podemos ajudar  <span class="arrow">→</span></div>
+          <div class="link">Ver como podemos ajudar <span class="arrow">→</span></div>
         </a>
 
         <a class="card" href="#contato" aria-label="Qualidade & Execução">
           <div class="tag">Qualidade &amp; Execução</div>
           <h3>Eliminar falhas humanas e desvios operacionais.</h3>
           <p>Padronização + rotina + treinamento (e IA quando faz sentido) para reduzir erro e “by-pass”.</p>
-          <div class="link">Ver como podemos ajudar  <span class="arrow">→</span></div>
+          <div class="link">Ver como podemos ajudar <span class="arrow">→</span></div>
         </a>
 
         <a class="card" href="#contato" aria-label="Dados & IA Aplicada">
           <div class="tag">Dados &amp; IA Aplicada</div>
           <h3>Usar dados e IA apenas onde geram valor real.</h3>
           <p>IA reforça método — não substitui. Uso quando aumenta execução, visibilidade e sustentação.</p>
-          <div class="link">Ver como podemos ajudar  <span class="arrow">→</span></div>
+          <div class="link">Ver como podemos ajudar <span class="arrow">→</span></div>
         </a>
       </div>
     </div>
   </section>
-<!-- PLACEHOLDERS PARA MENU (serão preenchidos depois) -->
-<section id="quem-somos"></section>
-<section id="servicos"></section>
-<section id="metodologia"></section>
-<section id="esg"></section>
-<section id="insights"></section>
+
+  <!-- PLACEHOLDERS (mantidos para as âncoras funcionarem; preencheremos depois) -->
+  <section id="quem-somos"></section>
+  <section id="servicos"></section>
+  <section id="metodologia"></section>
+  <section id="esg"></section>
+  <section id="insights"></section>
+
   <!-- CASES EM DESTAQUE -->
   <section id="cases">
     <div class="container">
@@ -591,25 +632,23 @@
         </div>
         <div class="actions">
           <a class="btn btnPrimary" href="#contato">Conhecer o Opera Guard</a>
-          <a class="btn" href="#cases">Ver casos</a>
+          <a class="btn" href="#cases">Ver cases</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TREINAMENTOS TEASER -->
+  <!-- TREINAMENTOS (por enquanto mantido como teaser; depois entra dentro de Serviços) -->
   <section id="treinamentos">
     <div class="container">
       <div class="teaser">
         <div>
           <h3>Resultados só se sustentam com pessoas capacitadas.</h3>
-          <p>
-            Treinamentos práticos integrados a projetos reais de melhoria contínua — para virar rotina, não “evento”.
-          </p>
+          <p>Treinamentos práticos integrados a projetos reais de melhoria contínua — para virar rotina, não “evento”.</p>
         </div>
         <div class="actions">
-          <a class="btn btnPrimary" href="#contato">Ver treinamentos</a>
-          <a class="btn" href="#como-">como podemos ajudar </a>
+          <a class="btn btnPrimary" href="#contato">Quero um treinamento</a>
+          <a class="btn" href="#servicos">Ver serviços</a>
         </div>
       </div>
     </div>
@@ -665,7 +704,6 @@
           <a href="#topo">Topo</a>
           <a href="#cases">Cases</a>
           <a href="#opera-guard">Opera Guard</a>
-          <a href="#treinamentos">Treinamentos</a>
           <a href="#contato">Contato</a>
         </div>
       </div>
