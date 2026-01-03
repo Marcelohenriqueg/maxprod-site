@@ -515,6 +515,29 @@
   display:grid;
   gap:10px;
 }
+    /* ===============================
+   HERO PROOF STRIP
+   =============================== */
+
+.heroProof{
+  margin-top: 26px;
+}
+
+.heroProof .proofBar{
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.heroProof .metric{
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: none;
+}
+
+@media (max-width: 980px){
+  .heroProof .proofBar{
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 
