@@ -413,6 +413,78 @@
       .grid4{grid-template-columns:1fr}
       .finalCta{flex-direction:column; align-items:flex-start}
     }
+    /* === Self-assessment (card hero direita) === */
+.assess{ padding:18px 18px 16px; }
+.assess h3{ margin:0 0 6px; font-size:16px; }
+.assessSub{
+  margin:0 0 12px;
+  color: var(--muted2);
+  font-size:12.5px;
+}
+
+.assessMeta{
+  display:flex; justify-content:space-between;
+  margin: 8px 0 10px;
+}
+.assessCount{ color: var(--muted); font-size:12px; }
+.assessHint{ color: var(--muted2); font-size:12px; }
+
+.assessBar{
+  height:8px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  overflow:hidden;
+  margin-bottom:12px;
+}
+.assessBar span{
+  display:block;
+  height:100%;
+  width:0%;
+  background: linear-gradient(90deg, rgba(47,107,255,.55), rgba(47,107,255,.95));
+  transition: width .35s ease;
+}
+
+.assessItem{
+  display:flex;
+  gap:10px;
+  padding:10px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+  cursor:pointer;
+  transition:.18s ease;
+}
+.assessItem:hover{
+  background: rgba(255,255,255,.04);
+  transform: translateY(-1px);
+}
+.assessItem span{
+  color: var(--muted);
+  font-size:13px;
+}
+
+.assessFooter{
+  margin-top:12px;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.assessReveal{
+  opacity:0;
+  transform: translateY(10px);
+  animation: assessReveal .55s ease forwards;
+}
+@keyframes assessReveal{
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.assessPulse{
+  animation: assessPulse .55s ease;
+}
+@keyframes assessPulse{
+  40%{ transform: scale(1.01); }
+}
     section { scroll-margin-top: 90px; }
   </style>
 </head>
@@ -483,16 +555,58 @@
           </div>
         </div>
 
-      <aside class="sideCard" aria-label="Critérios de decisão">
-  <h3>Quando faz sentido falar com a MaxProd?</h3>
-  <ul>
-    <li>O problema já impacta custo, entrega ou qualidade</li>
-    <li>A causa não é óbvia ou envolve múltiplos fatores</li>
-    <li>Já houve tentativas anteriores sem sustentação</li>
-    <li>A operação depende fortemente de pessoas e rotina</li>
-    <li>O que se busca é decisão e execução — não relatório</li>
-  </ul>
+      <aside class="sideCard assess" aria-label="Autoavaliação rápida">
+  <h3>Autoavaliação rápida</h3>
+  <p class="assessSub">Marque o que é verdade hoje na sua operação.</p>
+
+  <div class="assessMeta">
+    <span class="assessCount"><strong id="assessCount">0</strong>/5 sinais</span>
+    <span class="assessHint" id="assessHint">Selecione 2+ para indicar melhor fit</span>
+  </div>
+
+  <div class="assessBar" aria-hidden="true">
+    <span id="assessBarFill"></span>
+  </div>
+
+  <div class="assessList" role="group" aria-label="Sinais">
+    <label class="assessItem">
+      <input type="checkbox" class="assessCheck" />
+      <span>O problema já impacta <strong>custo, entrega ou qualidade</strong>.</span>
+    </label>
+
+    <label class="assessItem">
+      <input type="checkbox" class="assessCheck" />
+      <span>A causa <strong>não é óbvia</strong> ou envolve múltiplos fatores.</span>
+    </label>
+
+    <label class="assessItem">
+      <input type="checkbox" class="assessCheck" />
+      <span>Já houve tentativas anteriores <strong>sem sustentação</strong>.</span>
+    </label>
+
+    <label class="assessItem">
+      <input type="checkbox" class="assessCheck" />
+      <span>A operação depende fortemente de <strong>pessoas e rotina</strong>.</span>
+    </label>
+
+    <label class="assessItem">
+      <input type="checkbox" class="assessCheck" />
+      <span>O que se busca é <strong>decisão e execução</strong> — não relatório.</span>
+    </label>
+  </div>
+
+  <div class="assessFooter">
+    <div class="assessMsg" id="assessMsg">
+      Se você se identificou com mais de um ponto, vale uma conversa objetiva.
+    </div>
+
+    <div class="assessActions">
+      <a class="btn btnPrimary" href="#diagnostico" id="assessCta">Solicitar diagnóstico</a>
+      <a class="btn btnGhost" href="#cases" id="assessAlt">Ver cases</a>
+    </div>
+  </div>
 </aside>
+
       </div>
     </div>
   </main>
@@ -743,7 +857,57 @@
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  (function(){
+    const checks = document.querySelectorAll(".assessCheck");
+    const countEl = document.getElementById("assessCount");
+    const barFill = document.getElementById("assessBarFill");
+    const msgEl = document.getElementById("assessMsg");
+    const hintEl = document.getElementById("assessHint");
+    const ctaEl = document.getElementById("assessCta");
+    const altEl = document.getElementById("assessAlt");
+    const card = document.querySelector(".sideCard.assess");
+
+    if(!checks.length) return;
+
+    const total = checks.length;
+    let wasFit = false;
+
+    function update(){
+      const selected = [...checks].filter(c => c.checked).length;
+      countEl.textContent = selected;
+      barFill.style.width = (selected/total)*100 + "%";
+
+      const isFit = selected >= 2;
+
+      if(isFit){
+        msgEl.textContent = "Se você se identificou com mais de um ponto, vale uma conversa objetiva.";
+        hintEl.textContent = "Bom fit detectado (2+).";
+        ctaEl.textContent = "Solicitar diagnóstico";
+        ctaEl.href = "#diagnostico";
+        altEl.textContent = "Ver nossa abordagem";
+        altEl.href = "#metodologia";
+      }else{
+        msgEl.textContent = "Se apenas 0–1 ponto faz sentido, comece por cases e serviços.";
+        hintEl.textContent = "Selecione 2+ para indicar melhor fit";
+        ctaEl.textContent = "Explorar cases";
+        ctaEl.href = "#cases";
+        altEl.textContent = "Ver serviços";
+        altEl.href = "#servicos";
+      }
+
+      if(isFit && !wasFit){
+        card.classList.remove("assessPulse");
+        void card.offsetWidth;
+        card.classList.add("assessPulse");
+      }
+      wasFit = isFit;
+    }
+
+    checks.forEach(c => c.addEventListener("change", update));
+    update();
+  })();
+</script>
 </body>
 </html>
