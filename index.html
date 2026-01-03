@@ -517,6 +517,24 @@
       display:grid;
       gap:10px;
     }
+    /* === QUICK FIX: compactar hero e liberar espaço pros proofs (somente px) === */
+.hero{ padding:18px 0 10px; }                 /* era maior: sobe tudo */
+.kicker{ margin-bottom:10px; }               /* menos espaço acima do H1 */
+h1{ margin:0 0 10px; }                       /* reduz margem do título */
+.sub{ margin:0 0 12px; }                     /* reduz margem do texto */
+.heroActions{ gap:10px; }                    /* botões mais próximos */
+
+/* Card da direita mais compacto (sem mudar conteúdo) */
+.sideCard{ padding:14px 14px 12px; }         /* era 18/18/16 */
+.assessSub{ margin:0 0 8px; }                /* reduz respiro */
+.assessMeta{ margin:6px 0 8px; }             /* reduz respiro */
+.assessBar{ margin-bottom:8px; }             /* reduz respiro */
+.assessItem{ padding:8px; }                  /* itens mais baixos */
+.assessList{ gap:8px; }                      /* reduz espaçamento entre itens */
+.assessFooter{ margin-top:10px; padding-top:10px; } /* encurta rodapé */
+
+/* Provas mais “coladas” no hero */
+.proof{ padding:6px 0 6px; }                 /* reduz faixa */
   </style>
 </head>
 
