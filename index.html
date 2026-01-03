@@ -172,7 +172,7 @@
     .btnGhost{ background: rgba(255,255,255,.02); }
 
     /* Hero */
-    .hero{ padding:64px 0 28px; }
+    .hero{ padding:34px 0 28px; }
     .heroGrid{
       display:grid;
       grid-template-columns: 1.22fr .78fr;
@@ -486,6 +486,35 @@
   40%{ transform: scale(1.01); }
 }
     section { scroll-margin-top: 90px; }
+    /* ===============================
+   SELF-ASSESSMENT (HERO CARD)
+   =============================== */
+
+.assessHint{
+  display:none; /* remove "Selecione 2+ para indicar fit" */
+}
+
+.assessMsg{
+  text-align:center;
+  font-size:12px;
+  line-height:1.45;
+  color: var(--muted2);
+  max-width:34ch;
+  margin: 6px auto 12px;
+}
+
+.assessActions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* Ajuste fino de espaçamento do card */
+.assessList{
+  display:grid;
+  gap:10px;
+}
   </style>
 </head>
 
