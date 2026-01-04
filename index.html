@@ -535,6 +535,39 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
 
 /* Provas mais “coladas” no hero */
 .proof{ padding:9px 0 6px; }                 /* reduz faixa */
+ /* ===============================
+   REVEAL (scroll animation) — premium & subtle
+   =============================== */
+.reveal{
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(2px);
+  transition: opacity .55s ease, transform .55s ease, filter .55s ease;
+  will-change: opacity, transform, filter;
+}
+
+.reveal.inview{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Stagger dos cards (ordem natural) */
+.reveal.st1{ transition-delay: .04s; }
+.reveal.st2{ transition-delay: .10s; }
+.reveal.st3{ transition-delay: .16s; }
+.reveal.st4{ transition-delay: .22s; }
+
+/* Acessibilidade: respeita "reduzir movimento" */
+@media (prefers-reduced-motion: reduce){
+  .reveal{
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
   </style>
 </head>
 
@@ -690,7 +723,7 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
   <!-- COMO PODEMOS AJUDAR -->
 <section id="como-podemos-ajudar">
   <div class="container">
-    <div class="sectionTitle">
+    <div class="sectionTitle reveal" data-reveal>
       <div>
         <h2>Problemas complexos exigem decisão, método e execução consistente.</h2>
         <p>Atuamos do direcionamento à sustentação do resultado, com foco em impacto real.</p>
@@ -703,7 +736,7 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
     <div class="grid4">
 
       <!-- CARD 1 -->
-      <a class="card" href="#contato" aria-label="Direcionamento e Prioridade">
+      <a class="card reveal st1" data-reveal href="#contato" aria-label="Direcionamento e Prioridade">
         <div class="tag">Direcionamento &amp; Prioridade</div>
         <h3>Saber exatamente onde atacar primeiro.</h3>
         <p>
@@ -714,7 +747,7 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
       </a>
 
       <!-- CARD 2 -->
-      <a class="card" href="#contato" aria-label="Execução e Disciplina Operacional">
+      <a class="card reveal st2" data-reveal href="#contato" aria-label="Execução e Disciplina Operacional">
         <div class="tag">Execução &amp; Disciplina</div>
         <h3>Fazer o plano sair do papel e acontecer.</h3>
         <p>
@@ -725,7 +758,7 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
       </a>
 
       <!-- CARD 3 -->
-      <a class="card" href="#contato" aria-label="Qualidade e Estabilidade Operacional">
+      <a class="card reveal st3" data-reveal href="#contato" aria-label="Qualidade e Estabilidade Operacional">
         <div class="tag">Qualidade &amp; Estabilidade</div>
         <h3>Eliminar falhas, variação e dependência excessiva de pessoas.</h3>
         <p>
@@ -736,7 +769,7 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
       </a>
 
       <!-- CARD 4 -->
-      <a class="card" href="#contato" aria-label="Resultado Sustentado e Escala">
+      <a class="card reveal st4" data-reveal href="#contato" aria-label="Resultado Sustentado e Escala">
         <div class="tag">Resultado Sustentado</div>
         <h3>Garantir que o resultado permaneça e evolua.</h3>
         <p>
@@ -981,6 +1014,78 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
     checks.forEach(c => c.addEventListener("change", update));
     update();
   })();
+    <script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  (function(){
+    const checks = document.querySelectorAll(".assessCheck");
+    const countEl = document.getElementById("assessCount");
+    const barFill = document.getElementById("assessBarFill");
+    const msgEl = document.getElementById("assessMsg");
+    const hintEl = document.getElementById("assessHint");
+    const ctaEl = document.getElementById("assessCta");
+    const altEl = document.getElementById("assessAlt");
+    const card = document.querySelector(".sideCard.assess");
+
+    if(!checks.length) return;
+
+    const total = checks.length;
+    let wasFit = false;
+
+    function update(){
+      const selected = [...checks].filter(c => c.checked).length;
+      countEl.textContent = selected;
+      barFill.style.width = (selected/total)*100 + "%";
+
+      const isFit = selected >= 2;
+
+      if(isFit){
+        msgEl.textContent = "Se você se identificou com mais de um ponto, vale uma conversa objetiva.";
+        if(hintEl) hintEl.textContent = "Bom fit detectado (2+).";
+        ctaEl.textContent = "Solicitar diagnóstico";
+        ctaEl.href = "#diagnostico";
+        altEl.textContent = "Ver nossa abordagem";
+        altEl.href = "#metodologia";
+      }else{
+        msgEl.textContent = "Se apenas 0–1 ponto faz sentido, comece por cases e serviços.";
+        if(hintEl) hintEl.textContent = "Selecione 2+ para indicar melhor fit";
+        ctaEl.textContent = "Explorar cases";
+        ctaEl.href = "#cases";
+        altEl.textContent = "Ver serviços";
+        altEl.href = "#servicos";
+      }
+
+      if(isFit && !wasFit && card){
+        card.classList.remove("assessPulse");
+        void card.offsetWidth;
+        card.classList.add("assessPulse");
+      }
+      wasFit = isFit;
+    }
+
+    checks.forEach(c => c.addEventListener("change", update));
+    update();
+  })();
+
+  /* ===============================
+     Scroll Reveal (IntersectionObserver)
+     =============================== */
+  (function(){
+    const els = document.querySelectorAll("[data-reveal]");
+    if(!els.length) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("inview");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+
+    els.forEach(el => io.observe(el));
+  })();
+</script>
   </script>
 </body>
 </html>
