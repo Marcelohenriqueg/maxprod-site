@@ -1036,6 +1036,29 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
 @media (max-width: 520px){
   .archGrid{ grid-template-columns: 1fr; }
 }
+/* ===============================
+   FIX: Arquitetura em 4 colunas (desktop) + sem quebra
+   Cole NO FIM do <style>
+   =============================== */
+
+#como-podemos-ajudar .archGrid{
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+#como-podemos-ajudar .archCard{
+  min-width: 0; /* evita overflow que derruba card */
+}
+
+@media (max-width: 1180px){
+  #como-podemos-ajudar .archGrid{
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (max-width: 520px){
+  #como-podemos-ajudar .archGrid{
+    grid-template-columns: 1fr !important;
+  }
+}
 
   </style>
 </head>
