@@ -568,6 +568,70 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
   }
 }
 
+    /* === Fluxo Operacional === */
+#fluxo-operacional{
+  padding: 52px 0;
+}
+
+.flowGrid{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap:14px;
+  margin-top:18px;
+}
+
+.flowStep{
+  position:relative;
+  border:1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  border-radius: var(--radius);
+  padding:16px 14px 14px;
+  min-height:150px;
+}
+
+.flowStep::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:inherit;
+  background: radial-gradient(240px 120px at 50% -20%, rgba(79,99,255,.18), transparent 60%);
+  pointer-events:none;
+}
+
+.flowIndex{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:32px;
+  height:32px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:12px;
+  color:#e8eeff;
+  background: linear-gradient(135deg, rgba(47,107,255,.9), rgba(47,107,255,.6));
+  margin-bottom:10px;
+}
+
+.flowStep h3{
+  margin:0 0 6px;
+  font-size:14.5px;
+}
+
+.flowStep p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.55;
+}
+
+/* Responsivo */
+@media (max-width: 980px){
+  .flowGrid{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width: 520px){
+  .flowGrid{ grid-template-columns:1fr; }
+}
+
   </style>
 </head>
 
@@ -779,6 +843,48 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
         <div class="link">Discutir este problema <span class="arrow">→</span></div>
       </a>
 
+    </div>
+  </div>
+</section>
+<section id="fluxo-operacional">
+  <div class="container">
+    <div class="sectionTitle reveal" data-reveal>
+      <div>
+        <h2>Como transformamos problemas complexos em execução consistente</h2>
+        <p>Um fluxo claro — da análise à sustentação — aplicado conforme o contexto da operação.</p>
+      </div>
+    </div>
+
+    <div class="flowGrid">
+      <div class="flowStep reveal st1">
+        <span class="flowIndex">01</span>
+        <h3>Diagnóstico & Contexto</h3>
+        <p>Mapeamento de processo, fluxo e impacto real no negócio antes de qualquer ação.</p>
+      </div>
+
+      <div class="flowStep reveal st2">
+        <span class="flowIndex">02</span>
+        <h3>Direcionamento & Decisão</h3>
+        <p>Priorização objetiva baseada em impacto, risco e esforço — sem dispersão.</p>
+      </div>
+
+      <div class="flowStep reveal st3">
+        <span class="flowIndex">03</span>
+        <h3>Execução & Rotina</h3>
+        <p>Plano, padrão operacional, O&R e disciplina para fazer acontecer todos os dias.</p>
+      </div>
+
+      <div class="flowStep reveal st4">
+        <span class="flowIndex">04</span>
+        <h3>Estabilidade & Qualidade</h3>
+        <p>Atuação na causa raiz para eliminar falhas humanas, variação e retrabalho.</p>
+      </div>
+
+      <div class="flowStep reveal st4">
+        <span class="flowIndex">05</span>
+        <h3>Sustentação & Escala</h3>
+        <p>Indicadores, governança e tecnologia aplicada quando gera execução e resultado.</p>
+      </div>
     </div>
   </div>
 </section>
