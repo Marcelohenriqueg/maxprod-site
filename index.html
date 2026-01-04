@@ -961,59 +961,6 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
       </div>
     </div>
   </footer>
-
-  <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  (function(){
-    const checks = document.querySelectorAll(".assessCheck");
-    const countEl = document.getElementById("assessCount");
-    const barFill = document.getElementById("assessBarFill");
-    const msgEl = document.getElementById("assessMsg");
-    const hintEl = document.getElementById("assessHint");
-    const ctaEl = document.getElementById("assessCta");
-    const altEl = document.getElementById("assessAlt");
-    const card = document.querySelector(".sideCard.assess");
-
-    if(!checks.length) return;
-
-    const total = checks.length;
-    let wasFit = false;
-
-    function update(){
-      const selected = [...checks].filter(c => c.checked).length;
-      countEl.textContent = selected;
-      barFill.style.width = (selected/total)*100 + "%";
-
-      const isFit = selected >= 2;
-
-      if(isFit){
-        msgEl.textContent = "Se você se identificou com mais de um desafio, vale uma conversa objetiva.";
-        if(hintEl) hintEl.textContent = "Bom fit detectado (2+).";
-        ctaEl.textContent = "Solicitar diagnóstico";
-        ctaEl.href = "#diagnostico";
-        altEl.textContent = "Ver nossa abordagem";
-        altEl.href = "#metodologia";
-      }else{
-        msgEl.textContent = "Identificou menos de 2 desafios? Conheça soluções proativas que previnem problemas antes deles surgirem.";
-        if(hintEl) hintEl.textContent = "Selecione 2+ para indicar melhor fit";
-        ctaEl.textContent = "Explorar cases";
-        ctaEl.href = "#cases";
-        altEl.textContent = "Ver serviços";
-        altEl.href = "#servicos";
-      }
-
-      if(isFit && !wasFit){
-        card.classList.remove("assessPulse");
-        void card.offsetWidth;
-        card.classList.add("assessPulse");
-      }
-      wasFit = isFit;
-    }
-
-    checks.forEach(c => c.addEventListener("change", update));
-    update();
-  })();
     <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
