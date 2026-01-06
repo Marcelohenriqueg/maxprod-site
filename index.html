@@ -220,8 +220,8 @@
       overflow:hidden;
     }
     .sideCard.assess{
-  margin-top: -16px;
-}
+      margin-top: -16px;
+    }
     .sideCard:before{
       content:"";
       position:absolute; inset:-2px;
@@ -518,548 +518,327 @@
       gap:10px;
     }
     /* === QUICK FIX: compactar hero e liberar espaço pros proofs (somente px) === */
-.hero{ padding:44px 0 10px; }                 /* era maior: sobe tudo */
-.kicker{ margin-bottom:10px; }               /* menos espaço acima do H1 */
-h1{ margin:0 0 10px; }                       /* reduz margem do título */
-.sub{ margin:0 0 12px; }                     /* reduz margem do texto */
-.heroActions{ gap:10px; }                    /* botões mais próximos */
+    .hero{ padding:44px 0 10px; }
+    .kicker{ margin-bottom:10px; }
+    h1{ margin:0 0 10px; }
+    .sub{ margin:0 0 12px; }
+    .heroActions{ gap:10px; }
 
-/* Card da direita mais compacto (sem mudar conteúdo) */
-.sideCard{ padding:14px 14px 12px; }         /* era 18/18/16 */
-.assessSub{ margin:0 0 8px; }                /* reduz respiro */
-.assessMeta{ margin:6px 0 8px; }             /* reduz respiro */
-.assessBar{ margin-bottom:8px; }             /* reduz respiro */
-.assessItem{ padding:8px; }                  /* itens mais baixos */
-.assessList{ gap:8px; }                      /* reduz espaçamento entre itens */
-.assessFooter{ margin-top:10px; padding-top:10px; } /* encurta rodapé */
+    /* Card da direita mais compacto (sem mudar conteúdo) */
+    .sideCard{ padding:14px 14px 12px; }
+    .assessSub{ margin:0 0 8px; }
+    .assessMeta{ margin:6px 0 8px; }
+    .assessBar{ margin-bottom:8px; }
+    .assessItem{ padding:8px; }
+    .assessList{ gap:8px; }
+    .assessFooter{ margin-top:10px; padding-top:10px; }
 
-/* Provas mais “coladas” no hero */
-.proof{ padding:9px 0 6px; }                 /* reduz faixa */
- /* ===============================
-   REVEAL (scroll animation) — premium & subtle
-   =============================== */
-.reveal{
-  opacity: 0;
-  transform: translateY(14px);
-  filter: blur(2px);
-  transition: opacity .55s ease, transform .55s ease, filter .55s ease;
-  will-change: opacity, transform, filter;
-}
-
-.reveal.inview{
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-
-/* Stagger dos cards (ordem natural) */
-.reveal.st1{ transition-delay: .04s; }
-.reveal.st2{ transition-delay: .10s; }
-.reveal.st3{ transition-delay: .16s; }
-.reveal.st4{ transition-delay: .22s; }
-
-/* Acessibilidade: respeita "reduzir movimento" */
-@media (prefers-reduced-motion: reduce){
-  .reveal{
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    transition: none !important;
-  }
-}
+    /* Provas mais “coladas” no hero */
+    .proof{ padding:9px 0 6px; }
 
     /* ===============================
-   ARQUITETURA DE EXECUÇÃO — premium tech map
-   =============================== */
-#arquitetura-execucao{
-  padding: 54px 0 44px;
-}
+       REVEAL (scroll animation) — premium & subtle
+       =============================== */
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      filter: blur(2px);
+      transition: opacity .55s ease, transform .55s ease, filter .55s ease;
+      will-change: opacity, transform, filter;
+    }
 
-.execHeader{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:14px;
-  margin-bottom:16px;
-}
+    .reveal.inview{
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
 
-.execHeader h2{
-  margin:0;
-  font-size:22px;
-  letter-spacing:-.2px;
-}
+    /* Stagger dos cards (ordem natural) */
+    .reveal.st1{ transition-delay: .04s; }
+    .reveal.st2{ transition-delay: .10s; }
+    .reveal.st3{ transition-delay: .16s; }
+    .reveal.st4{ transition-delay: .22s; }
 
-.execHeader p{
-  margin:0;
-  color:var(--muted2);
-  font-size:13px;
-  line-height:1.45;
-}
+    /* Acessibilidade: respeita "reduzir movimento" */
+    @media (prefers-reduced-motion: reduce){
+      .reveal{
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+      }
+    }
 
-.execFrame{
-  position:relative;
-  border-radius: 26px;
-  border: 1px solid rgba(255,255,255,.10);
-  background:
-    radial-gradient(900px 420px at 15% 35%, rgba(47,107,255,.16), rgba(0,0,0,0) 55%),
-    radial-gradient(900px 520px at 85% 30%, rgba(56,211,159,.10), rgba(0,0,0,0) 55%),
-    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-  box-shadow: 0 30px 110px rgba(0,0,0,.55);
-  overflow:hidden;
-}
+    /* ===============================
+       ARQUITETURA DE EXECUÇÃO — premium tech map
+       =============================== */
+    #arquitetura-execucao{
+      padding: 54px 0 44px;
+    }
 
-.execFrame::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(420px 220px at 50% 0%, rgba(107,124,255,.18), rgba(0,0,0,0) 65%),
-    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, rgba(0,0,0,0) 1px 80px);
-  opacity:.25;
-  pointer-events:none;
-}
+    .execHeader{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin: 18px 0 16px;
+    }
 
-.execFrame::after{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius: 28px;
-  background: radial-gradient(520px 140px at 70% -10%, rgba(47,107,255,.35), rgba(0,0,0,0) 60%);
-  opacity:.22;
-  pointer-events:none;
-}
+    .execHeader h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
 
-.execGrid{
-  position:relative;
-  padding: 18px;
-  display:grid;
-  gap:14px;
-  grid-template-columns: 1.12fr 1.12fr .90fr;
-  grid-template-areas:
-    "vsm pcm plano"
-    "or  qual plano";
-  align-items:stretch;
-}
+    .execHeader p{
+      margin:0;
+      color:var(--muted2);
+      font-size:13px;
+      line-height:1.45;
+    }
 
-.execNode{
-  position:relative;
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(10,14,22,.55);
-  backdrop-filter: blur(10px);
-  border-radius: 18px;
-  padding: 16px 14px 14px;
-  overflow:hidden;
-  min-height: 168px;
-}
+    .execFrame{
+      position:relative;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(900px 420px at 15% 35%, rgba(47,107,255,.16), rgba(0,0,0,0) 55%),
+        radial-gradient(900px 520px at 85% 30%, rgba(56,211,159,.10), rgba(0,0,0,0) 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      box-shadow: 0 30px 110px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
 
-.execNode::before{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  border-radius:inherit;
-  background: radial-gradient(240px 140px at 20% 0%, rgba(47,107,255,.20), rgba(0,0,0,0) 60%);
-  pointer-events:none;
-}
+    .execFrame::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(420px 220px at 50% 0%, rgba(107,124,255,.18), rgba(0,0,0,0) 65%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, rgba(0,0,0,0) 1px 80px);
+      opacity:.25;
+      pointer-events:none;
+    }
 
-.execNodeHeader{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:10px;
-  position:relative;
-}
+    .execFrame::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius: 28px;
+      background: radial-gradient(520px 140px at 70% -10%, rgba(47,107,255,.35), rgba(0,0,0,0) 60%);
+      opacity:.22;
+      pointer-events:none;
+    }
 
-.execTitle{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+    .execGrid{
+      position:relative;
+      padding: 18px;
+      display:grid;
+      gap:14px;
+      grid-template-columns: 1.12fr 1.12fr .90fr;
+      grid-template-areas:
+        "vsm pcm plano"
+        "or  qual plano";
+      align-items:stretch;
+    }
 
-.execIcon{
-  width:34px;
-  height:34px;
-  border-radius: 12px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.04);
-  box-shadow: 0 18px 60px rgba(79,99,255,.18);
-}
+    .execNode{
+      position:relative;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(10,14,22,.55);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 16px 14px 14px;
+      overflow:hidden;
+      min-height: 168px;
+    }
 
-.execIcon svg{ width:18px; height:18px; opacity:.92; }
+    .execNode::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius:inherit;
+      background: radial-gradient(240px 140px at 20% 0%, rgba(47,107,255,.20), rgba(0,0,0,0) 60%);
+      pointer-events:none;
+    }
 
-.execNode h3{
-  margin:0;
-  font-size:15px;
-  letter-spacing:-.2px;
-}
+    .execNodeHeader{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+      position:relative;
+    }
 
-.execNode .mini{
-  margin:3px 0 0;
-  color:var(--muted2);
-  font-size:12.5px;
-  line-height:1.35;
-}
+    .execTitle{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
 
-.execBullets{
-  margin: 10px 0 0;
-  padding: 0;
-  list-style:none;
-  color: var(--muted);
-  font-size: 13px;
-  line-height:1.55;
-  position:relative;
-}
+    .execIcon{
+      width:34px;
+      height:34px;
+      border-radius: 12px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 18px 60px rgba(79,99,255,.18);
+    }
 
-.execBullets li{
-  display:flex;
-  gap:8px;
-  margin: 6px 0;
-}
+    .execIcon svg{ width:18px; height:18px; opacity:.92; }
 
-.execBullets li::before{
-  content:"";
-  width:6px;
-  height:6px;
-  margin-top:7px;
-  border-radius:999px;
-  background: rgba(47,107,255,.85);
-  box-shadow: 0 0 18px rgba(47,107,255,.35);
-  flex:0 0 6px;
-}
+    .execNode h3{
+      margin:0;
+      font-size:15px;
+      letter-spacing:-.2px;
+    }
 
-.execBadge{
-  font-size:12px;
-  font-weight:700;
-  color:#e9f0ff;
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.03);
-  white-space:nowrap;
-}
+    .execNode .mini{
+      margin:3px 0 0;
+      color:var(--muted2);
+      font-size:12.5px;
+      line-height:1.35;
+    }
 
-/* Áreas do mapa */
-.execVSM{ grid-area: vsm; }
-.execPCM{ grid-area: pcm; }
-.execOR{  grid-area: or; }
-.execQual{ grid-area: qual; }
-.execPlano{ grid-area: plano; min-height: 350px; }
+    .execBullets{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style:none;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.55;
+      position:relative;
+    }
 
-/* “Wiring” (linhas) — simples, premium, sem SVG externo */
-.execWires{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  opacity:.9;
-}
+    .execBullets li{
+      display:flex;
+      gap:8px;
+      margin: 6px 0;
+    }
 
-.execWires::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    /* horizontais leves */
-    linear-gradient(90deg, rgba(47,107,255,.20), rgba(0,0,0,0) 45%) 22% 32% / 42% 2px no-repeat,
-    linear-gradient(90deg, rgba(47,107,255,.16), rgba(0,0,0,0) 45%) 22% 70% / 42% 2px no-repeat,
-    /* para o plano (direita) */
-    linear-gradient(90deg, rgba(56,211,159,.16), rgba(0,0,0,0) 55%) 62% 48% / 26% 2px no-repeat,
-    /* pontos */
-    radial-gradient(circle, rgba(47,107,255,.85) 0 2px, rgba(0,0,0,0) 3px) 56% 32% / 10px 10px no-repeat,
-    radial-gradient(circle, rgba(47,107,255,.85) 0 2px, rgba(0,0,0,0) 3px) 56% 70% / 10px 10px no-repeat,
-    radial-gradient(circle, rgba(56,211,159,.85) 0 2px, rgba(0,0,0,0) 3px) 74% 48% / 10px 10px no-repeat;
-  filter: drop-shadow(0 0 14px rgba(47,107,255,.20));
-}
+    .execBullets li::before{
+      content:"";
+      width:6px;
+      height:6px;
+      margin-top:7px;
+      border-radius:999px;
+      background: rgba(47,107,255,.85);
+      box-shadow: 0 0 18px rgba(47,107,255,.35);
+      flex:0 0 6px;
+    }
 
-/* Rodapé de “entregáveis típicos” */
-.execDeliverables{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding: 14px 18px 16px;
-  border-top: 1px solid rgba(255,255,255,.08);
-  background: rgba(0,0,0,.10);
-  position:relative;
-}
+    .execBadge{
+      font-size:12px;
+      font-weight:700;
+      color:#e9f0ff;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      white-space:nowrap;
+    }
 
-.execDeliverables strong{
-  color: rgba(255,255,255,.90);
-  font-size:13px;
-}
+    /* Áreas do mapa */
+    .execVSM{ grid-area: vsm; }
+    .execPCM{ grid-area: pcm; }
+    .execOR{  grid-area: or; }
+    .execQual{ grid-area: qual; }
+    .execPlano{ grid-area: plano; min-height: 350px; }
 
-.execChips{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-}
+    /* “Wiring” (linhas) — simples, premium, sem SVG externo */
+    .execWires{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.9;
+    }
 
-.execChip{
-  padding:7px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.03);
-  color: var(--muted);
-  font-size:12px;
-  font-weight:700;
-}
+    .execWires::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        /* horizontais leves */
+        linear-gradient(90deg, rgba(47,107,255,.20), rgba(0,0,0,0) 45%) 22% 32% / 42% 2px no-repeat,
+        linear-gradient(90deg, rgba(47,107,255,.16), rgba(0,0,0,0) 45%) 22% 70% / 42% 2px no-repeat,
+        /* para o plano (direita) */
+        linear-gradient(90deg, rgba(56,211,159,.16), rgba(0,0,0,0) 55%) 62% 48% / 26% 2px no-repeat,
+        /* pontos */
+        radial-gradient(circle, rgba(47,107,255,.85) 0 2px, rgba(0,0,0,0) 3px) 56% 32% / 10px 10px no-repeat,
+        radial-gradient(circle, rgba(47,107,255,.85) 0 2px, rgba(0,0,0,0) 3px) 56% 70% / 10px 10px no-repeat,
+        radial-gradient(circle, rgba(56,211,159,.85) 0 2px, rgba(0,0,0,0) 3px) 74% 48% / 10px 10px no-repeat;
+      filter: drop-shadow(0 0 14px rgba(47,107,255,.20));
+    }
 
-.execChip b{ color:#e9f0ff; }
+    /* Rodapé de “entregáveis típicos” */
+    .execDeliverables{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 14px 18px 16px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.10);
+      position:relative;
+    }
 
-/* Responsivo */
-@media (max-width: 980px){
-  .execGrid{
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "vsm pcm"
-      "or  qual"
-      "plano plano";
-  }
-  .execPlano{ min-height: auto; }
-  .execWires{ display:none; } /* no mobile fica limpo e premium */
-}
+    .execDeliverables strong{
+      color: rgba(255,255,255,.90);
+      font-size:13px;
+    }
 
-@media (max-width: 520px){
-  .execGrid{
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "vsm"
-      "pcm"
-      "or"
-      "qual"
-      "plano";
-  }
-  .execDeliverables{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  .execChips{ justify-content:flex-start; }
-}
-/* ===============================
-   COMO PODEMOS AJUDAR — “Arquitetura” (compacta + premium)
-   Cole no final do <style>
-   =============================== */
+    .execChips{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
 
-.archWrap{
-  margin-top: 18px; /* aproxima dos 4 cards sem criar “buraco” */
-  border:1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.02);
-  border-radius: calc(var(--radius2) + 4px);
-  overflow:hidden;
-  position:relative;
-  box-shadow: 0 24px 70px rgba(0,0,0,.45);
-}
+    .execChip{
+      padding:7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
 
-.archWrap:before{
-  content:"";
-  position:absolute; inset:-2px;
-  background:
-    radial-gradient(520px 220px at 22% 0%, rgba(79,99,255,.14), transparent 60%),
-    radial-gradient(520px 220px at 72% 10%, rgba(56,211,159,.08), transparent 60%);
-  pointer-events:none;
-}
+    .execChip b{ color:#e9f0ff; }
 
-.archHead{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:14px;
-  padding:18px 18px 12px;
-  position:relative;
-}
+    /* Responsivo */
+    @media (max-width: 980px){
+      .execGrid{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "vsm pcm"
+          "or  qual"
+          "plano plano";
+      }
+      .execPlano{ min-height: auto; }
+      .execWires{ display:none; }
+    }
 
-.archHead h3{
-  margin:0 0 6px;
-  font-size:16px;
-  letter-spacing:-.2px;
-}
-
-.archHead p{
-  margin:0;
-  color:var(--muted2);
-  font-size:12.5px;
-  line-height:1.5;
-  max-width: 70ch;
-}
-
-.archCTA{
-  display:flex; align-items:center; gap:10px;
-  flex-wrap:wrap; justify-content:flex-end;
-}
-
-.archGrid{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:12px;
-  padding: 0 18px 16px;
-  position:relative;
-}
-
-.archCard{
-  border:1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.03);
-  border-radius: var(--radius);
-  padding:14px 14px 12px;
-  position:relative;
-  overflow:hidden;
-  transition:.18s ease;
-  min-height: 132px;
-}
-
-.archCard:hover{
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,.12);
-  background: rgba(255,255,255,.05);
-}
-
-.archTop{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:10px;
-}
-
-.archIcon{
-  width:34px; height:34px;
-  border-radius: 12px;
-  display:grid;
-  place-items:center;
-  background: rgba(47,107,255,.14);
-  border:1px solid rgba(47,107,255,.18);
-  box-shadow: 0 18px 40px rgba(47,107,255,.10);
-}
-
-.archBadge{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:6px 10px;
-  border-radius:999px;
-  font-size:11.5px;
-  color:rgba(255,255,255,.92);
-  background: rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.10);
-  white-space:nowrap;
-}
-
-.archTitle{
-  margin:0 0 6px;
-  font-size:14px;
-  letter-spacing:-.1px;
-}
-
-.archOne{
-  margin:0 0 10px;
-  color:var(--muted);
-  font-size:12.8px;
-  line-height:1.5;
-}
-
-.archBullets{
-  margin:0;
-  padding-left: 16px;
-  color: var(--muted2);
-  font-size:12px;
-  line-height:1.45;
-}
-
-.archBullets li{ margin: 5px 0; }
-
-.archMore{
-  margin-top:10px;
-  border-top:1px solid rgba(255,255,255,.08);
-  padding-top:10px;
-}
-
-.archMore details{
-  border-radius: 12px;
-}
-
-.archMore summary{
-  cursor:pointer;
-  list-style:none;
-  color:#cbd3ff;
-  font-weight:700;
-  font-size:12px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  user-select:none;
-}
-
-.archMore summary::-webkit-details-marker{ display:none; }
-
-.archMore .moreBody{
-  margin-top:8px;
-  color: var(--muted);
-  font-size:12.4px;
-  line-height:1.55;
-  padding:10px 12px;
-  border:1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.02);
-  border-radius: 12px;
-}
-
-.archFoot{
-  padding: 0 18px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  position:relative;
-}
-
-.archChips{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  color: var(--muted2);
-  font-size:12px;
-}
-
-.archChip{
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.02);
-}
-
-@media (max-width: 980px){
-  .archGrid{ grid-template-columns: 1fr 1fr; }
-  .archCTA{ justify-content:flex-start; }
-}
-@media (max-width: 520px){
-  .archGrid{ grid-template-columns: 1fr; }
-}
-/* ===============================
-   FIX: Arquitetura em 4 colunas (desktop) + sem quebra
-   Cole NO FIM do <style>
-   =============================== */
-
-#como-podemos-ajudar .archGrid{
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-}
-
-#como-podemos-ajudar .archCard{
-  min-width: 0; /* evita overflow que derruba card */
-}
-
-@media (max-width: 1180px){
-  #como-podemos-ajudar .archGrid{
-    grid-template-columns: 1fr 1fr !important;
-  }
-}
-@media (max-width: 520px){
-  #como-podemos-ajudar .archGrid{
-    grid-template-columns: 1fr !important;
-  }
-}
-
+    @media (max-width: 520px){
+      .execGrid{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "vsm"
+          "pcm"
+          "or"
+          "qual"
+          "plano";
+      }
+      .execDeliverables{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .execChips{ justify-content:flex-start; }
+    }
   </style>
 </head>
 
@@ -1191,7 +970,7 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
     </div>
   </main>
 
-  <!-- PROOF BAR (voltou a aparecer, 3 cards, compacto) -->
+  <!-- PROOF BAR -->
   <div class="proof">
     <div class="container">
       <div class="proofBar" aria-label="Provas de credibilidade">
@@ -1213,205 +992,224 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
   </div>
 
   <!-- COMO PODEMOS AJUDAR -->
-<section id="como-podemos-ajudar">
-  <div class="container">
-    <div class="sectionTitle reveal" data-reveal>
-      <div>
-        <h2>Problemas complexos exigem decisão, método e execução consistente.</h2>
-        <p>Atuamos do direcionamento à sustentação do resultado, com foco em impacto real.</p>
-      </div>
-      <p>
-        <a class="btn btnGhost" href="#contato">Quero discutir meu caso</a>
-      </p>
-    </div>
-
-    <div class="grid4">
-
-      <!-- CARD 1 -->
-      <a class="card reveal st1" data-reveal href="#contato" aria-label="Direcionamento e Prioridade">
-        <div class="tag">Direcionamento &amp; Prioridade</div>
-        <h3>Saber exatamente onde atacar primeiro.</h3>
-        <p>
-          Quando tudo parece urgente, nada avança. Ajudamos a identificar onde está
-          o maior impacto, o maior risco e a melhor prioridade, antes de executar qualquer plano.
-        </p>
-        <div class="link">Discutir este problema <span class="arrow">→</span></div>
-      </a>
-
-      <!-- CARD 2 -->
-      <a class="card reveal st2" data-reveal href="#contato" aria-label="Execução e Disciplina Operacional">
-        <div class="tag">Execução &amp; Disciplina</div>
-        <h3>Fazer o plano sair do papel e acontecer.</h3>
-        <p>
-          Estruturamos a execução no dia a dia, conectando processo, pessoas e rotina
-          para garantir que o combinado seja feito corretamente, todos os dias.
-        </p>
-        <div class="link">Discutir este problema <span class="arrow">→</span></div>
-      </a>
-
-      <!-- CARD 3 -->
-      <a class="card reveal st3" data-reveal href="#contato" aria-label="Qualidade e Estabilidade Operacional">
-        <div class="tag">Qualidade &amp; Estabilidade</div>
-        <h3>Eliminar falhas, variação e dependência excessiva de pessoas.</h3>
-        <p>
-          Atuamos na raiz dos problemas operacionais para reduzir falhas humanas,
-          retrabalho e instabilidade que consomem tempo, custo e energia da equipe.
-        </p>
-        <div class="link">Discutir este problema <span class="arrow">→</span></div>
-      </a>
-
-      <!-- CARD 4 -->
-      <a class="card reveal st4" data-reveal href="#contato" aria-label="Resultado Sustentado e Escala">
-        <div class="tag">Resultado Sustentado</div>
-        <h3>Garantir que o resultado permaneça e evolua.</h3>
-        <p>
-          Resultados pontuais não bastam. Estruturamos indicadores, acompanhamento
-          e, quando faz sentido, tecnologia para garantir sustentação e evolução contínua.
-        </p>
-        <div class="link">Discutir este problema <span class="arrow">→</span></div>
-      </a>
-
-    </div>
-<!-- ARQUITETURA (compacta + premium) — cola logo após a .grid4 -->
-<div class="archWrap reveal" data-reveal>
-  <div class="archHead">
-    <div>
-      <h3>Fluxo de execução para problemas complexos</h3>
-      <p>
-        Um mapa claro que conecta <strong>diagnóstico</strong>, <strong>decisão</strong>, <strong>rotina</strong> e <strong>sustentação</strong>.
-      </p>
-    </div>
-
-    <div class="archCTA">
-      <a class="btn btnGhost" href="#contato">Quero discutir meu caso</a>
-    </div>
-  </div>
-
-  <div class="archGrid">
-
-    <!-- 1) Diagnóstico (Fluxo & Valor) -->
-    <div class="archCard reveal st1" data-reveal>
-      <div class="archTop">
-        <div class="archIcon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M4 17V7m5 10V10m5 7V6m5 11V9" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+  <section id="como-podemos-ajudar">
+    <div class="container">
+      <div class="sectionTitle reveal" data-reveal>
+        <div>
+          <h2>Problemas complexos exigem decisão, método e execução consistente.</h2>
+          <p>Atuamos do direcionamento à sustentação do resultado, com foco em impacto real.</p>
         </div>
-        <span class="archBadge">Diagnóstico</span>
+        <p>
+          <a class="btn btnGhost" href="#contato">Quero discutir meu caso</a>
+        </p>
       </div>
-      <h4 class="archTitle">Ver o que realmente está travando o resultado</h4>
-      <p class="archOne">Leitura do fluxo ponta a ponta para separar sintoma de causa e quantificar impacto.</p>
-      <ul class="archBullets">
-        <li>Gargalos, filas, variação e perdas</li>
-        <li>Risco operacional e custo da ineficiência</li>
-      </ul>
-      <div class="archMore">
-        <details>
-          <summary>Ver detalhe <span class="arrow">→</span></summary>
-          <div class="moreBody">
-            Entregável típico: mapa do fluxo + principais causas prováveis + baseline de indicadores (antes/depois).
-          </div>
-        </details>
-      </div>
-    </div>
 
-    <!-- 2) Decisão (Prioridade) -->
-    <div class="archCard reveal st2" data-reveal>
-      <div class="archTop">
-        <div class="archIcon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M7 7h10M7 12h6M7 17h10" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M5 5h14v14H5z" stroke="rgba(239,242,248,.35)" stroke-width="2"/>
-          </svg>
+      <div class="grid4">
+
+        <!-- CARD 1 -->
+        <a class="card reveal st1" data-reveal href="#contato" aria-label="Direcionamento e Prioridade">
+          <div class="tag">Direcionamento &amp; Prioridade</div>
+          <h3>Saber exatamente onde atacar primeiro.</h3>
+          <p>
+            Quando tudo parece urgente, nada avança. Ajudamos a identificar onde está
+            o maior impacto, o maior risco e a melhor prioridade, antes de executar qualquer plano.
+          </p>
+          <div class="link">Discutir este problema <span class="arrow">→</span></div>
+        </a>
+
+        <!-- CARD 2 -->
+        <a class="card reveal st2" data-reveal href="#contato" aria-label="Execução e Disciplina Operacional">
+          <div class="tag">Execução &amp; Disciplina</div>
+          <h3>Fazer o plano sair do papel e acontecer.</h3>
+          <p>
+            Estruturamos a execução no dia a dia, conectando processo, pessoas e rotina
+            para garantir que o combinado seja feito corretamente, todos os dias.
+          </p>
+          <div class="link">Discutir este problema <span class="arrow">→</span></div>
+        </a>
+
+        <!-- CARD 3 -->
+        <a class="card reveal st3" data-reveal href="#contato" aria-label="Qualidade e Estabilidade Operacional">
+          <div class="tag">Qualidade &amp; Estabilidade</div>
+          <h3>Eliminar falhas, variação e dependência excessiva de pessoas.</h3>
+          <p>
+            Atuamos na raiz dos problemas operacionais para reduzir falhas humanas,
+            retrabalho e instabilidade que consomem tempo, custo e energia da equipe.
+          </p>
+          <div class="link">Discutir este problema <span class="arrow">→</span></div>
+        </a>
+
+        <!-- CARD 4 -->
+        <a class="card reveal st4" data-reveal href="#contato" aria-label="Resultado Sustentado e Escala">
+          <div class="tag">Resultado Sustentado</div>
+          <h3>Garantir que o resultado permaneça e evolua.</h3>
+          <p>
+            Resultados pontuais não bastam. Estruturamos indicadores, acompanhamento
+            e, quando faz sentido, tecnologia para garantir sustentação e evolução contínua.
+          </p>
+          <div class="link">Discutir este problema <span class="arrow">→</span></div>
+        </a>
+
+      </div>
+
+      <!-- MAPA / ARQUITETURA (no formato da imagem) -->
+      <div id="arquitetura-execucao" class="reveal" data-reveal style="padding-bottom:0;">
+        <div class="execHeader">
+          <div>
+            <h2>Arquitetura de execução para operações complexas</h2>
+            <p>Um mapa claro que conecta fluxo, prioridade, rotina e sustentação — aplicado conforme o contexto real da operação.</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+            <a class="btn btnGhost" href="#metodologia">Nossa abordagem</a>
+            <a class="btn btnPrimary" href="#contato">Quero discutir meu caso</a>
+          </div>
         </div>
-        <span class="archBadge">Decisão</span>
-      </div>
-      <h4 class="archTitle">Priorizar com método — sem dispersão</h4>
-      <p class="archOne">Escolha do caminho crítico e do “primeiro ataque” com clareza de impacto.</p>
-      <ul class="archBullets">
-        <li>Impacto × risco × esforço</li>
-        <li>Sequência de execução e donos</li>
-      </ul>
-      <div class="archMore">
-        <details>
-          <summary>Ver detalhe <span class="arrow">→</span></summary>
-          <div class="moreBody">
-            Entregável típico: backlog priorizado com metas, responsáveis, prazos e checkpoints.
-          </div>
-        </details>
-      </div>
-    </div>
 
-    <!-- 3) Rotina (Execução) -->
-    <div class="archCard reveal st3" data-reveal>
-      <div class="archTop">
-        <div class="archIcon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M12 6v6l4 2" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M21 12a9 9 0 1 1-9-9" stroke="rgba(239,242,248,.35)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+        <div class="execFrame">
+          <div class="execWires" aria-hidden="true"></div>
+
+          <div class="execGrid">
+
+            <!-- Fluxo & Valor (VSM) -->
+            <div class="execNode execVSM reveal st1" data-reveal>
+              <div class="execNodeHeader">
+                <div class="execTitle">
+                  <span class="execIcon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M4 17V7m5 10V10m5 7V6m5 11V9" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>Fluxo &amp; Valor <span style="opacity:.7; font-weight:700">(VSM)</span></h3>
+                    <p class="mini">Onde o valor realmente flui (e onde ele morre).</p>
+                  </div>
+                </div>
+                <span class="execBadge">Diagnóstico</span>
+              </div>
+              <ul class="execBullets">
+                <li>Mapeamento do fluxo ponta a ponta</li>
+                <li>Lead time e gargalos explícitos</li>
+                <li>VA/NVA, WIP e filas</li>
+              </ul>
+            </div>
+
+            <!-- Prioridade & PCM -->
+            <div class="execNode execPCM reveal st2" data-reveal>
+              <div class="execNodeHeader">
+                <div class="execTitle">
+                  <span class="execIcon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M7 7h10M7 12h6M7 17h10" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M5 5h14v14H5z" stroke="rgba(239,242,248,.35)" stroke-width="2"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>Prioridade &amp; PCM</h3>
+                    <p class="mini">Decidir o que atacar primeiro muda tudo.</p>
+                  </div>
+                </div>
+                <span class="execBadge">Decisão</span>
+              </div>
+              <ul class="execBullets">
+                <li>Matriz esforço × impacto</li>
+                <li>Identificação do caminho crítico</li>
+                <li>Sequência de ataque</li>
+              </ul>
+            </div>
+
+            <!-- Plano de Ação Estruturado -->
+            <div class="execNode execPlano reveal st4" data-reveal>
+              <div class="execNodeHeader">
+                <div class="execTitle">
+                  <span class="execIcon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M9 6h10M9 12h10M9 18h10" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M5 6h.01M5 12h.01M5 18h.01" stroke="rgba(239,242,248,.9)" stroke-width="3" stroke-linecap="round"/>
+                      <path d="M4 4h16v16H4z" stroke="rgba(239,242,248,.35)" stroke-width="2"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>Plano de Ação Estruturado</h3>
+                    <p class="mini">Plano que executa, não que vira apresentação.</p>
+                  </div>
+                </div>
+                <span class="execBadge">Entrega</span>
+              </div>
+              <ul class="execBullets">
+                <li>Objetivos 30 / 60 / 90</li>
+                <li>Responsáveis e prazos claros</li>
+                <li>Critérios de sucesso definidos</li>
+                <li>Checkpoints e governança</li>
+              </ul>
+            </div>
+
+            <!-- Execução & Rotina (O&R) -->
+            <div class="execNode execOR reveal st3" data-reveal>
+              <div class="execNodeHeader">
+                <div class="execTitle">
+                  <span class="execIcon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M12 6v6l4 2" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M21 12a9 9 0 1 1-9-9" stroke="rgba(239,242,248,.35)" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>Execução &amp; Rotina <span style="opacity:.7; font-weight:700">(O&amp;R)</span></h3>
+                    <p class="mini">Execução consistente nasce da rotina certa.</p>
+                  </div>
+                </div>
+                <span class="execBadge">Rotina</span>
+              </div>
+              <ul class="execBullets">
+                <li>Standard work + auditoria O&amp;R</li>
+                <li>Rotina e gestão visual</li>
+                <li>Ritmo e sustentação</li>
+              </ul>
+            </div>
+
+            <!-- Qualidade & Estabilidade -->
+            <div class="execNode execQual reveal st2" data-reveal>
+              <div class="execNodeHeader">
+                <div class="execTitle">
+                  <span class="execIcon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linejoin="round"/>
+                      <path d="M9 12l2 2 4-5" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>Qualidade &amp; Estabilidade</h3>
+                    <p class="mini">Reduzir variação e falhas para estabilizar resultado.</p>
+                  </div>
+                </div>
+                <span class="execBadge">Controle</span>
+              </div>
+              <ul class="execBullets">
+                <li>Detecção de causas e variação</li>
+                <li>Prevenção de by-pass e retrabalho</li>
+                <li>IA aplicada quando faz sentido (Opera Guard)</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="execDeliverables" aria-label="Entregáveis típicos">
+            <strong>Entregáveis típicos</strong>
+            <div class="execChips">
+              <span class="execChip"><b>VSM</b></span>
+              <span class="execChip"><b>PCM</b></span>
+              <span class="execChip"><b>Plano 30/60/90</b></span>
+              <span class="execChip"><b>O&amp;R</b></span>
+              <span class="execChip"><b>Indicadores</b></span>
+              <span class="execChip"><b>IA aplicada</b></span>
+            </div>
+          </div>
         </div>
-        <span class="archBadge">Rotina</span>
       </div>
-      <h4 class="archTitle">Fazer acontecer no dia a dia (não no PPT)</h4>
-      <p class="archOne">Padrão operacional + rituais + gestão visual para execução consistente.</p>
-      <ul class="archBullets">
-        <li>O&amp;R, checklists, auditoria leve</li>
-        <li>Cadência de follow-up e disciplina</li>
-      </ul>
-      <div class="archMore">
-        <details>
-          <summary>Ver detalhe <span class="arrow">→</span></summary>
-          <div class="moreBody">
-            Entregável típico: rituais (diário/semanal), gestão visual, padrão e responsabilidades por nível.
-          </div>
-        </details>
-      </div>
+
     </div>
+  </section>
 
-    <!-- 4) Sustentação (Qualidade + 30/60/90 + IA) -->
-    <div class="archCard reveal st4" data-reveal>
-      <div class="archTop">
-        <div class="archIcon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M9 12l2 2 4-5" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <span class="archBadge">Sustentação</span>
-      </div>
-      <h4 class="archTitle">Garantir que o resultado permaneça e evolua</h4>
-      <p class="archOne">Estabilização + métricas + governança. Tecnologia só quando aumenta execução e visibilidade.</p>
-      <ul class="archBullets">
-        <li>Plano 30/60/90 + indicadores</li>
-        <li>Prevenção de by-pass e variação (IA quando faz sentido)</li>
-      </ul>
-      <div class="archMore">
-        <details>
-          <summary>Ver detalhe <span class="arrow">→</span></summary>
-          <div class="moreBody">
-            Entregável típico: plano por fase, critérios de sucesso, mecanismo de prevenção e piloto (ex.: Opera Guard).
-          </div>
-        </details>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="archFoot">
-    <div class="archChips" aria-label="Entregáveis típicos">
-      <span class="archChip">Diagnóstico &amp; baseline</span>
-      <span class="archChip">Backlog priorizado</span>
-      <span class="archChip">Rotina &amp; O&amp;R</span>
-      <span class="archChip">Plano 30/60/90 + indicadores</span>
-      <span class="archChip">IA aplicada (quando faz sentido)</span>
-    </div>
-  </div>
-</div>
-
-
-    
-</section>
   <!-- PLACEHOLDERS (mantidos para as âncoras funcionarem; preencheremos depois) -->
   <section id="quem-somos"></section>
   <section id="servicos"></section>
@@ -1492,7 +1290,7 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
     </div>
   </section>
 
-  <!-- TREINAMENTOS (por enquanto mantido como teaser; depois entra dentro de Serviços) -->
+  <!-- TREINAMENTOS -->
   <section id="treinamentos">
     <div class="container">
       <div class="teaser">
@@ -1508,7 +1306,7 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
     </div>
   </section>
 
-  <!-- DIAGNÓSTICO (destino do CTA do header) -->
+  <!-- DIAGNÓSTICO -->
   <section id="diagnostico">
     <div class="container">
       <div class="finalCta">
@@ -1536,7 +1334,7 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
     </div>
   </section>
 
-  <!-- CTA FINAL -->
+  <!-- CONTATO -->
   <section id="contato">
     <div class="container">
       <div class="finalCta">
@@ -1590,78 +1388,79 @@ h1{ margin:0 0 10px; }                       /* reduz margem do título */
       </div>
     </div>
   </footer>
-    <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
 
-  (function(){
-    const checks = document.querySelectorAll(".assessCheck");
-    const countEl = document.getElementById("assessCount");
-    const barFill = document.getElementById("assessBarFill");
-    const msgEl = document.getElementById("assessMsg");
-    const hintEl = document.getElementById("assessHint");
-    const ctaEl = document.getElementById("assessCta");
-    const altEl = document.getElementById("assessAlt");
-    const card = document.querySelector(".sideCard.assess");
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    if(!checks.length) return;
+    (function(){
+      const checks = document.querySelectorAll(".assessCheck");
+      const countEl = document.getElementById("assessCount");
+      const barFill = document.getElementById("assessBarFill");
+      const msgEl = document.getElementById("assessMsg");
+      const hintEl = document.getElementById("assessHint");
+      const ctaEl = document.getElementById("assessCta");
+      const altEl = document.getElementById("assessAlt");
+      const card = document.querySelector(".sideCard.assess");
 
-    const total = checks.length;
-    let wasFit = false;
+      if(!checks.length) return;
 
-    function update(){
-      const selected = [...checks].filter(c => c.checked).length;
-      countEl.textContent = selected;
-      barFill.style.width = (selected/total)*100 + "%";
+      const total = checks.length;
+      let wasFit = false;
 
-      const isFit = selected >= 2;
+      function update(){
+        const selected = [...checks].filter(c => c.checked).length;
+        countEl.textContent = selected;
+        barFill.style.width = (selected/total)*100 + "%";
 
-      if(isFit){
-        msgEl.textContent = "Se você se identificou com mais de um ponto, vale uma conversa objetiva.";
-        if(hintEl) hintEl.textContent = "Bom fit detectado (2+).";
-        ctaEl.textContent = "Solicitar diagnóstico";
-        ctaEl.href = "#diagnostico";
-        altEl.textContent = "Ver nossa abordagem";
-        altEl.href = "#metodologia";
-      }else{
-        msgEl.textContent = "Se apenas 0–1 ponto faz sentido, comece por cases e serviços.";
-        if(hintEl) hintEl.textContent = "Selecione 2+ para indicar melhor fit";
-        ctaEl.textContent = "Explorar cases";
-        ctaEl.href = "#cases";
-        altEl.textContent = "Ver serviços";
-        altEl.href = "#servicos";
-      }
+        const isFit = selected >= 2;
 
-      if(isFit && !wasFit && card){
-        card.classList.remove("assessPulse");
-        void card.offsetWidth;
-        card.classList.add("assessPulse");
-      }
-      wasFit = isFit;
-    }
-
-    checks.forEach(c => c.addEventListener("change", update));
-    update();
-  })();
-
-  /* ===============================
-     Scroll Reveal (IntersectionObserver)
-     =============================== */
-  (function(){
-    const els = document.querySelectorAll("[data-reveal]");
-    if(!els.length) return;
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add("inview");
-          io.unobserve(entry.target);
+        if(isFit){
+          msgEl.textContent = "Se você se identificou com mais de um ponto, vale uma conversa objetiva.";
+          if(hintEl) hintEl.textContent = "Bom fit detectado (2+).";
+          ctaEl.textContent = "Solicitar diagnóstico";
+          ctaEl.href = "#diagnostico";
+          altEl.textContent = "Ver nossa abordagem";
+          altEl.href = "#metodologia";
+        }else{
+          msgEl.textContent = "Se apenas 0–1 ponto faz sentido, comece por cases e serviços.";
+          if(hintEl) hintEl.textContent = "Selecione 2+ para indicar melhor fit";
+          ctaEl.textContent = "Explorar cases";
+          ctaEl.href = "#cases";
+          altEl.textContent = "Ver serviços";
+          altEl.href = "#servicos";
         }
-      });
-    }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
 
-    els.forEach(el => io.observe(el));
-  })();
-</script>
-  
+        if(isFit && !wasFit && card){
+          card.classList.remove("assessPulse");
+          void card.offsetWidth;
+          card.classList.add("assessPulse");
+        }
+        wasFit = isFit;
+      }
+
+      checks.forEach(c => c.addEventListener("change", update));
+      update();
+    })();
+
+    /* ===============================
+       Scroll Reveal (IntersectionObserver)
+       =============================== */
+    (function(){
+      const els = document.querySelectorAll("[data-reveal]");
+      if(!els.length) return;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add("inview");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+
+      els.forEach(el => io.observe(el));
+    })();
+  </script>
+
 </body>
 </html>
