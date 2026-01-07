@@ -1674,7 +1674,7 @@
     });
 
     // Revenue calculator
-    const revenueSlider = document.querySelector('input[type="range"]');
+   const revenueSlider = document.querySelector('#calculator input[type="range"]');
     const revenueValue = document.getElementById('revenueValue');
 
     if (revenueSlider && revenueValue) {
@@ -1747,18 +1747,21 @@
         updateROICalculation();
       });
     });
+function updateROICalculation() {
+  // This is a simplified calculation
+  const slider = document.querySelector('#calculator input[type="range"]');
+  if (!slider) return;
 
-    function updateROICalculation() {
-      // This is a simplified calculation
-      const revenue = parseInt(document.querySelector('input[type="range"]').value);
-      const potential = revenue * 20000; // Simplified calculation
-      
-      const roiElement = document.querySelector('.stat-number');
+  const revenue = parseInt(slider.value, 10);
+  const potential = revenue * 20000; // Simplified calculation
 
-      if (roiElement) {
-        roiElement.textContent = `R$ ${(potential / 1000000).toFixed(1)}M`;
-      }
-    }
+  // IMPORTANTE: atualiza SOMENTE o ROI da calculadora
+  const roiElement = document.getElementById('roiValue');
+
+  if (roiElement) {
+    roiElement.textContent = `R$ ${(potential / 1000000).toFixed(1)}M`;
+  }
+}
 
     // Initialize ROI calculation
     if (revenueSlider) {
