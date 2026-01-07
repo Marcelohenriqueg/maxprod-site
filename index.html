@@ -1628,6 +1628,79 @@
       revenueSlider.addEventListener('input', updateROICalculation);
       updateROICalculation();
     }
+        // Assessment Interativo
+    (function(){
+      const checks = document.querySelectorAll(".assessCheck");
+      const countEl = document.getElementById("assessCount");
+      const barFill = document.getElementById("assessBarFill");
+      const msgEl = document.getElementById("assessMsg");
+      const hintEl = document.getElementById("assessHint");
+      const ctaEl = document.getElementById("assessCta");
+      const altEl = document.getElementById("assessAlt");
+      const card = document.querySelector(".visual-card");
+
+      if(!checks.length) return;
+
+      const total = checks.length;
+      let wasFit = false;
+
+      function update(){
+        const selected = [...checks].filter(c => c.checked).length;
+        countEl.textContent = selected;
+        barFill.style.width = (selected/total)*100 + "%";
+
+        const isFit = selected >= 2;
+
+        if(isFit){
+          msgEl.innerHTML = '<p style="font-size: var(--text-sm); margin: 0; color: var(--success);"><strong>✅ Alto potencial identificado!</strong> Sua operação se beneficia com nossa abordagem.</p>';
+          if(hintEl) hintEl.textContent = "✅ Alto potencial (2+)";
+          hintEl.style.color = "var(--success)";
+          ctaEl.textContent = "Solicitar diagnóstico personalizado";
+          ctaEl.href = "#contact";
+          altEl.textContent = "Ver nossa metodologia detalhada";
+          altEl.href = "#methodology";
+        }else{
+          msgEl.innerHTML = '<p style="font-size: var(--text-sm); margin: 0; color: var(--text-secondary);">Se apenas 0-1 ponto faz sentido, comece explorando cases e serviços.</p>';
+          if(hintEl) {
+            hintEl.textContent = "Selecione 2+ para alto potencial";
+            hintEl.style.color = "var(--brand-secondary)";
+          }
+          ctaEl.textContent = "Explorar cases de sucesso";
+          ctaEl.href = "#cases";
+          altEl.textContent = "Conhecer nossos serviços";
+          altEl.href = "#services";
+        }
+
+        if(isFit && !wasFit && card){
+          // Adiciona efeito visual sutil
+          card.style.boxShadow = "0 0 0 2px var(--success), var(--shadow-lg)";
+          setTimeout(() => {
+            card.style.boxShadow = "var(--shadow-lg)";
+          }, 1000);
+        }
+        wasFit = isFit;
+      }
+
+      checks.forEach(c => {
+        c.addEventListener("change", update);
+        
+        // Adiciona efeito visual ao clicar
+        c.addEventListener("change", function() {
+          const parent = this.closest('.assess-item');
+          if(this.checked) {
+            parent.style.background = "rgba(0,102,255,0.08)";
+            parent.style.borderColor = "var(--brand-primary)";
+            parent.style.transform = "translateY(-2px)";
+          } else {
+            parent.style.background = "rgba(255,255,255,0.03)";
+            parent.style.borderColor = "rgba(255,255,255,0.05)";
+            parent.style.transform = "none";
+          }
+        });
+      });
+      
+      update();
+    })();
   </script>
 </body>
 </html>
