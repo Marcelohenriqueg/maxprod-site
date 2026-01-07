@@ -1066,22 +1066,23 @@
             entregamos soluções que impactam diretamente seu P&L: redução de custos, aumento 
             de produtividade e qualidade robusta.
           </p>
+          
+<div class="hero-stats">
+  <div class="stat">
+    <div class="stat-number">+R$35M</div>
+    <div class="stat-label">em savings</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">+20</div>
+    <div class="stat-label">empresas atendidas</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">+70%</div>
+    <div class="stat-label">produtividade</div>
+    <div class="stat-label">em média</div>
+  </div>
+</div>
 
-          <div class="hero-stats">
-            <div class="stat">
-              <div class="stat-number">+R$35M</div>
-              <div class="stat-label">em Savings</div>
-            </div>
-            <div class="stat">
-              <div class="stat-number">+70%</div>
-              <div class="stat-label">Produtividade em média</div>
-              <div class="stat-label">em média</div>
-            </div>
-            <div class="stat">
-              <div class="stat-number">+20</div>
-              <div class="stat-label">Empresas atendidas</div>
-            </div>
-          </div>
 
           <div style="display: flex; gap: var(--space-16); flex-wrap: wrap;">
             <a href="#cases" class="btn btn-primary">
@@ -1754,6 +1755,7 @@
       const potential = revenue * 20000; // Simplified calculation
       
       const roiElement = document.querySelector('.stat-number');
+
       if (roiElement) {
         roiElement.textContent = `R$ ${(potential / 1000000).toFixed(1)}M`;
       }
