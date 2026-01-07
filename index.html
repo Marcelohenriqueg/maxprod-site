@@ -1872,6 +1872,77 @@ function updateROICalculation() {
       
       update();
     })();
+    /* ===============================
+   HERO STATS COUNTER + PULSE (PATCH)
+   =============================== */
+(function(){
+  const nodes = document.querySelectorAll(".hero .stat-number[data-value]");
+  if(!nodes.length) return;
+
+  const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+  function animateOne(el){
+    const raw = Number(el.getAttribute("data-value") || "0");
+    const prefix = el.getAttribute("data-prefix") || "";
+    const suffix = el.getAttribute("data-suffix") || "";
+
+    // fallback: se reduce motion, só imprime direto
+    if(prefersReduced){
+      el.textContent = `${prefix}${raw}${suffix}`;
+      return;
+    }
+
+    const duration = 1100; // ms
+    const start = performance.now();
+    const from = 0;
+
+    // garante que começa do zero visualmente
+    el.textContent = `${prefix}${from}${suffix}`;
+
+    function frame(now){
+      const p = Math.min(1, (now - start) / duration);
+      const v = Math.round(from + (raw - from) * easeOutCubic(p));
+
+      el.textContent = `${prefix}${v}${suffix}`;
+
+      if(p < 1){
+        requestAnimationFrame(frame);
+      }else{
+        // dispara pulse 1x quando termina
+        el.classList.remove("pulse"); // reset
+        // força reflow para garantir reinício da animação
+        void el.offsetWidth;
+        el.classList.add("pulse");
+        setTimeout(() => el.classList.remove("pulse"), 950);
+      }
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  // dispara quando o hero entra na tela
+  let fired = false;
+  const hero = document.querySelector("#home.hero");
+  if(!hero){
+    nodes.forEach(animateOne);
+    return;
+  }
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && !fired){
+        fired = true;
+        nodes.forEach(animateOne);
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.35 });
+
+  io.observe(hero);
+})();
+
   </script>
 </body>
 </html>
