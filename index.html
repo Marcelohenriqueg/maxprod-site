@@ -895,14 +895,22 @@
       animation: float 3s ease-in-out infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
+   /* ===============================
+   HERO STATS - Pulse premium (sutil)
+   =============================== */
 
-    .pulse {
-      animation: pulse 2s ease-in-out infinite;
-    }
+/* brilho bem leve só quando a classe for aplicada via JS */
+.hero .stat-number.pulse {
+  animation: heroPulse 900ms ease-out 1;
+  filter: drop-shadow(0 0 12px rgba(0,102,255,.28));
+}
+
+/* micro “respiração” + leve zoom */
+@keyframes heroPulse {
+  0%   { transform: translateZ(0) scale(1);   opacity: 1; }
+  45%  { transform: translateZ(0) scale(1.035); opacity: 1; }
+  100% { transform: translateZ(0) scale(1);   opacity: 1; }
+}
 
     /* ===============================
        CUSTOM SCROLLBAR
@@ -1066,22 +1074,45 @@
             entregamos soluções que impactam diretamente seu P&L: redução de custos, aumento 
             de produtividade e qualidade robusta.
           </p>
-          
-<div class="hero-stats">
+          <div class="hero-stats">
   <div class="stat">
-    <div class="stat-number">+R$35M</div>
+    <div
+      class="stat-number"
+      data-value="35"
+      data-prefix="+R$"
+      data-suffix="M"
+    >
+      +R$35M
+    </div>
     <div class="stat-label">em savings</div>
   </div>
+
   <div class="stat">
-    <div class="stat-number">+20</div>
+    <div
+      class="stat-number"
+      data-value="20"
+      data-prefix="+"
+      data-suffix=""
+    >
+      +20
+    </div>
     <div class="stat-label">empresas atendidas</div>
   </div>
+
   <div class="stat">
-    <div class="stat-number">+70%</div>
+    <div
+      class="stat-number"
+      data-value="70"
+      data-prefix="+"
+      data-suffix="%"
+    >
+      +70%
+    </div>
     <div class="stat-label">produtividade</div>
     <div class="stat-label">em média</div>
   </div>
 </div>
+
 
 
           <div style="display: flex; gap: var(--space-16); flex-wrap: wrap;">
