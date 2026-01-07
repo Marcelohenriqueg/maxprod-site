@@ -756,6 +756,45 @@
 /* opcional: card um pouco mais baixo para caber sem scroll */
 #cases .case-image{ height: 132px; }   /* estava 140px */
 #cases .case-content{ padding: 14px; } /* estava 16px */
+/* =========================================
+   PATCH FINAL — FECHAMENTO DE DOBRA
+   ========================================= */
+
+/* sobe levemente todo o bloco de cases */
+#cases.section{
+  padding-top: 16px;        /* era 22px */
+}
+
+/* reduz mais um pouco o espaço do texto final */
+#cases .section-header .text-lead{
+  margin-bottom: 4px !important;
+}
+
+/* aproxima CTA do texto */
+.cases-cta-float{
+  margin-top: -10px;        /* era -6px */
+}
+
+/* cards ainda mais “juntos” */
+.cases-stage{
+  gap: 14px;                /* era 16px */
+}
+
+/* reduz 2px da imagem do card */
+#cases .case-image{
+  height: 128px;             /* era 132px */
+}
+
+/* título do card levemente menor (imperceptível visualmente) */
+#cases .case-content h4{
+  font-size: 17px;
+}
+
+/* descrição com 1 linha e meia visual */
+#cases .case-content p{
+  -webkit-line-clamp: 2;
+  line-height: 1.35;
+}
 
 
     /* ===============================
