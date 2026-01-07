@@ -218,10 +218,18 @@
       font-size: var(--text-xl);
     }
 
-    ..logo img {
-  height: 20px;   /* aumenta o ícone */
-  width: auto;
+    .navbar .logo img{
+  height: 34px !important;  /* ajuste aqui: 32 / 36 / 40 */
+  width: auto !important;
+  display: block;
 }
+    .mobile-menu .logo img{
+  height: 34px !important;
+  width: auto !important;
+  display: block;
+}
+    .logo-text{ max-width: 220px; }
+.logo-sub{ white-space: nowrap; opacity: .9; }
 
 .logo-text{
   display: flex;
