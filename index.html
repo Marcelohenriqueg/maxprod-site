@@ -936,6 +936,22 @@
       0% { transform: translateX(-100%); }
       100% { transform: translateX(100%); }
     }
+    /* ===============================
+   HERO ASSESSMENT - COMPACT MODE (sem mudar textos)
+   =============================== */
+.hero .visual-card {
+  padding: var(--space-20); /* antes era 24; reduz altura do card */
+}
+.hero .assess-item {
+  padding: 10px !important;          /* antes 12px inline */
+  gap: var(--space-8) !important;    /* antes 12px inline */
+  border-radius: var(--radius-md);
+}
+
+.hero .assess-item span {
+  font-size: 13px !important;        /* antes var(--text-sm)=14px */
+  line-height: 1.25 !important;      /* mais compacto, sem cortar texto */
+}
   </style>
 </head>
 
