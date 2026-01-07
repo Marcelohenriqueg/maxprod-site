@@ -220,8 +220,8 @@
       overflow:hidden;
     }
     .sideCard.assess{
-      margin-top: -16px;
-    }
+  margin-top: -16px;
+}
     .sideCard:before{
       content:"";
       position:absolute; inset:-2px;
@@ -518,327 +518,1086 @@
       gap:10px;
     }
     /* === QUICK FIX: compactar hero e liberar espaço pros proofs (somente px) === */
-    .hero{ padding:44px 0 10px; }
-    .kicker{ margin-bottom:10px; }
-    h1{ margin:0 0 10px; }
-    .sub{ margin:0 0 12px; }
-    .heroActions{ gap:10px; }
+.hero{ padding:44px 0 10px; }                 /* era maior: sobe tudo */
+.kicker{ margin-bottom:10px; }               /* menos espaço acima do H1 */
+h1{ margin:0 0 10px; }                       /* reduz margem do título */
+.sub{ margin:0 0 12px; }                     /* reduz margem do texto */
+.heroActions{ gap:10px; }                    /* botões mais próximos */
 
-    /* Card da direita mais compacto (sem mudar conteúdo) */
-    .sideCard{ padding:14px 14px 12px; }
-    .assessSub{ margin:0 0 8px; }
-    .assessMeta{ margin:6px 0 8px; }
-    .assessBar{ margin-bottom:8px; }
-    .assessItem{ padding:8px; }
-    .assessList{ gap:8px; }
-    .assessFooter{ margin-top:10px; padding-top:10px; }
+/* Card da direita mais compacto (sem mudar conteúdo) */
+.sideCard{ padding:14px 14px 12px; }         /* era 18/18/16 */
+.assessSub{ margin:0 0 8px; }                /* reduz respiro */
+.assessMeta{ margin:6px 0 8px; }             /* reduz respiro */
+.assessBar{ margin-bottom:8px; }             /* reduz respiro */
+.assessItem{ padding:8px; }                  /* itens mais baixos */
+.assessList{ gap:8px; }                      /* reduz espaçamento entre itens */
+.assessFooter{ margin-top:10px; padding-top:10px; } /* encurta rodapé */
 
-    /* Provas mais “coladas” no hero */
-    .proof{ padding:9px 0 6px; }
+/* Provas mais "coladas" no hero */
+.proof{ padding:9px 0 6px; }                 /* reduz faixa */
+ /* ===============================
+   REVEAL (scroll animation) — premium & subtle
+   =============================== */
+.reveal{
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(2px);
+  transition: opacity .55s ease, transform .55s ease, filter .55s ease;
+  will-change: opacity, transform, filter;
+}
+
+.reveal.inview{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Stagger dos cards (ordem natural) */
+.reveal.st1{ transition-delay: .04s; }
+.reveal.st2{ transition-delay: .10s; }
+.reveal.st3{ transition-delay: .16s; }
+.reveal.st4{ transition-delay: .22s; }
+
+/* Acessibilidade: respeita "reduzir movimento" */
+@media (prefers-reduced-motion: reduce){
+  .reveal{
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
 
     /* ===============================
-       REVEAL (scroll animation) — premium & subtle
-       =============================== */
-    .reveal{
-      opacity: 0;
-      transform: translateY(14px);
-      filter: blur(2px);
-      transition: opacity .55s ease, transform .55s ease, filter .55s ease;
-      will-change: opacity, transform, filter;
-    }
+   ARQUITETURA DE EXECUÇÃO — premium tech map
+   =============================== */
+#arquitetura-execucao{
+  padding: 54px 0 44px;
+}
 
-    .reveal.inview{
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
+.execHeader{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:16px;
+}
 
-    /* Stagger dos cards (ordem natural) */
-    .reveal.st1{ transition-delay: .04s; }
-    .reveal.st2{ transition-delay: .10s; }
-    .reveal.st3{ transition-delay: .16s; }
-    .reveal.st4{ transition-delay: .22s; }
+.execHeader h2{
+  margin:0;
+  font-size:22px;
+  letter-spacing:-.2px;
+}
 
-    /* Acessibilidade: respeita "reduzir movimento" */
-    @media (prefers-reduced-motion: reduce){
-      .reveal{
-        opacity: 1 !important;
-        transform: none !important;
-        filter: none !important;
-        transition: none !important;
-      }
-    }
+.execHeader p{
+  margin:0;
+  color:var(--muted2);
+  font-size:13px;
+  line-height:1.45;
+}
 
-    /* ===============================
-       ARQUITETURA DE EXECUÇÃO — premium tech map
-       =============================== */
-    #arquitetura-execucao{
-      padding: 54px 0 44px;
-    }
+.execFrame{
+  position:relative;
+  border-radius: 26px;
+  border: 1px solid rgba(255,255,255,.10);
+  background:
+    radial-gradient(900px 420px at 15% 35%, rgba(47,107,255,.16), rgba(0,0,0,0) 55%),
+    radial-gradient(900px 520px at 85% 30%, rgba(56,211,159,.10), rgba(0,0,0,0) 55%),
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  box-shadow: 0 30px 110px rgba(0,0,0,.55);
+  overflow:hidden;
+}
 
-    .execHeader{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:14px;
-      margin: 18px 0 16px;
-    }
+.execFrame::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(420px 220px at 50% 0%, rgba(107,124,255,.18), rgba(0,0,0,0) 65%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, rgba(0,0,0,0) 1px 80px);
+  opacity:.25;
+  pointer-events:none;
+}
 
-    .execHeader h2{
-      margin:0;
-      font-size:22px;
-      letter-spacing:-.2px;
-    }
+.execFrame::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: 28px;
+  background: radial-gradient(520px 140px at 70% -10%, rgba(47,107,255,.35), rgba(0,0,0,0) 60%);
+  opacity:.22;
+  pointer-events:none;
+}
 
-    .execHeader p{
-      margin:0;
-      color:var(--muted2);
-      font-size:13px;
-      line-height:1.45;
-    }
+.execGrid{
+  position:relative;
+  padding: 18px;
+  display:grid;
+  gap:14px;
+  grid-template-columns: 1.12fr 1.12fr .90fr;
+  grid-template-areas:
+    "vsm pcm plano"
+    "or  qual plano";
+  align-items:stretch;
+}
 
-    .execFrame{
-      position:relative;
-      border-radius: 26px;
-      border: 1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(900px 420px at 15% 35%, rgba(47,107,255,.16), rgba(0,0,0,0) 55%),
-        radial-gradient(900px 520px at 85% 30%, rgba(56,211,159,.10), rgba(0,0,0,0) 55%),
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      box-shadow: 0 30px 110px rgba(0,0,0,.55);
-      overflow:hidden;
-    }
+.execNode{
+  position:relative;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(10,14,22,.55);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 16px 14px 14px;
+  overflow:hidden;
+  min-height: 168px;
+}
 
-    .execFrame::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(420px 220px at 50% 0%, rgba(107,124,255,.18), rgba(0,0,0,0) 65%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, rgba(0,0,0,0) 1px 80px);
-      opacity:.25;
-      pointer-events:none;
-    }
+.execNode::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:inherit;
+  background: radial-gradient(240px 140px at 20% 0%, rgba(47,107,255,.20), rgba(0,0,0,0) 60%);
+  pointer-events:none;
+}
 
-    .execFrame::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      border-radius: 28px;
-      background: radial-gradient(520px 140px at 70% -10%, rgba(47,107,255,.35), rgba(0,0,0,0) 60%);
-      opacity:.22;
-      pointer-events:none;
-    }
+.execNodeHeader{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:10px;
+  position:relative;
+}
 
-    .execGrid{
-      position:relative;
-      padding: 18px;
-      display:grid;
-      gap:14px;
-      grid-template-columns: 1.12fr 1.12fr .90fr;
-      grid-template-areas:
-        "vsm pcm plano"
-        "or  qual plano";
-      align-items:stretch;
-    }
+.execTitle{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
 
-    .execNode{
-      position:relative;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(10,14,22,.55);
-      backdrop-filter: blur(10px);
-      border-radius: 18px;
-      padding: 16px 14px 14px;
-      overflow:hidden;
-      min-height: 168px;
-    }
+.execIcon{
+  width:34px;
+  height:34px;
+  border-radius: 12px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  box-shadow: 0 18px 60px rgba(79,99,255,.18);
+}
 
-    .execNode::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      border-radius:inherit;
-      background: radial-gradient(240px 140px at 20% 0%, rgba(47,107,255,.20), rgba(0,0,0,0) 60%);
-      pointer-events:none;
-    }
+.execIcon svg{ width:18px; height:18px; opacity:.92; }
 
-    .execNodeHeader{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:10px;
-      position:relative;
-    }
+.execNode h3{
+  margin:0;
+  font-size:15px;
+  letter-spacing:-.2px;
+}
 
-    .execTitle{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
+.execNode .mini{
+  margin:3px 0 0;
+  color:var(--muted2);
+  font-size:12.5px;
+  line-height:1.35;
+}
 
-    .execIcon{
-      width:34px;
-      height:34px;
-      border-radius: 12px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 18px 60px rgba(79,99,255,.18);
-    }
+.execBullets{
+  margin: 10px 0 0;
+  padding: 0;
+  list-style:none;
+  color: var(--muted);
+  font-size: 13px;
+  line-height:1.55;
+  position:relative;
+}
 
-    .execIcon svg{ width:18px; height:18px; opacity:.92; }
+.execBullets li{
+  display:flex;
+  gap:8px;
+  margin: 6px 0;
+}
 
-    .execNode h3{
-      margin:0;
-      font-size:15px;
-      letter-spacing:-.2px;
-    }
+.execBullets li::before{
+  content:"";
+  width:6px;
+  height:6px;
+  margin-top:7px;
+  border-radius:999px;
+  background: rgba(47,107,255,.85);
+  box-shadow: 0 0 18px rgba(47,107,255,.35);
+  flex:0 0 6px;
+}
 
-    .execNode .mini{
-      margin:3px 0 0;
-      color:var(--muted2);
-      font-size:12.5px;
-      line-height:1.35;
-    }
+.execBadge{
+  font-size:12px;
+  font-weight:700;
+  color:#e9f0ff;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  white-space:nowrap;
+}
 
-    .execBullets{
-      margin: 10px 0 0;
-      padding: 0;
-      list-style:none;
-      color: var(--muted);
-      font-size: 13px;
-      line-height:1.55;
-      position:relative;
-    }
+/* Áreas do mapa */
+.execVSM{ grid-area: vsm; }
+.execPCM{ grid-area: pcm; }
+.execOR{  grid-area: or; }
+.execQual{ grid-area: qual; }
+.execPlano{ grid-area: plano; min-height: 350px; }
 
-    .execBullets li{
-      display:flex;
-      gap:8px;
-      margin: 6px 0;
-    }
+/* "Wiring" (linhas) — simples, premium, sem SVG externo */
+.execWires{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.9;
+}
 
-    .execBullets li::before{
-      content:"";
-      width:6px;
-      height:6px;
-      margin-top:7px;
-      border-radius:999px;
-      background: rgba(47,107,255,.85);
-      box-shadow: 0 0 18px rgba(47,107,255,.35);
-      flex:0 0 6px;
-    }
+.execWires::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    /* horizontais leves */
+    linear-gradient(90deg, rgba(47,107,255,.20), rgba(0,0,0,0) 45%) 22% 32% / 42% 2px no-repeat,
+    linear-gradient(90deg, rgba(47,107,255,.16), rgba(0,0,0,0) 45%) 22% 70% / 42% 2px no-repeat,
+    /* para o plano (direita) */
+    linear-gradient(90deg, rgba(56,211,159,.16), rgba(0,0,0,0) 55%) 62% 48% / 26% 2px no-repeat,
+    /* pontos */
+    radial-gradient(circle, rgba(47,107,255,.85) 0 2px, rgba(0,0,0,0) 3px) 56% 32% / 10px 10px no-repeat,
+    radial-gradient(circle, rgba(47,107,255,.85) 0 2px, rgba(0,0,0,0) 3px) 56% 70% / 10px 10px no-repeat,
+    radial-gradient(circle, rgba(56,211,159,.85) 0 2px, rgba(0,0,0,0) 3px) 74% 48% / 10px 10px no-repeat;
+  filter: drop-shadow(0 0 14px rgba(47,107,255,.20));
+}
 
-    .execBadge{
-      font-size:12px;
-      font-weight:700;
-      color:#e9f0ff;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      white-space:nowrap;
-    }
+/* Rodapé de "entregáveis típicos" */
+.execDeliverables{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 14px 18px 16px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.10);
+  position:relative;
+}
 
-    /* Áreas do mapa */
-    .execVSM{ grid-area: vsm; }
-    .execPCM{ grid-area: pcm; }
-    .execOR{  grid-area: or; }
-    .execQual{ grid-area: qual; }
-    .execPlano{ grid-area: plano; min-height: 350px; }
+.execDeliverables strong{
+  color: rgba(255,255,255,.90);
+  font-size:13px;
+}
 
-    /* “Wiring” (linhas) — simples, premium, sem SVG externo */
-    .execWires{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      opacity:.9;
-    }
+.execChips{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
 
-    .execWires::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        /* horizontais leves */
-        linear-gradient(90deg, rgba(47,107,255,.20), rgba(0,0,0,0) 45%) 22% 32% / 42% 2px no-repeat,
-        linear-gradient(90deg, rgba(47,107,255,.16), rgba(0,0,0,0) 45%) 22% 70% / 42% 2px no-repeat,
-        /* para o plano (direita) */
-        linear-gradient(90deg, rgba(56,211,159,.16), rgba(0,0,0,0) 55%) 62% 48% / 26% 2px no-repeat,
-        /* pontos */
-        radial-gradient(circle, rgba(47,107,255,.85) 0 2px, rgba(0,0,0,0) 3px) 56% 32% / 10px 10px no-repeat,
-        radial-gradient(circle, rgba(47,107,255,.85) 0 2px, rgba(0,0,0,0) 3px) 56% 70% / 10px 10px no-repeat,
-        radial-gradient(circle, rgba(56,211,159,.85) 0 2px, rgba(0,0,0,0) 3px) 74% 48% / 10px 10px no-repeat;
-      filter: drop-shadow(0 0 14px rgba(47,107,255,.20));
-    }
+.execChip{
+  padding:7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  color: var(--muted);
+  font-size:12px;
+  font-weight:700;
+}
 
-    /* Rodapé de “entregáveis típicos” */
-    .execDeliverables{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 14px 18px 16px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      background: rgba(0,0,0,.10);
-      position:relative;
-    }
+.execChip b{ color:#e9f0ff; }
 
-    .execDeliverables strong{
-      color: rgba(255,255,255,.90);
-      font-size:13px;
-    }
+/* Responsivo */
+@media (max-width: 980px){
+  .execGrid{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "vsm pcm"
+      "or  qual"
+      "plano plano";
+  }
+  .execPlano{ min-height: auto; }
+  .execWires{ display:none; } /* no mobile fica limpo e premium */
+}
 
-    .execChips{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
+@media (max-width: 520px){
+  .execGrid{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "vsm"
+      "pcm"
+      "or"
+      "qual"
+      "plano";
+  }
+  .execDeliverables{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .execChips{ justify-content:flex-start; }
+}
+/* ===============================
+   COMO PODEMOS AJUDAR — "Arquitetura" (compacta + premium)
+   Cole no final do <style>
+   =============================== */
 
-    .execChip{
-      padding:7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      font-size:12px;
-      font-weight:700;
-    }
+.archWrap{
+  margin-top: 18px; /* aproxima dos 4 cards sem criar "buraco" */
+  border:1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+  border-radius: calc(var(--radius2) + 4px);
+  overflow:hidden;
+  position:relative;
+  box-shadow: 0 24px 70px rgba(0,0,0,.45);
+}
 
-    .execChip b{ color:#e9f0ff; }
+.archWrap:before{
+  content:"";
+  position:absolute; inset:-2px;
+  background:
+    radial-gradient(520px 220px at 22% 0%, rgba(79,99,255,.14), transparent 60%),
+    radial-gradient(520px 220px at 72% 10%, rgba(56,211,159,.08), transparent 60%);
+  pointer-events:none;
+}
 
-    /* Responsivo */
-    @media (max-width: 980px){
-      .execGrid{
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-          "vsm pcm"
-          "or  qual"
-          "plano plano";
-      }
-      .execPlano{ min-height: auto; }
-      .execWires{ display:none; }
-    }
+.archHead{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+  padding:18px 18px 12px;
+  position:relative;
+}
 
-    @media (max-width: 520px){
-      .execGrid{
-        grid-template-columns: 1fr;
-        grid-template-areas:
-          "vsm"
-          "pcm"
-          "or"
-          "qual"
-          "plano";
-      }
-      .execDeliverables{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-      .execChips{ justify-content:flex-start; }
-    }
+.archHead h3{
+  margin:0 0 6px;
+  font-size:16px;
+  letter-spacing:-.2px;
+}
+
+.archHead p{
+  margin:0;
+  color:var(--muted2);
+  font-size:12.5px;
+  line-height:1.5;
+  max-width: 70ch;
+}
+
+.archCTA{
+  display:flex; align-items:center; gap:10px;
+  flex-wrap:wrap; justify-content:flex-end;
+}
+
+.archGrid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+  padding: 0 18px 16px;
+  position:relative;
+}
+
+.archCard{
+  border:1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  border-radius: var(--radius);
+  padding:14px 14px 12px;
+  position:relative;
+  overflow:hidden;
+  transition:.18s ease;
+  min-height: 132px;
+}
+
+.archCard:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+}
+
+.archTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.archIcon{
+  width:34px; height:34px;
+  border-radius: 12px;
+  display:grid;
+  place-items:center;
+  background: rgba(47,107,255,.14);
+  border:1px solid rgba(47,107,255,.18);
+  box-shadow: 0 18px 40px rgba(47,107,255,.10);
+}
+
+.archBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11.5px;
+  color:rgba(255,255,255,.92);
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  white-space:nowrap;
+}
+
+.archTitle{
+  margin:0 0 6px;
+  font-size:14px;
+  letter-spacing:-.1px;
+}
+
+.archOne{
+  margin:0 0 10px;
+  color:var(--muted);
+  font-size:12.8px;
+  line-height:1.5;
+}
+
+.archBullets{
+  margin:0;
+  padding-left: 16px;
+  color: var(--muted2);
+  font-size:12px;
+  line-height:1.45;
+}
+
+.archBullets li{ margin: 5px 0; }
+
+.archMore{
+  margin-top:10px;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:10px;
+}
+
+.archMore details{
+  border-radius: 12px;
+}
+
+.archMore summary{
+  cursor:pointer;
+  list-style:none;
+  color:#cbd3ff;
+  font-weight:700;
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  user-select:none;
+}
+
+.archMore summary::-webkit-details-marker{ display:none; }
+
+.archMore .moreBody{
+  margin-top:8px;
+  color: var(--muted);
+  font-size:12.4px;
+  line-height:1.55;
+  padding:10px 12px;
+  border:1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+  border-radius: 12px;
+}
+
+.archFoot{
+  padding: 0 18px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  position:relative;
+}
+
+.archChips{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  color: var(--muted2);
+  font-size:12px;
+}
+
+.archChip{
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+}
+
+@media (max-width: 980px){
+  .archGrid{ grid-template-columns: 1fr 1fr; }
+  .archCTA{ justify-content:flex-start; }
+}
+@media (max-width: 520px){
+  .archGrid{ grid-template-columns: 1fr; }
+}
+/* ===============================
+   FIX: Arquitetura em 4 colunas (desktop) + sem quebra
+   Cole NO FIM do <style>
+   =============================== */
+
+#como-podemos-ajudar .archGrid{
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+#como-podemos-ajudar .archCard{
+  min-width: 0; /* evita overflow que derruba card */
+}
+
+@media (max-width: 1180px){
+  #como-podemos-ajudar .archGrid{
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (max-width: 520px){
+  #como-podemos-ajudar .archGrid{
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===============================
+   NOVOS ESTILOS NASA PARA MARTE
+   =============================== */
+
+/* Pain-Solution Grid */
+.pain-solution-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 30px;
+  margin: 40px 0;
+  position: relative;
+}
+
+.pain-column, .solution-column {
+  padding: 24px;
+  border-radius: var(--radius2);
+  position: relative;
+  overflow: hidden;
+}
+
+.pain-column {
+  border: 1px solid rgba(255, 100, 100, 0.15);
+  background: linear-gradient(135deg, rgba(255, 100, 100, 0.05), rgba(255, 100, 100, 0.01));
+}
+
+.pain-column:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(400px 200px at 10% 20%, rgba(255, 100, 100, 0.08), transparent 60%);
+  pointer-events: none;
+}
+
+.solution-column {
+  border: 1px solid rgba(47, 107, 255, 0.2);
+  background: linear-gradient(135deg, rgba(47, 107, 255, 0.08), rgba(47, 107, 255, 0.02));
+}
+
+.solution-column:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(400px 200px at 90% 30%, rgba(47, 107, 255, 0.12), transparent 60%);
+  pointer-events: none;
+}
+
+.pain-column h3, .solution-column h3 {
+  margin: 0 0 20px;
+  font-size: 18px;
+  letter-spacing: -0.3px;
+  position: relative;
+}
+
+.pain-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 100, 100, 0.15);
+  background: rgba(255, 100, 100, 0.03);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.pain-item:hover {
+  transform: translateX(4px);
+  background: rgba(255, 100, 100, 0.07);
+  border-color: rgba(255, 100, 100, 0.25);
+}
+
+.solution-card {
+  padding: 18px;
+  margin-bottom: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(47, 107, 255, 0.15);
+  background: rgba(47, 107, 255, 0.05);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.solution-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(47, 107, 255, 0.3);
+  background: rgba(47, 107, 255, 0.08);
+}
+
+.solution-card h4 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.solution-card p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.btn-micro {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(47, 107, 255, 0.12);
+  border: 1px solid rgba(47, 107, 255, 0.25);
+  color: #cbd3ff;
+  transition: all 0.2s ease;
+}
+
+.btn-micro:hover {
+  background: rgba(47, 107, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Pain Calculator */
+.pain-calculator {
+  margin: 40px 0;
+  padding: 28px;
+  border-radius: var(--radius2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(47, 107, 255, 0.08), rgba(56, 211, 159, 0.05));
+  position: relative;
+  overflow: hidden;
+}
+
+.pain-calculator:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(500px 250px at 50% 0%, rgba(47, 107, 255, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.pain-calculator h4 {
+  margin: 0 0 20px;
+  font-size: 18px;
+  text-align: center;
+  position: relative;
+}
+
+.calc-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.calc-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.calc-group label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.calc-slider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  outline: none;
+}
+
+.calc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--brand);
+  cursor: pointer;
+  box-shadow: 0 0 20px var(--brand);
+}
+
+.calc-number {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.btn-calc {
+  grid-column: span 2;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-calc:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(47, 107, 255, 0.3);
+}
+
+.calc-result {
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(56, 211, 159, 0.2);
+  background: rgba(56, 211, 159, 0.05);
+  text-align: center;
+}
+
+.calc-result h3 {
+  margin: 10px 0;
+  font-size: 32px;
+  background: linear-gradient(135deg, var(--ok), #2f6bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(37, 211, 102, 0.3);
+}
+
+.btn-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #EA4335, #D14836);
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.btn-email:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(234, 67, 53, 0.3);
+}
+
+/* Value Pyramid */
+.value-pyramid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.level {
+  padding: 24px;
+  border-radius: var(--radius2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.level:hover {
+  transform: translateY(-4px);
+}
+
+.level1 {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+}
+
+.level2 {
+  border: 1px solid rgba(47, 107, 255, 0.2);
+  background: linear-gradient(135deg, rgba(47, 107, 255, 0.08), rgba(47, 107, 255, 0.03));
+  margin-left: 40px;
+}
+
+.level3 {
+  border: 1px solid rgba(56, 211, 159, 0.25);
+  background: linear-gradient(135deg, rgba(56, 211, 159, 0.12), rgba(47, 107, 255, 0.08));
+  margin-left: 80px;
+}
+
+.level h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.level p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.btn-ghost {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-secondary {
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(47, 107, 255, 0.2), rgba(47, 107, 255, 0.1));
+  border: 1px solid rgba(47, 107, 255, 0.3);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, rgba(47, 107, 255, 0.3), rgba(47, 107, 255, 0.2));
+  transform: translateY(-2px);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px var(--brandGlow), 0 0 40px rgba(47, 107, 255, 0.1); 
+  }
+  50% { 
+    box-shadow: 0 0 30px var(--brandGlow), 0 0 60px rgba(47, 107, 255, 0.2); 
+  }
+}
+
+.btn-primary.glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Path Selector */
+.path-selector {
+  margin: 40px 0;
+}
+
+.path-selector h3 {
+  margin: 0 0 24px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.path-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.path-option {
+  padding: 30px;
+  border-radius: var(--radius2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.path-option:hover {
+  transform: translateY(-4px);
+  cursor: pointer;
+}
+
+.path-option.fast {
+  border-color: rgba(37, 211, 102, 0.2);
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.08), rgba(37, 211, 102, 0.02));
+}
+
+.path-option.deep {
+  border-color: rgba(47, 107, 255, 0.25);
+  background: linear-gradient(135deg, rgba(47, 107, 255, 0.1), rgba(47, 107, 255, 0.03));
+}
+
+.path-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.path-option.fast .path-icon {
+  background: rgba(37, 211, 102, 0.1);
+  border-color: rgba(37, 211, 102, 0.2);
+}
+
+.path-option.deep .path-icon {
+  background: rgba(47, 107, 255, 0.1);
+  border-color: rgba(47, 107, 255, 0.25);
+}
+
+.path-option h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.path-option p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.path-option ul {
+  margin: 0 0 24px;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.path-option li {
+  margin: 8px 0;
+}
+
+/* Social Proof */
+.inline-testimonial {
+  margin: 40px 0;
+  padding: 30px;
+  border-radius: var(--radius2);
+  border: 1px solid rgba(47, 107, 255, 0.15);
+  background: linear-gradient(135deg, rgba(47, 107, 255, 0.05), rgba(56, 211, 159, 0.03));
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.inline-testimonial:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(400px 200px at 50% 0%, rgba(47, 107, 255, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.quote {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  font-style: italic;
+  position: relative;
+  color: var(--text);
+}
+
+.author {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--brand);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: rgba(47, 107, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.btn-text:hover {
+  background: rgba(47, 107, 255, 0.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 980px) {
+  .pain-solution-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .calc-inputs {
+    grid-template-columns: 1fr;
+  }
+  
+  .path-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .level2, .level3 {
+    margin-left: 0;
+  }
+  
+  .value-pyramid {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .pain-column, .solution-column {
+    padding: 18px;
+  }
+  
+  .path-option {
+    padding: 20px;
+  }
+  
+  .pain-calculator {
+    padding: 20px;
+  }
+}
+
   </style>
 </head>
 
@@ -970,7 +1729,7 @@
     </div>
   </main>
 
-  <!-- PROOF BAR -->
+  <!-- PROOF BAR (voltou a aparecer, 3 cards, compacto) -->
   <div class="proof">
     <div class="container">
       <div class="proofBar" aria-label="Provas de credibilidade">
@@ -991,224 +1750,231 @@
     </div>
   </div>
 
-  <!-- COMO PODEMOS AJUDAR -->
-  <section id="como-podemos-ajudar">
-    <div class="container">
-      <div class="sectionTitle reveal" data-reveal>
-        <div>
-          <h2>Problemas complexos exigem decisão, método e execução consistente.</h2>
-          <p>Atuamos do direcionamento à sustentação do resultado, com foco em impacto real.</p>
-        </div>
-        <p>
-          <a class="btn btnGhost" href="#contato">Quero discutir meu caso</a>
-        </p>
+  <!-- COMO PODEMOS AJUDAR - REINVENTADA -->
+<section id="como-podemos-ajudar">
+  <div class="container">
+    <div class="sectionTitle reveal" data-reveal>
+      <div>
+        <h2>Problemas complexos exigem decisão, método e execução consistente.</h2>
+        <p>Atuamos do direcionamento à sustentação do resultado, com foco em impacto real.</p>
       </div>
+      <p>
+        <a class="btn btnGhost" href="#contato">Quero discutir meu caso</a>
+      </p>
+    </div>
 
-      <div class="grid4">
-
-        <!-- CARD 1 -->
-        <a class="card reveal st1" data-reveal href="#contato" aria-label="Direcionamento e Prioridade">
-          <div class="tag">Direcionamento &amp; Prioridade</div>
-          <h3>Saber exatamente onde atacar primeiro.</h3>
-          <p>
-            Quando tudo parece urgente, nada avança. Ajudamos a identificar onde está
-            o maior impacto, o maior risco e a melhor prioridade, antes de executar qualquer plano.
-          </p>
-          <div class="link">Discutir este problema <span class="arrow">→</span></div>
-        </a>
-
-        <!-- CARD 2 -->
-        <a class="card reveal st2" data-reveal href="#contato" aria-label="Execução e Disciplina Operacional">
-          <div class="tag">Execução &amp; Disciplina</div>
-          <h3>Fazer o plano sair do papel e acontecer.</h3>
-          <p>
-            Estruturamos a execução no dia a dia, conectando processo, pessoas e rotina
-            para garantir que o combinado seja feito corretamente, todos os dias.
-          </p>
-          <div class="link">Discutir este problema <span class="arrow">→</span></div>
-        </a>
-
-        <!-- CARD 3 -->
-        <a class="card reveal st3" data-reveal href="#contato" aria-label="Qualidade e Estabilidade Operacional">
-          <div class="tag">Qualidade &amp; Estabilidade</div>
-          <h3>Eliminar falhas, variação e dependência excessiva de pessoas.</h3>
-          <p>
-            Atuamos na raiz dos problemas operacionais para reduzir falhas humanas,
-            retrabalho e instabilidade que consomem tempo, custo e energia da equipe.
-          </p>
-          <div class="link">Discutir este problema <span class="arrow">→</span></div>
-        </a>
-
-        <!-- CARD 4 -->
-        <a class="card reveal st4" data-reveal href="#contato" aria-label="Resultado Sustentado e Escala">
-          <div class="tag">Resultado Sustentado</div>
-          <h3>Garantir que o resultado permaneça e evolua.</h3>
-          <p>
-            Resultados pontuais não bastam. Estruturamos indicadores, acompanhamento
-            e, quando faz sentido, tecnologia para garantir sustentação e evolução contínua.
-          </p>
-          <div class="link">Discutir este problema <span class="arrow">→</span></div>
-        </a>
-
-      </div>
-
-      <!-- MAPA / ARQUITETURA (no formato da imagem) -->
-      <div id="arquitetura-execucao" class="reveal" data-reveal style="padding-bottom:0;">
-        <div class="execHeader">
+    <!-- 1. SINTOMAS vs SOLUÇÕES -->
+    <div class="pain-solution-grid reveal" data-reveal>
+      <div class="pain-column">
+        <h3>🔴 Você se identifica com algum desses sintomas?</h3>
+        <div class="pain-item">
+          <span style="font-size: 20px; line-height: 1;">•</span>
           <div>
-            <h2>Arquitetura de execução para operações complexas</h2>
-            <p>Um mapa claro que conecta fluxo, prioridade, rotina e sustentação — aplicado conforme o contexto real da operação.</p>
-          </div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
-            <a class="btn btnGhost" href="#metodologia">Nossa abordagem</a>
-            <a class="btn btnPrimary" href="#contato">Quero discutir meu caso</a>
+            <strong>Perda financeira visível</strong> mas causa invisível
+            <div style="font-size: 12px; color: var(--muted2); margin-top: 4px;">O dinheiro some, ninguém sabe onde</div>
           </div>
         </div>
-
-        <div class="execFrame">
-          <div class="execWires" aria-hidden="true"></div>
-
-          <div class="execGrid">
-
-            <!-- Fluxo & Valor (VSM) -->
-            <div class="execNode execVSM reveal st1" data-reveal>
-              <div class="execNodeHeader">
-                <div class="execTitle">
-                  <span class="execIcon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M4 17V7m5 10V10m5 7V6m5 11V9" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3>Fluxo &amp; Valor <span style="opacity:.7; font-weight:700">(VSM)</span></h3>
-                    <p class="mini">Onde o valor realmente flui (e onde ele morre).</p>
-                  </div>
-                </div>
-                <span class="execBadge">Diagnóstico</span>
-              </div>
-              <ul class="execBullets">
-                <li>Mapeamento do fluxo ponta a ponta</li>
-                <li>Lead time e gargalos explícitos</li>
-                <li>VA/NVA, WIP e filas</li>
-              </ul>
-            </div>
-
-            <!-- Prioridade & PCM -->
-            <div class="execNode execPCM reveal st2" data-reveal>
-              <div class="execNodeHeader">
-                <div class="execTitle">
-                  <span class="execIcon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M7 7h10M7 12h6M7 17h10" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M5 5h14v14H5z" stroke="rgba(239,242,248,.35)" stroke-width="2"/>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3>Prioridade &amp; PCM</h3>
-                    <p class="mini">Decidir o que atacar primeiro muda tudo.</p>
-                  </div>
-                </div>
-                <span class="execBadge">Decisão</span>
-              </div>
-              <ul class="execBullets">
-                <li>Matriz esforço × impacto</li>
-                <li>Identificação do caminho crítico</li>
-                <li>Sequência de ataque</li>
-              </ul>
-            </div>
-
-            <!-- Plano de Ação Estruturado -->
-            <div class="execNode execPlano reveal st4" data-reveal>
-              <div class="execNodeHeader">
-                <div class="execTitle">
-                  <span class="execIcon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M9 6h10M9 12h10M9 18h10" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M5 6h.01M5 12h.01M5 18h.01" stroke="rgba(239,242,248,.9)" stroke-width="3" stroke-linecap="round"/>
-                      <path d="M4 4h16v16H4z" stroke="rgba(239,242,248,.35)" stroke-width="2"/>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3>Plano de Ação Estruturado</h3>
-                    <p class="mini">Plano que executa, não que vira apresentação.</p>
-                  </div>
-                </div>
-                <span class="execBadge">Entrega</span>
-              </div>
-              <ul class="execBullets">
-                <li>Objetivos 30 / 60 / 90</li>
-                <li>Responsáveis e prazos claros</li>
-                <li>Critérios de sucesso definidos</li>
-                <li>Checkpoints e governança</li>
-              </ul>
-            </div>
-
-            <!-- Execução & Rotina (O&R) -->
-            <div class="execNode execOR reveal st3" data-reveal>
-              <div class="execNodeHeader">
-                <div class="execTitle">
-                  <span class="execIcon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M12 6v6l4 2" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M21 12a9 9 0 1 1-9-9" stroke="rgba(239,242,248,.35)" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3>Execução &amp; Rotina <span style="opacity:.7; font-weight:700">(O&amp;R)</span></h3>
-                    <p class="mini">Execução consistente nasce da rotina certa.</p>
-                  </div>
-                </div>
-                <span class="execBadge">Rotina</span>
-              </div>
-              <ul class="execBullets">
-                <li>Standard work + auditoria O&amp;R</li>
-                <li>Rotina e gestão visual</li>
-                <li>Ritmo e sustentação</li>
-              </ul>
-            </div>
-
-            <!-- Qualidade & Estabilidade -->
-            <div class="execNode execQual reveal st2" data-reveal>
-              <div class="execNodeHeader">
-                <div class="execTitle">
-                  <span class="execIcon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linejoin="round"/>
-                      <path d="M9 12l2 2 4-5" stroke="rgba(239,242,248,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3>Qualidade &amp; Estabilidade</h3>
-                    <p class="mini">Reduzir variação e falhas para estabilizar resultado.</p>
-                  </div>
-                </div>
-                <span class="execBadge">Controle</span>
-              </div>
-              <ul class="execBullets">
-                <li>Detecção de causas e variação</li>
-                <li>Prevenção de by-pass e retrabalho</li>
-                <li>IA aplicada quando faz sentido (Opera Guard)</li>
-              </ul>
-            </div>
-
+        <div class="pain-item">
+          <span style="font-size: 20px; line-height: 1;">•</span>
+          <div>
+            <strong>Time sobrecarregado</strong> apagando incêndios diários
+            <div style="font-size: 12px; color: var(--muted2); margin-top: 4px;">Prevenção zero, apenas correção</div>
           </div>
-
-          <div class="execDeliverables" aria-label="Entregáveis típicos">
-            <strong>Entregáveis típicos</strong>
-            <div class="execChips">
-              <span class="execChip"><b>VSM</b></span>
-              <span class="execChip"><b>PCM</b></span>
-              <span class="execChip"><b>Plano 30/60/90</b></span>
-              <span class="execChip"><b>O&amp;R</b></span>
-              <span class="execChip"><b>Indicadores</b></span>
-              <span class="execChip"><b>IA aplicada</b></span>
-            </div>
+        </div>
+        <div class="pain-item">
+          <span style="font-size: 20px; line-height: 1;">•</span>
+          <div>
+            <strong>Projetos travados</strong> em reuniões sem decisão
+            <div style="font-size: 12px; color: var(--muted2); margin-top: 4px;">Planejamento perfeito, execução zero</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span style="font-size: 20px; line-height: 1;">•</span>
+          <div>
+            <strong>Relatórios bonitos</strong> sem impacto no chão de fábrica
+            <div style="font-size: 12px; color: var(--muted2); margin-top: 4px;">Dashboard lindo, realidade feia</div>
           </div>
         </div>
       </div>
+      
+      <div class="solution-column">
+        <h3>✅ Nossa resposta para cada sintoma:</h3>
+        <div class="solution-card">
+          <h4>🔍 <strong>Diagnóstico Direto</strong></h4>
+          <p>Identificamos a causa raiz em 72h, não em meses</p>
+          <a href="#diagnostico" class="btn-micro">Ver metodologia →</a>
+        </div>
+        <div class="solution-card">
+          <h4>⚡ <strong>Execução Garantida</strong></h4>
+          <p>Time dedicado no seu chão de fábrica, não consultores remotos</p>
+          <a href="#cases" class="btn-micro">Ver cases reais →</a>
+        </div>
+        <div class="solution-card">
+          <h4>🎯 <strong>Resultado Mensurável</strong></h4>
+          <p>ROI calculado antes de começar, não promessas vagas</p>
+          <a href="#contato" class="btn-micro">Calcular ROI →</a>
+        </div>
+        <div class="solution-card">
+          <h4>🛡️ <strong>Sustentação Comprovada</strong></h4>
+          <p>Plano 30/60/90 com indicadores, não abandono pós-projeto</p>
+          <a href="#metodologia" class="btn-micro">Ver plano →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. CALCULADORA DE PERDA -->
+    <div class="pain-calculator reveal" data-reveal>
+      <h4>💰 CALCULADORA DE PERDA OPERACIONAL</h4>
+      <p style="text-align: center; color: var(--muted); margin-bottom: 24px; font-size: 14px;">
+        Descubra quanto sua ineficiência está custando por ano
+      </p>
+      
+      <div class="calc-inputs">
+        <div class="calc-group">
+          <label>Horas perdidas/semana por falhas:</label>
+          <input type="range" class="calc-slider" id="hoursSlider" min="0" max="100" value="20">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted2);">
+            <span>0h</span>
+            <span id="hoursValue">20h</span>
+            <span>100h+</span>
+          </div>
+        </div>
+        
+        <div class="calc-group">
+          <label>Funcionários afetados:</label>
+          <input type="number" class="calc-number" id="employeesInput" value="15" min="1" max="500">
+        </div>
+        
+        <button class="btn-calc" id="calculateBtn">📈 CALCULAR IMPACTO ANUAL</button>
+      </div>
+      
+      <div class="calc-result" id="calcResult" style="display: none;">
+        <strong>ESTIMATIVA DE PERDA ANUAL:</strong>
+        <h3 id="lossAmount">R$ 1.2M - R$ 2.8M</h3>
+        <p style="color: var(--muted2); font-size: 13px; margin-bottom: 20px;">
+          Baseado em dados setoriais. Valor exato com diagnóstico específico.
+        </p>
+        <a href="#diagnostico" class="btn btnPrimary glow">ELIMINAR ESSA PERDA AGORA →</a>
+      </div>
+    </div>
+
+    <!-- 3. SOCIAL PROOF INTEGRADA -->
+    <div class="inline-testimonial reveal" data-reveal>
+      <div class="quote">"Em apenas 6 semanas, identificamos R$ 850k/ano em savings que estavam completamente invisíveis no processo anterior."</div>
+      <div class="author">— Diretor Industrial, Metalúrgica de São Paulo</div>
+      <a href="#cases" class="btn-text">📊 VER CASE COMPLETO COM NÚMEROS →</a>
+    </div>
+
+    <!-- 4. ARQUITETURA DE VALOR COM 3 NÍVEIS -->
+    <div class="value-pyramid reveal" data-reveal>
+      <div class="level level1">
+        <h4>📊 NÍVEL 1: CLAREZA TOTAL</h4>
+        <p>Entenda exatamente onde está o problema e quanto está perdendo</p>
+        <a href="#" class="btn-ghost" id="downloadChecklist">⬇️ BAIXAR CHECKLIST DE DIAGNÓSTICO (GRATUITO)</a>
+      </div>
+      
+      <div class="level level2">
+        <h4>⚡ NÍVEL 2: AÇÃO IMEDIATA</h4>
+        <p>Implementação com nossa equipe especialista no seu chão de fábrica</p>
+        <a href="#contato" class="btn-secondary">📅 AGENDAR CONSULTA ESTRATÉGICA (30 MIN)</a>
+      </div>
+      
+      <div class="level level3">
+        <h4>🏆 NÍVEL 3: RESULTADO GARANTIDO</h4>
+        <p>Pague apenas pelo resultado entregue, com garantia contratual</p>
+        <a href="#diagnostico" class="btn btnPrimary glow">🎯 SOLICITAR PROPOSTA COM GARANTIA DE ROI</a>
+      </div>
+    </div>
+
+    <!-- 5. ESCOLHA SEU CAMINHO -->
+    <div class="path-selector reveal" data-reveal>
+      <h3>🚀 ESCOLHA COMO VOCÊ QUER AVANÇAR:</h3>
+      
+      <div class="path-options">
+        <div class="path-option fast" id="fastPath">
+          <div class="path-icon">⚡</div>
+          <h4>CAMINHO RÁPIDO</h4>
+          <p>Diagnóstico Express (72h)</p>
+          <ul>
+            <li>Análise remota inicial em 24h</li>
+            <li>3 causas-raiz identificadas</li>
+            <li>ROI estimado com margem de erro ±15%</li>
+            <li>Próximos passos claros</li>
+          </ul>
+          <a href="https://wa.me/5531992793411?text=Olá!%20Gostaria%20do%20Diagnóstico%20Express%20(72h)%20da%20MaxProd" 
+             class="btn-whatsapp" target="_blank" rel="noopener">
+            📱 WHATSAPP DIRETO
+          </a>
+        </div>
+        
+        <div class="path-option deep" id="deepPath">
+          <div class="path-icon">🔍</div>
+          <h4>ANÁLISE PROFUNDA</h4>
+          <p>Visita Técnica + Diagnóstico Completo</p>
+          <ul>
+            <li>2 dias no seu chão de fábrica</li>
+            <li>Plano de ação detalhado com cronograma</li>
+            <li>Case similar do seu setor para benchmark</li>
+            <li>Garantia de resultado contratual</li>
+          </ul>
+          <a href="mailto:maxprodsolucoes@gmail.com?subject=Agendar%20Visita%20Técnica%20-%20MaxProd" 
+             class="btn-email">
+            📧 AGENDAR VISITA TÉCNICA
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. CARDS ORIGINAIS (MANTIDOS) -->
+    <div class="grid4">
+
+      <!-- CARD 1 -->
+      <a class="card reveal st1" data-reveal href="#contato" aria-label="Direcionamento e Prioridade">
+        <div class="tag">Direcionamento &amp; Prioridade</div>
+        <h3>Saber exatamente onde atacar primeiro.</h3>
+        <p>
+          Quando tudo parece urgente, nada avança. Ajudamos a identificar onde está
+          o maior impacto, o maior risco e a melhor prioridade, antes de executar qualquer plano.
+        </p>
+        <div class="link">Discutir este problema <span class="arrow">→</span></div>
+      </a>
+
+      <!-- CARD 2 -->
+      <a class="card reveal st2" data-reveal href="#contato" aria-label="Execução e Disciplina Operacional">
+        <div class="tag">Execução &amp; Disciplina</div>
+        <h3>Fazer o plano sair do papel e acontecer.</h3>
+        <p>
+          Estruturamos a execução no dia a dia, conectando processo, pessoas e rotina
+          para garantir que o combinado seja feito corretamente, todos os dias.
+        </p>
+        <div class="link">Discutir este problema <span class="arrow">→</span></div>
+      </a>
+
+      <!-- CARD 3 -->
+      <a class="card reveal st3" data-reveal href="#contato" aria-label="Qualidade e Estabilidade Operacional">
+        <div class="tag">Qualidade &amp; Estabilidade</div>
+        <h3>Eliminar falhas, variação e dependência excessiva de pessoas.</h3>
+        <p>
+          Atuamos na raiz dos problemas operacionais para reduzir falhas humanas,
+          retrabalho e instabilidade que consomem tempo, custo e energia da equipe.
+        </p>
+        <div class="link">Discutir este problema <span class="arrow">→</span></div>
+      </a>
+
+      <!-- CARD 4 -->
+      <a class="card reveal st4" data-reveal href="#contato" aria-label="Resultado Sustentado e Escala">
+        <div class="tag">Resultado Sustentado</div>
+        <h3>Garantir que o resultado permaneça e evolua.</h3>
+        <p>
+          Resultados pontuais não bastam. Estruturamos indicadores, acompanhamento
+          e, quando faz sentido, tecnologia para garantir sustentação e evolução contínua.
+        </p>
+        <div class="link">Discutir este problema <span class="arrow">→</span></div>
+      </a>
 
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- PLACEHOLDERS (mantidos para as âncoras funcionarem; preencheremos depois) -->
   <section id="quem-somos"></section>
@@ -1223,7 +1989,7 @@
       <div class="sectionTitle">
         <div>
           <h2>Cases em destaque</h2>
-          <p>3 histórias fortes, com resultado numérico (mesmo que seja “placeholder” por enquanto)</p>
+          <p>3 histórias fortes, com resultado numérico (mesmo que seja "placeholder" por enquanto)</p>
         </div>
         <p><a class="btn btnGhost" href="#contato">Quero um case parecido</a></p>
       </div>
@@ -1261,7 +2027,7 @@
             <span class="pill">Execução</span>
           </div>
           <h3>Redução de falhas humanas e retrabalho</h3>
-          <p>Padrão operacional + treinamento + verificação objetiva para reduzir variação e “by-pass”.</p>
+          <p>Padrão operacional + treinamento + verificação objetiva para reduzir variação e "by-pass".</p>
           <div class="result">
             <div>Resultado</div>
             <div><span>-X% retrabalho</span> • <span>-Y% scrap</span></div>
@@ -1290,13 +2056,13 @@
     </div>
   </section>
 
-  <!-- TREINAMENTOS -->
+  <!-- TREINAMENTOS (por enquanto mantido como teaser; depois entra dentro de Serviços) -->
   <section id="treinamentos">
     <div class="container">
       <div class="teaser">
         <div>
           <h3>Resultados só se sustentam com pessoas capacitadas.</h3>
-          <p>Treinamentos práticos integrados a projetos reais de melhoria contínua — para virar rotina, não “evento”.</p>
+          <p>Treinamentos práticos integrados a projetos reais de melhoria contínua — para virar rotina, não "evento".</p>
         </div>
         <div class="actions">
           <a class="btn btnPrimary" href="#contato">Quero um treinamento</a>
@@ -1306,7 +2072,7 @@
     </div>
   </section>
 
-  <!-- DIAGNÓSTICO -->
+  <!-- DIAGNÓSTICO (destino do CTA do header) -->
   <section id="diagnostico">
     <div class="container">
       <div class="finalCta">
@@ -1334,7 +2100,7 @@
     </div>
   </section>
 
-  <!-- CONTATO -->
+  <!-- CTA FINAL -->
   <section id="contato">
     <div class="container">
       <div class="finalCta">
@@ -1390,77 +2156,221 @@
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    (function(){
-      const checks = document.querySelectorAll(".assessCheck");
-      const countEl = document.getElementById("assessCount");
-      const barFill = document.getElementById("assessBarFill");
-      const msgEl = document.getElementById("assessMsg");
-      const hintEl = document.getElementById("assessHint");
-      const ctaEl = document.getElementById("assessCta");
-      const altEl = document.getElementById("assessAlt");
-      const card = document.querySelector(".sideCard.assess");
+  (function(){
+    const checks = document.querySelectorAll(".assessCheck");
+    const countEl = document.getElementById("assessCount");
+    const barFill = document.getElementById("assessBarFill");
+    const msgEl = document.getElementById("assessMsg");
+    const hintEl = document.getElementById("assessHint");
+    const ctaEl = document.getElementById("assessCta");
+    const altEl = document.getElementById("assessAlt");
+    const card = document.querySelector(".sideCard.assess");
 
-      if(!checks.length) return;
+    if(!checks.length) return;
 
-      const total = checks.length;
-      let wasFit = false;
+    const total = checks.length;
+    let wasFit = false;
 
-      function update(){
-        const selected = [...checks].filter(c => c.checked).length;
-        countEl.textContent = selected;
-        barFill.style.width = (selected/total)*100 + "%";
+    function update(){
+      const selected = [...checks].filter(c => c.checked).length;
+      countEl.textContent = selected;
+      barFill.style.width = (selected/total)*100 + "%";
 
-        const isFit = selected >= 2;
+      const isFit = selected >= 2;
 
-        if(isFit){
-          msgEl.textContent = "Se você se identificou com mais de um ponto, vale uma conversa objetiva.";
-          if(hintEl) hintEl.textContent = "Bom fit detectado (2+).";
-          ctaEl.textContent = "Solicitar diagnóstico";
-          ctaEl.href = "#diagnostico";
-          altEl.textContent = "Ver nossa abordagem";
-          altEl.href = "#metodologia";
-        }else{
-          msgEl.textContent = "Se apenas 0–1 ponto faz sentido, comece por cases e serviços.";
-          if(hintEl) hintEl.textContent = "Selecione 2+ para indicar melhor fit";
-          ctaEl.textContent = "Explorar cases";
-          ctaEl.href = "#cases";
-          altEl.textContent = "Ver serviços";
-          altEl.href = "#servicos";
-        }
-
-        if(isFit && !wasFit && card){
-          card.classList.remove("assessPulse");
-          void card.offsetWidth;
-          card.classList.add("assessPulse");
-        }
-        wasFit = isFit;
+      if(isFit){
+        msgEl.textContent = "Se você se identificou com mais de um ponto, vale uma conversa objetiva.";
+        if(hintEl) hintEl.textContent = "Bom fit detectado (2+).";
+        ctaEl.textContent = "Solicitar diagnóstico";
+        ctaEl.href = "#diagnostico";
+        altEl.textContent = "Ver nossa abordagem";
+        altEl.href = "#metodologia";
+      }else{
+        msgEl.textContent = "Se apenas 0–1 ponto faz sentido, comece por cases e serviços.";
+        if(hintEl) hintEl.textContent = "Selecione 2+ para indicar melhor fit";
+        ctaEl.textContent = "Explorar cases";
+        ctaEl.href = "#cases";
+        altEl.textContent = "Ver serviços";
+        altEl.href = "#servicos";
       }
 
-      checks.forEach(c => c.addEventListener("change", update));
-      update();
-    })();
+      if(isFit && !wasFit && card){
+        card.classList.remove("assessPulse");
+        void card.offsetWidth;
+        card.classList.add("assessPulse");
+      }
+      wasFit = isFit;
+    }
 
-    /* ===============================
-       Scroll Reveal (IntersectionObserver)
-       =============================== */
-    (function(){
-      const els = document.querySelectorAll("[data-reveal]");
-      if(!els.length) return;
+    checks.forEach(c => c.addEventListener("change", update));
+    update();
+  })();
 
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            entry.target.classList.add("inview");
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+  /* ===============================
+     Scroll Reveal (IntersectionObserver)
+     =============================== */
+  (function(){
+    const els = document.querySelectorAll("[data-reveal]");
+    if(!els.length) return;
 
-      els.forEach(el => io.observe(el));
-    })();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("inview");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+
+    els.forEach(el => io.observe(el));
+  })();
+
+  /* ===============================
+     NOVAS FUNCIONALIDADES NASA PARA MARTE
+     =============================== */
+
+  // 1. Calculadora de Perda
+  const hoursSlider = document.getElementById('hoursSlider');
+  const hoursValue = document.getElementById('hoursValue');
+  const employeesInput = document.getElementById('employeesInput');
+  const calculateBtn = document.getElementById('calculateBtn');
+  const calcResult = document.getElementById('calcResult');
+  const lossAmount = document.getElementById('lossAmount');
+
+  hoursSlider.addEventListener('input', function() {
+    hoursValue.textContent = this.value + 'h';
+  });
+
+  calculateBtn.addEventListener('click', function() {
+    const hours = parseInt(hoursSlider.value);
+    const employees = parseInt(employeesInput.value);
+    
+    // Cálculo simplificado: R$ 100/hora * horas * 52 semanas * funcionários
+    const hourlyRate = 100; // R$/hora conservador
+    const weeklyCost = hours * hourlyRate * employees;
+    const annualCostMin = Math.round(weeklyCost * 52 * 0.8 / 1000) * 1000;
+    const annualCostMax = Math.round(weeklyCost * 52 * 1.2 / 1000) * 1000;
+    
+    lossAmount.textContent = `R$ ${(annualCostMin/1000).toFixed(1)}M - R$ ${(annualCostMax/1000).toFixed(1)}M`;
+    calcResult.style.display = 'block';
+    
+    // Scroll suave para o resultado
+    calcResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // 2. Download Checklist
+  document.getElementById('downloadChecklist').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Simulação de download
+    const checklistContent = `
+    CHECKLIST DE DIAGNÓSTICO OPERACIONAL - MAXPROD
+    
+    1. 🎯 IDENTIFICAÇÃO DO PROBLEMA
+       [ ] Impacto financeiro mensurável?
+       [ ] Duração do problema (meses/anos)?
+       [ ] Tentativas anteriores de solução?
+    
+    2. 📊 INDICADORES ATUAIS
+       [ ] OEE / Produtividade
+       [ ] Taxa de retrabalho
+       [ ] Tempo médio de parada
+       [ ] Custo de não qualidade
+    
+    3. 🔍 CAUSAS PROVÁVEIS
+       [ ] Processo
+       [ ] Pessoas
+       [ ] Máquinas/Equipamentos
+       [ ] Método/Procedimento
+       [ ] Material/Fornecedor
+    
+    4. ⚡ PRÓXIMOS PASSOS
+       [ ] Coleta de dados (72h)
+       [ ] Análise de causa raiz
+       [ ] Plano de ação prioritário
+       [ ] ROI estimado
+    
+    ---
+    Baixe a versão completa em: maxprod.com.br/checklist
+    `;
+    
+    const blob = new Blob([checklistContent], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Checklist_Diagnostico_MaxProd.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+    
+    // Feedback visual
+    const originalText = this.textContent;
+    this.textContent = '✅ CHECKLIST BAIXADO!';
+    this.style.background = 'rgba(56, 211, 159, 0.1)';
+    this.style.borderColor = 'var(--ok)';
+    
+    setTimeout(() => {
+      this.textContent = originalText;
+      this.style.background = '';
+      this.style.borderColor = '';
+    }, 2000);
+  });
+
+  // 3. Seleção de Caminho
+  const fastPath = document.getElementById('fastPath');
+  const deepPath = document.getElementById('deepPath');
+
+  [fastPath, deepPath].forEach(path => {
+    path.addEventListener('click', function(e) {
+      if (!e.target.closest('a')) {
+        const link = this.querySelector('a');
+        if (link) {
+          // Adiciona efeito visual
+          this.style.transform = 'scale(0.98)';
+          setTimeout(() => {
+            this.style.transform = '';
+            window.open(link.href, link.target);
+          }, 200);
+        }
+      }
+    });
+  });
+
+  // 4. Micro-interações para CTAs
+  document.querySelectorAll('.btn-micro, .btn-text, .btn-ghost, .btn-secondary').forEach(btn => {
+    btn.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-2px)';
+    });
+    
+    btn.addEventListener('mouseleave', function() {
+      this.style.transform = '';
+    });
+  });
+
+  // 5. Pain Items interativos
+  document.querySelectorAll('.pain-item').forEach(item => {
+    item.addEventListener('click', function() {
+      // Destaca o item clicado
+      document.querySelectorAll('.pain-item').forEach(i => {
+        i.style.background = 'rgba(255, 100, 100, 0.03)';
+        i.style.borderColor = 'rgba(255, 100, 100, 0.15)';
+      });
+      
+      this.style.background = 'rgba(255, 100, 100, 0.1)';
+      this.style.borderColor = 'rgba(255, 100, 100, 0.3)';
+      
+      // Rolagem suave para soluções
+      document.querySelector('.solution-column').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    });
+  });
+
   </script>
-
+  
 </body>
 </html>
