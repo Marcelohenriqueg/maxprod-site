@@ -401,6 +401,76 @@
     /* ===============================
        CASES SECTION - Grid Interativo
        =============================== */
+    /* ===============================
+   ASSESSMENT CARD - Compacto
+   =============================== */
+.assessment-card {
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding: var(--space-20);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.assessment-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: radial-gradient(circle at 50% 50%, rgba(0,102,255,0.08) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.assessment-content {
+  position: relative;
+  z-index: 1;
+}
+
+.assessment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  padding: var(--space-8);
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: var(--space-4);
+}
+
+.assessment-item:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-1px);
+}
+
+.assessment-item input[type="checkbox"] {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.assessment-item span {
+  font-size: var(--text-xs);
+  line-height: 1.3;
+  color: var(--text-secondary);
+}
+
+.assessment-item strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.assessment-actions {
+  display: grid;
+  gap: var(--space-8);
+  margin-top: var(--space-16);
+}
     .cases-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
