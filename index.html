@@ -920,14 +920,14 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
-          <div class="overline">CONSULTORIA INDUSTRIAL PREMIUM</div>
+          <div class="overline">CONSULTORIA INDUSTRIAL </div>
           <h1>
             Transformamos <span class="text-gradient">problemas complexos</span> em 
             <span class="text-gradient">resultados mensuráveis</span>
           </h1>
           
           <p class="text-lead">
-            Com experiência prática em ambos os lados da cadeia — como cliente e fornecedor — 
+            Com experiência prática em ambos os lados da cadeia, como cliente e fornecedor, 
             entregamos soluções que impactam diretamente seu P&L: redução de custos, aumento 
             de produtividade e qualidade robusta.
           </p>
@@ -959,29 +959,134 @@
         </div>
 
         <div class="hero-visual">
-          <div class="visual-card floating">
-            <div style="margin-bottom: var(--space-24);">
-              <div style="font-size: var(--text-sm); color: var(--text-tertiary); margin-bottom: var(--space-8);">
-                CASO RECENTE
-              </div>
-              <h4 style="margin-bottom: var(--space-8);">Stellantis × Maxion</h4>
-              <p style="font-size: var(--text-sm); margin-bottom: var(--space-16);">
-                Aumento de OEE de 52% para 73% em célula crítica, eliminando risco de ruptura.
-              </p>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16);">
-              <div>
-                <div style="font-size: var(--text-xs); color: var(--text-tertiary);">ANTES</div>
-                <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--error);">52%</div>
-              </div>
-              <div>
-                <div style="font-size: var(--text-xs); color: var(--text-tertiary);">DEPOIS</div>
-                <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--success);">73%</div>
-              </div>
-            </div>
-          </div>
+  <!-- ASSESSMENT INTERATIVO - Versão Premium -->
+  <div class="visual-card" style="position: relative; overflow: hidden;">
+    
+    <!-- Glow effect -->
+    <div style="position: absolute; top: -50%; left: -50%; right: -50%; bottom: -50%; 
+                background: radial-gradient(circle at 50% 50%, rgba(0,102,255,0.15) 0%, transparent 70%);
+                z-index: 0; pointer-events: none;"></div>
+    
+    <div style="position: relative; z-index: 1;">
+      <div style="margin-bottom: var(--space-24);">
+        <div style="font-size: var(--text-sm); color: var(--brand-secondary); font-weight: 600; 
+                    margin-bottom: var(--space-8); letter-spacing: 0.05em;">
+          AUTOAVALIAÇÃO RÁPIDA
         </div>
+        <h4 style="margin-bottom: var(--space-8); color: var(--text-primary);">
+          Seu desafio é complexo?
+        </h4>
+        <p style="font-size: var(--text-sm); margin-bottom: var(--space-16); color: var(--text-secondary);">
+          Avalie em 60 segundos se seu caso precisa de nossa abordagem especializada.
+        </p>
+      </div>
+      
+      <!-- Progress Bar -->
+      <div style="margin-bottom: var(--space-20);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-8);">
+          <span style="font-size: var(--text-xs); color: var(--text-tertiary);">
+            <strong id="assessCount" style="color: var(--text-primary);">0</strong>/5 indicadores
+          </span>
+          <span style="font-size: var(--text-xs); color: var(--brand-secondary);" id="assessHint">
+          </span>
+        </div>
+        
+        <div style="height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden;">
+          <div id="assessBarFill" style="height: 100%; width: 0%; 
+                    background: linear-gradient(90deg, var(--brand-primary), var(--brand-secondary));
+                    transition: width 0.3s ease; border-radius: 3px;"></div>
+        </div>
+      </div>
+      
+      <!-- Assessment Items -->
+      <div style="margin-bottom: var(--space-24);">
+        <div class="assess-list" style="display: grid; gap: var(--space-12);">
+          
+          <label class="assess-item" style="display: flex; align-items: flex-start; gap: var(--space-12); 
+                    padding: var(--space-12); background: rgba(255,255,255,0.03); 
+                    border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);
+                    cursor: pointer; transition: all 0.2s ease;">
+            <input type="checkbox" class="assessCheck" style="margin-top: 2px;">
+            <span style="font-size: var(--text-sm); line-height: 1.4;">
+              <strong style="color: var(--text-primary);">O problema já impacta</strong> 
+              custo, entrega ou qualidade de forma mensurável.
+            </span>
+          </label>
+          
+          <label class="assess-item" style="display: flex; align-items: flex-start; gap: var(--space-12); 
+                    padding: var(--space-12); background: rgba(255,255,255,0.03); 
+                    border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);
+                    cursor: pointer; transition: all 0.2s ease;">
+            <input type="checkbox" class="assessCheck" style="margin-top: 2px;">
+            <span style="font-size: var(--text-sm); line-height: 1.4;">
+              <strong style="color: var(--text-primary);">A causa não é óbvia</strong> 
+              ou envolve múltiplos fatores/departamentos.
+            </span>
+          </label>
+          
+          <label class="assess-item" style="display: flex; align-items: flex-start; gap: var(--space-12); 
+                    padding: var(--space-12); background: rgba(255,255,255,0.03); 
+                    border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);
+                    cursor: pointer; transition: all 0.2s ease;">
+            <input type="checkbox" class="assessCheck" style="margin-top: 2px;">
+            <span style="font-size: var(--text-sm); line-height: 1.4;">
+              <strong style="color: var(--text-primary);">Tentativas anteriores</strong> 
+              sem sustentação ou com resultados limitados.
+            </span>
+          </label>
+          
+          <label class="assess-item" style="display: flex; align-items: flex-start; gap: var(--space-12); 
+                    padding: var(--space-12); background: rgba(255,255,255,0.03); 
+                    border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);
+                    cursor: pointer; transition: all 0.2s ease;">
+            <input type="checkbox" class="assessCheck" style="margin-top: 2px;">
+            <span style="font-size: var(--text-sm); line-height: 1.4;">
+              <strong style="color: var(--text-primary);">Dependência excessiva</strong> 
+              de pessoas específicas ou rotinas não padronizadas.
+            </span>
+          </label>
+          
+          <label class="assess-item" style="display: flex; align-items: flex-start; gap: var(--space-12); 
+                    padding: var(--space-12); background: rgba(255,255,255,0.03); 
+                    border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);
+                    cursor: pointer; transition: all 0.2s ease;">
+            <input type="checkbox" class="assessCheck" style="margin-top: 2px;">
+            <span style="font-size: var(--text-sm); line-height: 1.4;">
+              <strong style="color: var(--text-primary);">O que busca é decisão e execução</strong>, 
+              não apenas diagnóstico ou relatório.
+            </span>
+          </label>
+          
+        </div>
+      </div>
+      
+      <!-- Result Message -->
+      <div id="assessMsg" style="text-align: center; margin-bottom: var(--space-20); 
+                padding: var(--space-12); background: rgba(0,102,255,0.08); 
+                border-radius: var(--radius-md); border: 1px solid rgba(0,102,255,0.15);">
+        <p style="font-size: var(--text-sm); margin: 0; color: var(--text-secondary);">
+          Se você se identificou com 2 ou + desafios, sua operação tem alto potencial de melhoria.
+        </p>
+      </div>
+      
+      <!-- CTA Buttons -->
+      <div class="assess-actions" style="display: grid; gap: var(--space-12);">
+        <a href="#contact" id="assessCta" 
+           class="btn btn-primary" 
+           style="width: 100%; justify-content: center; text-decoration: none;">
+          Solicitar diagnóstico personalizado
+        </a>
+        
+        <a href="#cases" id="assessAlt" 
+           class="btn btn-secondary" 
+           style="width: 100%; justify-content: center; text-decoration: none;">
+          Ver cases similares primeiro
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</div>
       </div>
     </div>
   </section>
