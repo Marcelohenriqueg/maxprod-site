@@ -703,6 +703,60 @@
         max-width: none;
       }
     }
+    /* =========================================
+   PATCH 2 — CASES "1 PÁGINA" (mais compacto)
+   - sobe "RESULTADOS COMPROVADOS"
+   - reduz espaço do texto final -> CTA
+   - cards mais largos e mais próximos
+   ========================================= */
+
+#cases.section{
+  padding-top: 22px;              /* estava 32px -> sobe um pouco mais */
+  padding-bottom: var(--space-40);
+}
+
+/* sobe um toque o overline */
+#cases .section-header .overline{
+  margin-bottom: 6px;             /* estava 12px */
+  transform: translateY(-2px);
+}
+
+/* reduz espaço entre título/sub e o grid */
+#cases .section-header{
+  margin-bottom: 18px;            /* estava 32px -> aproxima do conteúdo */
+}
+
+/* reduz distância do texto "no seu negócio" para o CTA/grid */
+#cases .section-header .text-lead{
+  margin-bottom: 8px !important;  /* força menor respiro */
+}
+
+/* aproxima CTA do texto e do topo do card 4 */
+.cases-stage{
+  gap: 16px;                      /* estava 24px -> reduz espaçamento geral */
+  margin-top: 10px;               /* estava 24px -> sobe o conjunto */
+}
+
+/* CTA mais perto do texto final e alinhado melhor */
+.cases-cta-float{
+  align-self: start;              /* antes end -> sobe o botão */
+  margin-top: -6px;               /* aproxima um pouco mais do parágrafo */
+}
+
+/* deixa cards mais "largos" visualmente: menor gap entre eles */
+.cases-grid--4{
+  gap: 16px;                      /* estava 24px */
+}
+
+/* em telas largas, dá ainda mais largura pros cards (sem quebrar layout) */
+@media (min-width: 1280px){
+  .container{ max-width: 1360px; }  /* antes 1280 -> +largura pros 4 cards */
+}
+
+/* opcional: card um pouco mais baixo para caber sem scroll */
+#cases .case-image{ height: 132px; }   /* estava 140px */
+#cases .case-content{ padding: 14px; } /* estava 16px */
+
 
     /* ===============================
        METHODOLOGY - Arquitetura Visual
