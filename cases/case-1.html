@@ -828,6 +828,90 @@
   padding: 16px;
   display: block;
 }
+/* ===============================
+   RESULTADOS: texto esquerda + imagem direita
+================================ */
+.case-results-grid{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 22px;
+  align-items: start;
+  margin-top: 10px;
+}
+
+.case-results-media{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 14px 36px rgba(0,0,0,.45);
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-results-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* calendário não pode cortar */
+  padding: 14px;
+  display: block;
+}
+
+/* ===============================
+   DOWNLOAD: texto esquerda + (imagem + botões) à direita
+================================ */
+.case-download-grid{
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.case-download-right{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.case-download-image{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 14px 36px rgba(0,0,0,.45);
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-download-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 14px;
+  display: block;
+}
+
+/* Botões em coluna abaixo da imagem */
+.case-download__actions{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* Mobile: empilha tudo */
+@media (max-width: 900px){
+  .case-results-grid,
+  .case-download-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .case-results-media{ height: 200px; }
+  .case-download-image{ height: 190px; }
+}
 
     
   </style>
@@ -1073,44 +1157,41 @@
         </div>
 
         <!-- RESULTADOS -->
-        <div class="case-panel">
-          <div class="case-h">4) Resultados e impacto (ROI & saving)</div>
 
-          <ul class="case-list">
-            <li><b>Aumento de eficiência:</b> OEE de <b>52% → 73%</b> (média mensal pós-ações).</li>
-            <li><b>Ganho de capacidade:</b> liberação de capacidade efetiva, elevando entrega de <b>16 → 28 JPH</b>.</li>
-            <li><b>Consumíveis otimizados:</b> <b>+50%</b> vida útil do eletrodo (3.000 → 4.500 pontos).</li>
-            <li><b>Qualidade:</b> evolução para nível de <b>"Zero Defeitos"</b>, com <b>92%</b> de conformidade em durabilidade.</li>
-            <li><b>Impacto no cliente:</b> mitigação do risco de ruptura e preservação do fornecimento a partir de julho/2022.</li>
-          </ul>
+   <div class="case-panel">
+  <div class="case-h">4) Resultados e impacto (ROI & saving)</div>
 
-          <p class="case-p">
-            <b>ROI:</b> retorno rápido, sustentado por ações de baixo investimento relativo e alto impacto em disponibilidade e estabilidade.
-            <span style="color:rgba(255,255,255,.6);">Valores absolutos disponíveis sob consulta.</span>
-          </p>
+  <div class="case-results-grid">
+    <div class="case-results-text">
 
-          <!-- DOWNLOAD SECTION - BOTÕES ALINHADOS -->
-          <div class="case-download">
-            <div class="case-download__content">
-              <div class="case-download__label">MATERIAL COMPLETO</div>
-              <h3>Baixar o case completo (PDF)</h3>
-              <p>Para ver gráficos, evidências e detalhes técnicos, baixe a versão completa do material.</p>
-            </div>
+      <ul class="case-list">
+        <li><b>Aumento de eficiência:</b> OEE de <b>52% → 73%</b> (média mensal pós-ações).</li>
+        <li><b>Ganho de capacidade:</b> liberação de capacidade efetiva, elevando entrega de <b>16 → 28 JPH</b>.</li>
+        <li><b>Consumíveis otimizados:</b> <b>+50%</b> vida útil do eletrodo (3.000 → 4.500 pontos).</li>
+        <li><b>Qualidade:</b> evolução para nível de <b>"Zero Defeitos"</b>, com <b>92%</b> de conformidade em durabilidade.</li>
+        <li><b>Impacto no cliente:</b> mitigação do risco de ruptura e preservação do fornecimento a partir de julho/2022.</li>
+      </ul>
 
-            <div class="case-download__actions">
-              <a class="btn btn--primary"
-                 href="/assets/cases/case-1-aumento-oee-maxion.pdf"
-                 download
-                 target="_blank"
-                 rel="noopener">
-                Baixar PDF do Case
-              </a>
+      <p class="case-p">
+        <b>ROI:</b> retorno rápido, sustentado por ações de baixo investimento relativo e alto impacto em disponibilidade e estabilidade.
+        <span style="color:rgba(255,255,255,.6);">Valores absolutos disponíveis sob consulta.</span>
+      </p>
 
-              <a class="btn btn--secondary" href="/index.html#cases">
-                Ver Outros Cases
-              </a>
-            </div>
-          </div>
+    </div>
+
+    <div class="case-results-media">
+      <img src="/assets/img/calendario.resultados.case1.png"
+           alt="Calendário e marcos dos resultados do Case 1"
+           loading="lazy">
+    </div>
+  </div>
+
+  <!-- DOWNLOAD SECTION - vamos ajustar já já -->
+  <div class="case-download">
+    ...
+  </div>
+</div>
+     
         </div>
       </div>
 
