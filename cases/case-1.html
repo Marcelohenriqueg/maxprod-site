@@ -472,6 +472,100 @@
   background:#00e0a4;
   box-shadow:0 0 10px #00e0a4;
 }
+/* =========================
+   UPG 4 — PROGRESS RING OEE
+   ========================= */
+
+.case-kpi{
+  position: relative;
+  overflow: hidden;
+}
+
+/* ring container */
+.case-ring{
+  width: 110px;
+  height: 110px;
+  position: relative;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+/* svg */
+.case-ring__svg{
+  width: 110px;
+  height: 110px;
+  transform: rotate(-90deg);
+  display: block;
+}
+
+/* background circle */
+.case-ring__bg{
+  fill: none;
+  stroke: rgba(255,255,255,.10);
+  stroke-width: 10;
+}
+
+/* progress circle */
+.case-ring__fg{
+  fill: none;
+  stroke: url(#caseRingGrad);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 327;     /* 2πr where r=52 approx 326.7 */
+  stroke-dashoffset: 327;    /* start empty */
+  filter: drop-shadow(0 0 10px rgba(47,107,255,.75));
+  transition: stroke-dashoffset 1400ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* center text */
+.case-ring__center{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.case-ring__value{
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,.95);
+  line-height: 1;
+}
+
+.case-ring__label{
+  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.60);
+}
+
+/* mini line inside note */
+.case-ring__mini{
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  color: rgba(255,255,255,.80);
+}
+
+.case-ring__delta{
+  color: rgba(100,220,255,.90);
+  font-weight: 800;
+}
+
+/* Optional: subtle glow on the KPI when animated */
+.case-kpi.is-animated::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: 18px;
+  background: radial-gradient(260px 120px at 30% 10%, rgba(47,107,255,.20), transparent 60%);
+  pointer-events:none;
+}
 
   </style>
 </head>
@@ -512,8 +606,31 @@
           <div class="case-kpi__top">
             <div class="case-kpi__label">OEE</div>
           </div>
-          <p class="case-kpi__value">52% → 73%</p>
-          <p class="case-kpi__note">média mensal pós-ações</p>
+          <div class="case-ring" data-value="73" data-before="52" aria-label="OEE 52 para 73">
+  <svg class="case-ring__svg" viewBox="0 0 120 120" role="img" aria-hidden="true">
+    <defs>
+      <linearGradient id="caseRingGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="rgba(47,107,255,1)"/>
+        <stop offset="100%" stop-color="rgba(100,220,255,.85)"/>
+      </linearGradient>
+    </defs>
+    <circle class="case-ring__bg" cx="60" cy="60" r="52"></circle>
+    <circle class="case-ring__fg" cx="60" cy="60" r="52"></circle>
+  </svg>
+
+  <div class="case-ring__center">
+    <div class="case-ring__value"><span data-ring="value">73</span>%</div>
+    <div class="case-ring__label">OEE</div>
+  </div>
+</div>
+
+<p class="case-kpi__note">
+  <span class="case-ring__mini">
+    <b><span data-ring="before">52</span>%</b> → <b><span data-ring="after">73</span>%</b>
+    <span class="case-ring__delta">(+<span data-ring="delta">21</span> p.p.)</span>
+  </span><br>
+  média mensal pós-ações
+</p>
         </div>
 
         <div class="case-kpi">
@@ -677,6 +794,68 @@
       </div>
     </section>
   </main>
+<script>
+(function(){
+  // procura todos os rings na página (você pode reaproveitar depois)
+  const rings = document.querySelectorAll('.case-ring');
+  if(!rings.length) return;
+
+  function animateRing(ring){
+    const val = Number(ring.dataset.value || 0);
+    const before = Number(ring.dataset.before || 0);
+    const after = val;
+
+    const fg = ring.querySelector('.case-ring__fg');
+    const valueEl = ring.querySelector('[data-ring="value"]');
+    const beforeEl = document.querySelector('[data-ring="before"]');
+    const afterEl  = document.querySelector('[data-ring="after"]');
+    const deltaEl  = document.querySelector('[data-ring="delta"]');
+
+    // circumference (2πr) r=52 => ~326.7 (usamos 327 no CSS)
+    const C = 327;
+    const clamped = Math.max(0, Math.min(100, val));
+    const offset = C - (C * clamped / 100);
+
+    // atualiza textos (caso você mude os valores via data-*)
+    if(beforeEl) beforeEl.textContent = before;
+    if(afterEl)  afterEl.textContent = after;
+    if(deltaEl)  deltaEl.textContent = (after - before);
+
+    // dispara animação do círculo
+    requestAnimationFrame(() => {
+      fg.style.strokeDashoffset = offset.toFixed(2);
+      ring.closest('.case-kpi')?.classList.add('is-animated');
+    });
+
+    // contador estilo Apple
+    const start = performance.now();
+    const from = 0;
+    const to = after;
+    const dur = 1100;
+
+    function tick(t){
+      const p = Math.min(1, (t - start) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const v = Math.round(from + (to - from) * eased);
+      if(valueEl) valueEl.textContent = v;
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // anima quando aparece na tela
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        animateRing(e.target);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.35 });
+
+  rings.forEach(r => io.observe(r));
+})();
+</script>
 
 </body>
 </html>
