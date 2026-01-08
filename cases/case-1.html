@@ -454,7 +454,58 @@
     top: auto !important;
   }
 }
+/* 2) KPI centralizado + visual “premium” */
+.case-kpi{
+  text-align: center;
+}
 
+.case-kpi__label{
+  display:block;
+  text-align: center;
+}
+
+.case-kpi__value{
+  display:flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: -0.02em;
+}
+
+/* Cores */
+.kpi-before{ color: rgba(255, 90, 90, .95); font-weight: 900; }
+.kpi-after{ color: rgba(60, 255, 200, .95); font-weight: 900; }
+.kpi-good{  color: rgba(60, 255, 200, .95); font-weight: 900; }
+.kpi-arrow{ color: rgba(255,255,255,.55); font-weight: 800; }
+
+/* Animação discreta (sem “carnaval”) */
+@keyframes kpiPop {
+  0%   { transform: translateY(3px); opacity: .0; }
+  100% { transform: translateY(0);  opacity: 1; }
+}
+@keyframes kpiGlow {
+  0%,100% { filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+  50%     { filter: drop-shadow(0 6px 18px rgba(47,107,255,.18)); }
+}
+
+/* entra suave */
+.case-kpi{
+  animation: kpiPop .45s ease-out both;
+}
+.case-kpi:nth-child(1){ animation-delay: .05s; }
+.case-kpi:nth-child(2){ animation-delay: .10s; }
+.case-kpi:nth-child(3){ animation-delay: .15s; }
+.case-kpi:nth-child(4){ animation-delay: .20s; }
+
+/* brilho leve no número (só pra dar vida) */
+.case-kpi__value{
+  animation: kpiGlow 3.4s ease-in-out infinite;
+}
+
+/* Acessibilidade: respeita reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .case-kpi, .case-kpi__value{ animation: none !important; }
+  
     
   </style>
 </head>
@@ -557,25 +608,25 @@
       <div class="case-kpis">
         <div class="case-kpi">
           <span class="case-kpi__label">OEE</span>
-          <p class="case-kpi__value">52% → 73%</p>
-          <p class="case-kpi__note">média mensal pós-ações</p>
+          <span class="kpi-before">52%</span> <span class="kpi-arrow">→</span> <span class="kpi-after">73%</span>
+                    <p class="case-kpi__note">média mensal pós-ações</p>
         </div>
 
         <div class="case-kpi">
           <span class="case-kpi__label">Capacidade</span>
-          <p class="case-kpi__value">16 → 28 JPH</p>
+          <span class="kpi-before">16</span> <span class="kpi-arrow">→</span> <span class="kpi-after">28 JPH</span>
           <p class="case-kpi__note">liberação de capacidade efetiva</p>
         </div>
 
         <div class="case-kpi">
           <span class="case-kpi__label">Consumível</span>
-          <p class="case-kpi__value">+50%</p>
+          <span class="kpi-good">+50%</span>
           <p class="case-kpi__note">3.000 → 4.500 pontos por eletrodo</p>
         </div>
 
         <div class="case-kpi">
           <span class="case-kpi__label">Qualidade</span>
-          <p class="case-kpi__value">92%</p>
+          <span class="kpi-good">92%</span>
           <p class="case-kpi__note">aderência “Zero Defeitos” em durabilidade</p>
         </div>
       </div>
