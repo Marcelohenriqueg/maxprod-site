@@ -2,18 +2,18 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="description" content="Case MaxProd — Aumento de OEE em célula de solda (Tier 1 Stellantis): evitamos ruptura e elevamos a eficiência em 90 dias." />
   <title>Case 1 | Aumento de OEE em Célula de Solda — MaxProd</title>
 
   <!-- CSS GLOBAL DO SITE (IGUAL HOME) -->
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="preload" href="/assets/css/site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/site.css"></noscript>
 
   <style>
     /* =========================================================
-       CASE-1 — BASE PREMIUM (SEM QUEBRAR O GLOBAL)
+       CASE-1 — BASE PREMIUM OTIMIZADA
        ========================================================= */
-
     :root{
       --case-text: rgba(255,255,255,.92);
       --case-muted: rgba(255,255,255,.72);
@@ -21,44 +21,51 @@
       --case-stroke: rgba(255,255,255,.10);
       --case-shadow: 0 22px 70px rgba(0,0,0,.55);
       --case-shadow2: 0 10px 30px rgba(0,0,0,.35);
-
-      /* herda paleta do site */
       --case-brand: var(--brand, #2f6bff);
       --case-brand2: var(--brand2, #1f4fd8);
-
-      /* altura do navbar fixo (ajuste fino se quiser) */
       --nav-offset: 96px;
+      --success: #3cffc8;
+      --danger: #ff5a5a;
     }
 
-    html, body { height: 100%; }
+    html, body { 
+      height: 100%; 
+      margin: 0;
+    }
+    
     body{
-      margin:0;
       color: var(--case-text);
-      background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(47,107,255,.16), transparent 55%),
-        radial-gradient(1000px 700px at 90% 10%, rgba(31,79,216,.10), transparent 60%),
-        linear-gradient(180deg, #0b0f14 0%, #0e1622 60%, #0b0f14 100%);
+      /* FUNDO UNIFICADO - Sem overlays distintos */
+      background: 
+        linear-gradient(180deg, #0b0f14 0%, #0e1622 100%);
     }
 
     /* =========================================================
-       (3) BREADCRUMB MAIS PERTO DO MENU + COMPENSA NAV FIXO
+       ESTRUTURA PRINCIPAL
        ========================================================= */
     .case-wrap{
       max-width: 1180px;
       margin: 0 auto;
-      padding: calc(var(--nav-offset) + 8px) 18px 64px; /* ↓ reduz distância */
+      padding: calc(var(--nav-offset) + 16px) 24px 80px;
     }
 
     .case-breadcrumb{
       color: var(--case-muted2);
       font-size: 13px;
-      margin: 2px 0 12px; /* ↓ mais perto do menu */
+      margin-bottom: 16px;
     }
-    .case-breadcrumb a{ color: inherit; text-decoration: none; }
-    .case-breadcrumb a:hover{ color: var(--case-text); text-decoration: underline; }
+    .case-breadcrumb a{ 
+      color: inherit; 
+      text-decoration: none; 
+      transition: color 0.2s ease;
+    }
+    .case-breadcrumb a:hover{ 
+      color: var(--case-text); 
+      text-decoration: underline; 
+    }
 
     /* =========================================================
-       (4) COSTURA VISUAL — TIRA “DIFERENÇA DE COR ENTRE DOBRAS”
+       SHELL UNIFICADO
        ========================================================= */
     .case-shell{
       border: 1px solid var(--case-stroke);
@@ -66,23 +73,16 @@
       box-shadow: var(--case-shadow);
       overflow: hidden;
       position: relative;
-
-      /* fundo mais “costurado” com o body (menos placa diferente) */
-      background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(47,107,255,.14), transparent 58%),
-        radial-gradient(1000px 700px at 90% 10%, rgba(31,79,216,.08), transparent 62%),
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-    }
-    .case-shell::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(900px 380px at 50% -10%, rgba(255,255,255,.09), transparent 58%);
-      pointer-events:none;
-      opacity:.55; /* ↓ reduz “faixa” */
+      background: linear-gradient(180deg, 
+        rgba(255,255,255,.03) 0%, 
+        rgba(255,255,255,.015) 100%);
     }
 
+    /* =========================================================
+       HEADER DO CASE
+       ========================================================= */
     .case-head{
-      padding: 18px 22px 10px; /* header mais “fechado” */
+      padding: 28px 32px 20px;
       position: relative;
       z-index: 1;
     }
@@ -94,8 +94,8 @@
       font-size: 12px;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.72);
-      margin-bottom: 10px;
+      color: var(--case-muted);
+      margin-bottom: 12px;
     }
     .case-tag .dot{
       width: 8px; height: 8px;
@@ -106,504 +106,517 @@
 
     .case-title{
       margin: 0;
-      font-size: clamp(24px, 2.6vw, 38px);
-      line-height: 1.10;
+      font-size: clamp(28px, 2.8vw, 42px);
+      line-height: 1.15;
       color: var(--case-text);
       letter-spacing: -0.02em;
-      max-width: 32ch;
+      max-width: 28ch;
+      font-weight: 700;
     }
 
     /* =========================================================
-       (2) LOGO NO CANTO DIREITO DO HEADER DO CASE (ÁREA AMARELA)
-       ========================================================= */
-    .case-brandmark{
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(10,14,20,.35);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 3;
-    }
-    .case-brandmark img{
-      height: 34px; /* ajuste fino 28~44 */
-      width: auto;
-      display:block;
-      opacity: .95;
-    }
-    .case-brandmark .txt{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-    .case-brandmark .t1{
-      font-weight: 900;
-      letter-spacing: .08em;
-      font-size: 12px;
-      color: rgba(255,255,255,.92);
-    }
-    .case-brandmark .t2{
-      font-size: 11px;
-      color: rgba(255,255,255,.62);
-    }
-
-    /* =========================================================
-       (1) PILL “RISCO DE RUPTURA” NA POSIÇÃO MARCADA
+       PILL "RISCO DE RUPTURA" - POSIÇÃO OTIMIZADA
        ========================================================= */
     .case-risk{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      padding: 9px 12px;
+      padding: 10px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(60,255,200,.22);
-      background: rgba(20,220,160,.10);
-      color: rgba(210,255,245,.90);
+      border: 1px solid rgba(60,255,200,.25);
+      background: rgba(20,220,160,.12);
+      color: rgba(210,255,245,.95);
       font-weight: 700;
-      font-size: 13px;
-
-      /* joga pra direita (posição marcada) */
+      font-size: 14px;
       position: absolute;
-      right: 18px;
-      top: 92px; /* ajuste fino se quiser: 84~110 */
-      margin-top: 0 !important;
-      z-index: 3;
-      max-width: 320px;
-      justify-content: center;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
       white-space: nowrap;
     }
     .case-risk .dot{
-      width:8px;height:8px;border-radius:999px;
-      background: rgba(40,255,200,.95);
-      box-shadow: 0 0 0 4px rgba(40,255,200,.18);
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(60,255,200,.2);
+      animation: pulse 2s infinite;
     }
-    .case-risk strong{ font-weight: 900; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
 
     .case-sub{
-      margin: 10px 0 0;
-      max-width: 78ch;
+      margin: 12px 0 0;
+      max-width: 68ch;
       color: var(--case-muted);
-      font-size: 15px;
-      line-height: 1.55;
+      font-size: 16px;
+      line-height: 1.6;
+      padding-right: 280px; /* Espaço para o pill */
     }
 
-    /* Imagem menor (mantém embaixo, só reduz altura) */
+    /* =========================================================
+       IMAGEM HERO
+       ========================================================= */
     .case-hero-image{
-      margin-top: 10px;
-      border-radius: 18px;
+      margin-top: 20px;
+      border-radius: 20px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
       box-shadow: var(--case-shadow2);
     }
     .case-hero-image img{
       width: 100%;
-      height: 220px; /* ↓ sobe KPI sem mudar layout */
+      height: 240px;
       object-fit: cover;
       display:block;
-      transform: translateZ(0);
     }
 
-    /* KPIs sobem (primeira dobra) e costuram com o head */
+    /* =========================================================
+       KPIs - NA PRIMEIRA DOBRA
+       ========================================================= */
     .case-kpis{
       display: grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 10px;
-      padding: 12px 22px 16px;
+      gap: 16px;
+      padding: 24px 32px;
       position: relative;
       z-index: 1;
-      margin-top: -10px; /* costura visual e sobe */
+      margin-top: 0;
     }
     .case-kpi{
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 18px;
-      padding: 12px 12px 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      padding: 20px 16px;
       box-shadow: var(--case-shadow2);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .case-kpi:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(0,0,0,.4);
     }
     .case-kpi__label{
       font-size: 12px;
-      color: rgba(255,255,255,.60);
+      color: rgba(255,255,255,.65);
       letter-spacing: .06em;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display:block;
     }
     .case-kpi__value{
-      font-size: 20px;
-      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 22px;
+      font-weight: 800;
       letter-spacing: -0.02em;
-      color: rgba(255,255,255,.92);
-      margin: 0;
+      color: rgba(255,255,255,.95);
+      margin: 0 0 4px;
     }
+    .kpi-before{ color: var(--danger); }
+    .kpi-after{ color: var(--success); }
+    .kpi-good{ color: var(--success); }
+    .kpi-arrow{ color: rgba(255,255,255,.6); font-weight: 700; }
+    
     .case-kpi__note{
-      margin: 2px 0 0;
-      font-size: 12px;
-      color: rgba(255,255,255,.55);
-      line-height: 1.35;
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: rgba(255,255,255,.6);
+      line-height: 1.4;
     }
 
+    /* =========================================================
+       CORPO DO CONTEÚDO
+       ========================================================= */
     .case-body{
-      padding: 0 28px 26px;
+      padding: 0 32px 40px;
       position: relative;
       z-index: 1;
     }
+    
     .case-grid{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 16px;
+      grid-template-columns: 1fr;
+      gap: 24px;
       align-items: start;
     }
-    .case-panel{
-      background: rgba(255,255,255,.028);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 20px;
-      padding: 18px;
-      box-shadow: var(--case-shadow2);
-    }
-    .case-h{
-      margin: 0 0 10px;
-      font-size: 14px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.75);
-    }
-    .case-p{
-      margin: 0;
-      color: var(--case-muted);
-      line-height: 1.65;
-      font-size: 15px;
-    }
-    .case-list{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--case-muted);
-      line-height: 1.65;
-      font-size: 15px;
+    
+    @media (min-width: 992px) {
+      .case-grid{
+        grid-template-columns: 1.15fr .85fr;
+      }
     }
 
+    /* =========================================================
+       PANELS
+       ========================================================= */
+    .case-panel{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--case-shadow2);
+    }
+    
+    .case-h{
+      margin: 0 0 16px;
+      font-size: 15px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.8);
+      font-weight: 600;
+    }
+    
+    .case-p{
+      margin: 0 0 16px;
+      color: var(--case-muted);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+    .case-p:last-child{
+      margin-bottom: 0;
+    }
+    .case-p b{
+      color: var(--case-text);
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       PROBLEMA E IMPACTO - REMOVIDA CAIXA "DEPOIS"
+       ========================================================= */
     .case-compare{
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 14px;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    
+    @media (min-width: 768px) {
+      .case-compare{
+        grid-template-columns: 1fr;
+      }
     }
 
     .case-card{
       background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
       border-radius: 18px;
-      padding: 14px;
-      transform: none !important;
+      padding: 20px;
     }
     .case-card__kicker{
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.55);
-      margin-bottom: 6px;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 8px;
     }
     .case-card__big{
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      color: rgba(255,255,255,.92);
-      margin: 0 0 8px;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: rgba(255,255,255,.95);
+      margin: 0 0 12px;
     }
     .case-mini{
-      color: rgba(255,255,255,.70);
-      font-size: 13px;
-      line-height: 1.55;
+      color: rgba(255,255,255,.7);
+      font-size: 14px;
+      line-height: 1.5;
       margin: 0;
+    }
+
+    /* =========================================================
+       METODOLOGIA - COM IMAGEM PDCA
+       ========================================================= */
+    .case-methodology{
+      position: relative;
+    }
+    
+    .case-pdca-image{
+      margin: 20px 0;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.02);
+    }
+    
+    .case-pdca-image img{
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .case-pdca-image:hover img{
+      transform: scale(1.02);
     }
 
     .case-badges{
       display:flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
+      gap: 10px;
+      margin: 20px 0;
     }
     .case-badge{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding: 8px 10px;
+      padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.72);
-      font-size: 13px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.75);
+      font-size: 14px;
       line-height: 1;
-      user-select:none;
     }
     .case-badge i{
-      width: 7px; height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 999px;
-      background: rgba(255,255,255,.55);
-      display:inline-block;
+      background: var(--case-brand);
     }
 
+    .case-list{
+      margin: 16px 0;
+      padding-left: 20px;
+      color: var(--case-muted);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+    .case-list li{
+      margin-bottom: 8px;
+    }
+    .case-list li:last-child{
+      margin-bottom: 0;
+    }
+    .case-list b{
+      color: var(--case-text);
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       DOWNLOAD SECTION - BOTÕES PADRONIZADOS
+       ========================================================= */
     .case-download{
-      display:flex;
-      gap: 14px;
-      align-items:center;
-      justify-content:space-between;
-      padding: 16px 16px;
-      margin-top: 16px;
-      background: linear-gradient(180deg, rgba(47,107,255,.14), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 18px;
+      padding: 24px;
+      margin-top: 24px;
+      background: linear-gradient(135deg, 
+        rgba(47,107,255,.1) 0%, 
+        rgba(31,79,216,.05) 100%);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 20px;
       box-shadow: var(--case-shadow2);
     }
+    
     .case-download__label{
-      display:inline-block;
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.65);
-      margin-bottom: 6px;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 8px;
     }
+    
     .case-download h3{
-      margin: 0 0 4px;
-      font-size: 16px;
-      letter-spacing: -0.01em;
-      color: rgba(255,255,255,.92);
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: rgba(255,255,255,.95);
+      font-weight: 700;
     }
+    
     .case-download p{
-      margin: 0;
-      color: rgba(255,255,255,.70);
-      font-size: 13px;
-      line-height: 1.45;
-      max-width: 64ch;
+      margin: 0 0 20px;
+      color: rgba(255,255,255,.7);
+      font-size: 15px;
+      line-height: 1.5;
+      max-width: 60ch;
     }
+    
     .case-download__actions{
-      display:flex;
-      gap: 10px;
+      display: flex;
+      gap: 12px;
       flex-wrap: wrap;
-      justify-content:flex-end;
     }
 
+    /* =========================================================
+       BOTÕES PADRONIZADOS COM SITE
+       ========================================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+      white-space: nowrap;
+    }
+    
+    .btn--primary {
+      background: linear-gradient(135deg, var(--case-brand), var(--case-brand2));
+      color: white;
+      box-shadow: 0 4px 20px rgba(47,107,255,.3);
+    }
+    
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(47,107,255,.4);
+    }
+    
+    .btn--secondary {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.2);
+      color: var(--case-text);
+    }
+    
+    .btn--secondary:hover {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.3);
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       FOOTER DO CASE
+       ========================================================= */
     .case-footer{
-      display:flex;
-      gap: 10px;
+      display: flex;
+      gap: 16px;
       flex-wrap: wrap;
-      justify-content:flex-start;
-      padding: 18px 28px 26px;
+      padding: 0 32px 32px;
       position: relative;
       z-index: 1;
     }
 
-    /* Responsivo */
-    @media (max-width: 980px){
-      :root{ --nav-offset: 88px; }
-
-      .case-kpis{ grid-template-columns: repeat(2, minmax(0,1fr)); margin-top: 0; }
-      .case-grid{ grid-template-columns: 1fr; }
-      .case-title{ max-width: 100%; }
-
-      .case-hero-image img{ height: 170px; }
-
-      /* logo e pill não flutuam no mobile (não tapa conteúdo) */
-      .case-brandmark{
-        position: static;
-        margin: 10px 0 0;
-        width: fit-content;
+    /* =========================================================
+       RESPONSIVIDADE
+       ========================================================= */
+    @media (max-width: 1200px){
+      .case-wrap{
+        padding: calc(var(--nav-offset) + 12px) 20px 60px;
       }
+    }
+
+    @media (max-width: 992px){
+      .case-sub{
+        padding-right: 0;
+      }
+      
       .case-risk{
         position: static;
-        margin-top: 10px !important;
-        right: auto;
-        top: auto;
-        max-width: none;
+        transform: none;
+        margin-top: 16px;
         white-space: normal;
-        justify-content: flex-start;
+        justify-content: center;
+        width: 100%;
+      }
+      
+      .case-kpis{
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .case-head,
+      .case-body,
+      .case-footer{
+        padding-left: 24px;
+        padding-right: 24px;
       }
     }
 
-    @media (max-width: 560px){
-      .case-kpis{ grid-template-columns: 1fr; }
-      .case-compare{ grid-template-columns: 1fr; }
-      .case-head, .case-body, .case-footer{ padding-left: 16px; padding-right: 16px; }
-      .case-download{ flex-direction: column; align-items:flex-start; }
-      .case-download__actions{ width:100%; justify-content:flex-start; }
+    @media (max-width: 768px){
+      .case-kpis{
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      
+      .case-download__actions{
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .case-footer{
+        flex-direction: column;
+      }
+      
+      .btn{
+        width: 100%;
+        justify-content: center;
+      }
     }
 
-    /* ===== PATCH KPI + PILL (SEM REGREDIR) ===== */
+    @media (max-width: 480px){
+      .case-wrap{
+        padding: calc(var(--nav-offset) + 8px) 16px 40px;
+      }
+      
+      .case-head,
+      .case-body,
+      .case-footer{
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      
+      .case-panel{
+        padding: 20px;
+      }
+      
+      .case-title{
+        font-size: 24px;
+      }
+      
+      .case-sub{
+        font-size: 15px;
+      }
+    }
 
-/* 1) Pill centralizada (desktop) */
-.case-risk{
-  left: 50% !important;
-  right: auto !important;
-  top: 92px !important;          /* se quiser mais alto/baixo: 84~110 */
-  transform: translateX(-50%) !important;
-  max-width: none !important;
-}
+    /* =========================================================
+       ANIMAÇÕES SUAVES
+       ========================================================= */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-/* no mobile continua no fluxo (como já está) */
-@media (max-width: 980px){
-  .case-risk{
-    left: auto !important;
-    transform: none !important;
-    top: auto !important;
-  }
-}
-/* 2) KPI centralizado + visual “premium” */
-.case-kpi{
-  text-align: center;
-}
+    .case-kpi {
+      animation: fadeInUp 0.6s ease-out both;
+    }
+    
+    .case-kpi:nth-child(1) { animation-delay: 0.1s; }
+    .case-kpi:nth-child(2) { animation-delay: 0.2s; }
+    .case-kpi:nth-child(3) { animation-delay: 0.3s; }
+    .case-kpi:nth-child(4) { animation-delay: 0.4s; }
 
-.case-kpi__label{
-  display:block;
-  text-align: center;
-}
+    .case-panel {
+      animation: fadeInUp 0.6s ease-out both;
+    }
+    
+    .case-panel:nth-child(1) { animation-delay: 0.5s; }
+    .case-panel:nth-child(2) { animation-delay: 0.6s; }
 
-.case-kpi__value{
-  display:flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 8px;
-  letter-spacing: -0.02em;
-}
-
-/* Cores */
-.kpi-before{ color: rgba(255, 90, 90, .95); font-weight: 900; }
-.kpi-after{ color: rgba(60, 255, 200, .95); font-weight: 900; }
-.kpi-good{  color: rgba(60, 255, 200, .95); font-weight: 900; }
-.kpi-arrow{ color: rgba(255,255,255,.55); font-weight: 800; }
-
-/* Animação discreta (sem “carnaval”) */
-@keyframes kpiPop {
-  0%   { transform: translateY(3px); opacity: .0; }
-  100% { transform: translateY(0);  opacity: 1; }
-}
-@keyframes kpiGlow {
-  0%,100% { filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
-  50%     { filter: drop-shadow(0 6px 18px rgba(47,107,255,.18)); }
-}
-
-/* entra suave */
-.case-kpi{
-  animation: kpiPop .45s ease-out both;
-}
-.case-kpi:nth-child(1){ animation-delay: .05s; }
-.case-kpi:nth-child(2){ animation-delay: .10s; }
-.case-kpi:nth-child(3){ animation-delay: .15s; }
-.case-kpi:nth-child(4){ animation-delay: .20s; }
-
-/* brilho leve no número (só pra dar vida) */
-.case-kpi__value{
-  animation: kpiGlow 3.4s ease-in-out infinite;
-}
-
-/* Acessibilidade: respeita reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .case-kpi, .case-kpi__value{ animation: none !important; }
-}
-  .case-risk{
-    position: static !important;
-    transform: none !important;
-    margin-top: 12px !important;
-    max-width: none;
-    white-space: normal;
-  }
-
-  .case-head{ min-height: unset; }
-}
-
-/* =========================================================
-   PATCH ÚNICO — PILL NO “VAZIO” À DIREITA (como na seta)
-   - encosta no lado direito do header
-   - centraliza verticalmente no bloco do título/sub
-   - não quebra mobile
-   ========================================================= */
-
-/* garante referência */
-.case-head{ position: relative; }
-
-/* reserva um “corredor” à direita para o pill não invadir o texto */
-.case-title,
-.case-sub{
-  padding-right: 260px; /* ajuste fino: 220–320 */
-}
-
-/* posiciona o pill no espaço da seta */
-.case-risk{
-  position: absolute !important;
-  right: 24px !important;      /* distancia da borda direita */
-  top: 50% !important;         /* centro vertical do header */
-  transform: translateY(-50%) !important;
-
-  margin: 0 !important;
-  max-width: 240px;
-  white-space: nowrap;
-  z-index: 5;
-}
-
-/* se o header ficar muito “alto”, evita o pill ir pra cima demais */
-.case-head{
-  min-height: 180px; /* ajuste fino: 160–220 */
-}
-
-/* Responsivo: em telas menores o pill volta pro fluxo (abaixo do título) */
-@media (max-width: 980px){
-  .case-title,
-  .case-sub{
-    padding-right: 0 !important;
-  }
-
-  .case-risk{
-    position: static !important;
-    transform: none !important;
-    margin-top: 12px !important;
-    max-width: none;
-    white-space: normal;
-  }
-
-  .case-head{ min-height: unset; }
-}
-
- /* ===== PILL NO VAZIO À DIREITA (DESKTOP) — BLOCO ÚNICO FINAL ===== */
-.case-head{ position: relative; }
-
-/* corredor à direita pro pill não invadir o texto */
-.case-title,
-.case-sub{
-  padding-right: 320px !important; /* ajuste fino: 260–380 */
-}
-
-/* pill na área da seta */
-.case-risk{
-  position: absolute !important;
-  right: 24px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-
-  margin: 0 !important;
-  z-index: 999 !important;
-  white-space: nowrap !important;
-  max-width: 260px;
-}
-
-/* mobile: volta pro fluxo */
-@media (max-width: 980px){
-  .case-title,
-  .case-sub{ padding-right: 0 !important; }
-
-  .case-risk{
-    position: static !important;
-    transform: none !important;
-    margin-top: 12px !important;
-    white-space: normal !important;
-    max-width: none;
-  }
-}
+    /* Respeita prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .case-kpi,
+      .case-panel,
+      .btn {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
 
   </style>
 </head>
@@ -614,7 +627,7 @@
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
       <a href="/index.html#home" class="logo">
-        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo" width="120" height="40" loading="eager">
         <span class="logo-text">
           <span class="logo-title">MAXPROD</span>
           <span class="logo-sub">Soluções Empresariais</span>
@@ -675,19 +688,16 @@
       <a href="/index.html">Home</a> &nbsp;/&nbsp; <a href="/index.html#cases">Cases</a> &nbsp;/&nbsp; <span>Case 1</span>
     </div>
 
-    <section class="case-shell">
+    <section class="case-shell" aria-labelledby="case-title">
       <header class="case-head">
-
-        <!-- (2) LOGO NO HEADER DO CASE -->
-       
         <div class="case-tag"><span class="dot"></span> RESULTADOS COMPROVADOS</div>
 
-        <h1 class="case-title">
+        <h1 class="case-title" id="case-title">
           Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva
         </h1>
 
-        <!-- (1) PILL VAI PRA DIREITA VIA CSS -->
-        <div class="case-risk">
+        <!-- PILL FIXADO À DIREITA (DESKTOP) -->
+        <div class="case-risk" aria-label="Status do risco de ruptura">
           <span class="dot"></span>
           Risco de ruptura: <strong>mitigado</strong>
         </div>
@@ -698,41 +708,52 @@
         </p>
 
         <div class="case-hero-image">
-          <img src="/assets/img/robo-case1.png" alt="Célula de solda robotizada (ilustrativo)" loading="eager">
+          <img src="/assets/img/robo-case1.png" alt="Célula de solda robotizada (ilustrativo)" loading="eager" width="1200" height="240">
         </div>
       </header>
 
-      <!-- KPIs -->
+      <!-- KPIs NA PRIMEIRA DOBRA -->
       <div class="case-kpis">
         <div class="case-kpi">
           <span class="case-kpi__label">OEE</span>
-          <span class="kpi-before">52%</span> <span class="kpi-arrow">→</span> <span class="kpi-after">73%</span>
-                    <p class="case-kpi__note">média mensal pós-ações</p>
+          <div class="case-kpi__value">
+            <span class="kpi-before">52%</span>
+            <span class="kpi-arrow">→</span>
+            <span class="kpi-after">73%</span>
+          </div>
+          <p class="case-kpi__note">média mensal pós-ações</p>
         </div>
 
         <div class="case-kpi">
           <span class="case-kpi__label">Capacidade</span>
-          <span class="kpi-before">16</span> <span class="kpi-arrow">→</span> <span class="kpi-after">28 JPH</span>
+          <div class="case-kpi__value">
+            <span class="kpi-before">16</span>
+            <span class="kpi-arrow">→</span>
+            <span class="kpi-after">28 JPH</span>
+          </div>
           <p class="case-kpi__note">liberação de capacidade efetiva</p>
         </div>
 
         <div class="case-kpi">
           <span class="case-kpi__label">Consumível</span>
-          <span class="kpi-good">+50%</span>
+          <div class="case-kpi__value">
+            <span class="kpi-good">+50%</span>
+          </div>
           <p class="case-kpi__note">3.000 → 4.500 pontos por eletrodo</p>
         </div>
 
         <div class="case-kpi">
           <span class="case-kpi__label">Qualidade</span>
-          <span class="kpi-good">92%</span>
-          <p class="case-kpi__note">aderência “Zero Defeitos” em durabilidade</p>
+          <div class="case-kpi__value">
+            <span class="kpi-good">92%</span>
+          </div>
+          <p class="case-kpi__note">aderência "Zero Defeitos" em durabilidade</p>
         </div>
       </div>
 
       <div class="case-body">
         <div class="case-grid">
-
-          <!-- PROBLEMA -->
+          <!-- PROBLEMA E IMPACTO (SÓ CAIXA "ANTES") -->
           <div class="case-panel">
             <div class="case-h">1) Problema e impacto no cliente</div>
             <p class="case-p">
@@ -743,30 +764,31 @@
 
             <div class="case-compare">
               <div class="case-card">
-                <div class="case-card__kicker">ANTES</div>
+                <div class="case-card__kicker">SITUAÇÃO INICIAL</div>
                 <div class="case-card__big">OEE 52% • 16 JPH</div>
                 <p class="case-mini">
-                  Microparadas recorrentes • trocas excessivas de eletrodos • baixa estabilidade do processo •
-                  capacidade <i>inferior</i> à demanda contratada.
-                </p>
-              </div>
-              <div class="case-card">
-                <div class="case-card__kicker">DEPOIS</div>
-                <div class="case-card__big">OEE 73% • 28 JPH</div>
-                <p class="case-mini">
-                  Processo estabilizado • consumível otimizado • capacidade liberada • risco de ruptura mitigado e plano de expansão definido.
+                  Microparadas recorrentes • trocas excessivas de eletrodos • baixa estabilidade do processo • 
+                  capacidade <i>inferior</i> à demanda contratada. Risco iminente de ruptura de fornecimento.
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- METODOLOGIA -->
-          <aside class="case-panel">
+          <!-- METODOLOGIA COM IMAGEM PDCA -->
+          <div class="case-panel case-methodology">
             <div class="case-h">2) Metodologia (rigor analítico)</div>
             <p class="case-p">
               Framework de melhoria contínua baseado em <b>PDCA</b> integrado com diagnóstico de alta precisão,
               priorizando as maiores perdas e validando causa raiz com evidência em campo.
             </p>
+
+            <!-- IMAGEM PDCA HARMONIZADA -->
+            <div class="case-pdca-image">
+              <img src="/assets/img/pdca-maxprod.png" 
+                   alt="Metodologia PDCA MaxProd - Ciclo de melhoria contínua" 
+                   loading="lazy"
+                   width="800" height="400">
+            </div>
 
             <div class="case-badges" aria-label="Ferramentas aplicadas">
               <span class="case-badge"><i></i> PDCA (Plan-Do-Check-Act)</span>
@@ -781,18 +803,17 @@
               <li><b>Análise de Fenômeno 4M+1D:</b> Mão de obra, Máquina, Material, Método e Design.</li>
               <li><b>Deep Dive (5 Porquês):</b> falha de concepção no posicionamento dos eletrodos e obsolescência de materiais.</li>
             </ul>
-          </aside>
-
+          </div>
         </div>
 
         <!-- SOLUÇÃO -->
-        <div class="case-panel" style="margin-top:16px;">
+        <div class="case-panel">
           <div class="case-h">3) A solução (inovação em engenharia)</div>
           <p class="case-p">
             A estratégia foi dividida em dois eixos de ataque para estabilizar o processo e remover as perdas estruturais que limitavam a capacidade real.
           </p>
 
-          <div class="case-compare" style="margin-top:12px;">
+          <div class="case-compare">
             <div class="case-card">
               <div class="case-card__kicker">Eixo A • Manutenção robótica</div>
               <div class="case-card__big">Estabilidade do posicionamento</div>
@@ -815,22 +836,23 @@
         </div>
 
         <!-- RESULTADOS -->
-        <div class="case-panel" style="margin-top:16px;">
+        <div class="case-panel">
           <div class="case-h">4) Resultados e impacto (ROI & saving)</div>
 
-          <ul class="case-list" style="margin-top:8px;">
+          <ul class="case-list">
             <li><b>Aumento de eficiência:</b> OEE de <b>52% → 73%</b> (média mensal pós-ações).</li>
             <li><b>Ganho de capacidade:</b> liberação de capacidade efetiva, elevando entrega de <b>16 → 28 JPH</b>.</li>
             <li><b>Consumíveis otimizados:</b> <b>+50%</b> vida útil do eletrodo (3.000 → 4.500 pontos).</li>
-            <li><b>Qualidade:</b> evolução para nível de <b>“Zero Defeitos”</b>, com <b>92%</b> de conformidade em durabilidade.</li>
+            <li><b>Qualidade:</b> evolução para nível de <b>"Zero Defeitos"</b>, com <b>92%</b> de conformidade em durabilidade.</li>
             <li><b>Impacto no cliente:</b> mitigação do risco de ruptura e preservação do fornecimento a partir de julho/2022.</li>
           </ul>
 
-          <p class="case-p" style="margin-top:10px;">
+          <p class="case-p">
             <b>ROI:</b> retorno rápido, sustentado por ações de baixo investimento relativo e alto impacto em disponibilidade e estabilidade.
-            <span style="color:rgba(255,255,255,.55);">Valores absolutos podem ser apresentados sob NDA.</span>
+            <span style="color:rgba(255,255,255,.55);">Valores absolutos disponíveis sob consulta.</span>
           </p>
 
+          <!-- DOWNLOAD SECTION COM BOTÕES PADRONIZADOS -->
           <div class="case-download">
             <div>
               <div class="case-download__label">MATERIAL COMPLETO</div>
@@ -847,32 +869,30 @@
                 Baixar PDF do Case
               </a>
 
-              <a class="btn" href="/index.html#contact">
-                Solicitar versão com NDA
+              <a class="btn btn--secondary" href="/index.html#cases">
+                Ver Outros Cases
               </a>
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="case-footer">
         <a class="btn btn--primary" href="/index.html#contact">Quero Resultados Similares</a>
-        <a class="btn" href="/index.html#cases">Voltar aos Cases</a>
+        <a class="btn btn--secondary" href="/index.html#cases">Voltar aos Cases</a>
       </div>
     </section>
   </main>
 
   <script>
-    // Navbar scroll effect (igual home)
+    // Navbar scroll effect
     window.addEventListener('scroll', function() {
       const navbar = document.getElementById('navbar');
       if (!navbar) return;
-      if (window.scrollY > 50) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Mobile menu toggle (igual home)
+    // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const closeMobileMenu = document.getElementById('closeMobileMenu');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -882,6 +902,7 @@
         mobileMenu.classList.add('active');
         mobileMenu.setAttribute('aria-hidden','false');
         document.body.style.overflow = 'hidden';
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
       });
     }
 
@@ -890,6 +911,7 @@
         mobileMenu.classList.remove('active');
         mobileMenu.setAttribute('aria-hidden','true');
         document.body.style.overflow = '';
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
       });
     }
 
@@ -899,7 +921,66 @@
           mobileMenu.classList.remove('active');
           mobileMenu.setAttribute('aria-hidden','true');
           document.body.style.overflow = '';
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
         }
+      });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#') && href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            // Close mobile menu if open
+            if (mobileMenu) {
+              mobileMenu.classList.remove('active');
+              mobileMenu.setAttribute('aria-hidden','true');
+              document.body.style.overflow = '';
+              if (mobileMenuBtn) {
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+              }
+            }
+            
+            window.scrollTo({
+              top: target.offsetTop - 100,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Initialize animations when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add loaded class for animations
+      document.body.classList.add('loaded');
+      
+      // Update current year if needed
+      const yearElement = document.getElementById('currentYear');
+      if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+      }
+    });
+
+    // Intersection Observer for scroll animations
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      // Observe all panels and cards
+      document.querySelectorAll('.case-panel, .case-card').forEach(el => {
+        observer.observe(el);
       });
     }
   </script>
