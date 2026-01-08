@@ -733,6 +733,81 @@
       }
     }
 
+/* ===============================
+   HERO COMPACTO EM 2 COLUNAS
+================================ */
+.case-hero-grid{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* Texto do hero */
+.case-title{
+  font-size: clamp(24px, 2.2vw, 34px);
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.case-sub{
+  font-size: 15px;
+  line-height: 1.45;
+  max-width: 60ch;
+}
+
+/* Imagem menor e lateral */
+.case-hero-image{
+  height: 140px;
+  margin-top: 0;
+  border-radius: 14px;
+}
+
+/* Mobile: empilha */
+@media (max-width: 900px){
+  .case-hero-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .case-hero-image{
+    height: 130px;
+  }
+}
+
+/* ===============================
+   KPIs ULTRA COMPACTOS
+================================ */
+.case-kpis{
+  padding: 14px 18px;
+  gap: 12px;
+}
+
+.case-kpi{
+  padding: 12px 10px;
+  min-height: 72px;
+}
+
+.case-kpi__label{
+  font-size: 10px;
+  margin-bottom: 6px;
+}
+
+.case-kpi__value{
+  font-size: 20px;
+  gap: 8px;
+}
+
+.kpi-arrow{
+  font-size: 16px;
+}
+
+.case-kpi__note{
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+    
   </style>
 </head>
 
@@ -811,24 +886,27 @@
       <header class="case-head">
         <div class="case-tag"><span class="dot"></span> RESULTADOS COMPROVADOS</div>
 
-        <h1 class="case-title">
-          Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva
-        </h1>
+<div class="case-hero-grid">
+  <div class="case-hero-text">
+    <h1 class="case-title">
+      Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva.
+    </h1>
 
-        <p class="case-sub">
-          Projeto de excelência operacional em célula de solda robotizada, 
-          com foco em confiabilidade do fornecimento, estabilidade do processo 
-          e sustentação dos ganhos — sem CAPEX pesado.
-        </p>
+    <p class="case-sub">
+      Projeto de excelência operacional em célula de solda robotizada, 
+      focado em confiabilidade do fornecimento e estabilidade do processo —
+      sem CAPEX pesado.
+    </p>
+  </div>
 
-        <!-- IMAGEM REDUZIDA PARA CABER KPIs -->
-        <div class="case-hero-image">
-          <img src="/assets/img/robo-case1.png" 
-               alt="Célula de solda robotizada - Operação otimizada" 
-               loading="eager" 
-               width="1200" 
-               height="150">
-        </div>
+  <div class="case-hero-image">
+    <img src="/assets/img/robo-case1.png" 
+         alt="Célula de solda robotizada"
+         loading="eager">
+  </div>
+</div>
+
+        
       </header>
 
       <!-- KPIs MAIS COMPACTOS -->
