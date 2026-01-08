@@ -394,7 +394,7 @@
     }
 
     .stat-number {
-      font-size: var(--text-4xl);
+      font-size: 64px; /* AQUI */
       font-weight: 800;
       background: var(--gradient-brand);
       -webkit-background-clip: text;
