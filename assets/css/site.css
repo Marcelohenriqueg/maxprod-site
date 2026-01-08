@@ -143,7 +143,11 @@
       padding: var(--space-64) 0;
       position: relative;
     }
-
+/* PATCH — sobe a dobra da Metodologia para o CTA aparecer */
+#methodology.section{
+  padding-top: var(--space-48);
+  padding-bottom: var(--space-48);
+}
     .section-header {
       /* Espaçamento entre menu e conteúdo */
 .main-content {
