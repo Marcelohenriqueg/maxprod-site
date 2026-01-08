@@ -400,6 +400,126 @@
       .case-hero-image img{ height: 170px !important; }
       .case-kpis{ padding: 10px 16px 14px !important; margin-top: 0 !important; }
     }
+    /* =========================================================
+   PATCH — AJUSTES FINOS (SEM MEXER NO LAYOUT)
+   1) Pill "Risco..." no topo direito (área marcada)
+   2) Logo MaxProd no header do case (topo direito)
+   3) Breadcrumb mais perto do menu
+   4) Remove “diferença” de cor entre dobras (costura visual)
+   Cole imediatamente antes de </style>
+   ========================================================= */
+
+/* (3) Breadcrumb mais perto do menu */
+.case-wrap{
+  padding-top: 14px !important; /* era 26px no seu CSS */
+}
+.case-breadcrumb{
+  margin: 2px 0 10px !important; /* reduz espaço acima */
+}
+
+/* (4) Costura visual: fundo do card mais uniforme com a página */
+.case-shell{
+  /* deixa o shell mais próximo do bg da página (menos “mancha” diferente) */
+  background:
+    radial-gradient(1200px 600px at 18% 0%, rgba(47,107,255,.14), transparent 60%),
+    radial-gradient(900px 500px at 92% 18%, rgba(31,79,216,.08), transparent 62%),
+    linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015)) !important;
+}
+
+/* “costura” o topo/primeira dobra para não parecer outra cor */
+.case-shell::before{
+  opacity: .55 !important;
+}
+
+/* deixa head e KPI com transição suave (sem faixa de cor diferente) */
+.case-head{
+  padding-bottom: 10px !important;
+}
+.case-kpis{
+  padding-top: 10px !important;
+  /* puxa um pouco para cima pra “encostar” e eliminar a quebra visual */
+  margin-top: -10px !important;
+}
+
+/* ======= (2) Logo MaxProd no header do case ======= */
+.case-head{
+  position: relative;
+}
+
+/* container da logo */
+.case-brandmark{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(10,14,20,.35);
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 3;
+}
+
+/* imagem da logo */
+.case-brandmark img{
+  height: 34px;     /* ajuste fino: 28~44 */
+  width: auto;
+  display: block;
+  opacity: .95;
+}
+
+/* ======= (1) Pill "Risco..." para o topo direito (área marcada) ======= */
+/* transforma o pill em “badge” flutuante no header, sem quebrar nada */
+.case-risk{
+  position: absolute;
+  top: 74px;        /* ajuste fino para encaixar ao lado do título */
+  right: 18px;
+  margin-top: 0 !important;
+  max-width: 300px;
+  z-index: 3;
+
+  /* mantém estilo, só deixa mais “premium” e compacto */
+  padding: 9px 12px !important;
+  border-radius: 999px !important;
+}
+
+/* evita o pill tapar texto em telas menores */
+@media (max-width: 980px){
+  .case-brandmark{
+    top: 14px;
+    right: 14px;
+    padding: 8px 10px;
+  }
+  .case-brandmark img{
+    height: 30px;
+  }
+
+  .case-risk{
+    position: static;        /* volta pro fluxo no mobile */
+    margin-top: 10px !important;
+    max-width: none;
+  }
+
+  .case-wrap{
+    padding-top: 12px !important;
+  }
+}
+
+/* (Imagem) só reduzir um pouco a altura pra subir KPI — sem mudar layout */
+.case-hero-image img{
+  height: 260px !important; /* ajuste fino: 220~280 */
+}
+
+@media (max-width: 980px){
+  .case-hero-image img{
+    height: 210px !important;
+  }
+}
+
   </style>
 </head>
 
