@@ -12,7 +12,7 @@
 
   <style>
     /* =========================================================
-       CASE-1 — BASE PREMIUM OTIMIZADA E CORRIGIDA
+       CASE-1 — BASE PREMIUM OTIMIZADA E CORRIGIDA (COMPACT)
        ========================================================= */
     :root{
       --case-text: rgba(255,255,255,.95);
@@ -26,6 +26,9 @@
       --nav-offset: 96px;
       --success: #3cffc8;
       --danger: #ff5a5a;
+
+      /* === NOVO: escala tipográfica global (harmonia) === */
+      --case-scale: 0.94; /* 0.92~0.96 */
     }
 
     html, body { 
@@ -35,9 +38,11 @@
     
     body{
       color: var(--case-text);
-      /* FUNDO ÚNICO E CONSISTENTE */
       background: #0c1117;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      /* === NOVO: reduz levemente tudo sem quebrar layout === */
+      font-size: calc(16px * var(--case-scale));
     }
 
     /* =========================================================
@@ -46,13 +51,15 @@
     .case-wrap{
       max-width: 1200px;
       margin: 0 auto;
-      padding: calc(var(--nav-offset) + 20px) 24px 60px;
+
+      /* compacta um pouco para ajudar a caber na dobra */
+      padding: calc(var(--nav-offset) + 16px) 22px 54px;
     }
 
     .case-breadcrumb{
       color: var(--case-muted2);
-      font-size: 14px;
-      margin-bottom: 20px;
+      font-size: 13px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -87,10 +94,10 @@
     }
 
     /* =========================================================
-       HEADER DO CASE - OTIMIZADO
+       HEADER DO CASE - MAIS COMPACTO
        ========================================================= */
     .case-head{
-      padding: 32px 32px 24px;
+      padding: 26px 28px 18px; /* era 32/32/24 */
       position: relative;
       z-index: 1;
     }
@@ -99,11 +106,11 @@
       display:inline-flex;
       gap:10px;
       align-items:center;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--case-muted);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       font-weight: 600;
     }
     .case-tag .dot{
@@ -114,13 +121,14 @@
       box-shadow: 0 0 0 4px rgba(47,107,255,.2);
     }
 
+    /* HERO TITLE menor */
     .case-title{
-      margin: 0 0 16px;
-      font-size: clamp(32px, 3vw, 44px);
-      line-height: 1.15;
+      margin: 0 0 12px;
+      font-size: clamp(28px, 2.6vw, 40px); /* era 32~44 */
+      line-height: 1.12;
       color: var(--case-text);
       letter-spacing: -0.02em;
-      max-width: 28ch;
+      max-width: 30ch;
       font-weight: 800;
       background: linear-gradient(135deg, #ffffff 0%, #a0b8ff 100%);
       -webkit-background-clip: text;
@@ -128,13 +136,13 @@
       background-clip: text;
     }
 
-    /* SUBTÍTULO MELHOR DISTRIBUÍDO */
+    /* SUBTÍTULO menor */
     .case-sub{
       margin: 0;
-      max-width: 72ch;
+      max-width: 76ch;
       color: var(--case-muted);
-      font-size: 18px;
-      line-height: 1.6;
+      font-size: 16px; /* era 18 */
+      line-height: 1.55;
       text-align: justify;
       hyphens: auto;
       padding-right: 0;
@@ -142,15 +150,15 @@
       letter-spacing: -0.01em;
     }
 
-    /* IMAGEM HERO REDUZIDA PARA CABER KPIs */
+    /* IMAGEM HERO um pouco menor para caber KPIs */
     .case-hero-image{
-      margin-top: 28px;
-      border-radius: 18px;
+      margin-top: 16px; /* era 28 */
+      border-radius: 16px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.15);
       background: rgba(255,255,255,.03);
       box-shadow: var(--case-shadow2);
-      height: 180px; /* REDUZIDA */
+      height: 150px; /* era 180 */
     }
     .case-hero-image img{
       width: 100%;
@@ -160,13 +168,13 @@
     }
 
     /* =========================================================
-       KPIs - NA PRIMEIRA DOBRA (CABE AGORA)
+       KPIs - MAIS COMPACTOS (PRA CABER NA DOBRA)
        ========================================================= */
     .case-kpis{
       display: grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 20px;
-      padding: 32px;
+      gap: 14px;                 /* era 20 */
+      padding: 18px 22px 20px;   /* era 32 */
       position: relative;
       z-index: 1;
       margin-top: 0;
@@ -177,8 +185,8 @@
     .case-kpi{
       background: rgba(255,255,255,.04);
       border: 1px solid rgba(255,255,255,.15);
-      border-radius: 18px;
-      padding: 24px 20px;
+      border-radius: 16px; /* era 18 */
+      padding: 14px 14px;  /* era 24 20 */
       box-shadow: var(--case-shadow2);
       text-align: center;
       transition: all 0.3s ease;
@@ -186,6 +194,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 86px; /* ajuda consistência */
     }
     .case-kpi:hover{
       transform: translateY(-4px);
@@ -193,25 +202,26 @@
       background: rgba(255,255,255,.06);
     }
     .case-kpi__label{
-      font-size: 13px;
+      font-size: 11px; /* era 13 */
       color: rgba(255,255,255,.7);
       letter-spacing: .08em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 8px; /* era 12 */
       display:block;
-      font-weight: 600;
+      font-weight: 700;
     }
     .case-kpi__value{
       display: flex;
-      align-items: center;
+      align-items: baseline;
       justify-content: center;
-      gap: 12px;
-      font-size: 28px;
-      font-weight: 800;
+      gap: 10px;
+      font-size: 22px; /* era 28 */
+      font-weight: 850;
       letter-spacing: -0.03em;
       color: rgba(255,255,255,.98);
-      margin: 0 0 8px;
+      margin: 0 0 6px;
       line-height: 1;
+      white-space: nowrap;
     }
     .kpi-before{ 
       color: var(--danger);
@@ -227,32 +237,33 @@
     }
     .kpi-arrow{ 
       color: rgba(255,255,255,.5); 
-      font-weight: 700;
-      font-size: 24px;
+      font-weight: 800;
+      font-size: 18px; /* era 24 */
+      line-height: 1;
     }
     
     .case-kpi__note{
-      margin: 8px 0 0;
-      font-size: 14px;
+      margin: 6px 0 0;
+      font-size: 12px; /* era 14 */
       color: rgba(255,255,255,.65);
-      line-height: 1.4;
-      max-width: 90%;
+      line-height: 1.35;
+      max-width: 95%;
     }
 
     /* =========================================================
-       CORPO DO CONTEÚDO - FUNDO CONSISTENTE
+       CORPO DO CONTEÚDO - MAIS HARMÔNICO/COMPACTO
        ========================================================= */
     .case-body{
-      padding: 32px;
+      padding: 22px; /* era 32 */
       position: relative;
       z-index: 1;
-      background: transparent; /* MESMO FUNDO */
+      background: transparent;
     }
     
     .case-grid{
       display:grid;
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 20px; /* era 32 */
       align-items: start;
     }
     
@@ -263,26 +274,26 @@
     }
 
     /* =========================================================
-       PANELS CONSISTENTES
+       PANELS CONSISTENTES (menores)
        ========================================================= */
     .case-panel{
       background: rgba(255,255,255,.03);
       border: 1px solid rgba(255,255,255,.12);
-      border-radius: 20px;
-      padding: 28px;
+      border-radius: 18px; /* era 20 */
+      padding: 22px;       /* era 28 */
       box-shadow: var(--case-shadow2);
     }
     
     .case-h{
-      margin: 0 0 20px;
-      font-size: 16px;
+      margin: 0 0 14px; /* era 20 */
+      font-size: 14px;  /* era 16 */
       letter-spacing: .08em;
       text-transform: uppercase;
       color: rgba(255,255,255,.85);
-      font-weight: 700;
+      font-weight: 800;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .case-h::before{
       content: '';
@@ -294,10 +305,10 @@
     }
     
     .case-p{
-      margin: 0 0 20px;
+      margin: 0 0 14px; /* era 20 */
       color: var(--case-muted);
-      line-height: 1.7;
-      font-size: 17px;
+      line-height: 1.65; /* era 1.7 */
+      font-size: 15.5px; /* era 17 */
       letter-spacing: -0.01em;
     }
     .case-p:last-child{
@@ -305,7 +316,7 @@
     }
     .case-p b{
       color: var(--case-text);
-      font-weight: 700;
+      font-weight: 750;
       background: rgba(47,107,255,.15);
       padding: 0 4px;
       border-radius: 4px;
@@ -317,15 +328,15 @@
     .case-compare{
       display:grid;
       grid-template-columns: 1fr;
-      gap: 24px;
-      margin-top: 24px;
+      gap: 16px; /* era 24 */
+      margin-top: 16px; /* era 24 */
     }
 
     .case-card{
       background: rgba(255,255,255,.04);
       border: 1px solid rgba(255,255,255,.15);
-      border-radius: 16px;
-      padding: 24px;
+      border-radius: 14px; /* era 16 */
+      padding: 18px;       /* era 24 */
       transition: all 0.3s ease;
     }
     .case-card:hover{
@@ -333,12 +344,12 @@
       border-color: rgba(255,255,255,.2);
     }
     .case-card__kicker{
-      font-size: 14px;
+      font-size: 12px; /* era 14 */
       letter-spacing: .1em;
       text-transform: uppercase;
       color: rgba(255,255,255,.7);
-      margin-bottom: 12px;
-      font-weight: 600;
+      margin-bottom: 10px; /* era 12 */
+      font-weight: 700;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -352,34 +363,35 @@
       display: block;
     }
     .case-card__big{
-      font-size: 24px;
-      font-weight: 800;
+      font-size: 20px; /* era 24 */
+      font-weight: 850;
       letter-spacing: -0.02em;
       color: rgba(255,255,255,.98);
-      margin: 0 0 16px;
+      margin: 0 0 12px;
       line-height: 1.2;
     }
     .case-mini{
       color: rgba(255,255,255,.75);
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 14.5px; /* era 16 */
+      line-height: 1.55; /* era 1.6 */
       margin: 0;
     }
 
     /* =========================================================
-       METODOLOGIA - IMAGEM PDCA REDUZIDA E HARMONIZADA
+       METODOLOGIA - PDCA MENOR
        ========================================================= */
     .case-methodology{
       position: relative;
     }
     
     .case-pdca-image{
-      margin: 24px 0;
-      border-radius: 16px;
+      margin: 16px 0; /* era 24 */
+      border-radius: 14px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.15);
       background: rgba(255,255,255,.02);
-      height: 220px; /* REDUZIDO */
+
+      height: 170px; /* era 220 */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -390,28 +402,28 @@
       height: 100%;
       object-fit: contain;
       display: block;
-      padding: 20px;
+      padding: 14px; /* era 20 */
       filter: brightness(1.1) contrast(1.05);
     }
 
     .case-badges{
       display:grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin: 24px 0;
+      gap: 10px; /* era 12 */
+      margin: 16px 0; /* era 24 */
     }
     .case-badge{
       display:flex;
       align-items:center;
-      gap:12px;
-      padding: 14px 16px;
+      gap:10px;
+      padding: 12px 12px; /* era 14 16 */
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,.15);
       background: rgba(255,255,255,.04);
       color: rgba(255,255,255,.8);
-      font-size: 14px;
+      font-size: 13px; /* era 14 */
       line-height: 1.2;
-      font-weight: 500;
+      font-weight: 550;
       transition: all 0.2s ease;
     }
     .case-badge:hover{
@@ -427,16 +439,16 @@
     }
 
     .case-list{
-      margin: 20px 0;
+      margin: 14px 0; /* era 20 */
       padding: 0;
       color: var(--case-muted);
-      line-height: 1.7;
-      font-size: 16px;
+      line-height: 1.65; /* era 1.7 */
+      font-size: 14.5px; /* era 16 */
       list-style: none;
     }
     .case-list li{
-      margin-bottom: 16px;
-      padding-left: 28px;
+      margin-bottom: 12px; /* era 16 */
+      padding-left: 24px; /* era 28 */
       position: relative;
     }
     .case-list li:last-child{
@@ -451,30 +463,24 @@
     }
     .case-list b{
       color: var(--case-text);
-      font-weight: 700;
+      font-weight: 750;
     }
 
     /* =========================================================
-       SOLUÇÃO - QUADRANTE 3 HARMONIZADO
+       SOLUÇÃO - EMPILHADO (EIXO A/B) E MAIS COMPACTO
        ========================================================= */
     .solution-grid{
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      margin-top: 24px;
-    }
-    
-    @media (min-width: 768px) {
-      .solution-grid{
-        grid-template-columns: 1fr 1fr;
-      }
+      grid-template-columns: 1fr; /* sempre empilhado */
+      gap: 14px;                 /* menor */
+      margin-top: 14px;          /* menor */
     }
 
     .solution-card{
       background: rgba(255,255,255,.04);
       border: 1px solid rgba(255,255,255,.15);
-      border-radius: 18px;
-      padding: 28px;
+      border-radius: 16px;
+      padding: 18px; /* era 28 */
       transition: all 0.3s ease;
       height: 100%;
       display: flex;
@@ -483,103 +489,103 @@
     .solution-card:hover{
       background: rgba(255,255,255,.06);
       border-color: rgba(255,255,255,.2);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,.3);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(0,0,0,.28);
     }
     .solution-card__header{
-      margin-bottom: 20px;
+      margin-bottom: 10px; /* era 20 */
     }
     .solution-card__kicker{
-      font-size: 14px;
+      font-size: 12px; /* era 14 */
       letter-spacing: .1em;
       text-transform: uppercase;
       color: rgba(255,255,255,.7);
-      margin-bottom: 8px;
-      font-weight: 600;
+      margin-bottom: 6px;
+      font-weight: 700;
     }
     .solution-card__title{
-      font-size: 22px;
-      font-weight: 800;
+      font-size: 18px; /* era 22 */
+      font-weight: 850;
       color: rgba(255,255,255,.98);
       margin: 0;
-      line-height: 1.3;
+      line-height: 1.25;
     }
     .solution-card__content{
       color: rgba(255,255,255,.75);
-      font-size: 16px;
-      line-height: 1.7;
+      font-size: 14.5px; /* era 16 */
+      line-height: 1.6;  /* era 1.7 */
       flex: 1;
     }
 
     /* =========================================================
-       DOWNLOAD SECTION - ALINHAMENTO CORRETO
+       DOWNLOAD SECTION - MAIS COMPACTA
        ========================================================= */
     .case-download{
-      padding: 32px;
-      margin-top: 32px;
+      padding: 22px;  /* era 32 */
+      margin-top: 22px; /* era 32 */
       background: linear-gradient(135deg, 
         rgba(47,107,255,.12) 0%, 
         rgba(31,79,216,.06) 100%);
       border: 1px solid rgba(255,255,255,.2);
-      border-radius: 20px;
+      border-radius: 18px;
       box-shadow: var(--case-shadow2);
     }
     
     .case-download__content{
-      margin-bottom: 28px;
+      margin-bottom: 16px; /* era 28 */
     }
     
     .case-download__label{
-      font-size: 14px;
+      font-size: 12px; /* era 14 */
       letter-spacing: .1em;
       text-transform: uppercase;
       color: rgba(255,255,255,.8);
-      margin-bottom: 12px;
-      font-weight: 600;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
     
     .case-download h3{
-      margin: 0 0 16px;
-      font-size: 28px;
+      margin: 0 0 10px;
+      font-size: 22px; /* era 28 */
       color: rgba(255,255,255,.98);
-      font-weight: 800;
-      line-height: 1.2;
+      font-weight: 850;
+      line-height: 1.15;
     }
     
     .case-download p{
-      margin: 0 0 28px;
+      margin: 0 0 16px;
       color: rgba(255,255,255,.75);
-      font-size: 17px;
-      line-height: 1.6;
-      max-width: 70ch;
+      font-size: 15px; /* era 17 */
+      line-height: 1.55;
+      max-width: 72ch;
     }
     
     .case-download__actions{
       display: flex;
-      gap: 16px;
+      gap: 12px; /* era 16 */
       flex-wrap: wrap;
       align-items: center;
     }
 
     /* =========================================================
-       BOTÕES PADRONIZADOS E ALINHADOS
+       BOTÕES PADRONIZADOS E ALINHADOS (um pouco menores)
        ========================================================= */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      padding: 16px 32px;
+      padding: 14px 26px; /* era 16 32 */
       border-radius: 12px;
-      font-weight: 700;
-      font-size: 16px;
+      font-weight: 750;
+      font-size: 15px; /* era 16 */
       line-height: 1;
       text-decoration: none;
       cursor: pointer;
       transition: all 0.3s ease;
       border: 2px solid transparent;
       white-space: nowrap;
-      min-height: 56px;
+      min-height: 50px; /* era 56 */
     }
     
     .btn--primary {
@@ -609,13 +615,13 @@
     }
 
     /* =========================================================
-       FOOTER DO CASE
+       FOOTER DO CASE (mais compacto)
        ========================================================= */
     .case-footer{
       display: flex;
-      gap: 20px;
+      gap: 14px;
       flex-wrap: wrap;
-      padding: 32px;
+      padding: 22px; /* era 32 */
       position: relative;
       z-index: 1;
       border-top: 1px solid rgba(255,255,255,.1);
@@ -627,7 +633,7 @@
        ========================================================= */
     @media (max-width: 1200px){
       .case-wrap{
-        padding: calc(var(--nav-offset) + 16px) 20px 48px;
+        padding: calc(var(--nav-offset) + 14px) 18px 46px;
       }
     }
 
@@ -639,8 +645,8 @@
       .case-head,
       .case-body,
       .case-footer{
-        padding-left: 24px;
-        padding-right: 24px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
       
       .case-badges{
@@ -651,7 +657,7 @@
     @media (max-width: 768px){
       .case-kpis{
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 12px;
       }
       
       .case-download__actions{
@@ -667,39 +673,38 @@
       .case-footer{
         flex-direction: column;
       }
-      
-      .solution-grid{
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 480px){
       .case-wrap{
-        padding: calc(var(--nav-offset) + 12px) 16px 32px;
+        padding: calc(var(--nav-offset) + 10px) 14px 28px;
       }
       
       .case-head,
       .case-body,
       .case-footer{
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 18px;
+        padding-right: 18px;
       }
       
       .case-panel{
-        padding: 24px;
+        padding: 20px;
       }
       
       .case-title{
-        font-size: 28px;
+        font-size: 26px;
       }
       
       .case-sub{
-        font-size: 16px;
+        font-size: 15px;
       }
       
       .case-kpi__value{
-        font-size: 24px;
+        font-size: 20px;
       }
+
+      .case-hero-image{ height: 130px; }
+      .case-pdca-image{ height: 150px; }
     }
 
     /* =========================================================
@@ -822,11 +827,11 @@
                alt="Célula de solda robotizada - Operação otimizada" 
                loading="eager" 
                width="1200" 
-               height="180">
+               height="150">
         </div>
       </header>
 
-      <!-- KPIs AGORA CABEM NA PRIMEIRA DOBRA -->
+      <!-- KPIs MAIS COMPACTOS -->
       <div class="case-kpis">
         <div class="case-kpi">
           <span class="case-kpi__label">OEE</span>
@@ -891,7 +896,7 @@
             </div>
           </div>
 
-          <!-- METODOLOGIA COM PDCA REDUZIDO -->
+          <!-- METODOLOGIA COM PDCA MENOR -->
           <div class="case-panel case-methodology">
             <div class="case-h">2) Metodologia (rigor analítico)</div>
             <p class="case-p">
@@ -900,13 +905,13 @@
               e validando causa raiz com evidência em campo.
             </p>
 
-            <!-- IMAGEM PDCA REDUZIDA -->
+            <!-- IMAGEM PDCA MENOR -->
             <div class="case-pdca-image">
               <img src="/assets/img/pdca-maxprod.png" 
                    alt="Metodologia PDCA MaxProd - Ciclo Plan-Do-Check-Act" 
                    loading="lazy"
                    width="800" 
-                   height="220">
+                   height="170">
             </div>
 
             <div class="case-badges" aria-label="Ferramentas aplicadas">
@@ -925,7 +930,7 @@
           </div>
         </div>
 
-        <!-- SOLUÇÃO - QUADRANTE 3 HARMONIZADO -->
+        <!-- SOLUÇÃO - EMPILHADO (EIXO A/B) E COMPACTO -->
         <div class="case-panel">
           <div class="case-h">3) A solução (inovação em engenharia)</div>
           <p class="case-p">
