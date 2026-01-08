@@ -371,7 +371,7 @@
     }
     /* =========================================================
    PATCH — PRIMEIRA DOBRA (MENOS ESPAÇO + KPIs NA TELA)
-   Cole no FINAL do <style>, antes do </style>
+   Cole no FINAL do <style>, antes do final do style
    ========================================================= */
 
 /* 1) Menos espaço entre NAV e conteúdo */
@@ -440,6 +440,93 @@
   .case-head{ padding: 16px 16px 10px !important; }
   .case-hero-image img{ height: clamp(150px, 34vw, 210px) !important; }
   .case-kpis{ padding: 10px 16px 14px !important; }
+}
+/* =========================================================
+   PATCH V2 — NAV FIXO + KPI NA PRIMEIRA DOBRA
+   Cole NO FINAL do <style>, ANTES do </style>
+   ========================================================= */
+
+/* A) Se o navbar for FIXO (site.css), precisamos “compensar” a altura dele */
+:root{
+  --nav-offset: 96px; /* ajuste fino se quiser: 88px ou 104px */
+}
+
+/* Empurra o conteúdo para baixo do menu, mas com espaço mínimo */
+.case-wrap{
+  padding-top: calc(var(--nav-offset) + 10px) !important;
+}
+
+/* Breadcrumb mais colado, mas sem “bater” no card */
+.case-breadcrumb{
+  margin: 0 0 10px !important;
+}
+
+/* B) HERO mais curto: desktop em 2 colunas (texto + imagem ao lado) */
+@media (min-width: 981px){
+  .case-head{
+    display: grid !important;
+    grid-template-columns: 1.25fr .75fr !important;
+    gap: 18px !important;
+    align-items: start !important;
+    padding: 18px 22px 10px !important;
+  }
+
+  /* imagem vai para a coluna da direita e sobe */
+  .case-hero-image{
+    grid-column: 2 !important;
+    grid-row: 1 / span 6 !important;
+    margin-top: 0 !important;
+    align-self: start !important;
+  }
+
+  /* reduz a altura da imagem no desktop */
+  .case-hero-image img{
+    height: 190px !important;
+  }
+
+  /* título mais compacto */
+  .case-title{
+    max-width: 28ch !important;
+    line-height: 1.06 !important;
+  }
+
+  .case-sub{
+    margin-top: 8px !important;
+    line-height: 1.52 !important;
+  }
+
+  .case-tag{ margin-bottom: 8px !important; }
+}
+
+/* C) KPIs sobem e ocupam menos */
+.case-kpis{
+  padding: 12px 22px 16px !important;
+  gap: 10px !important;
+}
+
+.case-kpi{
+  padding: 12px 12px 10px !important;
+}
+
+.case-kpi__value{
+  font-size: 20px !important;
+}
+
+/* Mobile/tablet: imagem ainda menor, para KPI aparecer mais cedo */
+@media (max-width: 980px){
+  :root{ --nav-offset: 88px; } /* navbar costuma ser menor no mobile */
+
+  .case-head{
+    padding: 16px 16px 10px !important;
+  }
+
+  .case-hero-image{
+    margin-top: 10px !important;
+  }
+
+  .case-hero-image img{
+    height: 180px !important;
+  }
 }
 
   </style>
