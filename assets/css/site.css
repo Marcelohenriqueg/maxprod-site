@@ -1,0 +1,1168 @@
+  <style>
+    /* ===============================
+       DESIGN SYSTEM - NIVEL NVIDIA/APPLE
+       =============================== */
+    :root {
+      /* PALETA PREMIUM - Industrial Tech */
+      --space-1: #0A0E16;      /* Fundo principal */
+      --space-2: #0F1522;      /* Fundo secundário */
+      --space-3: #141B2B;      /* Cards/Containers */
+      
+      /* TEXTO - Hierarquia clara */
+      --text-primary: #F0F4FF;
+      --text-secondary: #B8C4E0;
+      --text-tertiary: #7E8BA6;
+      
+      /* CORES DE MARCA - Vibração tech */
+      --brand-primary: #0066FF;     /* Azul NVIDIA */
+      --brand-secondary: #00D4AA;   /* Ciano Apple */
+      --brand-accent: #FF6B35;      /* Laranja Alerta */
+      
+      /* SEMÂNTICAS */
+      --success: #00C781;
+      --warning: #FFB224;
+      --error: #FF4757;
+      
+      /* GRADIENTS PREMIUM */
+      --gradient-space: linear-gradient(135deg, var(--space-1) 0%, var(--space-2) 100%);
+      --gradient-brand: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+      --gradient-card: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+      
+      /* SOMBRAS - Profundidade real */
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+      --shadow-md: 0 8px 32px rgba(0,0,0,0.4);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+      --shadow-glow: 0 0 40px rgba(0,102,255,0.3);
+      
+      /* BORDAS - Precisas */
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      
+      /* TIPOGRAFIA - Scale de 4px */
+      --text-xs: 12px;
+      --text-sm: 14px;
+      --text-base: 16px;
+      --text-lg: 18px;
+      --text-xl: 20px;
+      --text-2xl: 24px;
+      --text-3xl: 32px;
+      --text-4xl: 40px;
+      --text-5xl: 48px;
+      
+      /* ESPAÇAMENTO - Sistema 8pt */
+      --space-4: 4px;
+      --space-8: 8px;
+      --space-12: 12px;
+      --space-16: 16px;
+      --space-20: 20px;
+      --space-24: 24px;
+      --space-32: 32px;
+      --space-40: 40px;
+      --space-48: 48px;
+      --space-64: 64px;
+      
+      /* ANIMAÇÕES - Suaves e propositais */
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* GLASSMORPHISM */
+      --glass-bg: rgba(255,255,255,0.05);
+      --glass-border: rgba(255,255,255,0.1);
+      --glass-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    /* ===============================
+       RESET & BASE STYLES
+       =============================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: var(--gradient-space);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ===============================
+       TYPOGRAPHY SCALE
+       =============================== */
+    /* Margem inferior para cards */
+.visual-card {
+  margin-bottom: var(--space-48);
+}
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-16);
+    }
+
+    h1 { font-size: var(--text-5xl); }
+    h2 { font-size: var(--text-4xl); }
+    h3 { font-size: var(--text-3xl); }
+    h4 { font-size: var(--text-2xl); }
+    h5 { font-size: var(--text-xl); }
+    h6 { font-size: var(--text-lg); }
+
+    p {
+      margin-bottom: var(--space-16);
+      color: var(--text-secondary);
+    }
+
+    .text-lead {
+      font-size: var(--text-xl);
+      line-height: 1.4;
+      color: var(--text-secondary);
+    }
+
+    /* ===============================
+       LAYOUT COMPONENTS
+       =============================== */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-24);
+    }
+
+    .section {
+      padding: var(--space-64) 0;
+      position: relative;
+    }
+
+    .section-header {
+      /* Espaçamento entre menu e conteúdo */
+.main-content {
+  margin-top: var(--space-32);
+}
+      text-align: center;
+      margin-bottom: var(--space-48);
+    }
+
+    .section-header .overline {
+      display: inline-block;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--brand-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-12);
+    }
+
+    /* ===============================
+       NAVIGATION - Premium Fixed
+       =============================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 14, 22, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: var(--space-16) 0;
+      transition: all var(--transition-base);
+    }
+
+    .navbar.scrolled {
+      padding: var(--space-12) 0;
+      background: rgba(10, 14, 22, 0.98);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-12);
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: var(--text-xl);
+    }
+
+    .navbar .logo img{
+  height: 34px !important;  /* ajuste aqui: 32 / 36 / 40 */
+  width: auto !important;
+  display: block;
+}
+    .mobile-menu .logo img{
+  height: 34px !important;
+  width: auto !important;
+  display: block;
+}
+    .logo-text{ max-width: 220px; }
+.logo-sub{ white-space: nowrap; opacity: .9; }
+
+.logo-text{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.logo-title{
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 16px;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-sub{
+  margin-top: 2px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  color: #8D97A6;              /* cinza da referência */
+}
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-32);
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: var(--text-sm);
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-link.active {
+      color: var(--brand-primary);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--brand-primary);
+      border-radius: 2px;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-16);
+    }
+
+    /* ===============================
+       BUTTON SYSTEM - Premium
+       =============================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-8);
+      padding: var(--space-12) var(--space-24);
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.6s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary {
+      background: var(--gradient-brand);
+      color: white;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0,102,255,0.4);
+    }
+
+    .btn-secondary {
+      background: var(--glass-bg);
+      color: var(--text-primary);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--brand-primary);
+      border: 2px solid var(--brand-primary);
+    }
+
+    .btn-outline:hover {
+      background: rgba(0,102,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* ===============================
+       HERO SECTION - Impacto Imediato
+       =============================== */
+    .hero {
+  min-height: calc(100svh - 88px);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px;
+  padding-bottom: 56px;
+}
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(0,102,255,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0,212,170,0.1) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-48);
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      margin-bottom: var(--space-24);
+    }
+
+    .hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-16);
+  margin: var(--space-24) 0;
+}
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: var(--text-4xl);
+      font-weight: 800;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: var(--space-4);
+    }
+
+    .stat-label {
+      font-size: var(--text-sm);
+      color: var(--text-tertiary);
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .visual-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;        /* mais arredondado, premium */
+  padding: var(--space-24);   /* reduz altura total do card */
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;           /* garante borda limpa com glow */
+}
+
+    /* ===============================
+       CASES SECTION - Grid Interativo
+       =============================== */
+    /* ===============================
+   ASSESSMENT CARD - Compacto
+   =============================== */
+.assessment-card {
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding: var(--space-20);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.assessment-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: radial-gradient(circle at 50% 50%, rgba(0,102,255,0.08) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.assessment-content {
+  position: relative;
+  z-index: 1;
+}
+
+.assessment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  padding: var(--space-8);
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: var(--space-4);
+}
+
+.assessment-item:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-1px);
+}
+
+.assessment-item input[type="checkbox"] {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.assessment-item span {
+  font-size: var(--text-xs);
+  line-height: 1.3;
+  color: var(--text-secondary);
+}
+
+.assessment-item strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.assessment-actions {
+  display: grid;
+  gap: var(--space-8);
+  margin-top: var(--space-16);
+}
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-24);
+      margin: var(--space-48) 0;
+    }
+
+    .case-card {
+      background: var(--space-3);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all var(--transition-base);
+      cursor: pointer;
+    }
+
+    .case-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--brand-primary);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .case-image {
+      height: 200px;
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
+    }
+
+    .case-client {
+      position: absolute;
+      bottom: var(--space-16);
+      left: var(--space-16);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: white;
+      z-index: 1;
+    }
+
+    .case-content {
+      padding: var(--space-24);
+    }
+
+    .case-tags {
+      display: flex;
+      gap: var(--space-8);
+      margin-bottom: var(--space-16);
+      flex-wrap: wrap;
+    }
+
+    .case-tag {
+      font-size: var(--text-xs);
+      padding: var(--space-4) var(--space-8);
+      background: rgba(0,102,255,0.1);
+      color: var(--brand-primary);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+    }
+
+    .case-results {
+      margin-top: var(--space-16);
+      padding-top: var(--space-16);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: var(--space-8);
+    }
+
+    .result-label {
+      color: var(--text-tertiary);
+      font-size: var(--text-sm);
+    }
+
+    .result-value {
+      color: var(--success);
+      font-weight: 600;
+      font-size: var(--text-sm);
+    }
+
+    /* ===============================
+       PATCH - CASES (4 COL, COMPACT, CTA SOBRE CARD 4)
+       =============================== */
+    #cases.section{
+      padding-top: var(--space-32);   /* aproxima do header/nav */
+      padding-bottom: var(--space-48);
+      scroll-margin-top: 96px;        /* âncora não fica colada no menu */
+    }
+    #cases .section-header{
+      margin-bottom: var(--space-32); /* menos “respiro” antes do grid */
+    }
+
+    .cases-stage{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-24);
+      align-items: start;
+      margin-top: var(--space-24);
+    }
+
+    /* CTA “encaixado” acima do card 4 */
+    .cases-cta-float{
+      grid-column: 4;
+      grid-row: 1;
+      align-self: end;
+      justify-self: stretch;
+    }
+    .cases-cta-float .btn{
+      width: 100%;
+      border-radius: var(--radius-lg);
+      padding: var(--space-12) var(--space-16);
+      box-shadow: 0 10px 34px rgba(0,102,255,0.22);
+    }
+
+    /* grid dos 4 cases */
+    .cases-grid--4{
+      grid-column: 1 / -1;
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-24);
+      margin: 0; /* remove margin antiga da .cases-grid */
+    }
+
+    /* Compactação dos cards (para caber em 1 tela) */
+    #cases .case-image{ height: 140px; }
+    #cases .case-client{
+      bottom: var(--space-12);
+      left: var(--space-12);
+      font-size: 13px;
+    }
+    #cases .case-content{ padding: var(--space-16); }
+    #cases .case-tags{ margin-bottom: var(--space-12); }
+    #cases .case-tag{ font-size: 11px; padding: 3px 8px; }
+    #cases .case-content h4{
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-8);
+    }
+    #cases .case-content p{
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-12);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    #cases .case-results{
+      margin-top: var(--space-12);
+      padding-top: var(--space-12);
+    }
+    #cases .result-item{ margin-bottom: 6px; }
+    #cases .result-label, #cases .result-value{ font-size: 13px; }
+
+    /* Responsivo: 2 col + CTA em cima */
+    @media (max-width: 1200px){
+      .cases-stage{
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .cases-cta-float{
+        grid-column: 1 / -1;
+        grid-row: 1;
+        justify-self: center;
+        max-width: 460px;
+        width: 100%;
+      }
+      .cases-grid--4{
+        grid-template-columns: repeat(2, 1fr);
+        grid-row: 2;
+      }
+    }
+    @media (max-width: 640px){
+      .cases-grid--4{
+        grid-template-columns: 1fr;
+      }
+      .cases-cta-float{
+        max-width: none;
+      }
+    }
+    /* =========================================
+   PATCH 2 — CASES "1 PÁGINA" (mais compacto)
+   - sobe "RESULTADOS COMPROVADOS"
+   - reduz espaço do texto final -> CTA
+   - cards mais largos e mais próximos
+   ========================================= */
+
+#cases.section{
+  padding-top: 22px;              /* estava 32px -> sobe um pouco mais */
+  padding-bottom: var(--space-40);
+}
+
+/* sobe um toque o overline */
+#cases .section-header .overline{
+  margin-bottom: 6px;             /* estava 12px */
+  transform: translateY(-2px);
+}
+
+/* reduz espaço entre título/sub e o grid */
+#cases .section-header{
+  margin-bottom: 18px;            /* estava 32px -> aproxima do conteúdo */
+}
+
+/* reduz distância do texto "no seu negócio" para o CTA/grid */
+#cases .section-header .text-lead{
+  margin-bottom: 8px !important;  /* força menor respiro */
+}
+
+/* aproxima CTA do texto e do topo do card 4 */
+.cases-stage{
+  gap: 16px;                      /* estava 24px -> reduz espaçamento geral */
+  margin-top: 10px;               /* estava 24px -> sobe o conjunto */
+}
+
+/* CTA mais perto do texto final e alinhado melhor */
+.cases-cta-float{
+  align-self: start;              /* antes end -> sobe o botão */
+  margin-top: -6px;               /* aproxima um pouco mais do parágrafo */
+}
+
+/* deixa cards mais "largos" visualmente: menor gap entre eles */
+.cases-grid--4{
+  gap: 16px;                      /* estava 24px */
+}
+
+/* em telas largas, dá ainda mais largura pros cards (sem quebrar layout) */
+@media (min-width: 1280px){
+  .container{ max-width: 1360px; }  /* antes 1280 -> +largura pros 4 cards */
+}
+
+/* opcional: card um pouco mais baixo para caber sem scroll */
+#cases .case-image{ height: 132px; }   /* estava 140px */
+#cases .case-content{ padding: 14px; } /* estava 16px */
+/* =========================================
+   PATCH FINAL — FECHAMENTO DE DOBRA
+   ========================================= */
+
+/* sobe levemente todo o bloco de cases */
+#cases.section{
+  padding-top: 16px;        /* era 22px */
+}
+
+/* reduz mais um pouco o espaço do texto final */
+#cases .section-header .text-lead{
+  margin-bottom: 4px !important;
+}
+
+/* aproxima CTA do texto */
+.cases-cta-float{
+  margin-top: -10px;        /* era -6px */
+}
+
+/* cards ainda mais “juntos” */
+.cases-stage{
+  gap: 14px;                /* era 16px */
+}
+
+/* reduz 2px da imagem do card */
+#cases .case-image{
+  height: 128px;             /* era 132px */
+}
+
+/* título do card levemente menor (imperceptível visualmente) */
+#cases .case-content h4{
+  font-size: 17px;
+}
+
+/* descrição com 1 linha e meia visual */
+#cases .case-content p{
+  -webkit-line-clamp: 2;
+  line-height: 1.35;
+}
+
+
+    /* ===============================
+       METHODOLOGY - Arquitetura Visual
+       =============================== */
+    .methodology-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-24);
+      margin: var(--space-48) 0;
+    }
+
+    .step {
+      text-align: center;
+      padding: var(--space-32);
+      background: var(--glass-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border);
+      position: relative;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--gradient-brand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: var(--text-lg);
+      margin: 0 auto var(--space-16);
+      color: white;
+    }
+
+    /* ===============================
+       TESTIMONIALS - Social Proof
+       =============================== */
+    .testimonial-slider {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .testimonial {
+      background: var(--space-3);
+      border-radius: var(--radius-lg);
+      padding: var(--space-40);
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .testimonial-quote {
+      font-size: var(--text-xl);
+      font-style: italic;
+      margin-bottom: var(--space-24);
+      color: var(--text-secondary);
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      margin-bottom: var(--space-4);
+    }
+
+    .testimonial-role {
+      color: var(--text-tertiary);
+      font-size: var(--text-sm);
+    }
+
+    /* ===============================
+       CTA SECTION - Conversão Final
+       =============================== */
+    .cta-section {
+      text-align: center;
+      padding: var(--space-80) 0;
+      background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(0,212,170,0.05));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      right: -50%;
+      bottom: -50%;
+      background: radial-gradient(circle at 50% 50%, rgba(0,102,255,0.1) 0%, transparent 50%);
+      animation: rotate 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ===============================
+       FOOTER
+       =============================== */
+    .footer {
+      background: var(--space-1);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: var(--space-64) 0 var(--space-32);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-48);
+      margin-bottom: var(--space-48);
+    }
+
+    .footer-logo {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      margin-bottom: var(--space-16);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: var(--space-8);
+    }
+
+    .footer-links a {
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: var(--space-32);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-tertiary);
+      font-size: var(--text-sm);
+    }
+
+    /* ===============================
+       UTILITY CLASSES
+       =============================== */
+    .text-gradient {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===============================
+       RESPONSIVE DESIGN
+       =============================== */
+    @media (max-width: 1024px) {
+      :root {
+        --text-4xl: 36px;
+        --text-5xl: 42px;
+      }
+      
+      .hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-32);
+  align-items: center;
+}
+
+      .nav-menu {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: var(--space-48) 0;
+      }
+
+      h1 { font-size: var(--text-4xl); }
+      h2 { font-size: var(--text-3xl); }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 var(--space-16);
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-cta {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+
+    /* ===============================
+       MOBILE MENU
+       =============================== */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--space-1);
+      z-index: 1001;
+      padding: var(--space-32);
+      transform: translateX(100%);
+      transition: transform var(--transition-base);
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-32);
+    }
+
+    .mobile-nav {
+      list-style: none;
+    }
+
+    .mobile-nav li {
+      margin-bottom: var(--space-16);
+    }
+
+    .mobile-nav a {
+      font-size: var(--text-xl);
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+      padding: var(--space-12) 0;
+    }
+
+    /* ===============================
+       ANIMATIONS & EFFECTS
+       =============================== */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+   /* ===============================
+   HERO STATS - Pulse premium (sutil)
+   =============================== */
+
+.hero .stat-number.pulse {
+  animation: heroPulse 900ms ease-out 1;
+  filter: drop-shadow(0 0 12px rgba(0,102,255,.28));
+}
+
+@keyframes heroPulse {
+  0%   { transform: translateZ(0) scale(1);   opacity: 1; }
+  45%  { transform: translateZ(0) scale(1.035); opacity: 1; }
+  100% { transform: translateZ(0) scale(1);   opacity: 1; }
+}
+
+    /* ===============================
+       CUSTOM SCROLLBAR
+       =============================== */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--space-1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--brand-primary);
+      border-radius: var(--radius-sm);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--brand-secondary);
+    }
+
+    /* ===============================
+       ACCESSIBILITY
+       =============================== */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .focus-visible {
+      outline: 2px solid var(--brand-primary);
+      outline-offset: 2px;
+    }
+
+    /* ===============================
+       LOADING STATES
+       =============================== */
+    .loading {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loading::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    /* ===============================
+   HERO ASSESSMENT - COMPACT MODE (sem mudar textos)
+   =============================== */
+.hero .visual-card {
+  padding: var(--space-20);
+}
+.hero .assess-item {
+  padding: 10px !important;
+  gap: var(--space-8) !important;
+  border-radius: var(--radius-md);
+}
+
+.hero .assess-item span {
+  font-size: 13px !important;
+  line-height: 1.25 !important;
+}
+  </style>
