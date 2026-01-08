@@ -806,6 +806,28 @@
   font-size: 11px;
   margin-top: 4px;
 }
+/* ===============================
+   IMAGEM DO PROBLEMA (CASE 1)
+================================ */
+.case-problem-image{
+  margin-top: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 14px 36px rgba(0,0,0,.45);
+
+  /* garante alinhamento visual com o bloco 2 */
+  height: 180px;
+}
+
+.case-problem-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* calendário não pode cortar */
+  padding: 16px;
+  display: block;
+}
 
     
   </style>
@@ -970,6 +992,13 @@
                   Baixa estabilidade do processo • Capacidade inferior à demanda contratada • 
                   Risco iminente de ruptura de fornecimento.
                 </p>
+                <div class="case-problem-image">
+  <img 
+    src="/assets/img/calendario.problema2.case1.png" 
+    alt="Linha do tempo de risco de ruptura do fornecimento"
+    loading="lazy">
+</div>
+
               </div>
             </div>
           </div>
