@@ -571,9 +571,31 @@
 </head>
 
 <body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <!-- Troque pelo seu logo real se já tiver -->
+      <img src="/assets/logo-maxprod.png" alt="MaxProd" class="brand__logo">
+      <span class="brand__text">
+        <strong>MAXPROD</strong>
+        <small>Soluções Empresariais</small>
+      </span>
+    </a>
 
-  <!-- Se o seu site já tem header global aqui, mantenha o seu.
-       Se não, este arquivo ainda renderiza o conteúdo do case sem depender do header. -->
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a href="/" >Home</a>
+      <a href="/cases/" class="active">Cases</a>
+      <a href="/metodologia.html">Metodologia</a>
+      <a href="/servicos.html">Serviços</a>
+      <a href="/sobre.html">Sobre</a>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="btn btn-ghost" href="/contato.html">Fale Conosco</a>
+      <a class="btn btn-primary" href="/calculadora-roi.html">Calcular ROI</a>
+    </div>
+  </div>
+</header>
 
   <main class="case-wrap">
     <div class="case-breadcrumb">
