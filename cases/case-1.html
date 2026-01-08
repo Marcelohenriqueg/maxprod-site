@@ -6,33 +6,148 @@
   <meta name="description" content="Case MaxProd — Aumento de OEE em célula de solda (Tier 1 Stellantis): evitamos ruptura e elevamos a eficiência em 90 dias." />
   <title>Case 1 | Aumento de OEE em Célula de Solda — MaxProd</title>
 
+  <!-- CSS global do site -->
   <link rel="stylesheet" href="/style.css" />
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/x-icon" href="/assets/img/logo-maxprod.png">
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="Case 1 | Aumento de OEE em Célula de Solda — MaxProd">
+  <meta property="og:description" content="Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva">
+  <meta property="og:image" content="/assets/img/robo-case1.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.maxprod.com.br/cases/case-1.html">
+
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Case MaxProd — Aumento de OEE em 90 dias">
+  <meta name="twitter:image" content="/assets/img/robo-case1.png">
+
+  <!-- (Opcional) preload das imagens críticas (leve e correto) -->
+  <link rel="preload" as="image" href="/assets/img/robo-case1.png" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/img/logo-maxprod.png" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/img/pdca-maxprod.png">
 
   <style>
     /* =========================
        CASE-1 — CSS LOCAL (SAFE)
+       Otimizado (sem efeitos pesados)
        ========================= */
 
     :root{
       --case-bg: rgba(255,255,255,.03);
       --case-stroke: rgba(255,255,255,.10);
-      --case-stroke2: rgba(255,255,255,.14);
       --case-text: rgba(255,255,255,.90);
-      --case-muted: rgba(255,255,255,.70);
+      --case-muted: rgba(255,255,255,.78);
       --case-muted2: rgba(255,255,255,.55);
       --case-shadow: 0 22px 70px rgba(0,0,0,.55);
       --case-shadow2: 0 10px 30px rgba(0,0,0,.35);
 
-      /* Tenta herdar sua paleta global */
+      /* herda paleta global se existir */
       --case-brand: var(--brand, #2f6bff);
       --case-brand2: var(--brand2, #1f4fd8);
     }
 
-    /* Layout base */
+    /* ===== Header no padrão clean (sem travar) ===== */
+    .site-header{
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(8,12,20,.78);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(10px);
+    }
+    .site-header__inner{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color: rgba(255,255,255,.92);
+      min-width: 180px;
+    }
+    .brand img{
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      display:block;
+    }
+    .brand strong{
+      letter-spacing: .08em;
+      font-size: 13px;
+      line-height: 1;
+      display:block;
+    }
+    .brand small{
+      font-size: 12px;
+      color: rgba(255,255,255,.62);
+      display:block;
+      margin-top: 2px;
+    }
+
+    .site-nav{
+      display:flex;
+      align-items:center;
+      gap: 18px;
+    }
+    .site-nav a{
+      color: rgba(255,255,255,.72);
+      text-decoration:none;
+      font-size: 14px;
+      padding: 8px 6px;
+    }
+    .site-nav a:hover{ color: rgba(255,255,255,.92); }
+    .site-nav a.active{
+      color: var(--case-brand);
+      font-weight: 700;
+    }
+
+    .site-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration:none;
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.90);
+      background: rgba(255,255,255,.03);
+      white-space: nowrap;
+    }
+    .btn:hover{ background: rgba(255,255,255,.06); }
+    .btn-primary{
+      background: linear-gradient(180deg, rgba(47,107,255,.95), rgba(31,79,216,.92));
+      border-color: rgba(47,107,255,.45);
+      color:#fff;
+      box-shadow: 0 16px 40px rgba(47,107,255,.22);
+    }
+
+    @media (max-width: 860px){
+      .site-nav{ display:none; } /* depois fazemos menu mobile leve */
+      .brand{ min-width: auto; }
+    }
+
+    /* ===== Conteúdo do Case ===== */
     .case-wrap{
       max-width: 1180px;
       margin: 0 auto;
-      padding: 26px 18px 64px;
+      padding: 22px 18px 64px;
     }
 
     .case-breadcrumb{
@@ -43,17 +158,16 @@
     .case-breadcrumb a{ color: inherit; text-decoration: none; }
     .case-breadcrumb a:hover{ color: var(--case-text); text-decoration: underline; }
 
-    /* Card principal (igual ao seu "painel grande") */
     .case-shell{
-      background: radial-gradient(1200px 600px at 18% 0%, rgba(47,107,255,.22), transparent 55%),
-                  radial-gradient(900px 500px at 92% 18%, rgba(31,79,216,.16), transparent 60%),
-                  linear-gradient(180deg, rgba(8,12,20,.88), rgba(8,12,20,.82));
+      background:
+        radial-gradient(1200px 600px at 18% 0%, rgba(47,107,255,.22), transparent 55%),
+        radial-gradient(900px 500px at 92% 18%, rgba(31,79,216,.16), transparent 60%),
+        linear-gradient(180deg, rgba(8,12,20,.88), rgba(8,12,20,.82));
       border: 1px solid var(--case-stroke);
       border-radius: 26px;
       box-shadow: var(--case-shadow);
       overflow: hidden;
       position: relative;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .case-shell::before{
@@ -62,17 +176,6 @@
       background: radial-gradient(900px 380px at 50% -10%, rgba(255,255,255,.10), transparent 55%);
       pointer-events:none;
       opacity:.75;
-    }
-
-    .case-shell::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: 
-        radial-gradient(circle at 20% 80%, rgba(47,107,255,.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(100,220,255,.02) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 0;
     }
 
     .case-head{
@@ -105,22 +208,6 @@
       line-height: 1.12;
       color: #ffffff;
       letter-spacing: -0.02em;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .case-title::before {
-      content: attr(data-text);
-      position: absolute;
-      left: 2px;
-      text-shadow: -2px 0 #ff2965;
-      top: 0;
-      color: inherit;
-      background: transparent;
-      overflow: hidden;
-      clip-path: inset(0 0 0 0);
-      animation: glitch-anim 5s infinite linear alternate-reverse;
-      opacity: 0.15;
     }
 
     .case-sub{
@@ -129,6 +216,46 @@
       color: rgba(255,255,255,.82);
       font-size: 15px;
       line-height: 1.6;
+    }
+
+    /* BADGE DE RISCO */
+    .case-risk{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-top:12px;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:13px;
+      background: rgba(0,180,120,.18);
+      border:1px solid rgba(0,180,120,.45);
+      color:#d9fff1;
+    }
+    .case-risk .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#00e0a4;
+      box-shadow:0 0 10px #00e0a4;
+    }
+
+    /* Hero image (leve, sem parallax) */
+    .case-hero-image{
+      position: relative;
+      margin: 18px 0 0;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 280px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+    }
+    .case-hero-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.08) contrast(1.04);
+      transform: scale(1.01);
     }
 
     /* KPI row */
@@ -150,32 +277,9 @@
       box-shadow: var(--case-shadow2);
       position: relative;
       overflow: hidden;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: transform .18s ease;
     }
-
-    .case-kpi:hover {
-      transform: translateY(-6px);
-    }
-
-    .case-kpi::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.05),
-        transparent
-      );
-      transition: left 0.7s ease;
-    }
-
-    .case-kpi:hover::before {
-      left: 100%;
-    }
+    .case-kpi:hover{ transform: translateY(-4px); }
 
     .case-kpi__top{
       display:flex;
@@ -228,14 +332,6 @@
       border-radius: 20px;
       padding: 18px;
       box-shadow: var(--case-shadow2);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .case-panel.animated {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     .case-h{
@@ -277,16 +373,10 @@
       bottom:8%;
       left:50%;
       width:2px;
-      background: linear-gradient(
-        180deg,
-        transparent,
-        rgba(47,107,255,.9),
-        transparent
-      );
-      box-shadow: 0 0 24px rgba(47,107,255,.8);
-      transform: translateX(-50%) scaleY(0);
-      transform-origin: top;
-      animation: lineGrow 1.2s ease forwards;
+      background: linear-gradient(180deg, transparent, rgba(47,107,255,.9), transparent);
+      box-shadow: 0 0 24px rgba(47,107,255,.55);
+      transform: translateX(-50%);
+      opacity: .9;
     }
 
     .case-card{
@@ -295,37 +385,46 @@
       border: 1px solid rgba(255,255,255,.10);
       border-radius: 18px;
       padding: 14px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
     }
+    .case-card:hover{ transform: translateY(-4px); }
 
-    .case-card.animated {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    /* Glow do “Depois” (mantido) */
     .case-card:nth-child(2){
-      position: relative;
       border-color: rgba(47,107,255,.45);
       box-shadow:
         0 0 0 1px rgba(47,107,255,.25),
-        0 20px 60px rgba(47,107,255,.35);
+        0 20px 60px rgba(47,107,255,.25);
+      position: relative;
     }
-
     .case-card:nth-child(2)::after{
       content:"";
       position:absolute;
       inset:-2px;
       border-radius: 18px;
-      background: linear-gradient(
-        120deg,
-        transparent 30%,
-        rgba(47,107,255,.35),
-        transparent 70%
-      );
-      animation: sweep 3.5s linear infinite;
+      background: linear-gradient(120deg, transparent 30%, rgba(47,107,255,.28), transparent 70%);
+      animation: sweep 3.6s linear infinite;
       pointer-events:none;
+      opacity: .9;
+    }
+
+    /* ✅ Efeito igual do Eixo 2 aplicado no Eixo 1 também */
+    .case-card--glow{
+      border-color: rgba(47,107,255,.45) !important;
+      box-shadow:
+        0 0 0 1px rgba(47,107,255,.25),
+        0 20px 60px rgba(47,107,255,.25) !important;
+      position: relative;
+    }
+    .case-card--glow::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius: 18px;
+      background: linear-gradient(120deg, transparent 30%, rgba(47,107,255,.28), transparent 70%);
+      animation: sweep 3.6s linear infinite;
+      pointer-events:none;
+      opacity: .9;
     }
 
     .case-card__kicker{
@@ -351,7 +450,7 @@
       margin: 0;
     }
 
-    /* Badges (metodologia / tags) */
+    /* Badges */
     .case-badges{
       display:flex;
       flex-wrap: wrap;
@@ -371,21 +470,35 @@
       font-size: 13px;
       line-height: 1;
       user-select:none;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
     }
-
-    .case-badge:hover {
+    .case-badge:hover{
       transform: translateY(-2px);
       border-color: rgba(47,107,255,.5);
-      background: rgba(47,107,255,.1);
+      background: rgba(47,107,255,.08);
     }
-
     .case-badge i{
       width: 7px; height: 7px;
       border-radius: 999px;
       background: rgba(255,255,255,.55);
       display:inline-block;
+    }
+
+    /* PDCA visual (corrigido path) */
+    .case-method-visual{
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 16px 0 8px;
+    }
+    .case-method-visual img{
+      width: 110px;
+      height: 110px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      object-fit: cover;
+      display:block;
     }
 
     /* CTA Download */
@@ -396,7 +509,6 @@
       justify-content:space-between;
       padding: 16px 16px;
       margin-top: 16px;
-
       background: linear-gradient(180deg, rgba(47,107,255,.14), rgba(255,255,255,.02));
       border: 1px solid rgba(255,255,255,.14);
       border-radius: 18px;
@@ -434,7 +546,6 @@
       justify-content:flex-end;
     }
 
-    /* Botões */
     .case-btn{
       display:inline-flex;
       align-items:center;
@@ -463,12 +574,10 @@
       box-shadow: 0 16px 40px rgba(47,107,255,.22);
     }
     .case-btn--primary:hover{
-      border-color: rgba(47,107,255,.55);
-      box-shadow: 0 18px 48px rgba(47,107,255,.28);
       transform: translateY(-2px);
+      box-shadow: 0 18px 48px rgba(47,107,255,.26);
     }
 
-    /* Rodapé do case */
     .case-footer{
       display:flex;
       gap: 10px;
@@ -480,286 +589,8 @@
     }
 
     /* =========================
-       NAVEGAÇÃO NIVEL APPLE
-       ========================= */
-    .case-nav {
-      background: linear-gradient(180deg, 
-        rgba(8,12,20,.95) 0%,
-        rgba(8,12,20,.85) 100%);
-      backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 14px 0;
-    }
-
-    .case-nav__container {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .case-nav__logo img {
-      filter: drop-shadow(0 4px 12px rgba(47,107,255,.3));
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      height: 32px;
-      width: auto;
-    }
-
-    .case-nav__logo img:hover {
-      transform: scale(1.05);
-    }
-
-    .case-nav__menu {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .case-nav__link {
-      color: rgba(255,255,255,.75);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      padding: 8px 0;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    .case-nav__link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #2f6bff, #64dcff);
-      border-radius: 2px;
-      transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .case-nav__link:hover {
-      color: #fff;
-    }
-
-    .case-nav__link:hover::after {
-      width: 100%;
-    }
-
-    .case-nav__link--active {
-      color: #fff;
-    }
-
-    .case-nav__link--active::after {
-      width: 100%;
-      background: linear-gradient(90deg, #2f6bff, #64dcff);
-      box-shadow: 0 0 12px rgba(47,107,255,.5);
-    }
-
-    .case-nav__link--cta {
-      background: linear-gradient(135deg, #2f6bff, #1f4fd8);
-      padding: 10px 22px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.1);
-      box-shadow: 0 8px 24px rgba(47,107,255,.25);
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .case-nav__link--cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(47,107,255,.35);
-      border-color: rgba(255,255,255,.2);
-    }
-
-    .case-nav__link--cta::after {
-      display: none;
-    }
-
-    .case-nav__hamburger {
-      display: none;
-      background: none;
-      border: none;
-      width: 30px;
-      height: 20px;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .case-nav__hamburger span {
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: 0.3s ease;
-    }
-
-    .case-nav__hamburger span:nth-child(1) { top: 0; }
-    .case-nav__hamburger span:nth-child(2) { top: 9px; }
-    .case-nav__hamburger span:nth-child(3) { top: 18px; }
-
-    /* =========================
-       IMAGENS INTEGRADAS
-       ========================= */
-
-    /* Hero Image */
-    .case-hero-image {
-      position: relative;
-      margin: 24px 0;
-      border-radius: 20px;
-      overflow: hidden;
-      height: 300px;
-    }
-
-    .case-hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(1.1) contrast(1.05);
-      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .case-hero-image:hover img {
-      transform: scale(1.03);
-    }
-
-    .case-hero-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        45deg,
-        transparent 0%,
-        rgba(47,107,255,.05) 50%,
-        transparent 100%
-      );
-      pointer-events: none;
-    }
-
-    /* PDCA Image */
-    .case-method-visual {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin: 20px 0;
-    }
-
-    .case-method-visual img {
-      width: 120px;
-      height: 120px;
-      border-radius: 16px;
-      border: 2px solid rgba(255,255,255,.1);
-      box-shadow: 0 12px 40px rgba(0,0,0,.4);
-      transition: transform 0.4s ease;
-    }
-
-    .case-method-visual img:hover {
-      transform: rotate(5deg) scale(1.05);
-    }
-
-    /* Grid de Logos */
-    .case-logos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 16px;
-      margin: 32px 0;
-      padding: 24px;
-      background: rgba(255,255,255,.02);
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.05);
-    }
-
-    .case-logos img {
-      height: 40px;
-      width: auto;
-      opacity: .7;
-      transition: all 0.3s ease;
-      filter: grayscale(100%) brightness(1.5);
-      justify-self: center;
-    }
-
-    .case-logos img:hover {
-      opacity: 1;
-      filter: grayscale(0%) drop-shadow(0 4px 12px rgba(47,107,255,.3));
-      transform: translateY(-2px);
-    }
-
-    /* =========================
-       ELEMENTOS ESPECIAIS
-       ========================= */
-
-    /* BADGE DE RISCO */
-    .case-risk{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      margin-top:12px;
-      padding:8px 14px;
-      border-radius:999px;
-      font-size:13px;
-      background: rgba(0,180,120,.18);
-      border:1px solid rgba(0,180,120,.45);
-      color:#d9fff1;
-    }
-
-    .case-risk .dot{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:#00e0a4;
-      box-shadow:0 0 10px #00e0a4;
-    }
-
-    /* Timeline */
-    .case-timeline {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 24px 0;
-      position: relative;
-    }
-
-    .case-timeline::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, 
-        transparent,
-        rgba(47,107,255,.3),
-        rgba(100,220,255,.3),
-        transparent);
-      transform: translateY(-50%);
-    }
-
-    .case-timeline__point {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.9);
-      border: 3px solid rgba(47,107,255,.8);
-      position: relative;
-      z-index: 2;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .case-timeline__point:hover {
-      transform: scale(1.5);
-      box-shadow: 0 0 20px rgba(47,107,255,.8);
-    }
-
-    /* =========================
        PROGRESS RING OEE
        ========================= */
-
     .case-ring{
       width: 110px;
       height: 110px;
@@ -767,20 +598,17 @@
       margin-top: 4px;
       margin-bottom: 8px;
     }
-
     .case-ring__svg{
       width: 110px;
       height: 110px;
       transform: rotate(-90deg);
       display: block;
     }
-
     .case-ring__bg{
       fill: none;
       stroke: rgba(255,255,255,.10);
       stroke-width: 10;
     }
-
     .case-ring__fg{
       fill: none;
       stroke: url(#caseRingGrad);
@@ -788,10 +616,9 @@
       stroke-linecap: round;
       stroke-dasharray: 327;
       stroke-dashoffset: 327;
-      filter: drop-shadow(0 0 10px rgba(47,107,255,.75));
-      transition: stroke-dashoffset 1400ms cubic-bezier(.2,.9,.2,1);
+      filter: drop-shadow(0 0 10px rgba(47,107,255,.65));
+      transition: stroke-dashoffset 1200ms cubic-bezier(.2,.9,.2,1);
     }
-
     .case-ring__center{
       position: absolute;
       inset: 0;
@@ -800,7 +627,6 @@
       justify-content: center;
       flex-direction: column;
     }
-
     .case-ring__value{
       font-size: 22px;
       font-weight: 900;
@@ -808,7 +634,6 @@
       color: rgba(255,255,255,.95);
       line-height: 1;
     }
-
     .case-ring__label{
       margin-top: 4px;
       font-size: 11px;
@@ -816,7 +641,6 @@
       text-transform: uppercase;
       color: rgba(255,255,255,.60);
     }
-
     .case-ring__mini{
       display: inline-flex;
       gap: 8px;
@@ -824,39 +648,9 @@
       align-items: baseline;
       color: rgba(255,255,255,.80);
     }
-
     .case-ring__delta{
       color: rgba(100,220,255,.90);
       font-weight: 800;
-    }
-
-    .case-kpi.is-animated::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      border-radius: 18px;
-      background: radial-gradient(260px 120px at 30% 10%, rgba(47,107,255,.20), transparent 60%);
-      pointer-events:none;
-    }
-
-    /* =========================
-       ANIMAÇÕES
-       ========================= */
-
-    @keyframes glitch-anim {
-      0% { clip-path: inset(40% 0 61% 0); }
-      5% { clip-path: inset(92% 0 1% 0); }
-      10% { clip-path: inset(43% 0 1% 0); }
-      15% { clip-path: inset(25% 0 58% 0); }
-      20% { clip-path: inset(54% 0 7% 0); }
-      25% { clip-path: inset(58% 0 43% 0); }
-      30% { clip-path: inset(98% 0 1% 0); }
-      35% { clip-path: inset(34% 0 73% 0); }
-      100% { clip-path: inset(58% 0 43% 0); }
-    }
-
-    @keyframes lineGrow{
-      to{ transform: translateX(-50%) scaleY(1); }
     }
 
     @keyframes sweep{
@@ -864,77 +658,11 @@
       to{ transform: translateX(40%); }
     }
 
-    @keyframes float-particle {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100px) translateX(20px);
-        opacity: 0;
-      }
-    }
-
-    /* =========================
-       RESPONSIVIDADE
-       ========================= */
-
+    /* Responsivo */
     @media (max-width: 980px){
       .case-kpis{ grid-template-columns: repeat(2, minmax(0,1fr)); }
       .case-grid{ grid-template-columns: 1fr; }
-      .case-nav__menu {
-        gap: 20px;
-      }
     }
-
-    @media (max-width: 768px){
-      .case-nav__menu {
-        display: none;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: rgba(8,12,20,.98);
-        backdrop-filter: blur(30px);
-        padding: 24px;
-        flex-direction: column;
-        gap: 16px;
-        border-bottom: 1px solid rgba(255,255,255,.1);
-      }
-      
-      .case-nav__menu--open {
-        display: flex;
-      }
-      
-      .case-nav__hamburger {
-        display: block;
-      }
-      
-      .case-method-visual {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .case-hero-image {
-        height: 200px;
-      }
-      
-      .case-timeline {
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-      
-      .case-timeline::before {
-        display: none;
-      }
-    }
-
     @media (max-width: 560px){
       .case-kpis{ grid-template-columns: 1fr; }
       .case-compare{ grid-template-columns: 1fr; }
@@ -942,59 +670,38 @@
       .case-head, .case-body, .case-footer{ padding-left: 16px; padding-right: 16px; }
       .case-download{ flex-direction: column; align-items:flex-start; }
       .case-download__actions{ width:100%; justify-content:flex-start; }
-      .case-nav__menu {
-        gap: 12px;
-      }
+      .case-hero-image{ height: 200px; }
+      .case-method-visual{ flex-direction: column; align-items:flex-start; }
     }
   </style>
-    <!-- PRÉ-CARREGAMENTO DE IMAGENS CRÍTICAS -->
-  <link rel="preload" as="image" href="robo-case1.png" fetchpriority="high">
-  <link rel="preload" as="image" href="logo-maxprod.png" fetchpriority="high">
-  <link rel="preload" as="image" href="pdca-maxprod.png">
-  
-  <!-- PRÉ-CONEXÕES PARA DOMÍNIOS EXTERNOS (se houver) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- FAVICON -->
-  <link rel="icon" type="image/x-icon" href="logo-maxprod.png">
-  
-  <!-- OPEN GRAPH PARA COMPARTILHAMENTO -->
-  <meta property="og:title" content="Case 1 | Aumento de OEE em Célula de Solda — MaxProd">
-  <meta property="og:description" content="Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva">
-  <meta property="og:image" content="robo-case1.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://seusite.com/cases/case1">
-  
-  <!-- TWITTER CARDS -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Case MaxProd — Aumento de OEE em 90 dias">
-  <meta name="twitter:image" content="robo-case1.png">
-</head>
 </head>
 
 <body>
 
-  <!-- NAVEGAÇÃO APPLE-LIKE -->
-  <nav class="case-nav">
-    <div class="case-nav__container">
-      <a href="/" class="case-nav__logo">
-        <img src="..logo-maxprod.png" alt="MaxProd" width="120" height="32">
+  <!-- MENU (padrão clean, sem peso) -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <img src="/assets/img/logo-maxprod.png" alt="MaxProd">
+        <span>
+          <strong>MAXPROD</strong>
+          <small>Soluções Empresariais</small>
+        </span>
       </a>
-      
-      <div class="case-nav__menu">
-        <a href="/" class="case-nav__link">Home</a>
-        <a href="/#solucoes" class="case-nav__link">Soluções</a>
-        <a href="/#cases" class="case-nav__link case-nav__link--active">Cases</a>
-        <a href="/#sobre" class="case-nav__link">Sobre</a>
-        <a href="/#contato" class="case-nav__link case-nav__link--cta">Contato</a>
+
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="/">Home</a>
+        <a href="/#solucoes">Soluções</a>
+        <a href="/#cases" class="active">Cases</a>
+        <a href="/#sobre">Sobre</a>
+      </nav>
+
+      <div class="site-actions">
+        <a class="btn" href="/#contato">Fale Conosco</a>
+        <a class="btn btn-primary" href="/#roi">Calcular ROI</a>
       </div>
-      
-      <button class="case-nav__hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
-  </nav>
+  </header>
 
   <main class="case-wrap">
     <div class="case-breadcrumb">
@@ -1005,7 +712,7 @@
       <header class="case-head">
         <div class="case-tag"><span class="dot"></span> RESULTADOS COMPROVADOS</div>
 
-        <h1 class="case-title" data-text="Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva">
+        <h1 class="case-title">
           Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva
         </h1>
 
@@ -1020,9 +727,9 @@
           estabilidade do processo e sustentação dos ganhos — sem CAPEX pesado.
         </p>
 
-        <!-- IMAGEM DO ROBÔ -->
+        <!-- IMAGEM DO ROBÔ (corrigida) -->
         <div class="case-hero-image">
-          <img src="..robo-case1.png" alt="Célula de solda robotizada otimizada">
+          <img src="/assets/img/robo-case1.png" alt="Célula de solda robotizada otimizada">
         </div>
       </header>
 
@@ -1032,6 +739,7 @@
           <div class="case-kpi__top">
             <div class="case-kpi__label">OEE</div>
           </div>
+
           <div class="case-ring" data-value="73" data-before="52" aria-label="OEE 52 para 73">
             <svg class="case-ring__svg" viewBox="0 0 120 120" role="img" aria-hidden="true">
               <defs>
@@ -1086,6 +794,7 @@
 
       <div class="case-body">
         <div class="case-grid">
+
           <!-- PROBLEMA -->
           <div class="case-panel">
             <div class="case-h">1) Problema e impacto no cliente</div>
@@ -1122,19 +831,19 @@
               priorizando as maiores perdas e validando causa raiz com evidência em campo.
             </p>
 
-            <!-- IMAGEM PDCA -->
+            <!-- IMAGEM PDCA (corrigida) -->
             <div class="case-method-visual">
-              <img src="..pdca-maxprod.png" alt="Metodologia PDCA MaxProd">
+              <img src="/assets/img/pdca-maxprod.png" alt="Metodologia PDCA MaxProd">
               <p class="case-p">Ciclo de melhoria contínua aplicado com precisão cirúrgica para identificação e correção de perdas estruturais.</p>
             </div>
 
             <div class="case-badges" aria-label="Ferramentas aplicadas">
-              <span class="case-badge" data-tooltip="Planejar, Executar, Verificar, Agir"><i></i> PDCA (Plan-Do-Check-Act)</span>
-              <span class="case-badge" data-tooltip="Overall Equipment Effectiveness"><i></i> OEE + Pareto de perdas</span>
-              <span class="case-badge" data-tooltip="Mão de obra, Máquina, Material, Método e Design"><i></i> 4M + 1D (Design)</span>
-              <span class="case-badge" data-tooltip="Diagrama de Ishikawa"><i></i> Ishikawa</span>
-              <span class="case-badge" data-tooltip="Análise de causa raiz"><i></i> 5 Porquês (Deep Dive)</span>
-              <span class="case-badge" data-tooltip="Metodologia de qualidade"><i></i> Zero Defeitos (durabilidade)</span>
+              <span class="case-badge"><i></i> PDCA (Plan-Do-Check-Act)</span>
+              <span class="case-badge"><i></i> OEE + Pareto de perdas</span>
+              <span class="case-badge"><i></i> 4M + 1D (Design)</span>
+              <span class="case-badge"><i></i> Ishikawa</span>
+              <span class="case-badge"><i></i> 5 Porquês (Deep Dive)</span>
+              <span class="case-badge"><i></i> Zero Defeitos (durabilidade)</span>
             </div>
 
             <ul class="case-list">
@@ -1142,6 +851,7 @@
               <li><b>Deep Dive (5 Porquês):</b> falha de concepção no posicionamento dos eletrodos e obsolescência de materiais.</li>
             </ul>
           </aside>
+
         </div>
 
         <!-- SOLUÇÃO -->
@@ -1151,16 +861,9 @@
             A estratégia foi dividida em dois eixos de ataque para estabilizar o processo e remover as perdas estruturais que limitavam a capacidade real.
           </p>
 
-          <!-- TIMELINE INTERATIVA -->
-          <div class="case-timeline">
-            <div class="case-timeline__point" data-step="1"></div>
-            <div class="case-timeline__point" data-step="2"></div>
-            <div class="case-timeline__point" data-step="3"></div>
-            <div class="case-timeline__point" data-step="4"></div>
-          </div>
-
           <div class="case-compare" style="margin-top:12px;">
-            <div class="case-card">
+            <!-- ✅ Efeito do Eixo 2 aplicado também no Eixo 1 -->
+            <div class="case-card case-card--glow">
               <div class="case-card__kicker">Eixo A • Manutenção robótica</div>
               <div class="case-card__big">Estabilidade do posicionamento</div>
               <p class="case-mini">
@@ -1169,7 +872,7 @@
               </p>
             </div>
 
-            <div class="case-card">
+            <div class="case-card case-card--glow">
               <div class="case-card__kicker">Eixo B • Ciclo de vida de consumíveis</div>
               <div class="case-card__big">+50% vida útil do eletrodo</div>
               <p class="case-mini">
@@ -1198,13 +901,7 @@
             <span style="color:rgba(255,255,255,.55);">Valores absolutos podem ser apresentados sob NDA.</span>
           </p>
 
-          <!-- GRID DE LOGOS -->
-          <div class="case-logos">
-            <img src="LOGO_MAXPROD_Transparente.png" alt="MaxProd">
-            <img src="LOGO_OPERA_GUARD.png" alt="Opera Guard">
-            <img src="logo-imagem1.png" alt="Parceiro">
-            <img src="maxprod-logo2.png" alt="MaxProd">
-          </div>
+          <!-- ✅ Removido o grid de logos que estava poluindo e aparecendo indevidamente -->
 
           <!-- CTA PDF -->
           <div class="case-download">
@@ -1223,13 +920,13 @@
                 Baixar PDF do Case
               </a>
 
-              <a class="case-btn"
-                 href="/#contato">
+              <a class="case-btn" href="/#contato">
                 Solicitar versão com NDA
               </a>
             </div>
           </div>
         </div>
+
       </div>
 
       <!-- Botões finais -->
@@ -1240,265 +937,55 @@
     </section>
   </main>
 
-<script>
-(function(){
-  // NAVEGAÇÃO MOBILE
-  const hamburger = document.querySelector('.case-nav__hamburger');
-  const navMenu = document.querySelector('.case-nav__menu');
-  
-  if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('case-nav__menu--open');
-      hamburger.classList.toggle('active');
-    });
-    
-    // Fechar menu ao clicar fora
-    document.addEventListener('click', (e) => {
-      if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        navMenu.classList.remove('case-nav__menu--open');
-        hamburger.classList.remove('active');
-      }
-    });
-  }
+  <!-- JS LEVE: apenas ring + contador -->
+  <script>
+  (function(){
+    const ring = document.querySelector('.case-ring');
+    if(!ring) return;
 
-  // EFEITO DE SCROLL SUAVE
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      if (this.getAttribute('href') !== '#') {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      }
-    });
-  });
+    function animateRing(ring){
+      const val = Number(ring.dataset.value || 0);
+      const before = Number(ring.dataset.before || 0);
+      const after = val;
 
-  // PARALLAX 3D EFFECT
-  document.addEventListener('mousemove', (e) => {
-    const shell = document.querySelector('.case-shell');
-    if (!shell) return;
-    
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    
-    const xPos = (clientX / innerWidth - 0.5) * 40;
-    const yPos = (clientY / innerHeight - 0.5) * 40;
-    
-    shell.style.transform = `perspective(1000px) rotateX(${yPos * 0.05}deg) rotateY(${xPos * 0.05}deg)`;
-  });
+      const fg = ring.querySelector('.case-ring__fg');
+      const valueEl = ring.querySelector('[data-ring="value"]');
+      const beforeEl = document.querySelector('[data-ring="before"]');
+      const afterEl  = document.querySelector('[data-ring="after"]');
+      const deltaEl  = document.querySelector('[data-ring="delta"]');
 
-  // PARTICLES EFFECT (NASA-style)
-  function createParticles() {
-    const shell = document.querySelector('.case-shell');
-    if (!shell) return;
-    
-    for (let i = 0; i < 15; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'case-particle';
-      particle.style.cssText = `
-        position: absolute;
-        width: ${Math.random() * 2 + 1}px;
-        height: ${Math.random() * 2 + 1}px;
-        background: rgba(47,107,255,${Math.random() * 0.3 + 0.1});
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 1;
-        left: ${Math.random() * 100}%;
-        top: ${Math.random() * 100}%;
-        filter: blur(${Math.random() * 1.5}px);
-        animation: float-particle ${Math.random() * 20 + 10}s linear infinite;
-        animation-delay: ${Math.random() * 5}s;
-      `;
-      
-      shell.appendChild(particle);
-    }
-  }
+      const C = 327;
+      const clamped = Math.max(0, Math.min(100, val));
+      const offset = C - (C * clamped / 100);
 
-  // ANIMAÇÃO DO RING OEE
-  function animateRing(ring){
-    const val = Number(ring.dataset.value || 0);
-    const before = Number(ring.dataset.before || 0);
-    const after = val;
+      if(beforeEl) beforeEl.textContent = before;
+      if(afterEl)  afterEl.textContent = after;
+      if(deltaEl)  deltaEl.textContent = (after - before);
 
-    const fg = ring.querySelector('.case-ring__fg');
-    const valueEl = ring.querySelector('[data-ring="value"]');
-    const beforeEl = document.querySelector('[data-ring="before"]');
-    const afterEl  = document.querySelector('[data-ring="after"]');
-    const deltaEl  = document.querySelector('[data-ring="delta"]');
-
-    const C = 327;
-    const clamped = Math.max(0, Math.min(100, val));
-    const offset = C - (C * clamped / 100);
-
-    if(beforeEl) beforeEl.textContent = before;
-    if(afterEl)  afterEl.textContent = after;
-    if(deltaEl)  deltaEl.textContent = (after - before);
-
-    requestAnimationFrame(() => {
-      fg.style.strokeDashoffset = offset.toFixed(2);
-      ring.closest('.case-kpi')?.classList.add('is-animated');
-    });
-
-    // Contador Apple-style
-    const start = performance.now();
-    const from = 0;
-    const to = after;
-    const dur = 1100;
-
-    function tick(t){
-      const p = Math.min(1, (t - start) / dur);
-      const eased = 1 - Math.pow(1 - p, 3);
-      const v = Math.round(from + (to - from) * eased);
-      if(valueEl) valueEl.textContent = v;
-      if(p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-
-  // STAGGERED ANIMATION PARA CARDS
-  function animateCards() {
-    const cards = document.querySelectorAll('.case-card, .case-panel');
-    cards.forEach((card, i) => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      
-      setTimeout(() => {
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-        card.classList.add('animated');
-      }, 100 * i);
-    });
-  }
-
-  // TOOLTIP PARA BADGES
-  function initTooltips() {
-    document.querySelectorAll('.case-badge').forEach(badge => {
-      badge.addEventListener('mouseenter', (e) => {
-        const tooltipText = badge.getAttribute('data-tooltip');
-        if (!tooltipText) return;
-        
-        const tooltip = document.createElement('div');
-        tooltip.className = 'case-tooltip';
-        tooltip.textContent = tooltipText;
-        document.body.appendChild(tooltip);
-        
-        const rect = badge.getBoundingClientRect();
-        tooltip.style.cssText = `
-          position: fixed;
-          top: ${rect.top - 40}px;
-          left: ${rect.left + rect.width / 2}px;
-          transform: translateX(-50%);
-          background: rgba(12,16,28,.95);
-          color: #fff;
-          padding: 8px 12px;
-          border-radius: 8px;
-          font-size: 12px;
-          white-space: nowrap;
-          z-index: 10000;
-          border: 1px solid rgba(255,255,255,.1);
-          backdrop-filter: blur(10px);
-          pointer-events: none;
-        `;
+      requestAnimationFrame(() => {
+        fg.style.strokeDashoffset = offset.toFixed(2);
       });
-      
-      badge.addEventListener('mouseleave', () => {
-        document.querySelectorAll('.case-tooltip').forEach(t => t.remove());
-      });
-    });
-  }
 
-  // TIMELINE INTERATIVA
-  function initTimeline() {
-    document.querySelectorAll('.case-timeline__point').forEach((point, index) => {
-      point.addEventListener('click', () => {
-        const steps = [
-          "Diagnóstico: Análise OEE e Pareto de perdas",
-          "Causa Raiz: 5 Porquês aplicado às maiores perdas",
-          "Implementação: Eixos A e B simultaneamente",
-          "Validação: Follow-up e sustentação dos ganhos"
-        ];
-        
-        alert(`Etapa ${index + 1}: ${steps[index]}`);
-      });
-    });
-  }
+      // contador suave
+      const start = performance.now();
+      const from = 0;
+      const to = after;
+      const dur = 900;
 
-  // EFEITO DE DIGITAÇÃO NO TÍTULO
-  function initTypewriter() {
-    const title = document.querySelector('.case-title');
-    if (title) {
-      const originalText = title.textContent;
-      title.setAttribute('data-text', originalText);
-      title.textContent = '';
-      
-      let i = 0;
-      const typeWriter = () => {
-        if (i < originalText.length) {
-          title.textContent += originalText.charAt(i);
-          i++;
-          setTimeout(typeWriter, 20);
-        }
-      };
-      setTimeout(typeWriter, 500);
-    }
-  }
-
-  // INTERSECTION OBSERVER PARA ANIMAÇÕES
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animated');
-        
-        // Animação específica para rings
-        if (entry.target.classList.contains('case-ring')) {
-          animateRing(entry.target);
-        }
+      function tick(t){
+        const p = Math.min(1, (t - start) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const v = Math.round(from + (to - from) * eased);
+        if(valueEl) valueEl.textContent = v;
+        if(p < 1) requestAnimationFrame(tick);
       }
-    });
-  }, observerOptions);
-
-  // INICIALIZAÇÃO
-  document.addEventListener('DOMContentLoaded', () => {
-    // Inicializar componentes
-    animateCards();
-    createParticles();
-    initTooltips();
-    initTimeline();
-    initTypewriter();
-    
-    // Observar elementos para animação
-    document.querySelectorAll('.case-card, .case-panel, .case-kpi, .case-ring').forEach(el => {
-      observer.observe(el);
-    });
-    
-    // Animar rings que já estão visíveis
-    document.querySelectorAll('.case-ring').forEach(ring => {
-      const rect = ring.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        animateRing(ring);
-      }
-    });
-  });
-
-  // RESET PARALLAX QUANDO MOUSE SAI
-  document.addEventListener('mouseleave', () => {
-    const shell = document.querySelector('.case-shell');
-    if (shell) {
-      shell.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+      requestAnimationFrame(tick);
     }
-  });
-})();
-</script>
+
+    // anima quando carregar (leve)
+    window.addEventListener('load', () => animateRing(ring), { once:true });
+  })();
+  </script>
 
 </body>
 </html>
