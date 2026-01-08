@@ -6,8 +6,8 @@
   <meta name="description" content="Case MaxProd — Aumento de OEE em célula de solda (Tier 1 Stellantis): evitamos ruptura e elevamos a eficiência em 90 dias." />
   <title>Case 1 | Aumento de OEE em Célula de Solda — MaxProd</title>
 
-  <!-- CSS GLOBAL DO SITE (HOME) -->
-  <link rel="stylesheet" href="/style.css" />
+  <!-- CSS GLOBAL DO SITE (IGUAL HOME) -->
+<link rel="stylesheet" href="/assets/css/site.css">
 
   <style>
     /* =========================================================
@@ -39,127 +39,6 @@
         radial-gradient(1200px 700px at 20% -10%, rgba(47,107,255,.16), transparent 55%),
         radial-gradient(1000px 700px at 90% 10%, rgba(31,79,216,.10), transparent 60%),
         linear-gradient(180deg, #0b0f14 0%, #0e1622 60%, #0b0f14 100%);
-    }
-
-    /* 2) HEADER: usa o mesmo layout do seu site.
-          - Se o seu style.css já define .nav/.header, perfeito.
-          - Eu aplico só micro-ajustes para garantir consistência visual. */
-    .site-header{
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    /* Se seu global já tem um header com background, ignore.
-       Esse fallback só garante que não fique branco. */
-    .site-header__bar{
-      background: rgba(10,14,20,.72);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .site-header__inner{
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .site-brand{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      text-decoration:none;
-      color: var(--case-text);
-      min-width: 220px;
-    }
-    .site-brand img{
-      width: 34px;
-      height: 34px;
-      object-fit: contain;
-      display:block;
-    }
-    .site-brand__txt{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-    .site-brand__name{
-      font-weight: 800;
-      letter-spacing: .02em;
-      font-size: 14px;
-    }
-    .site-brand__sub{
-      font-size: 12px;
-      color: var(--case-muted2);
-    }
-
-    .site-nav{
-      display:flex;
-      gap: 22px;
-      align-items:center;
-      justify-content:center;
-      flex: 1;
-    }
-    .site-nav a{
-      color: rgba(255,255,255,.75);
-      text-decoration:none;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 8px 6px;
-      border-radius: 10px;
-      transition: background .15s ease, color .15s ease;
-      white-space: nowrap;
-    }
-    .site-nav a:hover{
-      color: rgba(255,255,255,.92);
-      background: rgba(255,255,255,.05);
-    }
-    .site-nav a.is-active{
-      color: var(--case-brand);
-      text-decoration: underline;
-      text-underline-offset: 6px;
-    }
-
-    .site-ctas{
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      min-width: 260px;
-      justify-content: flex-end;
-    }
-
-    /* botões fallback (se o global já tem, esses não atrapalham) */
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 10px 14px;
-      border-radius: 14px;
-      text-decoration:none;
-      font-weight: 800;
-      font-size: 13px;
-      border: 1px solid rgba(255,255,255,.16);
-      color: rgba(255,255,255,.90);
-      background: rgba(255,255,255,.03);
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-      white-space: nowrap;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.24);
-      background: rgba(255,255,255,.05);
-    }
-    .btn--primary{
-      background: linear-gradient(180deg, rgba(47,107,255,.95), rgba(31,79,216,.92));
-      border-color: rgba(47,107,255,.45);
-      color: #fff;
-      box-shadow: 0 16px 40px rgba(47,107,255,.22);
     }
 
     /* 3) CONTEÚDO */
@@ -496,32 +375,65 @@
 <body>
 
   <!-- HEADER (igual à HOME, estrutura limpa) -->
-  <header class="site-header">
-    <div class="site-header__bar">
-      <div class="site-header__inner">
-        <a class="site-brand" href="/index.html">
-          <img src="/assets/img/logo-maxprod.png" alt="MaxProd" width="34" height="34">
-          <span class="site-brand__txt">
-            <span class="site-brand__name">MAXPROD</span>
-            <span class="site-brand__sub">Soluções Empresariais</span>
-          </span>
-        </a>
+    <!-- NAVIGATION (IGUAL HOME) -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="/index.html#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
 
-        <nav class="site-nav" aria-label="Navegação principal">
-          <a href="/index.html" class="">Home</a>
-          <a href="/index.html#cases" class="is-active">Cases</a>
-          <a href="/index.html#metodologia">Metodologia</a>
-          <a href="/index.html#servicos">Serviços</a>
-          <a href="/index.html#sobre">Sobre</a>
-        </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
 
-        <div class="site-ctas">
-          <a class="btn" href="/index.html#contato">Fale Conosco</a>
-          <a class="btn btn--primary" href="/index.html#roi">Calcular ROI</a>
-        </div>
+      <ul class="nav-menu">
+        <li><a href="/index.html#home" class="nav-link">Home</a></li>
+        <li><a href="/index.html#cases" class="nav-link active">Cases</a></li>
+        <li><a href="/index.html#methodology" class="nav-link">Metodologia</a></li>
+        <li><a href="/index.html#services" class="nav-link">Serviços</a></li>
+        <li><a href="/index.html#about" class="nav-link">Sobre</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="/index.html#contact" class="btn btn-outline">Fale Conosco</a>
+        <a href="/index.html#calculator" class="btn btn-primary">Calcular ROI</a>
       </div>
     </div>
-  </header>
+  </nav>
+
+  <!-- MOBILE MENU (IGUAL HOME) -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="/index.html#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
+      <button id="closeMobileMenu">✕</button>
+    </div>
+
+    <ul class="mobile-nav">
+      <li><a href="/index.html#home">Home</a></li>
+      <li><a href="/index.html#cases">Cases</a></li>
+      <li><a href="/index.html#methodology">Metodologia</a></li>
+      <li><a href="/index.html#services">Serviços</a></li>
+      <li><a href="/index.html#about">Sobre</a></li>
+      <li><a href="/index.html#contact">Contato</a></li>
+    </ul>
+
+    <div style="margin-top: var(--space-32);">
+      <a href="/index.html#calculator" class="btn btn-primary" style="width: 100%; margin-bottom: var(--space-16);">
+        Calcular ROI
+      </a>
+      <a href="/index.html#contact" class="btn btn-secondary" style="width: 100%;">
+        Fale Conosco
+      </a>
+    </div>
+  </div>
 
   <main class="case-wrap">
     <div class="case-breadcrumb">
@@ -720,6 +632,43 @@
       </div>
     </section>
   </main>
+<script>
+  // Navbar scroll effect (igual home)
+  window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    if (window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+
+  // Mobile menu toggle (igual home)
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const closeMobileMenu = document.getElementById('closeMobileMenu');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  if (closeMobileMenu && mobileMenu) {
+    closeMobileMenu.addEventListener('click', function() {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
+
+  if (mobileMenu) {
+    mobileMenu.addEventListener('click', function(e) {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
