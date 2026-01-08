@@ -434,6 +434,28 @@
       .case-download{ flex-direction: column; align-items:flex-start; }
       .case-download__actions{ width:100%; justify-content:flex-start; }
     }
+
+    /* ===== PATCH KPI + PILL (SEM REGREDIR) ===== */
+
+/* 1) Pill centralizada (desktop) */
+.case-risk{
+  left: 50% !important;
+  right: auto !important;
+  top: 92px !important;          /* se quiser mais alto/baixo: 84~110 */
+  transform: translateX(-50%) !important;
+  max-width: none !important;
+}
+
+/* no mobile continua no fluxo (como já está) */
+@media (max-width: 980px){
+  .case-risk{
+    left: auto !important;
+    transform: none !important;
+    top: auto !important;
+  }
+}
+
+    
   </style>
 </head>
 
@@ -508,14 +530,7 @@
       <header class="case-head">
 
         <!-- (2) LOGO NO HEADER DO CASE -->
-        <div class="case-brandmark" aria-label="MaxProd">
-          <img src="/assets/img/logo-imagem1.png" alt="MaxProd">
-          <span class="txt">
-            <span class="t1">MAXPROD</span>
-            <span class="t2">Soluções Empresariais</span>
-          </span>
-        </div>
-
+       
         <div class="case-tag"><span class="dot"></span> RESULTADOS COMPROVADOS</div>
 
         <h1 class="case-title">
