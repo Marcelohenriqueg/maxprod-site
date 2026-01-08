@@ -566,6 +566,118 @@
   background: radial-gradient(260px 120px at 30% 10%, rgba(47,107,255,.20), transparent 60%);
   pointer-events:none;
 }
+/* ===== HEADER (fix) ===== */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+  background: rgba(8,12,20,.72);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.site-header__inner{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: rgba(255,255,255,.92);
+}
+
+.brand__logo{
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.brand__text{
+  display:flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.brand__text strong{
+  letter-spacing: .08em;
+  font-size: 13px;
+}
+
+.brand__text small{
+  color: rgba(255,255,255,.62);
+  font-size: 12px;
+}
+
+.site-nav{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.site-nav a{
+  color: rgba(255,255,255,.72);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 6px;
+}
+
+.site-nav a:hover{
+  color: rgba(255,255,255,.92);
+}
+
+.site-nav a.active{
+  color: var(--brand, #2f6bff);
+  font-weight: 700;
+}
+
+.site-header__actions{
+  display:flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Se seus botões globais já existem, ignore.
+   Caso não existam, fica um fallback discreto. */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.90);
+  background: rgba(255,255,255,.03);
+}
+
+.btn:hover{
+  background: rgba(255,255,255,.06);
+}
+
+.btn-primary{
+  background: linear-gradient(180deg, rgba(47,107,255,.95), rgba(31,79,216,.92));
+  border-color: rgba(47,107,255,.45);
+  color: #fff;
+}
+
+.btn-ghost{
+  background: rgba(255,255,255,.02);
+}
+
+/* mobile */
+@media (max-width: 860px){
+  .site-nav{ display:none; } /* depois a gente faz menu mobile */
+}
 
   </style>
 </head>
