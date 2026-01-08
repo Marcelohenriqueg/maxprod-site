@@ -2,647 +2,130 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Case MaxProd — Aumento de OEE em célula de solda (Tier 1 Stellantis): evitamos ruptura e elevamos a eficiência em 90 dias." />
-  <title>Case 1 | Aumento de OEE em Célula de Solda — MaxProd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="MaxProd: +R$35M em savings, +70% produtividade. Consultoria industrial com resultados comprovados para Stellantis, Maxion, Interni." />
+  <title>MaxProd | Consultoria Industrial Premium com Resultados Comprovados</title>
 
-  <!-- CSS GLOBAL DO SITE (IGUAL HOME) -->
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <!-- SEO & Social -->
+  <meta property="og:title" content="MaxProd | Consultoria Industrial Premium" />
+  <meta property="og:description" content="+R$35M em savings gerados | +20 empresas atendidas | +70% produtividade média | Cases Stellantis, Maxion, Interni" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://maxprod.com.br/assets/og-image.jpg" />
+  <meta name="keywords" content="consultoria industrial, aumento produtividade, redução de custos, OEE, Indústria 4.0" />
+  <meta name="author" content="MaxProd" />
+  <link rel="canonical" href="https://maxprod.com.br" />
 
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="assets/css/site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/site.css"></noscript>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+  <!-- Critical CSS -->
   <style>
-    /* =========================================================
-       CASE-1 — BASE PREMIUM (SEM QUEBRAR O GLOBAL)
-       ========================================================= */
-
-    :root{
-      --case-text: rgba(255,255,255,.92);
-      --case-muted: rgba(255,255,255,.72);
-      --case-muted2: rgba(255,255,255,.55);
-      --case-stroke: rgba(255,255,255,.10);
-      --case-shadow: 0 22px 70px rgba(0,0,0,.55);
-      --case-shadow2: 0 10px 30px rgba(0,0,0,.35);
-
-      /* herda paleta do site */
-      --case-brand: var(--brand, #2f6bff);
-      --case-brand2: var(--brand2, #1f4fd8);
-
-      /* altura do navbar fixo (ajuste fino se quiser) */
-      --nav-offset: 96px;
+    /* Critical styles to prevent layout shift */
+    :root {
+      --hero-height: calc(100vh - 80px);
+      --hero-min-height: 720px;
     }
-
-    html, body { height: 100%; }
-    body{
-      margin:0;
-      color: var(--case-text);
-      background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(47,107,255,.16), transparent 55%),
-        radial-gradient(1000px 700px at 90% 10%, rgba(31,79,216,.10), transparent 60%),
-        linear-gradient(180deg, #0b0f14 0%, #0e1622 60%, #0b0f14 100%);
-    }
-
-    /* =========================================================
-       (3) BREADCRUMB MAIS PERTO DO MENU + COMPENSA NAV FIXO
-       ========================================================= */
-    .case-wrap{
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: calc(var(--nav-offset) + 8px) 18px 64px; /* ↓ reduz distância */
-    }
-
-    .case-breadcrumb{
-      color: var(--case-muted2);
-      font-size: 13px;
-      margin: 2px 0 12px; /* ↓ mais perto do menu */
-    }
-    .case-breadcrumb a{ color: inherit; text-decoration: none; }
-    .case-breadcrumb a:hover{ color: var(--case-text); text-decoration: underline; }
-
-    /* =========================================================
-       (4) COSTURA VISUAL — TIRA “DIFERENÇA DE COR ENTRE DOBRAS”
-       ========================================================= */
-    .case-shell{
-      border: 1px solid var(--case-stroke);
-      border-radius: 26px;
-      box-shadow: var(--case-shadow);
-      overflow: hidden;
+    
+    .hero {
+      min-height: var(--hero-min-height);
+      height: auto;
       position: relative;
-
-      /* fundo mais “costurado” com o body (menos placa diferente) */
-      background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(47,107,255,.14), transparent 58%),
-        radial-gradient(1000px 700px at 90% 10%, rgba(31,79,216,.08), transparent 62%),
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-    }
-    .case-shell::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(900px 380px at 50% -10%, rgba(255,255,255,.09), transparent 58%);
-      pointer-events:none;
-      opacity:.55; /* ↓ reduz “faixa” */
-    }
-
-    .case-head{
-      padding: 18px 22px 10px; /* header mais “fechado” */
-      position: relative;
-      z-index: 1;
-    }
-
-    .case-tag{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.72);
-      margin-bottom: 10px;
-    }
-    .case-tag .dot{
-      width: 8px; height: 8px;
-      border-radius: 999px;
-      background: var(--case-brand);
-      box-shadow: 0 0 0 4px rgba(47,107,255,.18);
-    }
-
-    .case-title{
-      margin: 0;
-      font-size: clamp(24px, 2.6vw, 38px);
-      line-height: 1.10;
-      color: var(--case-text);
-      letter-spacing: -0.02em;
-      max-width: 32ch;
-    }
-
-    /* =========================================================
-       (2) LOGO NO CANTO DIREITO DO HEADER DO CASE (ÁREA AMARELA)
-       ========================================================= */
-    .case-brandmark{
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(10,14,20,.35);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 3;
-    }
-    .case-brandmark img{
-      height: 34px; /* ajuste fino 28~44 */
-      width: auto;
-      display:block;
-      opacity: .95;
-    }
-    .case-brandmark .txt{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-    .case-brandmark .t1{
-      font-weight: 900;
-      letter-spacing: .08em;
-      font-size: 12px;
-      color: rgba(255,255,255,.92);
-    }
-    .case-brandmark .t2{
-      font-size: 11px;
-      color: rgba(255,255,255,.62);
-    }
-
-    /* =========================================================
-       (1) PILL “RISCO DE RUPTURA” NA POSIÇÃO MARCADA
-       ========================================================= */
-    .case-risk{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(60,255,200,.22);
-      background: rgba(20,220,160,.10);
-      color: rgba(210,255,245,.90);
-      font-weight: 700;
-      font-size: 13px;
-
-      /* joga pra direita (posição marcada) */
-      position: absolute;
-      right: 18px;
-      top: 92px; /* ajuste fino se quiser: 84~110 */
-      margin-top: 0 !important;
-      z-index: 3;
-      max-width: 320px;
-      justify-content: center;
-      white-space: nowrap;
-    }
-    .case-risk .dot{
-      width:8px;height:8px;border-radius:999px;
-      background: rgba(40,255,200,.95);
-      box-shadow: 0 0 0 4px rgba(40,255,200,.18);
-    }
-    .case-risk strong{ font-weight: 900; }
-
-    .case-sub{
-      margin: 10px 0 0;
-      max-width: 78ch;
-      color: var(--case-muted);
-      font-size: 15px;
-      line-height: 1.55;
-    }
-
-    /* Imagem menor (mantém embaixo, só reduz altura) */
-    .case-hero-image{
-      margin-top: 10px;
-      border-radius: 18px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.02);
-      box-shadow: var(--case-shadow2);
     }
-    .case-hero-image img{
-      width: 100%;
-      height: 220px; /* ↓ sobe KPI sem mudar layout */
-      object-fit: cover;
-      display:block;
-      transform: translateZ(0);
-    }
-
-    /* KPIs sobem (primeira dobra) e costuram com o head */
-    .case-kpis{
+    
+    .hero-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 10px;
-      padding: 12px 22px 16px;
-      position: relative;
-      z-index: 1;
-      margin-top: -10px; /* costura visual e sobe */
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
     }
-    .case-kpi{
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 18px;
-      padding: 12px 12px 10px;
-      box-shadow: var(--case-shadow2);
-    }
-    .case-kpi__label{
-      font-size: 12px;
-      color: rgba(255,255,255,.60);
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      display:block;
-    }
-    .case-kpi__value{
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      color: rgba(255,255,255,.92);
-      margin: 0;
-    }
-    .case-kpi__note{
-      margin: 2px 0 0;
-      font-size: 12px;
-      color: rgba(255,255,255,.55);
-      line-height: 1.35;
-    }
-
-    .case-body{
-      padding: 0 28px 26px;
-      position: relative;
-      z-index: 1;
-    }
-    .case-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 16px;
-      align-items: start;
-    }
-    .case-panel{
-      background: rgba(255,255,255,.028);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 20px;
-      padding: 18px;
-      box-shadow: var(--case-shadow2);
-    }
-    .case-h{
-      margin: 0 0 10px;
-      font-size: 14px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.75);
-    }
-    .case-p{
-      margin: 0;
-      color: var(--case-muted);
-      line-height: 1.65;
-      font-size: 15px;
-    }
-    .case-list{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--case-muted);
-      line-height: 1.65;
-      font-size: 15px;
-    }
-
-    .case-compare{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .case-card{
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 18px;
-      padding: 14px;
-      transform: none !important;
-    }
-    .case-card__kicker{
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.55);
-      margin-bottom: 6px;
-    }
-    .case-card__big{
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      color: rgba(255,255,255,.92);
-      margin: 0 0 8px;
-    }
-    .case-mini{
-      color: rgba(255,255,255,.70);
-      font-size: 13px;
-      line-height: 1.55;
-      margin: 0;
-    }
-
-    .case-badges{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .case-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.72);
-      font-size: 13px;
-      line-height: 1;
-      user-select:none;
-    }
-    .case-badge i{
-      width: 7px; height: 7px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.55);
-      display:inline-block;
-    }
-
-    .case-download{
-      display:flex;
-      gap: 14px;
-      align-items:center;
-      justify-content:space-between;
-      padding: 16px 16px;
-      margin-top: 16px;
-      background: linear-gradient(180deg, rgba(47,107,255,.14), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 18px;
-      box-shadow: var(--case-shadow2);
-    }
-    .case-download__label{
-      display:inline-block;
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.65);
-      margin-bottom: 6px;
-    }
-    .case-download h3{
-      margin: 0 0 4px;
-      font-size: 16px;
-      letter-spacing: -0.01em;
-      color: rgba(255,255,255,.92);
-    }
-    .case-download p{
-      margin: 0;
-      color: rgba(255,255,255,.70);
-      font-size: 13px;
-      line-height: 1.45;
-      max-width: 64ch;
-    }
-    .case-download__actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-
-    .case-footer{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content:flex-start;
-      padding: 18px 28px 26px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Responsivo */
-    @media (max-width: 980px){
-      :root{ --nav-offset: 88px; }
-
-      .case-kpis{ grid-template-columns: repeat(2, minmax(0,1fr)); margin-top: 0; }
-      .case-grid{ grid-template-columns: 1fr; }
-      .case-title{ max-width: 100%; }
-
-      .case-hero-image img{ height: 170px; }
-
-      /* logo e pill não flutuam no mobile (não tapa conteúdo) */
-      .case-brandmark{
-        position: static;
-        margin: 10px 0 0;
-        width: fit-content;
-      }
-      .case-risk{
-        position: static;
-        margin-top: 10px !important;
-        right: auto;
-        top: auto;
-        max-width: none;
-        white-space: normal;
-        justify-content: flex-start;
+    
+    @media (min-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        min-height: var(--hero-height);
       }
     }
-
-    @media (max-width: 560px){
-      .case-kpis{ grid-template-columns: 1fr; }
-      .case-compare{ grid-template-columns: 1fr; }
-      .case-head, .case-body, .case-footer{ padding-left: 16px; padding-right: 16px; }
-      .case-download{ flex-direction: column; align-items:flex-start; }
-      .case-download__actions{ width:100%; justify-content:flex-start; }
+    
+    /* Prevent layout shift for stats */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
     }
-
-    /* ===== PATCH KPI + PILL (SEM REGREDIR) ===== */
-
-/* 1) Pill centralizada (desktop) */
-.case-risk{
-  left: 50% !important;
-  right: auto !important;
-  top: 92px !important;          /* se quiser mais alto/baixo: 84~110 */
-  transform: translateX(-50%) !important;
-  max-width: none !important;
-}
-
-/* no mobile continua no fluxo (como já está) */
-@media (max-width: 980px){
-  .case-risk{
-    left: auto !important;
-    transform: none !important;
-    top: auto !important;
-  }
-}
-/* 2) KPI centralizado + visual “premium” */
-.case-kpi{
-  text-align: center;
-}
-
-.case-kpi__label{
-  display:block;
-  text-align: center;
-}
-
-.case-kpi__value{
-  display:flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 8px;
-  letter-spacing: -0.02em;
-}
-
-/* Cores */
-.kpi-before{ color: rgba(255, 90, 90, .95); font-weight: 900; }
-.kpi-after{ color: rgba(60, 255, 200, .95); font-weight: 900; }
-.kpi-good{  color: rgba(60, 255, 200, .95); font-weight: 900; }
-.kpi-arrow{ color: rgba(255,255,255,.55); font-weight: 800; }
-
-/* Animação discreta (sem “carnaval”) */
-@keyframes kpiPop {
-  0%   { transform: translateY(3px); opacity: .0; }
-  100% { transform: translateY(0);  opacity: 1; }
-}
-@keyframes kpiGlow {
-  0%,100% { filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
-  50%     { filter: drop-shadow(0 6px 18px rgba(47,107,255,.18)); }
-}
-
-/* entra suave */
-.case-kpi{
-  animation: kpiPop .45s ease-out both;
-}
-.case-kpi:nth-child(1){ animation-delay: .05s; }
-.case-kpi:nth-child(2){ animation-delay: .10s; }
-.case-kpi:nth-child(3){ animation-delay: .15s; }
-.case-kpi:nth-child(4){ animation-delay: .20s; }
-
-/* brilho leve no número (só pra dar vida) */
-.case-kpi__value{
-  animation: kpiGlow 3.4s ease-in-out infinite;
-}
-
-/* Acessibilidade: respeita reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .case-kpi, .case-kpi__value{ animation: none !important; }
-}
-  .case-risk{
-    position: static !important;
-    transform: none !important;
-    margin-top: 12px !important;
-    max-width: none;
-    white-space: normal;
-  }
-
-  .case-head{ min-height: unset; }
-}
-
-/* =========================================================
-   PATCH ÚNICO — PILL NO “VAZIO” À DIREITA (como na seta)
-   - encosta no lado direito do header
-   - centraliza verticalmente no bloco do título/sub
-   - não quebra mobile
-   ========================================================= */
-
-/* garante referência */
-.case-head{ position: relative; }
-
-/* reserva um “corredor” à direita para o pill não invadir o texto */
-.case-title,
-.case-sub{
-  padding-right: 260px; /* ajuste fino: 220–320 */
-}
-
-/* posiciona o pill no espaço da seta */
-.case-risk{
-  position: absolute !important;
-  right: 24px !important;      /* distancia da borda direita */
-  top: 50% !important;         /* centro vertical do header */
-  transform: translateY(-50%) !important;
-
-  margin: 0 !important;
-  max-width: 240px;
-  white-space: nowrap;
-  z-index: 5;
-}
-
-/* se o header ficar muito “alto”, evita o pill ir pra cima demais */
-.case-head{
-  min-height: 180px; /* ajuste fino: 160–220 */
-}
-
-/* Responsivo: em telas menores o pill volta pro fluxo (abaixo do título) */
-@media (max-width: 980px){
-  .case-title,
-  .case-sub{
-    padding-right: 0 !important;
-  }
-
-  .case-risk{
-    position: static !important;
-    transform: none !important;
-    margin-top: 12px !important;
-    max-width: none;
-    white-space: normal;
-  }
-
-  .case-head{ min-height: unset; }
-}
-
- /* ===== PILL NO VAZIO À DIREITA (DESKTOP) — BLOCO ÚNICO FINAL ===== */
-.case-head{ position: relative; }
-
-/* corredor à direita pro pill não invadir o texto */
-.case-title,
-.case-sub{
-  padding-right: 320px !important; /* ajuste fino: 260–380 */
-}
-
-/* pill na área da seta */
-.case-risk{
-  position: absolute !important;
-  right: 24px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-
-  margin: 0 !important;
-  z-index: 999 !important;
-  white-space: nowrap !important;
-  max-width: 260px;
-}
-
-/* mobile: volta pro fluxo */
-@media (max-width: 980px){
-  .case-title,
-  .case-sub{ padding-right: 0 !important; }
-
-  .case-risk{
-    position: static !important;
-    transform: none !important;
-    margin-top: 12px !important;
-    white-space: normal !important;
-    max-width: none;
-  }
-}
-
+    
+    .stat {
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    /* Ensure images don't cause layout shift */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Smooth transitions */
+    * {
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    
+    /* Focus styles for accessibility */
+    :focus-visible {
+      outline: 2px solid #0066ff;
+      outline-offset: 2px;
+    }
   </style>
 </head>
 
 <body>
-
-  <!-- NAV (IGUAL HOME) -->
-  <nav class="navbar" id="navbar">
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar" aria-label="Navegação principal">
     <div class="container nav-container">
-      <a href="/index.html#home" class="logo">
-        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+      <a href="#home" class="logo" aria-label="MaxProd - Página inicial">
+        <img src="assets/img/logo-imagem1.png" alt="MaxProd Logo" width="120" height="40" loading="eager">
         <span class="logo-text">
           <span class="logo-title">MAXPROD</span>
           <span class="logo-sub">Soluções Empresariais</span>
         </span>
       </a>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn" 
+              aria-label="Abrir menu de navegação" 
+              aria-expanded="false" 
+              aria-controls="mobileMenu">
+        ☰
+      </button>
 
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu">☰</button>
-
-      <ul class="nav-menu">
-        <li><a href="/index.html#home" class="nav-link">Home</a></li>
-        <li><a href="/index.html#cases" class="nav-link active">Cases</a></li>
-        <li><a href="/index.html#methodology" class="nav-link">Metodologia</a></li>
-        <li><a href="/index.html#services" class="nav-link">Serviços</a></li>
-        <li><a href="/index.html#about" class="nav-link">Sobre</a></li>
+      <ul class="nav-menu" role="menubar">
+        <li role="none"><a href="#home" class="nav-link active" role="menuitem">Home</a></li>
+        <li role="none"><a href="#cases" class="nav-link" role="menuitem">Cases</a></li>
+        <li role="none"><a href="#methodology" class="nav-link" role="menuitem">Metodologia</a></li>
+        <li role="none"><a href="#services" class="nav-link" role="menuitem">Serviços</a></li>
+        <li role="none"><a href="#about" class="nav-link" role="menuitem">Sobre</a></li>
       </ul>
 
       <div class="nav-cta">
-        <a href="/index.html#contact" class="btn btn-outline">Fale Conosco</a>
-        <a href="/index.html#calculator" class="btn btn-primary">Calcular ROI</a>
+        <a href="#contact" class="btn btn-outline">Fale Conosco</a>
+        <a href="#calculator" class="btn btn-primary">Calcular ROI</a>
       </div>
     </div>
   </nav>
 
-  <!-- MOBILE MENU (IGUAL HOME) -->
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu móvel" aria-modal="true">
     <div class="mobile-menu-header">
-      <a href="/index.html#home" class="logo">
-        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+      <a href="#home" class="logo" aria-label="MaxProd - Página inicial">
+        <img src="assets/img/logo-imagem1.png" alt="MaxProd Logo" width="120" height="40">
         <span class="logo-text">
           <span class="logo-title">MAXPROD</span>
           <span class="logo-sub">Soluções Empresariais</span>
@@ -650,259 +133,862 @@
       </a>
       <button id="closeMobileMenu" aria-label="Fechar menu">✕</button>
     </div>
-
-    <ul class="mobile-nav">
-      <li><a href="/index.html#home">Home</a></li>
-      <li><a href="/index.html#cases">Cases</a></li>
-      <li><a href="/index.html#methodology">Metodologia</a></li>
-      <li><a href="/index.html#services">Serviços</a></li>
-      <li><a href="/index.html#about">Sobre</a></li>
-      <li><a href="/index.html#contact">Contato</a></li>
+    
+    <ul class="mobile-nav" role="menu">
+      <li role="none"><a href="#home" role="menuitem">Home</a></li>
+      <li role="none"><a href="#cases" role="menuitem">Cases</a></li>
+      <li role="none"><a href="#methodology" role="menuitem">Metodologia</a></li>
+      <li role="none"><a href="#services" role="menuitem">Serviços</a></li>
+      <li role="none"><a href="#about" role="menuitem">Sobre</a></li>
+      <li role="none"><a href="#contact" role="menuitem">Contato</a></li>
     </ul>
 
     <div style="margin-top: var(--space-32);">
-      <a href="/index.html#calculator" class="btn btn-primary" style="width:100%; margin-bottom: var(--space-16);">
+      <a href="#calculator" class="btn btn-primary" style="width: 100%; margin-bottom: var(--space-16);">
         Calcular ROI
       </a>
-      <a href="/index.html#contact" class="btn btn-secondary" style="width:100%;">
+      <a href="#contact" class="btn btn-secondary" style="width: 100%;">
         Fale Conosco
       </a>
     </div>
   </div>
 
-  <main class="case-wrap">
-    <div class="case-breadcrumb">
-      <a href="/index.html">Home</a> &nbsp;/&nbsp; <a href="/index.html#cases">Cases</a> &nbsp;/&nbsp; <span>Case 1</span>
+  <!-- HERO SECTION -->
+  <section id="home" class="hero section" aria-labelledby="hero-heading">
+    <div class="hero-bg" role="presentation"></div>
+    
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="overline" role="heading" aria-level="2">CONSULTORIA INDUSTRIAL FOCADA EM RESULTADOS</div>
+          <h1 id="hero-heading">
+            Transformamos <span class="text-gradient">problemas complexos</span> em 
+            <span class="text-gradient">resultados mensuráveis</span>
+          </h1>
+          
+          <p class="text-lead">
+            Com experiência prática em ambos os lados da cadeia, como cliente e fornecedor, 
+            entregamos soluções que impactam diretamente seu P&L: redução de custos, aumento 
+            de produtividade e qualidade robusta.
+          </p>
+          
+          <!-- KPI BOXES -->
+          <div class="hero-stats">
+            <div class="stat" role="figure" aria-label="Economias acumuladas">
+              <div class="stat-number" data-value="35" data-prefix="+R$" data-suffix="M">
+                +R$35M
+              </div>
+              <div class="stat-label">em savings</div>
+            </div>
+
+            <div class="stat" role="figure" aria-label="Empresas atendidas">
+              <div class="stat-number" data-value="20" data-prefix="+" data-suffix="">
+                +20
+              </div>
+              <div class="stat-label">empresas atendidas</div>
+            </div>
+
+            <div class="stat" role="figure" aria-label="Aumento de produtividade">
+              <div class="stat-number" data-value="70" data-prefix="+" data-suffix="%">
+                +70%
+              </div>
+              <div class="stat-label">produtividade</div>
+              <div class="stat-label">em média</div>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#cases" class="btn btn-primary">
+              Ver Cases Reais
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              Diagnosticar Meu Caso
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <!-- ASSESSMENT INTERATIVO SIMPLIFICADO -->
+          <div class="visual-card assessment-card">
+            <div class="assessment-header">
+              <div class="overline">AUTOAVALIAÇÃO RÁPIDA</div>
+              <h4>Seu desafio é complexo?</h4>
+              <p>Avalie em 60 segundos se seu caso precisa de nossa abordagem especializada.</p>
+            </div>
+            
+            <div class="assessment-progress">
+              <div class="progress-info">
+                <span class="progress-count">
+                  <strong id="assessCount">0</strong>/5 indicadores
+                </span>
+                <span class="progress-hint" id="assessHint"></span>
+              </div>
+              <div class="progress-bar">
+                <div id="assessBarFill" class="progress-fill"></div>
+              </div>
+            </div>
+            
+            <div class="assessment-items">
+              <label class="assess-item">
+                <input type="checkbox" class="assessCheck">
+                <span>
+                  <strong>O problema já impacta</strong> 
+                  custo, entrega ou qualidade de forma mensurável.
+                </span>
+              </label>
+              
+              <label class="assess-item">
+                <input type="checkbox" class="assessCheck">
+                <span>
+                  <strong>A causa não é óbvia</strong> 
+                  ou envolve múltiplos fatores/departamentos.
+                </span>
+              </label>
+              
+              <label class="assess-item">
+                <input type="checkbox" class="assessCheck">
+                <span>
+                  <strong>Tentativas anteriores</strong> 
+                  sem sustentação ou com resultados limitados.
+                </span>
+              </label>
+              
+              <label class="assess-item">
+                <input type="checkbox" class="assessCheck">
+                <span>
+                  <strong>Dependência excessiva</strong> 
+                  de pessoas específicas ou rotinas não padronizadas.
+                </span>
+              </label>
+              
+              <label class="assess-item">
+                <input type="checkbox" class="assessCheck">
+                <span>
+                  <strong>O que busca é decisão e execução</strong>, 
+                  não apenas diagnóstico ou relatório.
+                </span>
+              </label>
+            </div>
+            
+            <div id="assessMsg" class="assessment-message">
+              <p>Se você se identificou com 2 ou + desafios, sua operação tem alto potencial de melhoria.</p>
+            </div>
+            
+            <div class="assessment-actions">
+              <a href="#contact" id="assessCta" class="btn btn-primary">
+                Solicitar diagnóstico personalizado
+              </a>
+              
+              <a href="#cases" id="assessAlt" class="btn btn-secondary">
+                Ver cases similares primeiro
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <section class="case-shell">
-      <header class="case-head">
-
-        <!-- (2) LOGO NO HEADER DO CASE -->
-       
-        <div class="case-tag"><span class="dot"></span> RESULTADOS COMPROVADOS</div>
-
-        <h1 class="case-title">
-          Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva
-        </h1>
-
-        <!-- (1) PILL VAI PRA DIREITA VIA CSS -->
-        <div class="case-risk">
-          <span class="dot"></span>
-          Risco de ruptura: <strong>mitigado</strong>
-        </div>
-
-        <p class="case-sub">
-          Projeto de excelência operacional em célula de solda robotizada, com foco em confiabilidade do fornecimento,
-          estabilidade do processo e sustentação dos ganhos — sem CAPEX pesado.
+  <!-- CASES SECTION -->
+  <section id="cases" class="section cases-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="overline">RESULTADOS COMPROVADOS</div>
+        <h2>Transformamos desafios em <span class="text-gradient">números concretos</span></h2>
+        <p class="text-lead">
+          Cada projeto começa com um problema complexo e termina com métricas de impacto direto 
+          no seu negócio.
         </p>
+      </div>
 
-        <div class="case-hero-image">
-          <img src="/assets/img/robo-case1.png" alt="Célula de solda robotizada (ilustrativo)" loading="eager">
-        </div>
-      </header>
-
-      <!-- KPIs -->
-      <div class="case-kpis">
-        <div class="case-kpi">
-          <span class="case-kpi__label">OEE</span>
-          <span class="kpi-before">52%</span> <span class="kpi-arrow">→</span> <span class="kpi-after">73%</span>
-                    <p class="case-kpi__note">média mensal pós-ações</p>
+      <div class="cases-stage">
+        <div class="cases-cta-float">
+          <a href="#contact" class="btn btn-primary">
+            Quero Resultados Similares
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
 
-        <div class="case-kpi">
-          <span class="case-kpi__label">Capacidade</span>
-          <span class="kpi-before">16</span> <span class="kpi-arrow">→</span> <span class="kpi-after">28 JPH</span>
-          <p class="case-kpi__note">liberação de capacidade efetiva</p>
+        <div class="cases-grid">
+          <!-- Case 1 -->
+          <article class="case-card animate-on-scroll">
+            <div class="case-header">
+              <div class="case-client">Stellantis × Ferrolene × Neo Steel</div>
+              <div class="case-tags">
+                <span class="case-tag">Supply Chain</span>
+                <span class="case-tag">Produtividade</span>
+                <span class="case-tag">Hard Saving</span>
+              </div>
+            </div>
+            <div class="case-content">
+              <h3>Eliminação de Processo de Corte</h3>
+              <p>
+                Redesenho do fluxo de material entre fornecedores, eliminando etapa redundante 
+                e otimizando cadeia produtiva.
+              </p>
+              
+              <div class="case-results">
+                <div class="result-item">
+                  <span class="result-label">Aumento Produtividade</span>
+                  <span class="result-value">+70%</span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">Redução Custo Peça</span>
+                  <span class="result-value">Direct Impact</span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">Retorno</span>
+                  <span class="result-value">Immediate</span>
+                </div>
+              </div>
+              
+              <a href="#contact" class="btn btn-outline btn-sm" style="margin-top: 1rem;">
+                Ver Case Completo (PDF)
+              </a>
+            </div>
+          </article>
+
+          <!-- Case 2 -->
+          <article class="case-card animate-on-scroll">
+            <div class="case-header">
+              <div class="case-client">Stellantis × Maxion</div>
+              <div class="case-tags">
+                <span class="case-tag">OEE</span>
+                <span class="case-tag">Qualidade</span>
+                <span class="case-tag">Poka-Yoke</span>
+              </div>
+            </div>
+            <div class="case-content">
+              <h3>Salto de Eficiência em Célula Crítica</h3>
+              <p>
+                Implementação de sistema O&R (Occurrence & Release) com poka-yokes mecânicos 
+                e sensores para eliminar defeitos.
+              </p>
+              
+              <div class="case-results">
+                <div class="result-item">
+                  <span class="result-label">OEE</span>
+                  <span class="result-value">52% → 73%</span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">Maturidade Qualidade</span>
+                  <span class="result-value">36% → 84%</span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">Impacto</span>
+                  <span class="result-value">Eliminação Ruptura</span>
+                </div>
+              </div>
+              
+              <a href="#contact" class="btn btn-outline btn-sm" style="margin-top: 1rem;">
+                Ver Case Completo (PDF)
+              </a>
+            </div>
+          </article>
+
+          <!-- Case 3 -->
+          <article class="case-card animate-on-scroll">
+            <div class="case-header">
+              <div class="case-client">Stellantis × Interni</div>
+              <div class="case-tags">
+                <span class="case-tag">Indústria 4.0</span>
+                <span class="case-tag">DOE</span>
+                <span class="case-tag">IoT</span>
+              </div>
+            </div>
+            <div class="case-content">
+              <h3>DOE com Telemetria para Redução de Refugo</h3>
+              <p>
+                Sistema de telemetria low-cost + Design of Experiments para otimizar parâmetros 
+                e reduzir refugo "peça macia".
+              </p>
+              
+              <div class="case-results">
+                <div class="result-item">
+                  <span class="result-label">B/C Ratio</span>
+                  <span class="result-value">40:1</span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">Redução Refugo</span>
+                  <span class="result-value">0.45% → 0.15%</span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">ROI</span>
+                  <span class="result-value">R$335k vs R$8,3k</span>
+                </div>
+              </div>
+              
+              <a href="#contact" class="btn btn-outline btn-sm" style="margin-top: 1rem;">
+                Ver Case Completo (PDF)
+              </a>
+            </div>
+          </article>
+
+          <!-- Case 4 -->
+          <article class="case-card animate-on-scroll">
+            <div class="case-header">
+              <div class="case-client">Stellantis × Vários</div>
+              <div class="case-tags">
+                <span class="case-tag">Cost Avoidance</span>
+                <span class="case-tag">Tecnologia</span>
+                <span class="case-tag">EDI</span>
+              </div>
+            </div>
+            <div class="case-content">
+              <h3>Eliminação de Intermediário DI2S</h3>
+              <p>
+                Integração direta fornecedor via E-LOG, eliminando intermediário tecnológico 
+                com custo mensal significativo.
+              </p>
+              
+              <div class="case-results">
+                <div class="result-item">
+                  <span class="result-label">Cost Avoidance</span>
+                  <span class="result-value">R$180k/ano</span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">Simplicidade</span>
+                  <span class="result-value">E-LOG Direto</span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">Escalabilidade</span>
+                  <span class="result-value">Multi-fornecedor</span>
+                </div>
+              </div>
+              
+              <a href="#contact" class="btn btn-outline btn-sm" style="margin-top: 1rem;">
+                Ver Case Completo (PDF)
+              </a>
+            </div>
+          </article>
+        </div>
+        
+        <div class="cases-footer">
+          <a href="#contact" class="btn btn-primary">
+            Quero Resultados Similares
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY SECTION -->
+  <section id="methodology" class="section methodology-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="overline">METODOLOGIA EXCLUSIVA</div>
+        <h2>Arquitetura de <span class="text-gradient">execução garantida</span></h2>
+        <p class="text-lead">
+          Combinamos visão estratégica com execução técnica rigorosa, baseada em ferramentas 
+          de ponta e experiência prática.
+        </p>
+      </div>
+
+      <div class="methodology-content">
+        <div class="methodology-visual">
+          <img src="assets/img/pdca-maxprod.png" 
+               alt="Metodologia PDCA MaxProd - Ciclo de melhoria contínua" 
+               width="600" 
+               height="400"
+               loading="lazy"
+               class="methodology-image">
         </div>
 
-        <div class="case-kpi">
-          <span class="case-kpi__label">Consumível</span>
-          <span class="kpi-good">+50%</span>
-          <p class="case-kpi__note">3.000 → 4.500 pontos por eletrodo</p>
-        </div>
+        <div class="methodology-steps">
+          <div class="step animate-on-scroll">
+            <div class="step-number" aria-hidden="true">1</div>
+            <div class="step-content">
+              <h5>Diagnóstico Imersivo</h5>
+              <p>
+                Análise in loco com ferramentas O&R, mapeamento de valor e identificação 
+                de causas-raiz em 72h.
+              </p>
+            </div>
+          </div>
 
-        <div class="case-kpi">
-          <span class="case-kpi__label">Qualidade</span>
-          <span class="kpi-good">92%</span>
-          <p class="case-kpi__note">aderência “Zero Defeitos” em durabilidade</p>
+          <div class="step animate-on-scroll">
+            <div class="step-number" aria-hidden="true">2</div>
+            <div class="step-content">
+              <h5>Plano Tático</h5>
+              <p>
+                Definição clara de KPIs, responsáveis e cronograma. Nada de relatórios 
+                genéricos — apenas ações concretas.
+              </p>
+            </div>
+          </div>
+
+          <div class="step animate-on-scroll">
+            <div class="step-number" aria-hidden="true">3</div>
+            <div class="step-content">
+              <h5>Implementação</h5>
+              <p>
+                Atuação lado a lado com sua equipe. De poka-yokes mecânicos a sistemas IoT 
+                low-cost — o que resolver o problema.
+              </p>
+            </div>
+          </div>
+
+          <div class="step animate-on-scroll">
+            <div class="step-number" aria-hidden="true">4</div>
+            <div class="step-content">
+              <h5>Sustentação</h5>
+              <p>
+                Padronização, treinamento e indicadores de controle. Garantimos que o 
+                resultado permaneça e evolua.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="case-body">
-        <div class="case-grid">
+      <div class="methodology-cta">
+        <a href="#contact" class="btn btn-outline">
+          Baixar Whitepaper da Metodologia
+        </a>
+      </div>
+    </div>
+  </section>
 
-          <!-- PROBLEMA -->
-          <div class="case-panel">
-            <div class="case-h">1) Problema e impacto no cliente</div>
-            <p class="case-p">
-              A célula de solda automatizada apresentava um <b>OEE crítico de 52%</b>. A operação real entregava apenas
-              <b>16 peças por hora (JPH)</b>, enquanto o contrato exigia <b>34 JPH</b>.
-              O cenário indicava <b>alto risco de ruptura</b> e potencial <b>parada total da linha do cliente final a partir de julho/2022</b>.
-            </p>
+  <!-- ROI CALCULATOR -->
+  <section id="calculator" class="section calculator-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="overline">CALCULADORA DE IMPACTO</div>
+        <h2>Quanto sua <span class="text-gradient">ineficiência custa</span>?</h2>
+        <p class="text-lead">
+          Use nossa calculadora baseada em dados reais de +500 projetos para estimar 
+          o potencial de melhoria na sua operação.
+        </p>
+      </div>
 
-            <div class="case-compare">
-              <div class="case-card">
-                <div class="case-card__kicker">ANTES</div>
-                <div class="case-card__big">OEE 52% • 16 JPH</div>
-                <p class="case-mini">
-                  Microparadas recorrentes • trocas excessivas de eletrodos • baixa estabilidade do processo •
-                  capacidade <i>inferior</i> à demanda contratada.
-                </p>
-              </div>
-              <div class="case-card">
-                <div class="case-card__kicker">DEPOIS</div>
-                <div class="case-card__big">OEE 73% • 28 JPH</div>
-                <p class="case-mini">
-                  Processo estabilizado • consumível otimizado • capacidade liberada • risco de ruptura mitigado e plano de expansão definido.
-                </p>
-              </div>
+      <div class="calculator-card">
+        <div class="calculator-content">
+          <h4>Simule seu potencial de economia</h4>
+          
+          <div class="calculator-field">
+            <label for="sector">Setor da sua empresa:</label>
+            <select id="sector">
+              <option>Manufatura Automotiva</option>
+              <option>Autopeças</option>
+              <option>Metalurgia</option>
+              <option>Plásticos</option>
+              <option>Outro</option>
+            </select>
+          </div>
+
+          <div class="calculator-field">
+            <label for="revenueSlider">Faturamento anual aproximado:</label>
+            <input type="range" id="revenueSlider" min="1" max="100" value="50">
+            <div class="slider-labels">
+              <span>R$ 1M</span>
+              <span id="revenueValue">R$ 50M</span>
+              <span>R$ 100M+</span>
             </div>
           </div>
 
-          <!-- METODOLOGIA -->
-          <aside class="case-panel">
-            <div class="case-h">2) Metodologia (rigor analítico)</div>
-            <p class="case-p">
-              Framework de melhoria contínua baseado em <b>PDCA</b> integrado com diagnóstico de alta precisão,
-              priorizando as maiores perdas e validando causa raiz com evidência em campo.
-            </p>
-
-            <div class="case-badges" aria-label="Ferramentas aplicadas">
-              <span class="case-badge"><i></i> PDCA (Plan-Do-Check-Act)</span>
-              <span class="case-badge"><i></i> OEE + Pareto de perdas</span>
-              <span class="case-badge"><i></i> 4M + 1D (Design)</span>
-              <span class="case-badge"><i></i> Ishikawa</span>
-              <span class="case-badge"><i></i> 5 Porquês (Deep Dive)</span>
-              <span class="case-badge"><i></i> Zero Defeitos (durabilidade)</span>
+          <div class="calculator-field">
+            <label>Seu maior desafio atual:</label>
+            <div class="challenge-buttons">
+              <button type="button" class="challenge-btn" data-value="produtividade">Baixa Produtividade</button>
+              <button type="button" class="challenge-btn" data-value="custos">Custos Elevados</button>
+              <button type="button" class="challenge-btn" data-value="qualidade">Problemas Qualidade</button>
+              <button type="button" class="challenge-btn" data-value="capacidade">Falta de Capacidade</button>
             </div>
-
-            <ul class="case-list">
-              <li><b>Análise de Fenômeno 4M+1D:</b> Mão de obra, Máquina, Material, Método e Design.</li>
-              <li><b>Deep Dive (5 Porquês):</b> falha de concepção no posicionamento dos eletrodos e obsolescência de materiais.</li>
-            </ul>
-          </aside>
-
+          </div>
         </div>
 
-        <!-- SOLUÇÃO -->
-        <div class="case-panel" style="margin-top:16px;">
-          <div class="case-h">3) A solução (inovação em engenharia)</div>
-          <p class="case-p">
-            A estratégia foi dividida em dois eixos de ataque para estabilizar o processo e remover as perdas estruturais que limitavam a capacidade real.
+        <div class="calculator-result">
+          <div class="result-label">POTENCIAL DE ECONOMIA ANUAL</div>
+          <div id="roiValue" class="result-value">R$ 1,2M - R$ 3,5M</div>
+          <p class="result-note">
+            Baseado em médias setoriais e casos similares. Valor exato requer diagnóstico específico.
           </p>
+          <a href="#contact" class="btn btn-primary">
+            Quero Um Diagnóstico Preciso
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="case-compare" style="margin-top:12px;">
-            <div class="case-card">
-              <div class="case-card__kicker">Eixo A • Manutenção robótica</div>
-              <div class="case-card__big">Estabilidade do posicionamento</div>
-              <p class="case-mini">
-                Instalação de <b>chavetas de precisão</b> e <b>transdutores lineares</b> para garantir posicionamento mecânico ideal e
-                controle de distância entre partes móveis, reduzindo microparadas por instabilidade do processo.
-              </p>
-            </div>
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="overline">CONFIANÇA DE LÍDERES</div>
+        <h2>O que dizem <span class="text-gradient">quem já implementou</span></h2>
+      </div>
 
-            <div class="case-card">
-              <div class="case-card__kicker">Eixo B • Ciclo de vida de consumíveis</div>
-              <div class="case-card__big">+50% vida útil do eletrodo</div>
-              <p class="case-mini">
-                Benchmarking de mercado e substituição de eletrodos (<b>Fornecedor B</b>),
-                elevando a vida útil de <b>3.000 → 4.500 pontos</b> por eletrodo (ganho de 50%),
-                com ajustes de parâmetros e treinamento operacional.
-              </p>
-            </div>
-          </div>
+      <div class="testimonial-slider">
+        <blockquote class="testimonial">
+          <p class="testimonial-quote">
+            "A MaxProd trouxe uma visão única por ter experiência prática como cliente e fornecedor. 
+            Em 6 semanas, identificamos R$ 850k/ano em savings que estavam completamente invisíveis."
+          </p>
+          <footer class="testimonial-footer">
+            <cite class="testimonial-author">Diretor Industrial</cite>
+            <div class="testimonial-role">Fornecedor Tier 1 Automotivo</div>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="contact" class="section cta-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Pronto para <span class="text-gradient">transformar números</span>?</h2>
+        <p class="text-lead">
+          Solicite um diagnóstico inicial sem compromisso. Em 30 minutos, mapearemos seu problema, 
+          impacto potencial e próximos passos claros.
+        </p>
+      </div>
+
+      <div class="contact-options">
+        <a href="mailto:maxprodsolucoes@gmail.com?subject=Diagnóstico MaxProd&body=Olá,%0A%0AGostaria de agendar um diagnóstico inicial.%0A%0AMeu maior desafio atual é:%0A%0AIndique melhor horário para contato:" 
+           class="btn btn-primary">
+          📧 Agendar por E-mail
+        </a>
+        
+        <a href="https://wa.me/5531992793411?text=Olá!%20Gostaria%20de%20agendar%20um%20diagnóstico%20inicial%20com%20a%20MaxProd." 
+           target="_blank" 
+           class="btn btn-whatsapp">
+          💬 WhatsApp Direto
+        </a>
+        
+        <a href="tel:+5531992793411" class="btn btn-secondary">
+          📞 Ligar Agora: (31) 99279-3411
+        </a>
+      </div>
+      
+      <div class="contact-info">
+        <p>CNPJ: 58.892.549/0001-18</p>
+        <p>Resposta em até 24h úteis</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">MAXPROD</div>
+          <p>Consultoria industrial premium com foco em resultados mensuráveis e execução garantida.</p>
         </div>
 
-        <!-- RESULTADOS -->
-        <div class="case-panel" style="margin-top:16px;">
-          <div class="case-h">4) Resultados e impacto (ROI & saving)</div>
-
-          <ul class="case-list" style="margin-top:8px;">
-            <li><b>Aumento de eficiência:</b> OEE de <b>52% → 73%</b> (média mensal pós-ações).</li>
-            <li><b>Ganho de capacidade:</b> liberação de capacidade efetiva, elevando entrega de <b>16 → 28 JPH</b>.</li>
-            <li><b>Consumíveis otimizados:</b> <b>+50%</b> vida útil do eletrodo (3.000 → 4.500 pontos).</li>
-            <li><b>Qualidade:</b> evolução para nível de <b>“Zero Defeitos”</b>, com <b>92%</b> de conformidade em durabilidade.</li>
-            <li><b>Impacto no cliente:</b> mitigação do risco de ruptura e preservação do fornecimento a partir de julho/2022.</li>
+        <div class="footer-nav">
+          <h6>Serviços</h6>
+          <ul class="footer-links">
+            <li><a href="#cases">Consultoria Industrial</a></li>
+            <li><a href="#methodology">Melhoria Contínua</a></li>
+            <li><a href="#calculator">Otimização de Custos</a></li>
+            <li><a href="#cases">Qualidade & Confiabilidade</a></li>
           </ul>
-
-          <p class="case-p" style="margin-top:10px;">
-            <b>ROI:</b> retorno rápido, sustentado por ações de baixo investimento relativo e alto impacto em disponibilidade e estabilidade.
-            <span style="color:rgba(255,255,255,.55);">Valores absolutos podem ser apresentados sob NDA.</span>
-          </p>
-
-          <div class="case-download">
-            <div>
-              <div class="case-download__label">MATERIAL COMPLETO</div>
-              <h3>Baixar o case completo (PDF)</h3>
-              <p>Para ver gráficos, evidências e detalhes técnicos, baixe a versão completa do material.</p>
-            </div>
-
-            <div class="case-download__actions">
-              <a class="btn btn--primary"
-                 href="/assets/cases/case-1-aumento-oee-maxion.pdf"
-                 download
-                 target="_blank"
-                 rel="noopener">
-                Baixar PDF do Case
-              </a>
-
-              <a class="btn" href="/index.html#contact">
-                Solicitar versão com NDA
-              </a>
-            </div>
-          </div>
         </div>
 
+        <div class="footer-nav">
+          <h6>Empresa</h6>
+          <ul class="footer-links">
+            <li><a href="#about">Sobre Nós</a></li>
+            <li><a href="#cases">Cases</a></li>
+            <li><a href="#methodology">Metodologia</a></li>
+            <li><a href="#contact">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav">
+          <h6>Conecte-se</h6>
+          <ul class="footer-links">
+            <li><a href="https://linkedin.com/company/maxprod" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:maxprodsolucoes@gmail.com">E-mail</a></li>
+            <li><a href="tel:+5531992793411">Telefone</a></li>
+            <li><a href="#contact">WhatsApp</a></li>
+          </ul>
+        </div>
       </div>
 
-      <div class="case-footer">
-        <a class="btn btn--primary" href="/index.html#contact">Quero Resultados Similares</a>
-        <a class="btn" href="/index.html#cases">Voltar aos Cases</a>
+      <div class="footer-bottom">
+        <p>© <span id="currentYear"></span> MaxProd Soluções Empresariais. Todos os direitos reservados.</p>
       </div>
-    </section>
-  </main>
+    </div>
+  </footer>
 
+  <!-- SCRIPTS -->
   <script>
-    // Navbar scroll effect (igual home)
-    window.addEventListener('scroll', function() {
-      const navbar = document.getElementById('navbar');
-      if (!navbar) return;
-      if (window.scrollY > 50) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      initApp();
     });
 
-    // Mobile menu toggle (igual home)
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const closeMobileMenu = document.getElementById('closeMobileMenu');
-    const mobileMenu = document.getElementById('mobileMenu');
+    function initApp() {
+      // Set current year
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    if (mobileMenuBtn && mobileMenu) {
-      mobileMenuBtn.addEventListener('click', function() {
+      // Initialize modules
+      initNavigation();
+      initAnimations();
+      initAssessment();
+      initCalculator();
+      initHeroStats();
+    }
+
+    function initNavigation() {
+      const navbar = document.getElementById('navbar');
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const closeMobileMenu = document.getElementById('closeMobileMenu');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const navLinks = document.querySelectorAll('.nav-link, .mobile-nav a');
+
+      // Navbar scroll effect
+      window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      });
+
+      // Mobile menu toggle
+      mobileMenuBtn.addEventListener('click', () => {
         mobileMenu.classList.add('active');
-        mobileMenu.setAttribute('aria-hidden','false');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
       });
-    }
 
-    if (closeMobileMenu && mobileMenu) {
-      closeMobileMenu.addEventListener('click', function() {
-        mobileMenu.classList.remove('active');
-        mobileMenu.setAttribute('aria-hidden','true');
-        document.body.style.overflow = '';
+      closeMobileMenu.addEventListener('click', () => {
+        closeMobileMenuFunc();
       });
-    }
 
-    if (mobileMenu) {
-      mobileMenu.addEventListener('click', function(e) {
+      mobileMenu.addEventListener('click', (e) => {
         if (e.target === mobileMenu) {
-          mobileMenu.classList.remove('active');
-          mobileMenu.setAttribute('aria-hidden','true');
-          document.body.style.overflow = '';
+          closeMobileMenuFunc();
         }
       });
+
+      function closeMobileMenuFunc() {
+        mobileMenu.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      // Smooth scroll
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              closeMobileMenuFunc();
+              window.scrollTo({
+                top: target.offsetTop - 80,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    }
+
+    function initAnimations() {
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    function initAssessment() {
+      const checks = document.querySelectorAll('.assessCheck');
+      const countEl = document.getElementById('assessCount');
+      const barFill = document.getElementById('assessBarFill');
+      const msgEl = document.getElementById('assessMsg');
+      const hintEl = document.getElementById('assessHint');
+      const ctaEl = document.getElementById('assessCta');
+      const altEl = document.getElementById('assessAlt');
+      const items = document.querySelectorAll('.assess-item');
+
+      function updateAssessment() {
+        const selected = Array.from(checks).filter(c => c.checked).length;
+        const percentage = (selected / checks.length) * 100;
+        
+        countEl.textContent = selected;
+        barFill.style.width = `${percentage}%`;
+
+        const isHighPotential = selected >= 2;
+
+        if (isHighPotential) {
+          msgEl.innerHTML = '<p><strong>✅ Alto potencial identificado!</strong> Sua operação se beneficia com nossa abordagem.</p>';
+          hintEl.textContent = '✅ Alto potencial (2+)';
+          ctaEl.textContent = 'Solicitar diagnóstico personalizado';
+          ctaEl.href = '#contact';
+          altEl.textContent = 'Ver nossa metodologia detalhada';
+          altEl.href = '#methodology';
+        } else {
+          msgEl.innerHTML = '<p>Veja como transformamos diagnósticos em resultados reais em nossos cases.</p>';
+          hintEl.textContent = 'Selecione 2+ para alto potencial';
+          ctaEl.textContent = 'Explorar cases de sucesso';
+          ctaEl.href = '#cases';
+          altEl.textContent = 'Conhecer nossos serviços';
+          altEl.href = '#services';
+        }
+
+        // Update item styles
+        items.forEach((item, index) => {
+          if (checks[index].checked) {
+            item.style.backgroundColor = 'rgba(0, 102, 255, 0.08)';
+            item.style.borderColor = 'var(--brand-primary)';
+          } else {
+            item.style.backgroundColor = '';
+            item.style.borderColor = '';
+          }
+        });
+      }
+
+      checks.forEach(check => {
+        check.addEventListener('change', updateAssessment);
+      });
+
+      // Initialize
+      updateAssessment();
+    }
+
+    function initCalculator() {
+      const revenueSlider = document.getElementById('revenueSlider');
+      const revenueValue = document.getElementById('revenueValue');
+      const challengeBtns = document.querySelectorAll('.challenge-btn');
+      const roiValue = document.getElementById('roiValue');
+
+      if (revenueSlider && revenueValue) {
+        revenueSlider.addEventListener('input', function() {
+          const value = parseInt(this.value);
+          updateRevenueDisplay(value);
+          updateROI();
+        });
+        
+        updateRevenueDisplay(parseInt(revenueSlider.value));
+      }
+
+      challengeBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          challengeBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          updateROI();
+        });
+      });
+
+      function updateRevenueDisplay(value) {
+        if (value >= 90) {
+          revenueValue.textContent = 'R$ 100M+';
+        } else {
+          revenueValue.textContent = `R$ ${value}M`;
+        }
+      }
+
+      function updateROI() {
+        const revenue = parseInt(revenueSlider.value);
+        const baseROI = revenue * 24000; // Simplified calculation
+        const minROI = baseROI * 0.8;
+        const maxROI = baseROI * 1.2;
+        
+        roiValue.textContent = `R$ ${(minROI / 1000000).toFixed(1)}M - R$ ${(maxROI / 1000000).toFixed(1)}M`;
+      }
+
+      // Initialize
+      if (challengeBtns[0]) challengeBtns[0].classList.add('active');
+      updateROI();
+    }
+
+    function initHeroStats() {
+      const stats = document.querySelectorAll('.hero .stat-number[data-value]');
+      
+      if (!stats.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateStats();
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      observer.observe(document.querySelector('.hero-stats'));
+
+      function animateStats() {
+        stats.forEach(stat => {
+          const value = parseInt(stat.getAttribute('data-value'));
+          const prefix = stat.getAttribute('data-prefix') || '';
+          const suffix = stat.getAttribute('data-suffix') || '';
+          
+          animateCounter(stat, 0, value, 1500, prefix, suffix);
+        });
+      }
+
+      function animateCounter(element, start, end, duration, prefix, suffix) {
+        const startTime = performance.now();
+        
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeProgress = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+          const current = Math.floor(start + (end - start) * easeProgress);
+          
+          element.textContent = `${prefix}${current}${suffix}`;
+          
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            element.classList.add('animated');
+          }
+        }
+        
+        requestAnimationFrame(update);
+      }
     }
   </script>
-
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "MaxProd",
+    "description": "Consultoria industrial premium com foco em resultados mensuráveis",
+    "url": "https://maxprod.com.br",
+    "logo": "https://maxprod.com.br/assets/img/logo-imagem1.png",
+    "areaServed": "Brasil",
+    "serviceType": "Consultoria Industrial",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "20"
+    },
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "name": "Consultoria Industrial",
+        "description": "Redução de custos e aumento de produtividade"
+      },
+      {
+        "@type": "Offer",
+        "name": "Otimização de Processos",
+        "description": "Melhoria contínua e eficiência operacional"
+      }
+    ]
+  }
+  </script>
 </body>
 </html>
