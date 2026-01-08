@@ -557,7 +557,60 @@
 
   .case-head{ min-height: unset; }
 }
-    
+
+/* =========================================================
+   PATCH ÚNICO — PILL NO “VAZIO” À DIREITA (como na seta)
+   - encosta no lado direito do header
+   - centraliza verticalmente no bloco do título/sub
+   - não quebra mobile
+   ========================================================= */
+
+/* garante referência */
+.case-head{ position: relative; }
+
+/* reserva um “corredor” à direita para o pill não invadir o texto */
+.case-title,
+.case-sub{
+  padding-right: 260px; /* ajuste fino: 220–320 */
+}
+
+/* posiciona o pill no espaço da seta */
+.case-risk{
+  position: absolute !important;
+  right: 24px !important;      /* distancia da borda direita */
+  top: 50% !important;         /* centro vertical do header */
+  transform: translateY(-50%) !important;
+
+  margin: 0 !important;
+  max-width: 240px;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+/* se o header ficar muito “alto”, evita o pill ir pra cima demais */
+.case-head{
+  min-height: 180px; /* ajuste fino: 160–220 */
+}
+
+/* Responsivo: em telas menores o pill volta pro fluxo (abaixo do título) */
+@media (max-width: 980px){
+  .case-title,
+  .case-sub{
+    padding-right: 0 !important;
+  }
+
+  .case-risk{
+    position: static !important;
+    transform: none !important;
+    margin-top: 12px !important;
+    max-width: none;
+    white-space: normal;
+  }
+
+  .case-head{ min-height: unset; }
+}
+
+  
   </style>
 </head>
 
