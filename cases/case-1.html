@@ -6,58 +6,59 @@
   <meta name="description" content="Case MaxProd — Aumento de OEE em célula de solda (Tier 1 Stellantis): evitamos ruptura e elevamos a eficiência em 90 dias." />
   <title>Case 1 | Aumento de OEE em Célula de Solda — MaxProd</title>
 
-  <!-- CSS global do site -->
+  <!-- CSS GLOBAL DO SITE (HOME) -->
   <link rel="stylesheet" href="/style.css" />
 
-  <!-- FAVICON -->
-  <link rel="icon" type="image/x-icon" href="/assets/img/logo-maxprod.png">
-
-  <!-- OPEN GRAPH -->
-  <meta property="og:title" content="Case 1 | Aumento de OEE em Célula de Solda — MaxProd">
-  <meta property="og:description" content="Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva">
-  <meta property="og:image" content="/assets/img/robo-case1.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.maxprod.com.br/cases/case-1.html">
-
-  <!-- TWITTER -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Case MaxProd — Aumento de OEE em 90 dias">
-  <meta name="twitter:image" content="/assets/img/robo-case1.png">
-
-  <!-- (Opcional) preload das imagens críticas (leve e correto) -->
-  <link rel="preload" as="image" href="/assets/img/robo-case1.png" fetchpriority="high">
-  <link rel="preload" as="image" href="/assets/img/logo-maxprod.png" fetchpriority="high">
-  <link rel="preload" as="image" href="/assets/img/pdca-maxprod.png">
-
   <style>
-    /* =========================
-       CASE-1 — CSS LOCAL (SAFE)
-       Otimizado (sem efeitos pesados)
-       ========================= */
+    /* =========================================================
+       CASE-1 — PATCH PREMIUM (SEM QUEBRAR O GLOBAL)
+       Objetivo: fundo dark + header consistente + leve
+       ========================================================= */
 
     :root{
-      --case-bg: rgba(255,255,255,.03);
-      --case-stroke: rgba(255,255,255,.10);
-      --case-text: rgba(255,255,255,.90);
-      --case-muted: rgba(255,255,255,.78);
+      --case-text: rgba(255,255,255,.92);
+      --case-muted: rgba(255,255,255,.72);
       --case-muted2: rgba(255,255,255,.55);
+      --case-stroke: rgba(255,255,255,.10);
       --case-shadow: 0 22px 70px rgba(0,0,0,.55);
       --case-shadow2: 0 10px 30px rgba(0,0,0,.35);
 
-      /* herda paleta global se existir */
+      /* herda paleta do site */
       --case-brand: var(--brand, #2f6bff);
       --case-brand2: var(--brand2, #1f4fd8);
     }
 
-    /* ===== Header no padrão clean (sem travar) ===== */
+    /* 1) FUNDO (mata o branco) */
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      color: var(--case-text);
+
+      /* fundo premium (igual vibe home) */
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(47,107,255,.16), transparent 55%),
+        radial-gradient(1000px 700px at 90% 10%, rgba(31,79,216,.10), transparent 60%),
+        linear-gradient(180deg, #0b0f14 0%, #0e1622 60%, #0b0f14 100%);
+    }
+
+    /* 2) HEADER: usa o mesmo layout do seu site.
+          - Se o seu style.css já define .nav/.header, perfeito.
+          - Eu aplico só micro-ajustes para garantir consistência visual. */
     .site-header{
       position: sticky;
       top: 0;
       z-index: 999;
-      background: rgba(8,12,20,.78);
-      border-bottom: 1px solid rgba(255,255,255,.08);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
+
+    /* Se seu global já tem um header com background, ignore.
+       Esse fallback só garante que não fique branco. */
+    .site-header__bar{
+      background: rgba(10,14,20,.72);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
     .site-header__inner{
       max-width: 1180px;
       margin: 0 auto;
@@ -65,89 +66,107 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 16px;
     }
-    .brand{
+
+    .site-brand{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap: 10px;
       text-decoration:none;
-      color: rgba(255,255,255,.92);
-      min-width: 180px;
+      color: var(--case-text);
+      min-width: 220px;
     }
-    .brand img{
+    .site-brand img{
       width: 34px;
       height: 34px;
       object-fit: contain;
       display:block;
     }
-    .brand strong{
-      letter-spacing: .08em;
-      font-size: 13px;
-      line-height: 1;
-      display:block;
+    .site-brand__txt{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
     }
-    .brand small{
+    .site-brand__name{
+      font-weight: 800;
+      letter-spacing: .02em;
+      font-size: 14px;
+    }
+    .site-brand__sub{
       font-size: 12px;
-      color: rgba(255,255,255,.62);
-      display:block;
-      margin-top: 2px;
+      color: var(--case-muted2);
     }
 
     .site-nav{
       display:flex;
+      gap: 22px;
       align-items:center;
-      gap: 18px;
+      justify-content:center;
+      flex: 1;
     }
     .site-nav a{
-      color: rgba(255,255,255,.72);
+      color: rgba(255,255,255,.75);
       text-decoration:none;
+      font-weight: 600;
       font-size: 14px;
       padding: 8px 6px;
+      border-radius: 10px;
+      transition: background .15s ease, color .15s ease;
+      white-space: nowrap;
     }
-    .site-nav a:hover{ color: rgba(255,255,255,.92); }
-    .site-nav a.active{
+    .site-nav a:hover{
+      color: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.05);
+    }
+    .site-nav a.is-active{
       color: var(--case-brand);
-      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 6px;
     }
 
-    .site-actions{
+    .site-ctas{
       display:flex;
+      gap: 10px;
       align-items:center;
-      gap:10px;
+      min-width: 260px;
+      justify-content: flex-end;
     }
+
+    /* botões fallback (se o global já tem, esses não atrapalham) */
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
+      gap:10px;
       padding: 10px 14px;
       border-radius: 14px;
-      font-weight: 700;
-      font-size: 13px;
       text-decoration:none;
-      border: 1px solid rgba(255,255,255,.14);
+      font-weight: 800;
+      font-size: 13px;
+      border: 1px solid rgba(255,255,255,.16);
       color: rgba(255,255,255,.90);
       background: rgba(255,255,255,.03);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
       white-space: nowrap;
     }
-    .btn:hover{ background: rgba(255,255,255,.06); }
-    .btn-primary{
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.24);
+      background: rgba(255,255,255,.05);
+    }
+    .btn--primary{
       background: linear-gradient(180deg, rgba(47,107,255,.95), rgba(31,79,216,.92));
       border-color: rgba(47,107,255,.45);
-      color:#fff;
+      color: #fff;
       box-shadow: 0 16px 40px rgba(47,107,255,.22);
     }
 
-    @media (max-width: 860px){
-      .site-nav{ display:none; } /* depois fazemos menu mobile leve */
-      .brand{ min-width: auto; }
-    }
-
-    /* ===== Conteúdo do Case ===== */
+    /* 3) CONTEÚDO */
     .case-wrap{
       max-width: 1180px;
       margin: 0 auto;
-      padding: 22px 18px 64px;
+      padding: 26px 18px 64px;
     }
 
     .case-breadcrumb{
@@ -159,17 +178,15 @@
     .case-breadcrumb a:hover{ color: var(--case-text); text-decoration: underline; }
 
     .case-shell{
-      background:
-        radial-gradient(1200px 600px at 18% 0%, rgba(47,107,255,.22), transparent 55%),
-        radial-gradient(900px 500px at 92% 18%, rgba(31,79,216,.16), transparent 60%),
-        linear-gradient(180deg, rgba(8,12,20,.88), rgba(8,12,20,.82));
+      background: radial-gradient(1200px 600px at 18% 0%, rgba(47,107,255,.18), transparent 55%),
+                  radial-gradient(900px 500px at 92% 18%, rgba(31,79,216,.10), transparent 60%),
+                  linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       border: 1px solid var(--case-stroke);
       border-radius: 26px;
       box-shadow: var(--case-shadow);
       overflow: hidden;
       position: relative;
     }
-
     .case-shell::before{
       content:"";
       position:absolute; inset:-2px;
@@ -179,7 +196,7 @@
     }
 
     .case-head{
-      padding: 28px 28px 18px;
+      padding: 28px 28px 16px;
       position: relative;
       z-index: 1;
     }
@@ -194,7 +211,6 @@
       color: rgba(255,255,255,.72);
       margin-bottom: 10px;
     }
-
     .case-tag .dot{
       width: 8px; height: 8px;
       border-radius: 999px;
@@ -204,61 +220,59 @@
 
     .case-title{
       margin: 0;
-      font-size: clamp(22px, 2.4vw, 34px);
+      font-size: clamp(24px, 2.6vw, 38px);
       line-height: 1.12;
-      color: #ffffff;
+      color: var(--case-text);
       letter-spacing: -0.02em;
+      max-width: 32ch;
     }
 
-    .case-sub{
-      margin: 10px 0 0;
-      max-width: 78ch;
-      color: rgba(255,255,255,.82);
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    /* BADGE DE RISCO */
+    /* badge “risco mitigado” */
     .case-risk{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      margin-top:12px;
-      padding:8px 14px;
-      border-radius:999px;
-      font-size:13px;
-      background: rgba(0,180,120,.18);
-      border:1px solid rgba(0,180,120,.45);
-      color:#d9fff1;
+      margin-top: 12px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(60,255,200,.22);
+      background: rgba(20,220,160,.10);
+      color: rgba(210,255,245,.90);
+      font-weight: 700;
+      font-size: 13px;
     }
     .case-risk .dot{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:#00e0a4;
-      box-shadow:0 0 10px #00e0a4;
+      width:8px;height:8px;border-radius:999px;
+      background: rgba(40,255,200,.95);
+      box-shadow: 0 0 0 4px rgba(40,255,200,.18);
+    }
+    .case-risk strong{ font-weight: 900; }
+
+    .case-sub{
+      margin: 12px 0 0;
+      max-width: 78ch;
+      color: var(--case-muted);
+      font-size: 15px;
+      line-height: 1.6;
     }
 
-    /* Hero image (leve, sem parallax) */
+    /* imagem hero (leve) */
     .case-hero-image{
-      position: relative;
-      margin: 18px 0 0;
-      border-radius: 20px;
+      margin-top: 16px;
+      border-radius: 18px;
       overflow: hidden;
-      height: 280px;
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
+      background: rgba(255,255,255,.02);
+      box-shadow: var(--case-shadow2);
     }
     .case-hero-image img{
       width: 100%;
-      height: 100%;
+      height: 320px;
       object-fit: cover;
       display:block;
-      filter: saturate(1.08) contrast(1.04);
-      transform: scale(1.01);
+      transform: translateZ(0); /* melhora performance */
     }
 
-    /* KPI row */
     .case-kpis{
       display: grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
@@ -267,20 +281,14 @@
       position: relative;
       z-index: 1;
     }
-
     .case-kpi{
-      background: rgba(12,16,28,.85);
-      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,.03);
       border: 1px solid rgba(255,255,255,.10);
       border-radius: 18px;
       padding: 14px 14px 12px;
       box-shadow: var(--case-shadow2);
       position: relative;
-      overflow: hidden;
-      transition: transform .18s ease;
     }
-    .case-kpi:hover{ transform: translateY(-4px); }
-
     .case-kpi__top{
       display:flex;
       align-items:center;
@@ -288,52 +296,44 @@
       gap:10px;
       margin-bottom: 6px;
     }
-
     .case-kpi__label{
       font-size: 12px;
       color: rgba(255,255,255,.60);
       letter-spacing: .06em;
       text-transform: uppercase;
     }
-
     .case-kpi__value{
       font-size: 22px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: -0.02em;
-      color: #ffffff;
+      color: rgba(255,255,255,.92);
       margin: 0;
     }
-
     .case-kpi__note{
       margin: 2px 0 0;
       font-size: 12px;
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.55);
       line-height: 1.35;
     }
 
-    /* Conteúdo em seções */
     .case-body{
       padding: 0 28px 26px;
       position: relative;
       z-index: 1;
     }
-
     .case-grid{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap: 16px;
       align-items: start;
     }
-
     .case-panel{
-      background: rgba(12,16,28,.85);
-      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,.028);
       border: 1px solid rgba(255,255,255,.10);
       border-radius: 20px;
       padding: 18px;
       box-shadow: var(--case-shadow2);
     }
-
     .case-h{
       margin: 0 0 10px;
       font-size: 14px;
@@ -341,23 +341,20 @@
       text-transform: uppercase;
       color: rgba(255,255,255,.75);
     }
-
     .case-p{
       margin: 0;
-      color: rgba(255,255,255,.82);
+      color: var(--case-muted);
       line-height: 1.65;
       font-size: 15px;
     }
-
     .case-list{
       margin: 10px 0 0;
       padding-left: 18px;
-      color: rgba(255,255,255,.82);
+      color: var(--case-muted);
       line-height: 1.65;
       font-size: 15px;
     }
 
-    /* Antes x Depois */
     .case-compare{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -366,67 +363,15 @@
       position: relative;
     }
 
-    .case-compare::before{
-      content:"";
-      position:absolute;
-      top:8%;
-      bottom:8%;
-      left:50%;
-      width:2px;
-      background: linear-gradient(180deg, transparent, rgba(47,107,255,.9), transparent);
-      box-shadow: 0 0 24px rgba(47,107,255,.55);
-      transform: translateX(-50%);
-      opacity: .9;
-    }
-
     .case-card{
-      background: rgba(12,16,28,.85);
-      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,.03);
       border: 1px solid rgba(255,255,255,.10);
       border-radius: 18px;
       padding: 14px;
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      /* sem parallax/tilt pesado */
+      transform: none !important;
+      will-change: auto;
     }
-    .case-card:hover{ transform: translateY(-4px); }
-
-    /* Glow do “Depois” (mantido) */
-    .case-card:nth-child(2){
-      border-color: rgba(47,107,255,.45);
-      box-shadow:
-        0 0 0 1px rgba(47,107,255,.25),
-        0 20px 60px rgba(47,107,255,.25);
-      position: relative;
-    }
-    .case-card:nth-child(2)::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      border-radius: 18px;
-      background: linear-gradient(120deg, transparent 30%, rgba(47,107,255,.28), transparent 70%);
-      animation: sweep 3.6s linear infinite;
-      pointer-events:none;
-      opacity: .9;
-    }
-
-    /* ✅ Efeito igual do Eixo 2 aplicado no Eixo 1 também */
-    .case-card--glow{
-      border-color: rgba(47,107,255,.45) !important;
-      box-shadow:
-        0 0 0 1px rgba(47,107,255,.25),
-        0 20px 60px rgba(47,107,255,.25) !important;
-      position: relative;
-    }
-    .case-card--glow::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      border-radius: 18px;
-      background: linear-gradient(120deg, transparent 30%, rgba(47,107,255,.28), transparent 70%);
-      animation: sweep 3.6s linear infinite;
-      pointer-events:none;
-      opacity: .9;
-    }
-
     .case-card__kicker{
       font-size: 12px;
       letter-spacing: .12em;
@@ -434,30 +379,26 @@
       color: rgba(255,255,255,.55);
       margin-bottom: 6px;
     }
-
     .case-card__big{
       font-size: 18px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: -0.02em;
-      color: #ffffff;
+      color: rgba(255,255,255,.92);
       margin: 0 0 8px;
     }
-
     .case-mini{
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.70);
       font-size: 13px;
       line-height: 1.55;
       margin: 0;
     }
 
-    /* Badges */
     .case-badges{
       display:flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 10px;
     }
-
     .case-badge{
       display:inline-flex;
       align-items:center;
@@ -470,12 +411,6 @@
       font-size: 13px;
       line-height: 1;
       user-select:none;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    .case-badge:hover{
-      transform: translateY(-2px);
-      border-color: rgba(47,107,255,.5);
-      background: rgba(47,107,255,.08);
     }
     .case-badge i{
       width: 7px; height: 7px;
@@ -484,24 +419,7 @@
       display:inline-block;
     }
 
-    /* PDCA visual (corrigido path) */
-    .case-method-visual{
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 16px 0 8px;
-    }
-    .case-method-visual img{
-      width: 110px;
-      height: 110px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 12px 40px rgba(0,0,0,.35);
-      object-fit: cover;
-      display:block;
-    }
-
-    /* CTA Download */
+    /* CTA PDF */
     .case-download{
       display:flex;
       gap: 14px;
@@ -514,7 +432,6 @@
       border-radius: 18px;
       box-shadow: var(--case-shadow2);
     }
-
     .case-download__label{
       display:inline-block;
       font-size: 12px;
@@ -523,22 +440,19 @@
       color: rgba(255,255,255,.65);
       margin-bottom: 6px;
     }
-
     .case-download h3{
       margin: 0 0 4px;
       font-size: 16px;
       letter-spacing: -0.01em;
       color: rgba(255,255,255,.92);
     }
-
     .case-download p{
       margin: 0;
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.70);
       font-size: 13px;
       line-height: 1.45;
       max-width: 64ch;
     }
-
     .case-download__actions{
       display:flex;
       gap: 10px;
@@ -546,38 +460,7 @@
       justify-content:flex-end;
     }
 
-    .case-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 14px;
-      text-decoration:none;
-      font-weight: 700;
-      font-size: 13px;
-      border: 1px solid rgba(255,255,255,.14);
-      color: rgba(255,255,255,.88);
-      background: rgba(255,255,255,.03);
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-      white-space: nowrap;
-    }
-    .case-btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.22);
-      background: rgba(255,255,255,.05);
-    }
-    .case-btn--primary{
-      background: linear-gradient(180deg, rgba(47,107,255,.95), rgba(31,79,216,.92));
-      border-color: rgba(47,107,255,.45);
-      color: #fff;
-      box-shadow: 0 16px 40px rgba(47,107,255,.22);
-    }
-    .case-btn--primary:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 18px 48px rgba(47,107,255,.26);
-    }
-
+    /* Footer buttons */
     .case-footer{
       display:flex;
       gap: 10px;
@@ -588,124 +471,61 @@
       z-index: 1;
     }
 
-    /* =========================
-       PROGRESS RING OEE
-       ========================= */
-    .case-ring{
-      width: 110px;
-      height: 110px;
-      position: relative;
-      margin-top: 4px;
-      margin-bottom: 8px;
-    }
-    .case-ring__svg{
-      width: 110px;
-      height: 110px;
-      transform: rotate(-90deg);
-      display: block;
-    }
-    .case-ring__bg{
-      fill: none;
-      stroke: rgba(255,255,255,.10);
-      stroke-width: 10;
-    }
-    .case-ring__fg{
-      fill: none;
-      stroke: url(#caseRingGrad);
-      stroke-width: 10;
-      stroke-linecap: round;
-      stroke-dasharray: 327;
-      stroke-dashoffset: 327;
-      filter: drop-shadow(0 0 10px rgba(47,107,255,.65));
-      transition: stroke-dashoffset 1200ms cubic-bezier(.2,.9,.2,1);
-    }
-    .case-ring__center{
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-    .case-ring__value{
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      color: rgba(255,255,255,.95);
-      line-height: 1;
-    }
-    .case-ring__label{
-      margin-top: 4px;
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.60);
-    }
-    .case-ring__mini{
-      display: inline-flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: baseline;
-      color: rgba(255,255,255,.80);
-    }
-    .case-ring__delta{
-      color: rgba(100,220,255,.90);
-      font-weight: 800;
-    }
-
-    @keyframes sweep{
-      from{ transform: translateX(-40%); }
-      to{ transform: translateX(40%); }
-    }
-
     /* Responsivo */
     @media (max-width: 980px){
+      .site-brand{ min-width: auto; }
+      .site-ctas{ min-width: auto; }
       .case-kpis{ grid-template-columns: repeat(2, minmax(0,1fr)); }
       .case-grid{ grid-template-columns: 1fr; }
+      .case-title{ max-width: 100%; }
+      .case-hero-image img{ height: 240px; }
+      .site-nav{ gap: 14px; }
     }
     @media (max-width: 560px){
       .case-kpis{ grid-template-columns: 1fr; }
       .case-compare{ grid-template-columns: 1fr; }
-      .case-compare::before{ display:none; }
       .case-head, .case-body, .case-footer{ padding-left: 16px; padding-right: 16px; }
       .case-download{ flex-direction: column; align-items:flex-start; }
       .case-download__actions{ width:100%; justify-content:flex-start; }
-      .case-hero-image{ height: 200px; }
-      .case-method-visual{ flex-direction: column; align-items:flex-start; }
+      .site-nav{ display:none; } /* simples: mobile pode ficar só CTAs (depois refinamos hamburger) */
+      .site-header__inner{ gap: 10px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- MENU (padrão clean, sem peso) -->
+  <!-- HEADER (igual à HOME, estrutura limpa) -->
   <header class="site-header">
-    <div class="site-header__inner">
-      <a class="brand" href="/">
-        <img src="/assets/img/logo-maxprod.png" alt="MaxProd">
-        <span>
-          <strong>MAXPROD</strong>
-          <small>Soluções Empresariais</small>
-        </span>
-      </a>
+    <div class="site-header__bar">
+      <div class="site-header__inner">
+        <a class="site-brand" href="/index.html">
+          <img src="/assets/img/logo-maxprod.png" alt="MaxProd" width="34" height="34">
+          <span class="site-brand__txt">
+            <span class="site-brand__name">MAXPROD</span>
+            <span class="site-brand__sub">Soluções Empresariais</span>
+          </span>
+        </a>
 
-      <nav class="site-nav" aria-label="Navegação principal">
-        <a href="/">Home</a>
-        <a href="/#solucoes">Soluções</a>
-        <a href="/#cases" class="active">Cases</a>
-        <a href="/#sobre">Sobre</a>
-      </nav>
+        <nav class="site-nav" aria-label="Navegação principal">
+          <a href="/index.html" class="">Home</a>
+          <a href="/index.html#cases" class="is-active">Cases</a>
+          <a href="/index.html#metodologia">Metodologia</a>
+          <a href="/index.html#servicos">Serviços</a>
+          <a href="/index.html#sobre">Sobre</a>
+        </nav>
 
-      <div class="site-actions">
-        <a class="btn" href="/#contato">Fale Conosco</a>
-        <a class="btn btn-primary" href="/#roi">Calcular ROI</a>
+        <div class="site-ctas">
+          <a class="btn" href="/index.html#contato">Fale Conosco</a>
+          <a class="btn btn--primary" href="/index.html#roi">Calcular ROI</a>
+        </div>
       </div>
     </div>
   </header>
 
   <main class="case-wrap">
     <div class="case-breadcrumb">
-      <a href="/">Home</a> &nbsp;/&nbsp; <a href="/#cases">Cases</a> &nbsp;/&nbsp; <span>Case 1</span>
+      <a href="/index.html">Home</a> &nbsp;/&nbsp; <a href="/index.html#cases">Cases</a> &nbsp;/&nbsp; <span>Case 1</span>
     </div>
 
     <section class="case-shell">
@@ -716,7 +536,6 @@
           Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva
         </h1>
 
-        <!-- BADGE DE RISCO -->
         <div class="case-risk">
           <span class="dot"></span>
           Risco de ruptura: <strong>mitigado</strong>
@@ -727,9 +546,8 @@
           estabilidade do processo e sustentação dos ganhos — sem CAPEX pesado.
         </p>
 
-        <!-- IMAGEM DO ROBÔ (corrigida) -->
         <div class="case-hero-image">
-          <img src="/assets/img/robo-case1.png" alt="Célula de solda robotizada otimizada">
+          <img src="/assets/img/robo-case1.png" alt="Célula de solda robotizada (ilustrativo)" loading="eager">
         </div>
       </header>
 
@@ -739,32 +557,8 @@
           <div class="case-kpi__top">
             <div class="case-kpi__label">OEE</div>
           </div>
-
-          <div class="case-ring" data-value="73" data-before="52" aria-label="OEE 52 para 73">
-            <svg class="case-ring__svg" viewBox="0 0 120 120" role="img" aria-hidden="true">
-              <defs>
-                <linearGradient id="caseRingGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="rgba(47,107,255,1)"/>
-                  <stop offset="100%" stop-color="rgba(100,220,255,.85)"/>
-                </linearGradient>
-              </defs>
-              <circle class="case-ring__bg" cx="60" cy="60" r="52"></circle>
-              <circle class="case-ring__fg" cx="60" cy="60" r="52"></circle>
-            </svg>
-
-            <div class="case-ring__center">
-              <div class="case-ring__value"><span data-ring="value">73</span>%</div>
-              <div class="case-ring__label">OEE</div>
-            </div>
-          </div>
-
-          <p class="case-kpi__note">
-            <span class="case-ring__mini">
-              <b><span data-ring="before">52</span>%</b> → <b><span data-ring="after">73</span>%</b>
-              <span class="case-ring__delta">(+<span data-ring="delta">21</span> p.p.)</span>
-            </span><br>
-            média mensal pós-ações
-          </p>
+          <p class="case-kpi__value">52% → 73%</p>
+          <p class="case-kpi__note">média mensal pós-ações</p>
         </div>
 
         <div class="case-kpi">
@@ -788,7 +582,7 @@
             <div class="case-kpi__label">Qualidade</div>
           </div>
           <p class="case-kpi__value">92%</p>
-          <p class="case-kpi__note">aderência "Zero Defeitos" em durabilidade</p>
+          <p class="case-kpi__note">aderência “Zero Defeitos” em durabilidade</p>
         </div>
       </div>
 
@@ -831,12 +625,6 @@
               priorizando as maiores perdas e validando causa raiz com evidência em campo.
             </p>
 
-            <!-- IMAGEM PDCA (corrigida) -->
-            <div class="case-method-visual">
-              <img src="/assets/img/pdca-maxprod.png" alt="Metodologia PDCA MaxProd">
-              <p class="case-p">Ciclo de melhoria contínua aplicado com precisão cirúrgica para identificação e correção de perdas estruturais.</p>
-            </div>
-
             <div class="case-badges" aria-label="Ferramentas aplicadas">
               <span class="case-badge"><i></i> PDCA (Plan-Do-Check-Act)</span>
               <span class="case-badge"><i></i> OEE + Pareto de perdas</span>
@@ -862,8 +650,7 @@
           </p>
 
           <div class="case-compare" style="margin-top:12px;">
-            <!-- ✅ Efeito do Eixo 2 aplicado também no Eixo 1 -->
-            <div class="case-card case-card--glow">
+            <div class="case-card">
               <div class="case-card__kicker">Eixo A • Manutenção robótica</div>
               <div class="case-card__big">Estabilidade do posicionamento</div>
               <p class="case-mini">
@@ -872,7 +659,7 @@
               </p>
             </div>
 
-            <div class="case-card case-card--glow">
+            <div class="case-card">
               <div class="case-card__kicker">Eixo B • Ciclo de vida de consumíveis</div>
               <div class="case-card__big">+50% vida útil do eletrodo</div>
               <p class="case-mini">
@@ -892,7 +679,7 @@
             <li><b>Aumento de eficiência:</b> OEE de <b>52% → 73%</b> (média mensal pós-ações).</li>
             <li><b>Ganho de capacidade:</b> liberação de capacidade efetiva, elevando entrega de <b>16 → 28 JPH</b>.</li>
             <li><b>Consumíveis otimizados:</b> <b>+50%</b> vida útil do eletrodo (3.000 → 4.500 pontos).</li>
-            <li><b>Qualidade:</b> evolução para nível de <b>"Zero Defeitos"</b>, com <b>92%</b> de conformidade em durabilidade.</li>
+            <li><b>Qualidade:</b> evolução para nível de <b>“Zero Defeitos”</b>, com <b>92%</b> de conformidade em durabilidade.</li>
             <li><b>Impacto no cliente:</b> mitigação do risco de ruptura e preservação do fornecimento a partir de julho/2022.</li>
           </ul>
 
@@ -900,8 +687,6 @@
             <b>ROI:</b> retorno rápido, sustentado por ações de baixo investimento relativo e alto impacto em disponibilidade e estabilidade.
             <span style="color:rgba(255,255,255,.55);">Valores absolutos podem ser apresentados sob NDA.</span>
           </p>
-
-          <!-- ✅ Removido o grid de logos que estava poluindo e aparecendo indevidamente -->
 
           <!-- CTA PDF -->
           <div class="case-download">
@@ -912,7 +697,7 @@
             </div>
 
             <div class="case-download__actions">
-              <a class="case-btn case-btn--primary"
+              <a class="btn btn--primary"
                  href="/assets/cases/case-1-aumento-oee-maxion.pdf"
                  download
                  target="_blank"
@@ -920,7 +705,7 @@
                 Baixar PDF do Case
               </a>
 
-              <a class="case-btn" href="/#contato">
+              <a class="btn" href="/index.html#contato">
                 Solicitar versão com NDA
               </a>
             </div>
@@ -929,63 +714,12 @@
 
       </div>
 
-      <!-- Botões finais -->
       <div class="case-footer">
-        <a class="case-btn case-btn--primary" href="/#contato">Quero Resultados Similares</a>
-        <a class="case-btn" href="/#cases">Voltar aos Cases</a>
+        <a class="btn btn--primary" href="/index.html#contato">Quero Resultados Similares</a>
+        <a class="btn" href="/index.html#cases">Voltar aos Cases</a>
       </div>
     </section>
   </main>
-
-  <!-- JS LEVE: apenas ring + contador -->
-  <script>
-  (function(){
-    const ring = document.querySelector('.case-ring');
-    if(!ring) return;
-
-    function animateRing(ring){
-      const val = Number(ring.dataset.value || 0);
-      const before = Number(ring.dataset.before || 0);
-      const after = val;
-
-      const fg = ring.querySelector('.case-ring__fg');
-      const valueEl = ring.querySelector('[data-ring="value"]');
-      const beforeEl = document.querySelector('[data-ring="before"]');
-      const afterEl  = document.querySelector('[data-ring="after"]');
-      const deltaEl  = document.querySelector('[data-ring="delta"]');
-
-      const C = 327;
-      const clamped = Math.max(0, Math.min(100, val));
-      const offset = C - (C * clamped / 100);
-
-      if(beforeEl) beforeEl.textContent = before;
-      if(afterEl)  afterEl.textContent = after;
-      if(deltaEl)  deltaEl.textContent = (after - before);
-
-      requestAnimationFrame(() => {
-        fg.style.strokeDashoffset = offset.toFixed(2);
-      });
-
-      // contador suave
-      const start = performance.now();
-      const from = 0;
-      const to = after;
-      const dur = 900;
-
-      function tick(t){
-        const p = Math.min(1, (t - start) / dur);
-        const eased = 1 - Math.pow(1 - p, 3);
-        const v = Math.round(from + (to - from) * eased);
-        if(valueEl) valueEl.textContent = v;
-        if(p < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-
-    // anima quando carregar (leve)
-    window.addEventListener('load', () => animateRing(ring), { once:true });
-  })();
-  </script>
 
 </body>
 </html>
