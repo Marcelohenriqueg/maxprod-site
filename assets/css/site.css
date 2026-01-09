@@ -758,7 +758,7 @@
 }
 
 /* opcional: card um pouco mais baixo para caber sem scroll */
-#cases .case-content{ padding: 14px; padding-bottom: 50px; } /* estava 16px */
+#cases .case-content{ padding: 12px; padding-bottom: 48px; } /* estava 16px */
 /* =========================================
    PATCH FINAL — FECHAMENTO DE DOBRA
    ========================================= */
