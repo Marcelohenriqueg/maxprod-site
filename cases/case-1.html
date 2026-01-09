@@ -924,6 +924,38 @@ body:not(.loaded) * {
     animation: none !important;
     transition: none !important;
 }
+
+/* =========================================================
+   FIX: evita "flash" do mobile-menu ao carregar a página
+   ========================================================= */
+
+/* Estado inicial: fora da tela + invisível (sem transição) */
+.mobile-menu{
+  position: fixed;
+  inset: 0;
+  transform: translateX(110%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: none !important; /* <- remove animação antes do loaded */
+  will-change: transform;
+}
+
+/* Só habilita animação depois do DOM pronto */
+body.loaded .mobile-menu{
+  transition: transform .28s ease, opacity .18s ease, visibility 0s linear .28s !important;
+}
+
+/* Quando abre */
+.mobile-menu.active{
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
     
   </style>
 </head>
