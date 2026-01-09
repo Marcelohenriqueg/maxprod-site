@@ -1,4 +1,4 @@
-    /* ===============================
+/* ===============================
        DESIGN SYSTEM - NIVEL NVIDIA/APPLE
        =============================== */
     :root {
@@ -523,24 +523,13 @@
 
     .case-image {
       height: 200px;
-      .case-image {
-  height: 200px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(20,30,60,.75),
-      rgba(20,30,60,.85)
-    ),
-    url("/assets/robo-case1.png") center / cover no-repeat;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
+      background:
+        linear-gradient(
+          135deg,
+          rgba(20,30,60,.75),
+          rgba(20,30,60,.85)
+        ),
+        url("./assets/img/robo-case1.png") center / cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -782,6 +771,9 @@
 }
 
 /* reduz 2px da imagem do card */
+#cases .case-image{
+  height: 198px;            /* era 200px */
+}
 
 /* título do card levemente menor (imperceptível visualmente) */
 #cases .case-content h4{
