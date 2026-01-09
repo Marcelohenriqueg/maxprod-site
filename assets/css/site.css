@@ -637,12 +637,16 @@
       align-self: end;
       justify-self: stretch;
     }
-    .cases-cta-float .btn{
-      width: 100%;
-      border-radius: var(--radius-lg);
-      padding: var(--space-12) var(--space-16);
-      box-shadow: 0 10px 34px rgba(0,102,255,0.22);
-    }
+
+   .cases-cta-float .btn{
+  width: 100%;
+  border-radius: 14px;              /* era radius-lg -> menor */
+  padding: 10px 14px;               /* era 12/16 -> reduz altura */
+  font-size: 13px;                  /* ligeiramente menor */
+  line-height: 1.1;                 /* trava altura */
+  box-shadow: 0 8px 26px rgba(0,102,255,0.18);
+}
+
 
     /* grid dos 4 cases */
     .cases-grid--4{
