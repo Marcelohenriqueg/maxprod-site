@@ -784,7 +784,7 @@
 
 /* cards ainda mais “juntos” */
 .cases-stage{
-  gap: 14px;                /* era 16px */
+  gap: 10px;                /* era 16px */
 }
 
 /* reduz 2px da imagem do card */
