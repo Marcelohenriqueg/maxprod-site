@@ -706,33 +706,94 @@
       .case-hero-image{ height: 130px; }
       .case-pdca-image{ height: 150px; }
     }
+/* =========================================================
+   ANIMAÇÕES OTIMIZADAS - CORREÇÃO DO TRAVAMENTO
+   ========================================================= */
 
-    /* =========================================================
-       ANIMAÇÕES
-       ========================================================= */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+/* REMOVER animação do .case-shell (causa travamento) */
+/* .case-shell { animação removida } */
 
-    .case-shell {
-      animation: fadeInUp 0.8s ease-out;
-    }
+/* Manter a animação para uso em elementos internos */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    /* Respeita prefers-reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
+/* Aplicar animação APENAS em elementos internos específicos */
+.case-head,
+.case-kpis,
+.case-panel,
+.case-download,
+.case-footer {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
 
+/* Stagger as animações para melhor performance */
+.case-head { animation-delay: 0.1s; }
+.case-kpis { animation-delay: 0.2s; }
+.case-panel:nth-child(1) { animation-delay: 0.3s; }
+.case-panel:nth-child(2) { animation-delay: 0.4s; }
+.case-panel:nth-child(3) { animation-delay: 0.5s; }
+.case-panel:nth-child(4) { animation-delay: 0.6s; }
+.case-download { animation-delay: 0.7s; }
+.case-footer { animation-delay: 0.8s; }
+
+/* FIX: Correção para evitar flash do mobile-menu */
+/* Estado inicial: fora da tela + invisível (sem transição) */
+.mobile-menu{
+  position: fixed;
+  inset: 0;
+  transform: translateX(110%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: none !important;
+  will-change: transform;
+}
+
+/* Só habilita animação depois do DOM pronto */
+body.loaded .mobile-menu{
+  transition: transform .28s ease, opacity .18s ease, visibility 0s linear .28s !important;
+}
+
+/* Quando abre */
+.mobile-menu.active{
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Prevenir animações durante o carregamento */
+body:not(.loaded) * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Respeita prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===============================
+   HERO COMPACTO EM 2 COLUNAS
+================================ */
+.case-hero-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* ... continue com o resto do seu código ... */
+}
+    
 /* ===============================
    HERO COMPACTO EM 2 COLUNAS
 ================================ */
