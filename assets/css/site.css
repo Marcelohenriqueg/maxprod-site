@@ -523,7 +523,15 @@
 
     .case-image {
       height: 200px;
-      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+      .case-image{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20,30,60,.75),
+      rgba(20,30,60,.85)
+    ),
+    url("/assets/robo-case1.png") center / cover no-repeat;
+}
       display: flex;
       align-items: center;
       justify-content: center;
