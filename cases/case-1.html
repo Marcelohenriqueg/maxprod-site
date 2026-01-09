@@ -914,6 +914,16 @@
   .case-download-image{ height: 190px; }
 }
 
+    /* Adicione isso no final do seu CSS atual */
+.navbar {
+    transform: translateX(0) !important;
+    animation: none !important;
+}
+
+body:not(.loaded) * {
+    animation: none !important;
+    transition: none !important;
+}
     
   </style>
 </head>
