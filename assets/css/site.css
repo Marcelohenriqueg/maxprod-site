@@ -660,7 +660,7 @@
       left: var(--space-12);
       font-size: 13px;
     }
-    #cases .case-content{ padding: var(--space-16); padding-bottom: 52px; }
+   #cases .case-content{ padding: 12px; padding-bottom: 44px; }
     #cases .case-tags{ margin-bottom: var(--space-12); }
     #cases .case-tag{ font-size: 11px; padding: 3px 8px; }
     #cases .case-content h4{
