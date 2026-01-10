@@ -550,6 +550,17 @@
         url("/assets/img/robo-case1.png") center / cover no-repeat;
     }
 
+/* IMAGEM APENAS NO CASE 2 (2º card) — DOE */
+.cases-grid--4 .case-card:nth-child(2) .case-image{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20,30,60,.55),
+      rgba(20,30,60,.78)
+    ),
+    url("/assets/img/methodology-doe-framework.png") center / cover no-repeat;
+}
+
     .case-image::after {
       content: '';
       position: absolute;
