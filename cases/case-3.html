@@ -659,6 +659,67 @@
   .ab-fill-grid{ grid-template-columns: 1fr; }
 }
 
+/* ===== LIGHTBOX IMAGENS CASE ===== */
+.case-lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(5,10,18,.92);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+
+.case-lightbox.active{
+  opacity: 1;
+  visibility: visible;
+}
+
+.case-lightbox img{
+  max-width: 92vw;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.8);
+  animation: lightboxZoom .25s ease;
+}
+
+@keyframes lightboxZoom{
+  from{ transform: scale(.96); opacity: 0; }
+  to{ transform: scale(1); opacity: 1; }
+}
+
+.case-lightbox-close{
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background .2s ease, transform .2s ease;
+}
+
+.case-lightbox-close:hover{
+  background: rgba(255,255,255,.2);
+  transform: scale(1.05);
+}
+
+/* cursor de zoom */
+.case-media img{
+  cursor: zoom-in;
+}
+
     
   </style>
 </head>
@@ -1057,7 +1118,49 @@
     document.addEventListener('DOMContentLoaded', function() {
       document.body.classList.add('loaded');
     });
+
+    // ===== Lightbox imagens do case =====
+const lightbox = document.getElementById('caseLightbox');
+const lightboxImg = document.getElementById('caseLightboxImg');
+const lightboxClose = document.querySelector('.case-lightbox-close');
+
+document.querySelectorAll('.case-media img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt || '';
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeLightbox(){
+  lightbox.classList.remove('active');
+  lightbox.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+
+lightboxClose.addEventListener('click', closeLightbox);
+
+lightbox.addEventListener('click', (e) => {
+  if(e.target === lightbox) closeLightbox();
+});
+
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape' && lightbox.classList.contains('active')){
+    closeLightbox();
+  }
+});
+
+    
   </script>
 
+<!-- LIGHTBOX -->
+<div class="case-lightbox" id="caseLightbox" aria-hidden="true">
+  <button class="case-lightbox-close" aria-label="Fechar">✕</button>
+  <img id="caseLightboxImg" alt="">
+</div>
+
+  
 </body>
 </html>
