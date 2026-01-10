@@ -1,0 +1,1220 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="description" content="Case MaxProd — Aumento de OEE em célula de solda (Tier 1 Stellantis): evitamos ruptura e elevamos a eficiência em 90 dias." />
+  <title>Case 1 | Aumento de OEE em Célula de Solda — MaxProd</title>
+
+  <!-- CSS GLOBAL DO SITE (IGUAL HOME) -->
+  <link rel="preload" href="/assets/css/site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/site.css"></noscript>
+
+  <style>
+    /* =========================================================
+       CASE-1 — BASE PREMIUM OTIMIZADA (PERFORMANCE FIX)
+       - Sem mexer em textos/imagens/links
+       - Remove duplicações/conflitos
+       - Elimina "flash" do menu mobile ao carregar
+       - Animações apenas após .loaded (sem travar / sem piscadas)
+       ========================================================= */
+
+    :root{
+      --case-text: rgba(255,255,255,.95);
+      --case-muted: rgba(255,255,255,.75);
+      --case-muted2: rgba(255,255,255,.6);
+      --case-stroke: rgba(255,255,255,.12);
+      --case-shadow: 0 22px 70px rgba(0,0,0,.6);
+      --case-shadow2: 0 10px 30px rgba(0,0,0,.4);
+      --case-brand: var(--brand, #2f6bff);
+      --case-brand2: var(--brand2, #1f4fd8);
+      --nav-offset: 96px;
+      --success: #3cffc8;
+      --danger: #ff5a5a;
+
+      /* Escala tipográfica global */
+      --case-scale: 0.94;
+    }
+
+    html, body{
+      height: 100%;
+      margin: 0;
+    }
+
+    body{
+      color: var(--case-text);
+      background: #0c1117;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: calc(16px * var(--case-scale));
+    }
+
+    /* =========================================================
+       ESTRUTURA PRINCIPAL
+       ========================================================= */
+    .case-wrap{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: calc(var(--nav-offset) + 16px) 22px 54px;
+    }
+
+    .case-breadcrumb{
+      color: var(--case-muted2);
+      font-size: 13px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .case-breadcrumb a{
+      color: var(--case-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .case-breadcrumb a:hover{
+      color: var(--case-text);
+      text-decoration: underline;
+    }
+    .case-breadcrumb .separator{
+      color: var(--case-muted2);
+      opacity: 0.5;
+    }
+
+    /* =========================================================
+       SHELL UNIFICADO
+       ========================================================= */
+    .case-shell{
+      border: 1px solid var(--case-stroke);
+      border-radius: 24px;
+      box-shadow: var(--case-shadow);
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(180deg,
+        rgba(20, 25, 35, 0.95) 0%,
+        rgba(15, 20, 30, 0.98) 100%);
+      backdrop-filter: blur(10px);
+    }
+
+    /* =========================================================
+       HEADER DO CASE
+       ========================================================= */
+    .case-head{
+      padding: 10px 18px 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .case-tag{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--case-muted);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .case-tag .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--case-brand);
+      box-shadow: 0 0 0 4px rgba(47,107,255,.2);
+    }
+
+    /* HERO EM 2 COLUNAS (final) */
+    .case-hero-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .case-title{
+      margin: 0 0 10px;
+      font-size: clamp(24px, 2.2vw, 34px);
+      line-height: 1.1;
+      color: var(--case-text);
+      letter-spacing: -0.02em;
+      max-width: 30ch;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff 0%, #a0b8ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .case-sub{
+      margin: 0;
+      max-width: 60ch;
+      color: var(--case-muted);
+      font-size: 15px;
+      line-height: 1.45;
+      text-align: justify;
+      hyphens: auto;
+      padding-right: 0;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .case-hero-image{
+      height: 280px;
+      margin-top: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--case-shadow2);
+    }
+    .case-hero-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    @media (max-width: 900px){
+      .case-hero-grid{ grid-template-columns: 1fr; }
+      .case-hero-image{ height: 130px; }
+    }
+
+    /* =========================================================
+       KPIs ULTRA COMPACTOS (final)
+       ========================================================= */
+    .case-kpis{
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 12px;
+      padding: 14px 18px;
+      position: relative;
+      z-index: 1;
+      margin-top: 0;
+      background: rgba(10, 15, 25, 0.4);
+      border-top: 1px solid rgba(255,255,255,.1);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .case-kpi{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 16px;
+      padding: 12px 10px;
+      box-shadow: var(--case-shadow2);
+      text-align: center;
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 72px;
+      will-change: transform;
+    }
+    .case-kpi:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(0,0,0,.45);
+      background: rgba(255,255,255,.06);
+    }
+
+    .case-kpi__label{
+      font-size: 10px;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display:block;
+      font-weight: 700;
+    }
+
+    .case-kpi__value{
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 850;
+      letter-spacing: -0.03em;
+      color: rgba(255,255,255,.98);
+      margin: 0 0 4px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .kpi-before{ color: var(--danger); text-shadow: 0 2px 10px rgba(255,90,90,.3); }
+    .kpi-after{ color: var(--success); text-shadow: 0 2px 10px rgba(60,255,200,.3); }
+    .kpi-good{ color: var(--success); text-shadow: 0 2px 10px rgba(60,255,200,.3); }
+
+    .kpi-arrow{
+      color: rgba(255,255,255,.5);
+      font-weight: 800;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .case-kpi__note{
+      margin: 4px 0 0;
+      font-size: 11px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.35;
+      max-width: 95%;
+    }
+
+    @media (max-width: 992px){
+      .case-kpis{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px){
+      .case-kpis{ grid-template-columns: 1fr; gap: 12px; }
+    }
+
+    /* =========================================================
+       CORPO DO CONTEÚDO
+       ========================================================= */
+    .case-body{
+      padding: 22px;
+      position: relative;
+      z-index: 1;
+      background: transparent;
+    }
+
+    .case-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    @media (min-width: 992px){
+      .case-grid{ grid-template-columns: 1.1fr 0.9fr; }
+    }
+
+    .case-panel{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--case-shadow2);
+    }
+
+    .case-h{
+      margin: 0 0 14px;
+      font-size: 14px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .case-h::before{
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--case-brand);
+      display: block;
+    }
+
+    .case-p{
+      margin: 0 0 14px;
+      color: var(--case-muted);
+      line-height: 1.65;
+      font-size: 15.5px;
+      letter-spacing: -0.01em;
+    }
+    .case-p:last-child{ margin-bottom: 0; }
+    .case-p b{
+      color: var(--case-text);
+      font-weight: 750;
+      background: rgba(47,107,255,.15);
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+
+    /* =========================================================
+       PROBLEMA
+       ========================================================= */
+    .case-compare{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .case-card{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 14px;
+      padding: 18px;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+    .case-card:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.2);
+    }
+
+    .case-card__kicker{
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .case-card__kicker::before{
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--danger);
+      display: block;
+    }
+    .case-card__big{
+      font-size: 20px;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,.98);
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+    .case-mini{
+      color: rgba(255,255,255,.75);
+      font-size: 14.5px;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .case-problem-image{
+      margin-top: 20px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 14px 36px rgba(0,0,0,.45);
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .case-problem-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 16px;
+      display: block;
+    }
+
+    /* =========================================================
+       METODOLOGIA
+       ========================================================= */
+    .case-methodology{ position: relative; }
+
+    .case-pdca-image{
+      margin: 16px 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.02);
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .case-pdca-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 14px;
+      filter: brightness(1.1) contrast(1.05);
+    }
+
+    .case-badges{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .case-badge{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.8);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 550;
+      transition: transform 0.2s ease, background 0.2s ease;
+      will-change: transform;
+    }
+    .case-badge:hover{
+      background: rgba(255,255,255,.08);
+      transform: translateY(-2px);
+    }
+    .case-badge i{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--case-brand);
+      flex-shrink: 0;
+    }
+
+    .case-list{
+      margin: 14px 0;
+      padding: 0;
+      color: var(--case-muted);
+      line-height: 1.65;
+      font-size: 14.5px;
+      list-style: none;
+    }
+    .case-list li{
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .case-list li:last-child{ margin-bottom: 0; }
+    .case-list li::before{
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--case-brand);
+      font-weight: bold;
+    }
+    .case-list b{ color: var(--case-text); font-weight: 750; }
+
+    @media (max-width: 992px){
+      .case-badges{ grid-template-columns: 1fr; }
+    }
+
+    /* =========================================================
+       SOLUÇÃO
+       ========================================================= */
+    .solution-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .solution-card{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 16px;
+      padding: 18px;
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      will-change: transform;
+    }
+    .solution-card:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.2);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(0,0,0,.28);
+    }
+
+    .solution-card__header{ margin-bottom: 10px; }
+    .solution-card__kicker{
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .solution-card__title{
+      font-size: 18px;
+      font-weight: 850;
+      color: rgba(255,255,255,.98);
+      margin: 0;
+      line-height: 1.25;
+    }
+    .solution-card__content{
+      color: rgba(255,255,255,.75);
+      font-size: 14.5px;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    /* =========================================================
+       RESULTADOS (texto esquerda + imagem direita)
+       ========================================================= */
+    .case-results-grid{
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: start;
+      margin-top: 10px;
+    }
+
+    .case-results-media{
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 14px 36px rgba(0,0,0,.45);
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .case-results-media img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 14px;
+      display: block;
+    }
+
+    /* =========================================================
+       DOWNLOAD (texto esquerda + imagem + botões à direita)
+       ========================================================= */
+    .case-download{
+      padding: 22px;
+      margin-top: 22px;
+      background: linear-gradient(135deg,
+        rgba(47,107,255,.12) 0%,
+        rgba(31,79,216,.06) 100%);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 18px;
+      box-shadow: var(--case-shadow2);
+    }
+
+    .case-download-grid{
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .case-download__content{ margin-bottom: 0; }
+    .case-download__label{
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .case-download h3{
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: rgba(255,255,255,.98);
+      font-weight: 850;
+      line-height: 1.15;
+    }
+
+    .case-download p{
+      margin: 0 0 16px;
+      color: rgba(255,255,255,.75);
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 72ch;
+    }
+
+    .case-download-right{
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .case-download-image{
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      height: 160px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .case-download-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 6px; /* menor = menos "vazio" */
+      display: block;
+    }
+
+    .case-download__actions{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    /* =========================================================
+       BOTÕES
+       ========================================================= */
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 26px;
+      border-radius: 12px;
+      font-weight: 750;
+      font-size: 15px;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      border: 2px solid transparent;
+      white-space: nowrap;
+      min-height: 50px;
+      will-change: transform;
+    }
+
+    .btn--primary{
+      background: linear-gradient(135deg, var(--case-brand), var(--case-brand2));
+      color: white;
+      box-shadow: 0 8px 30px rgba(47,107,255,.4);
+    }
+    .btn--primary:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(47,107,255,.5);
+      background: linear-gradient(135deg, var(--case-brand2), var(--case-brand));
+    }
+
+    .btn--secondary{
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.25);
+      color: var(--case-text);
+      backdrop-filter: blur(10px);
+    }
+    .btn--secondary:hover{
+      background: rgba(255,255,255,.15);
+      border-color: rgba(255,255,255,.35);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    }
+
+    /* =========================================================
+       FOOTER DO CASE
+       ========================================================= */
+    .case-footer{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 22px;
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(255,255,255,.1);
+      background: rgba(10, 15, 25, 0.4);
+    }
+
+    /* =========================================================
+       RESPONSIVIDADE FINAL
+       ========================================================= */
+    @media (max-width: 1200px){
+      .case-wrap{ padding: calc(var(--nav-offset) + 14px) 18px 46px; }
+    }
+
+    @media (max-width: 992px){
+      .case-head, .case-body, .case-footer{
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+
+    @media (max-width: 900px){
+      .case-results-grid,
+      .case-download-grid{
+        grid-template-columns: 1fr;
+      }
+      .case-results-media{ height: 200px; }
+      .case-download-image{ height: 190px; }
+    }
+
+    @media (max-width: 768px){
+      .case-footer{ flex-direction: column; }
+      .btn{ width: 100%; justify-content: center; }
+    }
+
+    @media (max-width: 480px){
+      .case-wrap{ padding: calc(var(--nav-offset) + 10px) 14px 28px; }
+      .case-head, .case-body, .case-footer{
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+      .case-panel{ padding: 20px; }
+      .case-title{ font-size: 26px; }
+      .case-sub{ font-size: 15px; }
+      .case-kpi__value{ font-size: 20px; }
+      .case-pdca-image{ height: 150px; }
+    }
+
+    /* =========================================================
+       PERFORMANCE FIX: animações sem travar e sem "flash"
+       - Não anima o container gigante
+       - Anima só após body.loaded (evita piscar com preload do CSS)
+       ========================================================= */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Estado inicial: visível (SEM opacity 0) para evitar "sumir" se JS falhar */
+    /* Após loaded, anima suavemente elementos-chave */
+    body.loaded .case-head,
+    body.loaded .case-kpis,
+    body.loaded .case-panel,
+    body.loaded .case-download,
+    body.loaded .case-footer{
+      animation: fadeInUp 0.6s ease-out both;
+    }
+
+    /* Stagger leve (só depois do loaded) */
+    body.loaded .case-head{ animation-delay: 0.06s; }
+    body.loaded .case-kpis{ animation-delay: 0.12s; }
+    body.loaded .case-panel:nth-of-type(1){ animation-delay: 0.18s; }
+    body.loaded .case-panel:nth-of-type(2){ animation-delay: 0.24s; }
+    body.loaded .case-panel:nth-of-type(3){ animation-delay: 0.30s; }
+    body.loaded .case-panel:nth-of-type(4){ animation-delay: 0.36s; }
+    body.loaded .case-download{ animation-delay: 0.42s; }
+    body.loaded .case-footer{ animation-delay: 0.48s; }
+
+    /* =========================================================
+       FIX: evita "flash" do mobile-menu ao carregar
+       ========================================================= */
+    .mobile-menu{
+      position: fixed;
+      inset: 0;
+      transform: translateX(110%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: none !important;
+      will-change: transform;
+    }
+
+    body.loaded .mobile-menu{
+      transition: transform .28s ease, opacity .18s ease, visibility 0s linear .28s !important;
+    }
+
+    .mobile-menu.active{
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    /* Segurança: garante que a navbar não "viaje" */
+    .navbar{
+      transform: translateX(0) !important;
+      animation: none !important;
+    }
+
+    /* Respeita prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV (IGUAL HOME) -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="/index.html#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo" width="120" height="40" loading="eager">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu">☰</button>
+
+      <ul class="nav-menu">
+        <li><a href="/index.html#home" class="nav-link">Home</a></li>
+        <li><a href="/index.html#cases" class="nav-link active">Cases</a></li>
+        <li><a href="/index.html#methodology" class="nav-link">Metodologia</a></li>
+        <li><a href="/index.html#services" class="nav-link">Serviços</a></li>
+        <li><a href="/index.html#about" class="nav-link">Sobre</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="/index.html#contact" class="btn btn-outline">Fale Conosco</a>
+        <a href="/index.html#calculator" class="btn btn-primary">Calcular ROI</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU (IGUAL HOME) -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-header">
+      <a href="/index.html#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
+      <button id="closeMobileMenu" aria-label="Fechar menu">✕</button>
+    </div>
+
+    <ul class="mobile-nav">
+      <li><a href="/index.html#home">Home</a></li>
+      <li><a href="/index.html#cases">Cases</a></li>
+      <li><a href="/index.html#methodology">Metodologia</a></li>
+      <li><a href="/index.html#services">Serviços</a></li>
+      <li><a href="/index.html#about">Sobre</a></li>
+      <li><a href="/index.html#contact">Contato</a></li>
+    </ul>
+
+    <div style="margin-top: var(--space-32);">
+      <a href="/index.html#calculator" class="btn btn-primary" style="width:100%; margin-bottom: var(--space-16);">
+        Calcular ROI
+      </a>
+      <a href="/index.html#contact" class="btn btn-secondary" style="width:100%;">
+        Fale Conosco
+      </a>
+    </div>
+  </div>
+
+  <main class="case-wrap">
+    <div class="case-breadcrumb">
+      <a href="/index.html">Home</a>
+      <span class="separator">/</span>
+      <a href="/index.html#cases">Cases</a>
+      <span class="separator">/</span>
+      <span>Case 1</span>
+    </div>
+
+    <section class="case-shell">
+      <header class="case-head">
+        <div class="case-tag"><span class="dot"></span> RESULTADOS COMPROVADOS</div>
+
+        <div class="case-hero-grid">
+          <div class="case-hero-text">
+            <h1 class="case-title">
+              Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva.
+            </h1>
+
+            <p class="case-sub">
+              Projeto de excelência operacional em célula de solda robotizada,
+              focado em confiabilidade do fornecimento e estabilidade do processo —
+              sem CAPEX pesado.
+            </p>
+          </div>
+
+          <div class="case-hero-image">
+            <img src="/assets/img/robo-case1.png"
+                 alt="Célula de solda robotizada"
+                 loading="eager">
+          </div>
+        </div>
+      </header>
+
+      <!-- KPIs -->
+      <div class="case-kpis">
+        <div class="case-kpi">
+          <span class="case-kpi__label">OEE</span>
+          <div class="case-kpi__value">
+            <span class="kpi-before">52%</span>
+            <span class="kpi-arrow">→</span>
+            <span class="kpi-after">73%</span>
+          </div>
+          <p class="case-kpi__note">Média mensal pós-ações</p>
+        </div>
+
+        <div class="case-kpi">
+          <span class="case-kpi__label">Capacidade</span>
+          <div class="case-kpi__value">
+            <span class="kpi-before">16</span>
+            <span class="kpi-arrow">→</span>
+            <span class="kpi-after">28 JPH</span>
+          </div>
+          <p class="case-kpi__note">Liberação de capacidade efetiva</p>
+        </div>
+
+        <div class="case-kpi">
+          <span class="case-kpi__label">Consumível</span>
+          <div class="case-kpi__value">
+            <span class="kpi-good">+50%</span>
+          </div>
+          <p class="case-kpi__note">3.000 → 4.500 pontos por eletrodo</p>
+        </div>
+
+        <div class="case-kpi">
+          <span class="case-kpi__label">Qualidade</span>
+          <div class="case-kpi__value">
+            <span class="kpi-good">92%</span>
+          </div>
+          <p class="case-kpi__note">Aderência "Zero Defeitos" em durabilidade</p>
+        </div>
+      </div>
+
+      <div class="case-body">
+        <div class="case-grid">
+          <!-- PROBLEMA E IMPACTO -->
+          <div class="case-panel">
+            <div class="case-h">1) Problema e impacto no cliente</div>
+            <p class="case-p">
+              A célula de solda automatizada apresentava um <b>OEE crítico de 52%</b>.
+              A operação real entregava apenas <b>16 peças por hora (JPH)</b>,
+              enquanto o contrato exigia <b>34 JPH</b>.
+              O cenário indicava <b>alto risco de ruptura</b> e potencial
+              <b>parada total da linha do cliente final a partir de julho/2022</b>.
+            </p>
+
+            <div class="case-compare">
+              <div class="case-card">
+                <div class="case-card__kicker">SITUAÇÃO INICIAL</div>
+                <div class="case-card__big">OEE 52% • 16 JPH</div>
+                <p class="case-mini">
+                  Microparadas recorrentes • Trocas excessivas de eletrodos •
+                  Baixa estabilidade do processo • Capacidade inferior à demanda contratada •
+                  Risco iminente de ruptura de fornecimento.
+                </p>
+
+                <div class="case-problem-image">
+                  <img
+                    src="/assets/img/calendario.problema3.case1.png"
+                    alt="Linha do tempo de risco de ruptura do fornecimento"
+                    loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- METODOLOGIA -->
+          <div class="case-panel case-methodology">
+            <div class="case-h">2) Metodologia (rigor analítico)</div>
+            <p class="case-p">
+              Framework de melhoria contínua baseado em <b>PDCA</b> integrado
+              com diagnóstico de alta precisão, priorizando as maiores perdas
+              e validando causa raiz com evidência em campo.
+            </p>
+
+            <div class="case-pdca-image">
+              <img src="/assets/img/pdca-maxprod.png"
+                   alt="Metodologia PDCA MaxProd - Ciclo Plan-Do-Check-Act"
+                   loading="lazy"
+                   width="800"
+                   height="170">
+            </div>
+
+            <div class="case-badges" aria-label="Ferramentas aplicadas">
+              <span class="case-badge"><i></i> PDCA (Plan-Do-Check-Act)</span>
+              <span class="case-badge"><i></i> OEE + Pareto de perdas</span>
+              <span class="case-badge"><i></i> 4M + 1D (Design)</span>
+              <span class="case-badge"><i></i> Ishikawa</span>
+              <span class="case-badge"><i></i> 5 Porquês (Deep Dive)</span>
+              <span class="case-badge"><i></i> Zero Defeitos (durabilidade)</span>
+            </div>
+
+            <ul class="case-list">
+              <li><b>Análise de Fenômeno 4M+1D:</b> Mão de obra, Máquina, Material, Método e Design.</li>
+              <li><b>Deep Dive (5 Porquês):</b> Falha de concepção no posicionamento dos eletrodos e obsolescência de materiais.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SOLUÇÃO -->
+        <div class="case-panel">
+          <div class="case-h">3) A solução (inovação em engenharia)</div>
+          <p class="case-p">
+            A estratégia foi dividida em dois eixos de ataque para estabilizar o processo
+            e remover as perdas estruturais que limitavam a capacidade real.
+          </p>
+
+          <div class="solution-grid">
+            <div class="solution-card">
+              <div class="solution-card__header">
+                <div class="solution-card__kicker">Eixo A • Manutenção robótica</div>
+                <h3 class="solution-card__title">Estabilidade do posicionamento</h3>
+              </div>
+              <div class="solution-card__content">
+                Instalação de <b>chavetas de precisão</b> e <b>transdutores lineares</b>
+                para garantir posicionamento mecânico ideal e controle de distância entre
+                partes móveis, reduzindo microparadas por instabilidade do processo.
+              </div>
+            </div>
+
+            <div class="solution-card">
+              <div class="solution-card__header">
+                <div class="solution-card__kicker">Eixo B • Ciclo de vida de consumíveis</div>
+                <h3 class="solution-card__title">+50% vida útil do eletrodo</h3>
+              </div>
+              <div class="solution-card__content">
+                Benchmarking de mercado e substituição de eletrodos (<b>Fornecedor B</b>),
+                elevando a vida útil de <b>3.000 → 4.500 pontos</b> por eletrodo (ganho de 50%),
+                com ajustes de parâmetros e treinamento operacional.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESULTADOS -->
+        <div class="case-panel">
+          <div class="case-h">4) Resultados e impacto (ROI & saving)</div>
+
+          <div class="case-results-grid">
+            <div class="case-results-text">
+              <ul class="case-list">
+                <li><b>Aumento de eficiência:</b> OEE de <b>52% → 73%</b> (média mensal pós-ações).</li>
+                <li><b>Ganho de capacidade:</b> liberação de capacidade efetiva, elevando entrega de <b>16 → 28 JPH</b>.</li>
+                <li><b>Consumíveis otimizados:</b> <b>+50%</b> vida útil do eletrodo (3.000 → 4.500 pontos).</li>
+                <li><b>Qualidade:</b> evolução para nível de <b>"Zero Defeitos"</b>, com <b>92%</b> de conformidade em durabilidade.</li>
+                <li><b>Impacto no cliente:</b> mitigação do risco de ruptura e preservação do fornecimento a partir de julho/2022.</li>
+              </ul>
+
+              <p class="case-p">
+                <b>ROI:</b> retorno rápido, sustentado por ações de baixo investimento relativo e alto impacto em disponibilidade e estabilidade.
+                <span style="color:rgba(255,255,255,.6);">Valores absolutos disponíveis sob consulta.</span>
+              </p>
+            </div>
+
+            <div class="case-results-media">
+              <img src="/assets/img/calendario.resultados.case1.png"
+                   alt="Calendário e marcos dos resultados do Case 1"
+                   loading="lazy">
+            </div>
+          </div>
+
+          <!-- DOWNLOAD SECTION (corrigido: sem div duplicada) -->
+          <div class="case-download">
+            <div class="case-download-grid">
+              <div class="case-download__content">
+                <div class="case-download__label">MATERIAL COMPLETO</div>
+                <h3>Baixar o case completo (PDF)</h3>
+                <p>Para ver gráficos, evidências e detalhes técnicos, baixe a versão completa do material.</p>
+              </div>
+
+              <div class="case-download-right">
+                <div class="case-download-image">
+                  <img src="/assets/img/download.png"
+                       alt="download"
+                       loading="lazy">
+                </div>
+
+                <div class="case-download__actions">
+                  <a class="btn btn--primary"
+                     href="/assets/cases/case-1-aumento-oee-maxion.pdf"
+                     download
+                     target="_blank"
+                     rel="noopener">
+                    Baixar PDF do Case
+                  </a>
+
+                  <a class="btn btn--secondary" href="/index.html#cases">
+                    Ver Outros Cases
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="case-footer">
+        <a class="btn btn--primary" href="/index.html#contact">Quero Resultados Similares</a>
+        <a class="btn btn--secondary" href="/index.html#cases">Voltar aos Cases</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (!navbar) return;
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        mobileMenu.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      });
+    }
+
+    if (closeMobileMenu && mobileMenu) {
+      closeMobileMenu.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        mobileMenu.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    if (mobileMenu) {
+      mobileMenu.addEventListener('click', function(e) {
+        if (e.target === mobileMenu) {
+          mobileMenu.classList.remove('active');
+          mobileMenu.setAttribute('aria-hidden','true');
+          document.body.style.overflow = '';
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Smooth scroll (mantido)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#') && href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            if (mobileMenu) {
+              mobileMenu.classList.remove('active');
+              mobileMenu.setAttribute('aria-hidden','true');
+              document.body.style.overflow = '';
+              if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+
+            window.scrollTo({
+              top: target.offsetTop - 100,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Loaded class (para evitar flash e habilitar animações só depois)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.classList.add('loaded');
+    });
+
+    // Intersection Observer (mantido)
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      document.querySelectorAll('.case-panel, .case-card, .solution-card').forEach(el => {
+        observer.observe(el);
+      });
+    }
+  </script>
+
+</body>
+</html>
