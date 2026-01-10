@@ -1221,3 +1221,9 @@
 #cases .text-lead{
   font-size: 18px; /* antes era ~20px */
 }
+/* Case 3 — O&R (Erro não passa mais) */
+.case-item:nth-child(3) .case-image{
+  background: 
+    linear-gradient(135deg, rgba(10,15,25,.85), rgba(10,15,25,.65)),
+    url('/assets/img/case3-or-pokayoke-bg.png') center / cover no-repeat;
+}
