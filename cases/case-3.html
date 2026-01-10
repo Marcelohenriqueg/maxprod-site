@@ -720,6 +720,12 @@
   cursor: zoom-in;
 }
 
+    /* garante que a imagem recebe clique (não alguma camada) */
+.case-media img,
+.case-hero-image img{
+  pointer-events: auto;
+  cursor: zoom-in;
+}
     
   </style>
 </head>
@@ -1053,10 +1059,6 @@
                   <li><b>Controle</b> via acompanhamento de ações e cobertura de MDF</li>
                 </ul>
               </div>
-
-              <div class="case-media" style="height: 240px;" aria-label="Resumo nível planta — Matriz O&R">
-                <img src="/assets/img/case3-or-resultados-matriz.png" alt="Resultados — resumo nível planta (matriz O&R)" loading="lazy">
-              </div>
             </div>
           </div>
 
@@ -1119,38 +1121,57 @@
       document.body.classList.add('loaded');
     });
 
-    // ===== Lightbox imagens do case =====
+   // ===== Lightbox (zoom) robusto =====
 const lightbox = document.getElementById('caseLightbox');
 const lightboxImg = document.getElementById('caseLightboxImg');
 const lightboxClose = document.querySelector('.case-lightbox-close');
 
-document.querySelectorAll('.case-media img').forEach(img => {
-  img.addEventListener('click', () => {
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt || '';
-    lightbox.classList.add('active');
-    lightbox.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
-  });
-});
+function openLightbox(src, alt){
+  if (!lightbox || !lightboxImg) return;
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || '';
+  lightbox.classList.add('active');
+  lightbox.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
 
 function closeLightbox(){
+  if (!lightbox) return;
   lightbox.classList.remove('active');
   lightbox.setAttribute('aria-hidden','true');
   document.body.style.overflow = '';
+  if (lightboxImg) lightboxImg.src = '';
 }
 
-lightboxClose.addEventListener('click', closeLightbox);
+// pega clique em QUALQUER imagem do case (inclui hero e case-media)
+document.addEventListener('click', (e) => {
+  const img = e.target.closest('img');
+  if (!img) return;
 
-lightbox.addEventListener('click', (e) => {
-  if(e.target === lightbox) closeLightbox();
+  // só dispara para imagens do conteúdo do case (evita logo/nav)
+  const insideCase = img.closest('.case-shell');
+  if (!insideCase) return;
+
+  // evita abrir logo do topo (se existir)
+  if (img.closest('.logo')) return;
+
+  openLightbox(img.currentSrc || img.src, img.alt || '');
 });
 
+if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+
+if (lightbox) {
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+}
+
 document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape' && lightbox.classList.contains('active')){
+  if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
     closeLightbox();
   }
 });
+
 
     
   </script>
