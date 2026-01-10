@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="description" content="Case MaxProd — Eliminação de risco de parada por restrição de capacidade em estruturas traseiras: +50 JPD, hard saving R$ 2.115.000/ano e cost avoidance ~R$ 2MM." />
+  <title>Case 4 | Eliminação de Risco de Parada — Capacidade (Estruturas) | MaxProd</title>
+
+  <!-- CSS GLOBAL DO SITE (IGUAL HOME) -->
+  <link rel="preload" href="/assets/css/site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/site.css"></noscript>
+
+  <style>
+    /* =========================================================
+       CASE-4 — BASE PREMIUM (mesmo padrão Case 3)
+       ========================================================= */
+
+    :root{
+      --case-text: rgba(255,255,255,.95);
+      --case-muted: rgba(255,255,255,.75);
+      --case-muted2: rgba(255,255,255,.6);
+      --case-stroke: rgba(255,255,255,.12);
+      --case-shadow: 0 22px 70px rgba(0,0,0,.6);
+      --case-shadow2: 0 10px 30px rgba(0,0,0,.4);
+      --case-brand: var(--brand, #2f6bff);
+      --case-brand2: var(--brand2, #1f4fd8);
+      --nav-offset: 96px;
+
+      --success: #3cffc8;
+      --danger: #ff5a5a;
+      --warn: #ffb020;
+
+      --case-scale: 0.94;
+    }
+
+    html, body{ height: 100%; margin: 0; }
+    body{
+      color: var(--case-text);
+      background: #0c1117;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: calc(16px * var(--case-scale));
+    }
+
+    .case-wrap{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: calc(var(--nav-offset) + 16px) 22px 54px;
+    }
+
+    .case-breadcrumb{
+      color: var(--case-muted2);
+      font-size: 13px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .case-breadcrumb a{
+      color: var(--case-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .case-breadcrumb a:hover{
+      color: var(--case-text);
+      text-decoration: underline;
+    }
+    .case-breadcrumb .separator{ opacity: .5; }
+
+    .case-shell{
+      border: 1px solid var(--case-stroke);
+      border-radius: 24px;
+      box-shadow: var(--case-shadow);
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(180deg,
+        rgba(20, 25, 35, 0.95) 0%,
+        rgba(15, 20, 30, 0.98) 100%);
+      backdrop-filter: blur(10px);
+    }
+
+    .case-head{
+      padding: 10px 18px 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .case-tag{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--case-muted);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .case-tag .dot{
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: var(--case-brand);
+      box-shadow: 0 0 0 4px rgba(47,107,255,.2);
+    }
+
+    .case-hero-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .case-title{
+      margin: 0 0 10px;
+      font-size: clamp(24px, 2.2vw, 34px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 36ch;
+      font-weight: 850;
+      background: linear-gradient(135deg, #ffffff 0%, #a0b8ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .case-sub{
+      margin: 0;
+      max-width: 70ch;
+      color: var(--case-muted);
+      font-size: 15px;
+      line-height: 1.45;
+      text-align: justify;
+      hyphens: auto;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .case-hero-image{
+      height: 280px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.15);
+      background:
+        radial-gradient(900px 300px at 20% 15%, rgba(47,107,255,.35), transparent 60%),
+        radial-gradient(700px 260px at 80% 80%, rgba(60,255,200,.18), transparent 60%),
+        rgba(255,255,255,.03);
+      box-shadow: var(--case-shadow2);
+      position: relative;
+    }
+    .case-hero-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+    }
+    .case-hero-image .ph{
+      position:absolute;
+      inset: 0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      text-align:center;
+      color: rgba(255,255,255,.78);
+      font-weight: 700;
+      letter-spacing: .02em;
+      font-size: 14px;
+      backdrop-filter: blur(2px);
+    }
+
+    @media (max-width: 900px){
+      .case-hero-grid{ grid-template-columns: 1fr; }
+      .case-hero-image{ height: 160px; }
+    }
+
+    /* KPIs */
+    .case-kpis{
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 12px;
+      padding: 14px 18px;
+      position: relative;
+      z-index: 1;
+      background: rgba(10, 15, 25, 0.4);
+      border-top: 1px solid rgba(255,255,255,.1);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .case-kpi{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 16px;
+      padding: 12px 10px;
+      box-shadow: var(--case-shadow2);
+      text-align: center;
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 72px;
+      will-change: transform;
+    }
+    .case-kpi:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(0,0,0,.45);
+      background: rgba(255,255,255,.06);
+    }
+    .case-kpi__label{
+      font-size: 10px;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      font-weight: 800;
+    }
+    .case-kpi__value{
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: rgba(255,255,255,.98);
+      margin: 0 0 4px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .kpi-before{ color: var(--warn); text-shadow: 0 2px 10px rgba(255,176,32,.25); }
+    .kpi-after{ color: var(--success); text-shadow: 0 2px 10px rgba(60,255,200,.3); }
+    .kpi-good{ color: var(--success); text-shadow: 0 2px 10px rgba(60,255,200,.3); }
+    .kpi-arrow{ color: rgba(255,255,255,.5); font-weight: 900; font-size: 16px; }
+    .case-kpi__note{
+      margin: 4px 0 0;
+      font-size: 11px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.35;
+      max-width: 95%;
+    }
+
+    @keyframes kpiGlowPulse{
+      0%   { text-shadow: 0 2px 10px rgba(60,255,200,.25), 0 0 0 rgba(60,255,200,0); }
+      50%  { text-shadow: 0 4px 18px rgba(60,255,200,.55), 0 0 22px rgba(60,255,200,.25); }
+      100% { text-shadow: 0 2px 10px rgba(60,255,200,.25), 0 0 0 rgba(60,255,200,0); }
+    }
+    .kpi-glow{ animation: kpiGlowPulse 1.6s ease-in-out infinite; }
+
+    @media (max-width: 992px){ .case-kpis{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px){ .case-kpis{ grid-template-columns: 1fr; } }
+
+    /* BODY */
+    .case-body{ padding: 22px; position: relative; z-index: 1; }
+
+    .case-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    @media (min-width: 992px){
+      .case-grid{ grid-template-columns: 1.1fr 0.9fr; }
+    }
+
+    .case-panel{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--case-shadow2);
+      height: auto;
+    }
+
+    .case-h{
+      margin: 0 0 14px;
+      font-size: 14px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .case-h::before{
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--case-brand);
+      display: block;
+    }
+
+    .case-h[data-step]::after{
+      content: attr(data-step);
+      margin-left: auto;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .02em;
+      color: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      padding: 6px 10px;
+      border-radius: 999px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.35);
+    }
+
+    .case-p{
+      margin: 0 0 14px;
+      color: var(--case-muted);
+      line-height: 1.65;
+      font-size: 15.5px;
+      letter-spacing: -0.01em;
+    }
+    .case-p:last-child{ margin-bottom: 0; }
+    .case-p b{
+      color: var(--case-text);
+      font-weight: 800;
+      background: rgba(47,107,255,.15);
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+
+    .case-card{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 14px;
+      padding: 18px;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+    .case-card:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.2);
+    }
+    .case-card__kicker{
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 10px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .case-card__kicker::before{
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--warn);
+      display: block;
+    }
+    .case-card__big{
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,.98);
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+    .case-mini{
+      color: rgba(255,255,255,.75);
+      font-size: 14.5px;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .case-badges{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .case-badge{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.8);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 650;
+      transition: transform 0.2s ease, background 0.2s ease;
+      will-change: transform;
+    }
+    .case-badge:hover{
+      background: rgba(255,255,255,.08);
+      transform: translateY(-2px);
+    }
+    .case-badge i{
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--case-brand);
+      flex-shrink: 0;
+    }
+    @media (max-width: 992px){
+      .case-badges{ grid-template-columns: 1fr; }
+    }
+
+    .case-list{
+      margin: 14px 0;
+      padding: 0;
+      color: var(--case-muted);
+      line-height: 1.65;
+      font-size: 14.5px;
+      list-style: none;
+    }
+    .case-list li{
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .case-list li:last-child{ margin-bottom: 0; }
+    .case-list li::before{
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--case-brand);
+      font-weight: 900;
+    }
+    .case-list b{ color: var(--case-text); font-weight: 800; }
+
+    .case-media{
+      margin-top: 16px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(850px 260px at 20% 10%, rgba(47,107,255,.25), transparent 55%),
+        rgba(255,255,255,.03);
+      box-shadow: 0 14px 36px rgba(0,0,0,.45);
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .case-media img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 14px;
+      display: block;
+      cursor: zoom-in;
+      pointer-events: auto;
+    }
+    .case-media .ph{
+      position:absolute;
+      inset: 0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      text-align:center;
+      color: rgba(255,255,255,.78);
+      font-weight: 800;
+      letter-spacing: .02em;
+      font-size: 13px;
+    }
+
+    /* RESULTADOS */
+    .case-results-grid{
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: start;
+      margin-top: 10px;
+    }
+    @media (max-width: 900px){
+      .case-results-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* BOTÕES */
+    .btnx{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 26px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 15px;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      border: 2px solid transparent;
+      white-space: nowrap;
+      min-height: 50px;
+      will-change: transform;
+    }
+
+    .btnx--primary{
+      background: linear-gradient(135deg, var(--case-brand), var(--case-brand2));
+      color: white;
+      box-shadow: 0 8px 30px rgba(47,107,255,.4);
+    }
+    .btnx--primary:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(47,107,255,.5);
+      background: linear-gradient(135deg, var(--case-brand2), var(--case-brand));
+    }
+
+    .btnx--secondary{
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.25);
+      color: var(--case-text);
+      backdrop-filter: blur(10px);
+    }
+    .btnx--secondary:hover{
+      background: rgba(255,255,255,.15);
+      border-color: rgba(255,255,255,.35);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    }
+
+    .case-footer{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 22px;
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(255,255,255,.1);
+      background: rgba(10, 15, 25, 0.4);
+    }
+
+    /* animação pós-loaded */
+    @keyframes fadeInUp{
+      from{ opacity: 0; transform: translateY(10px); }
+      to{ opacity: 1; transform: translateY(0); }
+    }
+
+    body .case-head,
+    body .case-kpis,
+    body .case-panel,
+    body .case-footer{
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    body.loaded .case-head,
+    body.loaded .case-kpis,
+    body.loaded .case-panel,
+    body.loaded .case-footer{
+      animation: fadeInUp 0.6s ease-out both;
+    }
+
+    body.loaded .case-head{ animation-delay: 0.06s; }
+    body.loaded .case-kpis{ animation-delay: 0.12s; }
+    body.loaded .case-panel:nth-of-type(1){ animation-delay: 0.18s; }
+    body.loaded .case-panel:nth-of-type(2){ animation-delay: 0.24s; }
+    body.loaded .case-panel:nth-of-type(3){ animation-delay: 0.30s; }
+    body.loaded .case-panel:nth-of-type(4){ animation-delay: 0.36s; }
+    body.loaded .case-footer{ animation-delay: 0.42s; }
+
+    /* mobile-menu flash fix */
+    .mobile-menu{
+      position: fixed;
+      inset: 0;
+      transform: translateX(110%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: none !important;
+      will-change: transform;
+    }
+    body.loaded .mobile-menu{
+      transition: transform .28s ease, opacity .18s ease, visibility 0s linear .28s !important;
+    }
+    .mobile-menu.active{
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .navbar{ transform: translateX(0) !important; animation: none !important; }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; }
+    }
+
+    @media (max-width: 1200px){
+      .case-wrap{ padding: calc(var(--nav-offset) + 14px) 18px 46px; }
+    }
+
+    /* ===== LIGHTBOX IMAGENS CASE ===== */
+    .case-lightbox{
+      position: fixed;
+      inset: 0;
+      background: rgba(5,10,18,.92);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .25s ease, visibility .25s ease;
+    }
+    .case-lightbox.active{
+      opacity: 1;
+      visibility: visible;
+    }
+    .case-lightbox img{
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 16px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.8);
+      animation: lightboxZoom .25s ease;
+    }
+    @keyframes lightboxZoom{
+      from{ transform: scale(.96); opacity: 0; }
+      to{ transform: scale(1); opacity: 1; }
+    }
+    .case-lightbox-close{
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: background .2s ease, transform .2s ease;
+    }
+    .case-lightbox-close:hover{
+      background: rgba(255,255,255,.2);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV (IGUAL HOME/CASE) -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="/index.html#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo" width="120" height="40" loading="eager">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+
+      <ul class="nav-menu">
+        <li><a href="/index.html#home" class="nav-link">Home</a></li>
+        <li><a href="/index.html#cases" class="nav-link active">Cases</a></li>
+        <li><a href="/index.html#methodology" class="nav-link">Metodologia</a></li>
+        <li><a href="/index.html#services" class="nav-link">Serviços</a></li>
+        <li><a href="/index.html#about" class="nav-link">Sobre</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="/index.html#contact" class="btn btn-outline">Fale Conosco</a>
+        <a href="/index.html#calculator" class="btn btn-primary">Calcular ROI</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-header">
+      <a href="/index.html#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
+      <button id="closeMobileMenu" aria-label="Fechar menu">✕</button>
+    </div>
+
+    <ul class="mobile-nav">
+      <li><a href="/index.html#home">Home</a></li>
+      <li><a href="/index.html#cases">Cases</a></li>
+      <li><a href="/index.html#methodology">Metodologia</a></li>
+      <li><a href="/index.html#services">Serviços</a></li>
+      <li><a href="/index.html#about">Sobre</a></li>
+      <li><a href="/index.html#contact">Contato</a></li>
+    </ul>
+
+    <div style="margin-top: var(--space-32);">
+      <a href="/index.html#calculator" class="btn btn-primary" style="width:100%; margin-bottom: var(--space-16);">
+        Calcular ROI
+      </a>
+      <a href="/index.html#contact" class="btn btn-secondary" style="width:100%;">
+        Fale Conosco
+      </a>
+    </div>
+  </div>
+
+  <main class="case-wrap">
+
+    <div class="case-breadcrumb">
+      <a href="/index.html#cases">Cases</a>
+      <span class="separator">/</span>
+      <span>Case 4 — Eliminação de Risco de Parada (Capacidade)</span>
+    </div>
+
+    <section class="case-shell">
+
+      <!-- HEADER -->
+      <div class="case-head">
+        <div class="case-tag"><span class="dot"></span> Case 4 • Capacidade • Tier 1 — Stellantis</div>
+
+        <div class="case-hero-grid">
+          <div>
+            <h1 class="case-title">
+              Quando o mix muda abruptamente, não dá tempo de “comprar capacidade”. Dá tempo de executar.
+            </h1>
+
+            <p class="case-sub">
+              Uma restrição em célula automatizada ameaçava parar a linha por falta de estruturas.
+              A solução foi redesenhar o processo com validação técnica completa — deslocando parte da operação
+              para uma estação manual <b>sem degradar qualidade</b> e com ganho real de capacidade.
+            </p>
+          </div>
+
+          <div class="case-hero-image" aria-label="Imagem do Case 4">
+            <!-- Se você subir /assets/img/case4-hero.png, essa imagem aparece.
+                 Caso contrário, fica o placeholder (gradiente) -->
+            <img src="/assets/img/case4-hero.png" alt="Case 4 — Capacidade / Estruturas" loading="lazy"
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='flex';">
+            <div class="ph" style="display:none;">Adicione <b>/assets/img/case4-hero.png</b><br>para exibir a arte do case</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="case-kpis">
+        <!-- KPI 1 -->
+        <div class="case-kpi">
+          <span class="case-kpi__label">Capacidade (Jobs per Day)</span>
+          <div class="case-kpi__value">
+            <span class="kpi-before">+0</span><span class="kpi-arrow">→</span><span class="kpi-after kpi-glow">+50 JPD</span>
+          </div>
+          <div class="case-kpi__note">Incremento direto de produção (flexível ao mix)</div>
+        </div>
+
+        <!-- KPI 2 -->
+        <div class="case-kpi">
+          <span class="case-kpi__label">Hard saving anual</span>
+          <div class="case-kpi__value">
+            <span class="kpi-before">R$ 0</span><span class="kpi-arrow">→</span><span class="kpi-after kpi-glow">R$ 2,115M</span>
+          </div>
+          <div class="case-kpi__note">Base: DMC R$ 141 × 25 dias × 12 meses</div>
+        </div>
+
+        <!-- KPI 3 -->
+        <div class="case-kpi">
+          <span class="case-kpi__label">Cost avoidance (CAPEX)</span>
+          <div class="case-kpi__value">
+            <span class="kpi-after kpi-glow">~R$ 2MM</span>
+          </div>
+          <div class="case-kpi__note">Evita duplicação de célula para atender demanda</div>
+        </div>
+
+        <!-- KPI 4 -->
+        <div class="case-kpi">
+          <span class="case-kpi__label">Risco de parada</span>
+          <div class="case-kpi__value">
+            <span class="kpi-after kpi-glow">Eliminado</span>
+          </div>
+          <div class="case-kpi__note">Sem risco de ruptura por falta de estruturas</div>
+        </div>
+      </div>
+
+      <!-- BODY -->
+      <div class="case-body">
+        <div class="case-grid">
+
+          <!-- COLUNA ESQUERDA -->
+          <div class="case-panel">
+            <h3 class="case-h" data-step="0">Contexto</h3>
+            <p class="case-p">
+              Uma mudança de cenário elevou a demanda e pressionou a capacidade instalada. O ponto crítico era que as
+              células que produziam estruturas eram <b>compartilhadas entre modelos</b>, criando uma restrição real.
+              Quando a capacidade vira gargalo, o risco não é “perder eficiência”: é <b>parar a linha</b>.
+            </p>
+
+            <h3 class="case-h" data-step="1" style="margin-top:18px;">Problema</h3>
+            <div class="case-card">
+              <div class="case-card__kicker">Risco operacional</div>
+              <div class="case-card__big">Ruptura por falta de estruturas (capacidade insuficiente)</div>
+              <p class="case-mini">
+                Gargalo em célula automatizada para estruturas, com necessidade de resposta rápida a variação de mix.
+                A solução tradicional (duplicar célula) é lenta e cara — e não resolve “para ontem”.
+              </p>
+            </div>
+
+            <p class="case-p" style="margin-top:14px;">
+              A abordagem foi estruturar o raciocínio e encontrar uma alternativa que aumentasse capacidade
+              <b>sem comprometer qualidade e funcionalidade</b>, com aprovação técnica completa.
+            </p>
+
+            <h3 class="case-h" data-step="2" style="margin-top:18px;">Solução (Proposta)</h3>
+            <p class="case-p">
+              <b>Retirar parte da operação</b> executada dentro da célula automatizada e realizar a mesma atividade em
+              uma célula manual (respot), liberando a restrição e criando flexibilidade de ajuste conforme a demanda.
+            </p>
+
+            <div class="case-media" aria-label="Diagrama da transferência de operação (Op.20 → Op.25)">
+              <img src="/assets/img/case4-transfer.png" alt="Transferência Op. 20 (robótica) para Op. 25 (respot manual)" loading="lazy"
+                   onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='flex';">
+              <div class="ph" style="display:none;">
+                Adicione <b>/assets/img/case4-transfer.png</b><br>para exibir o diagrama/print
+              </div>
+            </div>
+          </div>
+
+          <!-- COLUNA DIREITA -->
+          <div class="case-panel">
+            <h3 class="case-h" data-step="3">Execução e governança técnica</h3>
+
+            <div class="case-badges">
+              <div class="case-badge"><i></i> Aprovação: SQD → Engenharia → Qualidade</div>
+              <div class="case-badge"><i></i> Integração com fornecedor (sem custo adicional)</div>
+              <div class="case-badge"><i></i> 5PQ + mapeamento de processo</div>
+              <div class="case-badge"><i></i> Sustentação: alternativa válida até hoje</div>
+            </div>
+
+            <ul class="case-list">
+              <li><b>Mapeamento do processo</b> e estudo do sistema para localizar o ponto exato da restrição</li>
+              <li><b>Redesenho de operação</b>: transferir pontos de solda da célula robótica para respot manual</li>
+              <li><b>Validação técnica</b>: provar que não haveria degradação de qualidade/funcionalidade</li>
+              <li><b>Alinhamento multiáreas</b>: fornecedor, SOP, SQD, Eng. Produto, Capacity SCM, Qualidade Planta</li>
+            </ul>
+
+            <div class="case-card" style="margin-top:16px;">
+              <div class="case-card__kicker">Ponto sensível</div>
+              <div class="case-card__big">Aceitação do fornecedor</div>
+              <p class="case-mini">
+                A mudança exigia alterar o processo produtivo do fornecedor, destacando operador para atividade manual
+                — sem custo adicional — e com garantias de qualidade sustentadas.
+              </p>
+            </div>
+          </div>
+
+          <!-- RESULTADOS -->
+          <div class="case-panel" style="grid-column: 1 / -1;">
+            <h3 class="case-h" data-step="4">Resultados e replicabilidade</h3>
+            <p class="case-p">
+              O projeto aumentou capacidade em <b>+50 peças/dia</b> e eliminou o risco de parada produtiva,
+              com <b>hard saving anual de R$ 2.115.000</b> (base DMC R$ 141) e <b>cost avoidance ~R$ 2MM</b> ao evitar duplicação de célula.
+            </p>
+
+            <div class="case-results-grid">
+              <div>
+                <ul class="case-list">
+                  <li><b>Agilidade</b>: ajuste rápido do volume conforme variação de demanda</li>
+                  <li><b>Flexibilidade operacional</b>: solução manual absorve mudanças sem CAPEX imediato</li>
+                  <li><b>Qualidade mantida</b>: sem demérito de índices, com validação técnica</li>
+                  <li><b>Escalabilidade</b>: aplicável a outros fornecedores com gargalos em células automatizadas</li>
+                  <li><b>Proteção de marca</b>: evita atrasos de entrega e exposição negativa</li>
+                </ul>
+              </div>
+
+              <div class="case-card">
+                <div class="case-card__kicker">Tese do case</div>
+                <div class="case-card__big">Capacidade não é só máquina — é arquitetura do processo</div>
+                <p class="case-mini">
+                  Quando o mix muda, a solução vencedora é a que entrega capacidade
+                  com aprovação técnica e execução rápida.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FOOTER DO CASE -->
+      <div class="case-footer">
+        <a class="btnx btnx--primary" href="/index.html#contact">Quero eliminar risco de parada no meu processo</a>
+        <a class="btnx btnx--secondary" href="/index.html#cases">Voltar aos Cases</a>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="case-lightbox" id="caseLightbox" aria-hidden="true">
+    <button class="case-lightbox-close" id="caseLightboxClose" aria-label="Fechar">✕</button>
+    <img id="caseLightboxImg" alt="">
+  </div>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (!navbar) return;
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        mobileMenu.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      });
+    }
+
+    if (closeMobileMenu && mobileMenu) {
+      closeMobileMenu.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        mobileMenu.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    if (mobileMenu) {
+      mobileMenu.addEventListener('click', function(e) {
+        if (e.target === mobileMenu) {
+          mobileMenu.classList.remove('active');
+          mobileMenu.setAttribute('aria-hidden','true');
+          document.body.style.overflow = '';
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Loaded class
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.classList.add('loaded');
+    });
+
+    // ===== Lightbox (zoom) =====
+    const lightbox = document.getElementById('caseLightbox');
+    const lightboxImg = document.getElementById('caseLightboxImg');
+    const lightboxClose = document.getElementById('caseLightboxClose');
+
+    function openLightbox(src, alt){
+      if (!lightbox || !lightboxImg) return;
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(){
+      if (!lightbox || !lightboxImg) return;
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden','true');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.case-media img, .case-hero-image img').forEach(img => {
+      img.addEventListener('click', () => {
+        if (!img || !img.src || img.style.display === 'none') return;
+        openLightbox(img.src, img.alt);
+      });
+    });
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+</body>
+</html>
