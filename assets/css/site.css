@@ -1207,3 +1207,6 @@
   pointer-events: none;
 }
 
+#cases .text-lead{
+  font-size: 16px; /* antes era ~20px */
+}
