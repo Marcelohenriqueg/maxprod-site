@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="description" content="Case MaxProd — O&R (Observação & Registro) para estabilizar o processo e elevar a performance com padronização, rotina e gestão visual em ambiente industrial." />
-  <title>Case 3 | O&R para Estabilização e Performance — MaxProd</title>
+  <meta name="description" content="Case MaxProd — O&R (Occurrence & Release) aplicado em células de solda Tier 1 Stellantis para reduzir risco de escape, elevar robustez do processo e mover modos de falha para o quadrante verde da matriz." />
+  <title>Case 3 | O&R (Occurrence & Release) — Tier 1 Stellantis | MaxProd</title>
 
   <!-- CSS GLOBAL DO SITE (IGUAL HOME) -->
   <link rel="preload" href="/assets/css/site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -28,6 +28,7 @@
       --success: #3cffc8;
       --danger: #ff5a5a;
       --case-scale: 0.94;
+      --warn: #ffb020;
     }
 
     html, body{ height: 100%; margin: 0; }
@@ -38,9 +39,6 @@
       font-size: calc(16px * var(--case-scale));
     }
 
-    /* =========================================================
-       ESTRUTURA PRINCIPAL
-       ========================================================= */
     .case-wrap{
       max-width: 1200px;
       margin: 0 auto;
@@ -66,9 +64,6 @@
     }
     .case-breadcrumb .separator{ opacity: .5; }
 
-    /* =========================================================
-       SHELL UNIFICADO
-       ========================================================= */
     .case-shell{
       border: 1px solid var(--case-stroke);
       border-radius: 24px;
@@ -81,9 +76,6 @@
       backdrop-filter: blur(10px);
     }
 
-    /* =========================================================
-       HEADER DO CASE
-       ========================================================= */
     .case-head{
       padding: 10px 18px 14px;
       position: relative;
@@ -121,7 +113,7 @@
       font-size: clamp(24px, 2.2vw, 34px);
       line-height: 1.1;
       letter-spacing: -0.02em;
-      max-width: 30ch;
+      max-width: 34ch;
       font-weight: 800;
       background: linear-gradient(135deg, #ffffff 0%, #a0b8ff 100%);
       -webkit-background-clip: text;
@@ -131,7 +123,7 @@
 
     .case-sub{
       margin: 0;
-      max-width: 60ch;
+      max-width: 64ch;
       color: var(--case-muted);
       font-size: 15px;
       line-height: 1.45;
@@ -161,9 +153,7 @@
       .case-hero-image{ height: 150px; }
     }
 
-    /* =========================================================
-       KPIs ULTRA COMPACTOS
-       ========================================================= */
+    /* KPIs */
     .case-kpis{
       display: grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
@@ -216,7 +206,7 @@
       line-height: 1;
       white-space: nowrap;
     }
-    .kpi-before{ color: var(--danger); text-shadow: 0 2px 10px rgba(255,90,90,.3); }
+    .kpi-before{ color: var(--warn); text-shadow: 0 2px 10px rgba(255,176,32,.25); }
     .kpi-after{ color: var(--success); text-shadow: 0 2px 10px rgba(60,255,200,.3); }
     .kpi-good{ color: var(--success); text-shadow: 0 2px 10px rgba(60,255,200,.3); }
     .kpi-arrow{ color: rgba(255,255,255,.5); font-weight: 800; font-size: 16px; }
@@ -231,9 +221,7 @@
     @media (max-width: 992px){ .case-kpis{ grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px){ .case-kpis{ grid-template-columns: 1fr; } }
 
-    /* =========================================================
-       CORPO DO CONTEÚDO
-       ========================================================= */
+    /* BODY */
     .case-body{ padding: 22px; position: relative; z-index: 1; }
 
     .case-grid{
@@ -290,7 +278,6 @@
       border-radius: 4px;
     }
 
-    /* Cards (problema / etc) */
     .case-card{
       background: rgba(255,255,255,.04);
       border: 1px solid rgba(255,255,255,.15);
@@ -317,7 +304,7 @@
       content: '';
       width: 8px; height: 8px;
       border-radius: 50%;
-      background: var(--danger);
+      background: var(--warn);
       display: block;
     }
     .case-card__big{
@@ -342,7 +329,7 @@
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.03);
       box-shadow: 0 14px 36px rgba(0,0,0,.45);
-      height: 240px;
+      height: 260px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -351,7 +338,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      padding: 16px;
+      padding: 14px;
       display: block;
     }
 
@@ -424,44 +411,38 @@
       .case-results-grid{ grid-template-columns: 1fr; }
     }
 
-    /* =========================================================
-       DOWNLOAD (opcional)
-       ========================================================= */
-    .case-download{
+    /* Antes/Depois cards */
+    .ab-grid{
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 16px;
-    }
-
-    .case-download-image{
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.03);
-      box-shadow: 0 10px 26px rgba(0,0,0,.35);
-      height: 160px;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .case-download-image img{
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 6px;
-      display: block;
-    }
-    .case-download__actions{
-      display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 900px){
+      .ab-grid{ grid-template-columns: 1fr; }
+    }
+    .ab-card{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .ab-title{
+      margin: 0 0 8px;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.75);
+      font-weight: 800;
+    }
+    .ab-text{
+      margin: 0;
+      color: rgba(255,255,255,.78);
+      line-height: 1.5;
+      font-size: 14px;
     }
 
-    /* =========================================================
-       BOTÕES (no padrão dos cases)
-       ========================================================= */
+    /* BOTÕES */
     .btnx{
       display: inline-flex;
       align-items: center;
@@ -505,9 +486,6 @@
       box-shadow: 0 10px 30px rgba(0,0,0,.3);
     }
 
-    /* =========================================================
-       FOOTER DO CASE
-       ========================================================= */
     .case-footer{
       display: flex;
       gap: 14px;
@@ -519,9 +497,7 @@
       background: rgba(10, 15, 25, 0.4);
     }
 
-    /* =========================================================
-       Animações "só depois do loaded" (evita flash)
-       ========================================================= */
+    /* animação pós-loaded */
     @keyframes fadeInUp{
       from{ opacity: 0; transform: translateY(10px); }
       to{ opacity: 1; transform: translateY(0); }
@@ -530,7 +506,6 @@
     body .case-head,
     body .case-kpis,
     body .case-panel,
-    body .case-download,
     body .case-footer{
       opacity: 0;
       transform: translateY(10px);
@@ -539,7 +514,6 @@
     body.loaded .case-head,
     body.loaded .case-kpis,
     body.loaded .case-panel,
-    body.loaded .case-download,
     body.loaded .case-footer{
       animation: fadeInUp 0.6s ease-out both;
     }
@@ -550,10 +524,9 @@
     body.loaded .case-panel:nth-of-type(2){ animation-delay: 0.24s; }
     body.loaded .case-panel:nth-of-type(3){ animation-delay: 0.30s; }
     body.loaded .case-panel:nth-of-type(4){ animation-delay: 0.36s; }
-    body.loaded .case-download{ animation-delay: 0.42s; }
-    body.loaded .case-footer{ animation-delay: 0.48s; }
+    body.loaded .case-footer{ animation-delay: 0.42s; }
 
-    /* FIX: evita "flash" do mobile-menu ao carregar (igual Case 1/2) */
+    /* mobile-menu flash fix */
     .mobile-menu{
       position: fixed;
       inset: 0;
@@ -587,7 +560,7 @@
 
 <body>
 
-  <!-- NAV (IGUAL CASE 1/2) -->
+  <!-- NAV (IGUAL HOME/CASE) -->
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
       <a href="/index.html#home" class="logo">
@@ -615,7 +588,7 @@
     </div>
   </nav>
 
-  <!-- MOBILE MENU (IGUAL CASE 1/2) -->
+  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="mobile-menu-header">
       <a href="/index.html#home" class="logo">
@@ -652,64 +625,65 @@
     <div class="case-breadcrumb">
       <a href="/index.html#cases">Cases</a>
       <span class="separator">/</span>
-      <span>Case 3 — O&amp;R</span>
+      <span>Case 3 — O&amp;R (Occurrence &amp; Release)</span>
     </div>
 
     <section class="case-shell">
 
       <!-- HEADER -->
       <div class="case-head">
-        <div class="case-tag"><span class="dot"></span> Case 3 • O&amp;R (Observação &amp; Registro)</div>
+        <div class="case-tag"><span class="dot"></span> Case 3 • O&amp;R • Tier 1 — Stellantis</div>
 
         <div class="case-hero-grid">
           <div>
-            <h1 class="case-title">Estabilidade primeiro. Performance depois.</h1>
+            <h1 class="case-title">Zero “escape” por acaso. Controle por desenho.</h1>
             <p class="case-sub">
-              Implementação de <b>O&amp;R (Observação &amp; Registro)</b> para transformar variação diária em
-              <b>rotina gerenciável</b>: checkpoints, padrões visuais, reação rápida e sustentação no chão de fábrica.
-              O resultado é menos dependência de “heróis”, mais previsibilidade e melhor performance.
+              Aplicação de <b>O&amp;R (Occurrence &amp; Release)</b> em células de solda para avaliar (1) a capacidade do
+              processo em <b>prevenir a geração</b> do defeito (Occurrence) e (2) a capacidade em <b>prevenir o envio</b>
+              do defeito para a próxima estação (Release). O foco foi mover o máximo de modos de falha para o
+              <b>quadrante verde</b> da matriz, de acordo com a criticidade do defeito.
             </p>
           </div>
 
           <div class="case-hero-image" aria-label="Imagem do Case 3">
-            <!-- Troque o arquivo quando quiser -->
-            <img src="/assets/img/robo-case3.png" alt="O&R — estabilidade e rotina" loading="lazy">
+            <!-- Sugestão: exportar do PDF uma imagem visual do tema -->
+            <img src="/assets/img/case3-or-hero.png" alt="O&R — Occurrence & Release" loading="lazy">
           </div>
         </div>
       </div>
 
-      <!-- KPIs -->
+      <!-- KPIs (baseado nos KPI’s do material) -->
       <div class="case-kpis">
         <div class="case-kpi">
-          <span class="case-kpi__label">Variação (turnos)</span>
+          <span class="case-kpi__label">Matriz O&amp;R</span>
           <div class="case-kpi__value">
-            <span class="kpi-before">Alta</span><span class="kpi-arrow">→</span><span class="kpi-after">Baixa</span>
+            <span class="kpi-before">Fora</span><span class="kpi-arrow">→</span><span class="kpi-after">Quadrante verde</span>
           </div>
-          <div class="case-kpi__note">Processo previsível</div>
+          <div class="case-kpi__note">% PN’s no quadrante verde</div>
         </div>
 
         <div class="case-kpi">
-          <span class="case-kpi__label">Reação a desvios</span>
+          <span class="case-kpi__label">Disciplina de análise</span>
           <div class="case-kpi__value">
-            <span class="kpi-before">Tardia</span><span class="kpi-arrow">→</span><span class="kpi-after">Imediata</span>
+            <span class="kpi-before">Planejado</span><span class="kpi-arrow">→</span><span class="kpi-after">Executado</span>
           </div>
-          <div class="case-kpi__note">Sinais &amp; gatilhos claros</div>
+          <div class="case-kpi__note">Análises previstas x realizadas</div>
         </div>
 
         <div class="case-kpi">
-          <span class="case-kpi__label">Padrão operacional</span>
+          <span class="case-kpi__label">Cobertura de MDF</span>
           <div class="case-kpi__value">
-            <span class="kpi-before">Frágil</span><span class="kpi-arrow">→</span><span class="kpi-after">Robusto</span>
+            <span class="kpi-before">Parcial</span><span class="kpi-arrow">→</span><span class="kpi-after">Alta</span>
           </div>
-          <div class="case-kpi__note">Menos dependência de pessoas</div>
+          <div class="case-kpi__note">Modos de falha cobertos por célula</div>
         </div>
 
         <div class="case-kpi">
-          <span class="case-kpi__label">Gestão diária</span>
+          <span class="case-kpi__label">Plano de ação</span>
           <div class="case-kpi__value">
-            <span class="kpi-good">Rotina ativa</span>
+            <span class="kpi-good">Fechado</span>
           </div>
-          <div class="case-kpi__note">Cadência + auditoria leve</div>
+          <div class="case-kpi__note">Ações priorizadas por criticidade</div>
         </div>
       </div>
 
@@ -721,92 +695,145 @@
           <div class="case-panel">
             <h3 class="case-h">Contexto</h3>
             <p class="case-p">
-              O processo apresentava oscilação entre turnos e dias, gerando retrabalho, microparadas,
-              tomada de decisão reativa e dificuldade de sustentar ganhos.
-            </p>
-            <p class="case-p">
-              A meta foi criar um sistema simples de <b>observação objetiva + registro padronizado</b>,
-              que gerasse ação rápida e evitasse regressão.
+              Em um ambiente com múltiplas células e alto volume, o risco real não é apenas “gerar defeito” —
+              é <b>não perceber</b> e permitir que avance para a próxima estação. O&amp;R cria uma leitura objetiva do processo
+              por modo de falha, com critérios claros para Occurrence e Release.
             </p>
 
             <h3 class="case-h" style="margin-top:18px;">Problema</h3>
             <div class="case-card">
-              <div class="case-card__kicker">Sintoma</div>
-              <div class="case-card__big">Variação diária “parece normal” até virar perda grande</div>
+              <div class="case-card__kicker">Gargalo</div>
+              <div class="case-card__big">Modos de falha descobertos e controles frágeis</div>
               <p class="case-mini">
-                Sem um mecanismo de captura e reação, desvios pequenos acumulam e “explicações” substituem dados.
+                Falhas de posicionamento, ausência de componentes, by-pass e variações operacionais
+                com baixa robustez de detecção/retenção.
               </p>
             </div>
 
-            <div class="case-media" aria-label="Gráfico / evidência do problema">
-              <!-- Troque quando quiser -->
-              <img src="/assets/img/or-problema.png" alt="Evidência — variação / perdas" loading="lazy">
+            <!-- CONCEITO O&R (imagem do PDF) -->
+            <div class="case-media" aria-label="Conceito O&R — matriz e quadrantes">
+              <img src="/assets/img/case3-or-conceito.png" alt="Conceito O&R — quadrantes e critérios" loading="lazy">
             </div>
+
+            <p class="case-p" style="margin-top:14px;">
+              <b>Resultados esperados:</b> colocar o máximo de modos de falha no quadrante verde, respeitando a classificação
+              do defeito e elevando o nível do controle (prevenção e/ou retenção).
+            </p>
           </div>
 
           <!-- COLUNA DIREITA -->
           <div class="case-panel">
-            <h3 class="case-h">Metodologia (O&amp;R)</h3>
+            <h3 class="case-h">Como funciona (na prática)</h3>
 
             <div class="case-badges">
-              <div class="case-badge"><i></i> Padrão de observação (o que olhar)</div>
-              <div class="case-badge"><i></i> Registro mínimo (sem burocracia)</div>
-              <div class="case-badge"><i></i> Gatilhos de ação e escalonamento</div>
-              <div class="case-badge"><i></i> Auditoria leve (sustentação)</div>
+              <div class="case-badge"><i></i> Occurrence: prevenir gerar defeito</div>
+              <div class="case-badge"><i></i> Release: prevenir enviar defeito adiante</div>
+              <div class="case-badge"><i></i> Matriz O&amp;R: leitura por MDF</div>
+              <div class="case-badge"><i></i> Ação: fechar “descobertos” por criticidade</div>
             </div>
 
             <ul class="case-list">
-              <li><b>Checklist de variáveis críticas</b> (processo / qualidade / segurança)</li>
-              <li><b>Quadro visual</b> com limites e status (OK / Atenção / Ação)</li>
-              <li><b>Reação padronizada</b>: quem faz o quê em até X minutos</li>
-              <li><b>Ritual diário</b>: fechamento, lições e próximos passos</li>
+              <li><b>Análise in loco</b> no processo produtivo (fase a fase)</li>
+              <li><b>Critérios padronizados</b> para Occurrence (10 níveis) e Release (FMEA/AIAG)</li>
+              <li><b>Matriz de quadrantes</b> para classificar e visualizar riscos</li>
+              <li><b>Plano de ação</b> automático para MDF “descobertos” (priorização por criticidade)</li>
             </ul>
 
-            <div class="case-media" aria-label="Framework O&R">
-              <img src="/assets/img/or-framework.png" alt="O&R — framework" loading="lazy">
+            <!-- CRONOGRAMA (imagem do PDF) -->
+            <div class="case-media" aria-label="Cronograma O&R — planejamento das células">
+              <img src="/assets/img/case3-or-cronograma.png" alt="Cronograma O&R — priorização e execução" loading="lazy">
             </div>
+
+            <p class="case-p" style="margin-top:14px;">
+              No projeto, foram mapeadas <b>63 células de solda</b> e o trabalho iniciou por priorização (tickets x modelo),
+              garantindo foco onde o risco/impacto era maior.
+            </p>
           </div>
 
           <!-- RESULTADOS -->
           <div class="case-panel" style="grid-column: 1 / -1;">
-            <h3 class="case-h">Solução aplicada</h3>
+            <h3 class="case-h">Resultados (preliminares)</h3>
             <p class="case-p">
-              O&amp;R foi desenhado para caber na rotina real: rápido, visual e acionável.
-              A operação passou a enxergar desvios cedo e agir com consistência.
+              A matriz O&amp;R consolidou a leitura em nível planta, destacando rapidamente onde estavam os maiores riscos
+              (Occurrence/Release) por criticidade. Isso reduziu debate subjetivo e acelerou a execução de melhorias.
             </p>
 
             <div class="case-results-grid">
               <div>
                 <ul class="case-list">
-                  <li><b>Definição do padrão</b>: o que medir/observar e com que frequência</li>
-                  <li><b>Registro mínimo</b>: “1 tela” com categorias objetivas</li>
-                  <li><b>Gatilhos</b>: limites e reação imediata (sem discussão)</li>
-                  <li><b>Fechamento diário</b>: causas recorrentes viram ação estruturada</li>
+                  <li><b>Visibilidade</b> do risco por MDF e por célula</li>
+                  <li><b>Direcionamento</b> de ações para “mover” quadrantes (para verde)</li>
+                  <li><b>Foco</b> em soluções de robustez: poka-yokes, sensores, PLC, correlação de componentes</li>
+                  <li><b>Controle</b> via acompanhamento de ações e cobertura de MDF</li>
                 </ul>
               </div>
 
-              <div class="case-media" style="height: 220px;" aria-label="Evidência / resultado">
-                <img src="/assets/img/or-resultados.png" alt="Resultados — estabilização e rotina" loading="lazy">
+              <div class="case-media" style="height: 240px;" aria-label="Resumo nível planta — Matriz O&R">
+                <img src="/assets/img/case3-or-resultados-matriz.png" alt="Resultados — resumo nível planta (matriz O&R)" loading="lazy">
               </div>
             </div>
           </div>
 
-          <!-- DOWNLOAD (opcional) -->
+          <!-- PLANO DE AÇÃO -->
           <div class="case-panel" style="grid-column: 1 / -1;">
-            <h3 class="case-h">Assets (opcional)</h3>
+            <h3 class="case-h">Plano de ação (fechando os “descobertos”)</h3>
             <p class="case-p">
-              Se você quiser, dá para disponibilizar um template do O&amp;R (planilha/board) como material.
+              100% dos modos de falha classificados como <b>descobertos</b> na matriz O&amp;R entraram no plano de ação
+              com priorização por criticidade — garantindo execução e sustentação.
             </p>
 
-            <div class="case-download">
-              <div class="case-download-image" aria-label="Preview do template">
-                <img src="/assets/img/or-template-preview.png" alt="Preview template O&R" loading="lazy">
+            <div class="case-media" aria-label="Plano de ação — matriz e lista de ações">
+              <img src="/assets/img/case3-or-plano-acao.png" alt="Plano de ação O&R — priorização por criticidade" loading="lazy">
+            </div>
+
+            <div class="ab-grid">
+              <div class="ab-card">
+                <div class="ab-title">Diretriz</div>
+                <p class="ab-text">
+                  MDF “descoberto” vira ação. Sem exceção.
+                </p>
+              </div>
+              <div class="ab-card">
+                <div class="ab-title">Priorização</div>
+                <p class="ab-text">
+                  Criticidade define a ordem e o tipo de robustez (prevenção/retenção).
+                </p>
+              </div>
+              <div class="ab-card">
+                <div class="ab-title">Sustentação</div>
+                <p class="ab-text">
+                  Acompanhamento de ações e cobertura por célula (KPI).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ANTES/DEPOIS (exemplos do material) -->
+          <div class="case-panel" style="grid-column: 1 / -1;">
+            <h3 class="case-h">Antes e depois (robustez real)</h3>
+            <p class="case-p">
+              As melhorias típicas envolveram <b>poka-yokes mecânicos</b>, reposicionamento de sensores para eliminar “ponto cego”,
+              <b>sensores interligados ao PLC</b> para presença/ausência e soluções de correlação (ex.: porca x compartimento/cor),
+              elevando Occurrence e Release.
+            </p>
+
+            <div class="case-results-grid">
+              <div>
+                <ul class="case-list">
+                  <li><b>Inversão de lado</b>: poka-yoke mecânico + sensor fora do ponto cego</li>
+                  <li><b>Ausência de componente</b>: berço com sensores + PLC</li>
+                  <li><b>By-pass</b>: bloqueio lógico/físico com presença confirmada</li>
+                  <li><b>Porca não específica</b>: correlação por cor/compartimento</li>
+                </ul>
               </div>
 
-              <div class="case-download__actions">
-                <a class="btnx btnx--primary" href="/index.html#contact">Quero aplicar O&amp;R no meu processo</a>
-                <a class="btnx btnx--secondary" href="/index.html#cases">Ver outros cases</a>
+              <div class="case-media" style="height: 260px;" aria-label="Antes e depois — exemplos">
+                <img src="/assets/img/case3-or-antes-depois-01.png" alt="Antes/Depois — exemplo O&R" loading="lazy">
               </div>
+            </div>
+
+            <div class="case-media" style="height: 260px;" aria-label="Antes e depois — exemplo 2">
+              <img src="/assets/img/case3-or-antes-depois-02.png" alt="Antes/Depois — exemplo O&R 2" loading="lazy">
             </div>
           </div>
 
@@ -815,7 +842,7 @@
 
       <!-- FOOTER DO CASE -->
       <div class="case-footer">
-        <a class="btnx btnx--primary" href="/index.html#contact">Quero Resultados Similares</a>
+        <a class="btnx btnx--primary" href="/index.html#contact">Quero aplicar O&amp;R no meu processo</a>
         <a class="btnx btnx--secondary" href="/index.html#cases">Voltar aos Cases</a>
       </div>
 
@@ -823,14 +850,14 @@
   </main>
 
   <script>
-    // Navbar scroll effect (igual Case 1)
+    // Navbar scroll effect
     window.addEventListener('scroll', function() {
       const navbar = document.getElementById('navbar');
       if (!navbar) return;
       navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Mobile menu toggle (igual Case 1)
+    // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const closeMobileMenu = document.getElementById('closeMobileMenu');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -864,7 +891,7 @@
       });
     }
 
-    // Loaded class (evita flash e habilita animações só depois)
+    // Loaded class
     document.addEventListener('DOMContentLoaded', function() {
       document.body.classList.add('loaded');
     });
