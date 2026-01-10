@@ -1228,3 +1228,9 @@
     url("/assets/img/case3-or-pokayoke-bg.png") center / cover no-repeat;
 }
 
+/* IMAGEM APENAS NO CASE 4 (4º card) — Case 4 */
+.cases-grid--4 .case-card:nth-child(4) .case-image{
+  background:
+    linear-gradient(135deg, rgba(20,30,60,.55), rgba(20,30,60,.78)),
+    url("/assets/img/case4-transfer.png") center / cover no-repeat;
+}
