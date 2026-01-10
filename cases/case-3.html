@@ -218,6 +218,18 @@
       max-width: 95%;
     }
 
+/* KPI glow (no valor "depois") */
+@keyframes kpiGlowPulse{
+  0%   { text-shadow: 0 2px 10px rgba(60,255,200,.25), 0 0 0 rgba(60,255,200,0); }
+  50%  { text-shadow: 0 4px 18px rgba(60,255,200,.55), 0 0 22px rgba(60,255,200,.25); }
+  100% { text-shadow: 0 2px 10px rgba(60,255,200,.25), 0 0 0 rgba(60,255,200,0); }
+}
+
+.kpi-glow{
+  animation: kpiGlowPulse 1.6s ease-in-out infinite;
+}
+
+    
     @media (max-width: 992px){ .case-kpis{ grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px){ .case-kpis{ grid-template-columns: 1fr; } }
 
@@ -653,43 +665,48 @@
   </div>
 </div>
 
+<!-- KPIs -->
+<div class="case-kpis">
+  <!-- KPI 1 -->
+  <div class="case-kpi">
+    <span class="case-kpi__label">Operações descobertas</span>
+    <div class="case-kpi__value">
+      <span class="kpi-before">47%</span><span class="kpi-arrow">→</span><span class="kpi-after kpi-glow">27%</span>
+    </div>
+    <div class="case-kpi__note">Operações no quadrante vermelho (sem controle efetivo)</div>
+  </div>
+
+  <!-- KPI 2 -->
+  <div class="case-kpi">
+    <span class="case-kpi__label">Disciplina de análise</span>
+    <div class="case-kpi__value">
+      <span class="kpi-before">63</span><span class="kpi-arrow">/</span><span class="kpi-after kpi-glow">63</span>
+      <span class="kpi-after kpi-glow" style="margin-left:6px;">(100%)</span>
+    </div>
+    <div class="case-kpi__note">Células analisadas — cobertura total (sem amostragem)</div>
+  </div>
+
+  <!-- KPI 3 -->
+  <div class="case-kpi">
+    <span class="case-kpi__label">Cobertura de MDF</span>
+    <div class="case-kpi__value">
+      <span class="kpi-before">—</span><span class="kpi-arrow">→</span><span class="kpi-after kpi-glow">67%</span>
+    </div>
+    <div class="case-kpi__note">Das 63 células: MDF antes descobertos movidos para o quadrante verde</div>
+  </div>
+
+  <!-- KPI 4 -->
+  <div class="case-kpi">
+    <span class="case-kpi__label">Plano de ação</span>
+    <div class="case-kpi__value">
+      <span class="kpi-after kpi-glow">100%</span>
+    </div>
+    <div class="case-kpi__note">MDF críticos com ação definida e priorizada por criticidade</div>
+  </div>
+</div>
+      
 
       
-      <!-- KPIs (baseado nos KPI’s do material) -->
-      <div class="case-kpis">
-        <div class="case-kpi">
-          <span class="case-kpi__label">Matriz O&amp;R</span>
-          <div class="case-kpi__value">
-            <span class="kpi-before">Fora</span><span class="kpi-arrow">→</span><span class="kpi-after">Quadrante verde</span>
-          </div>
-          <div class="case-kpi__note">% PN’s no quadrante verde</div>
-        </div>
-
-        <div class="case-kpi">
-          <span class="case-kpi__label">Disciplina de análise</span>
-          <div class="case-kpi__value">
-            <span class="kpi-before">Planejado</span><span class="kpi-arrow">→</span><span class="kpi-after">Executado</span>
-          </div>
-          <div class="case-kpi__note">Análises previstas x realizadas</div>
-        </div>
-
-        <div class="case-kpi">
-          <span class="case-kpi__label">Cobertura de MDF</span>
-          <div class="case-kpi__value">
-            <span class="kpi-before">Parcial</span><span class="kpi-arrow">→</span><span class="kpi-after">Alta</span>
-          </div>
-          <div class="case-kpi__note">Modos de falha cobertos por célula</div>
-        </div>
-
-        <div class="case-kpi">
-          <span class="case-kpi__label">Plano de ação</span>
-          <div class="case-kpi__value">
-            <span class="kpi-good">Fechado</span>
-          </div>
-          <div class="case-kpi__note">Ações priorizadas por criticidade</div>
-        </div>
-      </div>
-
       <!-- BODY -->
       <div class="case-body">
         <div class="case-grid">
