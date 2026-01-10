@@ -1221,9 +1221,10 @@
 #cases .text-lead{
   font-size: 18px; /* antes era ~20px */
 }
-/* Case 3 — O&R (Erro não passa mais) */
-.case-item:nth-child(3) .case-image{
-  background: 
-    linear-gradient(135deg, rgba(10,15,25,.85), rgba(10,15,25,.65)),
-    url('/assets/img/case3-or-pokayoke-bg.png') center / cover no-repeat;
+/* IMAGEM APENAS NO CASE 3 (3º card) — O&R + Poka-Yoke */
+.cases-grid--4 .case-card:nth-child(3) .case-image{
+  background:
+    linear-gradient(135deg, rgba(20,30,60,.55), rgba(20,30,60,.78)),
+    url("/assets/img/case3-or-pokayoke-bg.png") center / cover no-repeat;
 }
+
