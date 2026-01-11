@@ -2,905 +2,711 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="description" content="Case MaxProd — Eliminação de risco de parada por restrição de capacidade em peças: +50 JPD, hard saving R$ 2.115.000/ano e cost avoidance ~R$ 2MM." />
-  <title>Case 4 | Eliminação de Risco de Parada — Aumento de Capacidade | MaxProd</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="MaxProd - Consultoria industrial premium. Resolvemos problemas complexos com resultados mensuráveis: +R$35M em savings, +20 empresas atendidas e +70% de produtividade média." />
+  <title>MaxProd | Consultoria Industrial Premium com Resultados Comprovados</title>
 
-  <!-- CSS GLOBAL DO SITE (IGUAL HOME) -->
-  <link rel="preload" href="/assets/css/site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/assets/css/site.css"></noscript>
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="MaxProd | Consultoria Industrial Premium" />
+<meta property="og:description" content="+R$35M em savings gerados | +20 empresas atendidas | +70% produtividade média | Cases Stellantis, Maxion, Interni" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://maxprod.com.br/assets/og-image.jpg" />
 
-  <style>
-    /* =========================================================
-       CASE-4 — BASE PREMIUM (mesmo padrão Case 3)
-       ========================================================= */
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 
-    :root{
-      --case-text: rgba(255,255,255,.95);
-      --case-muted: rgba(255,255,255,.75);
-      --case-muted2: rgba(255,255,255,.6);
-      --case-stroke: rgba(255,255,255,.12);
-      --case-shadow: 0 22px 70px rgba(0,0,0,.6);
-      --case-shadow2: 0 10px 30px rgba(0,0,0,.4);
-      --case-brand: var(--brand, #2f6bff);
-      --case-brand2: var(--brand2, #1f4fd8);
-      --nav-offset: 96px;
+  <link rel="stylesheet" href="assets/css/site.css">
 
-      --success: #3cffc8;
-      --danger: #ff5a5a;
-      --warn: #ffb020;
-
-      --case-scale: 0.94;
-    }
-
-    html, body{ height: 100%; margin: 0; }
-    body{
-      color: var(--case-text);
-      background: #0c1117;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: calc(16px * var(--case-scale));
-    }
-
-    .case-wrap{
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: calc(var(--nav-offset) + 16px) 22px 54px;
-    }
-
-    .case-breadcrumb{
-      color: var(--case-muted2);
-      font-size: 13px;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .case-breadcrumb a{
-      color: var(--case-muted);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .case-breadcrumb a:hover{
-      color: var(--case-text);
-      text-decoration: underline;
-    }
-    .case-breadcrumb .separator{ opacity: .5; }
-
-    .case-shell{
-      border: 1px solid var(--case-stroke);
-      border-radius: 24px;
-      box-shadow: var(--case-shadow);
-      overflow: hidden;
-      position: relative;
-      background: linear-gradient(180deg,
-        rgba(20, 25, 35, 0.95) 0%,
-        rgba(15, 20, 30, 0.98) 100%);
-      backdrop-filter: blur(10px);
-    }
-
-    .case-head{
-      padding: 10px 18px 14px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .case-tag{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      font-size: 12px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--case-muted);
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-    .case-tag .dot{
-      width: 8px; height: 8px;
-      border-radius: 999px;
-      background: var(--case-brand);
-      box-shadow: 0 0 0 4px rgba(47,107,255,.2);
-    }
-
-    .case-hero-grid{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: center;
-      margin-top: 8px;
-    }
-
-    .case-title{
-      margin: 0 0 10px;
-      font-size: clamp(24px, 2.2vw, 34px);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      max-width: 36ch;
-      font-weight: 850;
-      background: linear-gradient(135deg, #ffffff 0%, #a0b8ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .case-sub{
-      margin: 0;
-      max-width: 70ch;
-      color: var(--case-muted);
-      font-size: 15px;
-      line-height: 1.45;
-      text-align: justify;
-      hyphens: auto;
-      font-weight: 400;
-      letter-spacing: -0.01em;
-    }
-
-    .case-hero-image{
-      height: 280px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.15);
-      background:
-        radial-gradient(900px 300px at 20% 15%, rgba(47,107,255,.35), transparent 60%),
-        radial-gradient(700px 260px at 80% 80%, rgba(60,255,200,.18), transparent 60%),
-        rgba(255,255,255,.03);
-      box-shadow: var(--case-shadow2);
-      position: relative;
-    }
-    .case-hero-image img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display:block;
-    }
-    .case-hero-image .ph{
-      position:absolute;
-      inset: 0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
-      text-align:center;
-      color: rgba(255,255,255,.78);
-      font-weight: 700;
-      letter-spacing: .02em;
-      font-size: 14px;
-      backdrop-filter: blur(2px);
-    }
-
-    @media (max-width: 900px){
-      .case-hero-grid{ grid-template-columns: 1fr; }
-      .case-hero-image{ height: 160px; }
-    }
-
-    /* KPIs */
-    .case-kpis{
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 12px;
-      padding: 14px 18px;
-      position: relative;
-      z-index: 1;
-      background: rgba(10, 15, 25, 0.4);
-      border-top: 1px solid rgba(255,255,255,.1);
-      border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-    .case-kpi{
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 16px;
-      padding: 12px 10px;
-      box-shadow: var(--case-shadow2);
-      text-align: center;
-      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 72px;
-      will-change: transform;
-    }
-    .case-kpi:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 18px 40px rgba(0,0,0,.45);
-      background: rgba(255,255,255,.06);
-    }
-    .case-kpi__label{
-      font-size: 10px;
-      color: rgba(255,255,255,.7);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      font-weight: 800;
-    }
-    .case-kpi__value{
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 8px;
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      color: rgba(255,255,255,.98);
-      margin: 0 0 4px;
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .kpi-before{ color: var(--warn); text-shadow: 0 2px 10px rgba(255,176,32,.25); }
-    .kpi-after{ color: var(--success); text-shadow: 0 2px 10px rgba(60,255,200,.3); }
-    .kpi-good{ color: var(--success); text-shadow: 0 2px 10px rgba(60,255,200,.3); }
-    .kpi-arrow{ color: rgba(255,255,255,.5); font-weight: 900; font-size: 16px; }
-    .case-kpi__note{
-      margin: 4px 0 0;
-      font-size: 11px;
-      color: rgba(255,255,255,.65);
-      line-height: 1.35;
-      max-width: 95%;
-    }
-
-    @keyframes kpiGlowPulse{
-      0%   { text-shadow: 0 2px 10px rgba(60,255,200,.25), 0 0 0 rgba(60,255,200,0); }
-      50%  { text-shadow: 0 4px 18px rgba(60,255,200,.55), 0 0 22px rgba(60,255,200,.25); }
-      100% { text-shadow: 0 2px 10px rgba(60,255,200,.25), 0 0 0 rgba(60,255,200,0); }
-    }
-    .kpi-glow{ animation: kpiGlowPulse 1.6s ease-in-out infinite; }
-
-    @media (max-width: 992px){ .case-kpis{ grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 768px){ .case-kpis{ grid-template-columns: 1fr; } }
-
-    /* BODY */
-    .case-body{ padding: 22px; position: relative; z-index: 1; }
-
-    .case-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      align-items: stretch;
-    }
-    @media (min-width: 992px){
-      .case-grid{ grid-template-columns: 1.1fr 0.9fr; }
-    }
-
-    .case-panel{
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: var(--case-shadow2);
-      height: auto;
-    }
-
-    .case-h{
-      margin: 0 0 14px;
-      font-size: 14px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.85);
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .case-h::before{
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--case-brand);
-      display: block;
-    }
-
-    .case-h[data-step]::after{
-      content: attr(data-step);
-      margin-left: auto;
-      font-size: 12px;
-      font-weight: 950;
-      letter-spacing: .02em;
-      color: rgba(255,255,255,.92);
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.14);
-      padding: 6px 10px;
-      border-radius: 999px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.35);
-    }
-
-    .case-p{
-      margin: 0 0 14px;
-      color: var(--case-muted);
-      line-height: 1.65;
-      font-size: 15.5px;
-      letter-spacing: -0.01em;
-    }
-    .case-p:last-child{ margin-bottom: 0; }
-    .case-p b{
-      color: var(--case-text);
-      font-weight: 800;
-      background: rgba(47,107,255,.15);
-      padding: 0 4px;
-      border-radius: 4px;
-    }
-
-    .case-card{
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 14px;
-      padding: 18px;
-      transition: background 0.25s ease, border-color 0.25s ease;
-    }
-    .case-card:hover{
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.2);
-    }
-    .case-card__kicker{
-      font-size: 12px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.7);
-      margin-bottom: 10px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .case-card__kicker::before{
-      content: '';
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--warn);
-      display: block;
-    }
-    .case-card__big{
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      color: rgba(255,255,255,.98);
-      margin: 0 0 12px;
-      line-height: 1.2;
-    }
-    .case-mini{
-      color: rgba(255,255,255,.75);
-      font-size: 14.5px;
-      line-height: 1.55;
-      margin: 0;
-    }
-
-    .case-badges{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin: 16px 0;
-    }
-    .case-badge{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding: 12px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.8);
-      font-size: 13px;
-      line-height: 1.2;
-      font-weight: 650;
-      transition: transform 0.2s ease, background 0.2s ease;
-      will-change: transform;
-    }
-    .case-badge:hover{
-      background: rgba(255,255,255,.08);
-      transform: translateY(-2px);
-    }
-    .case-badge i{
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: var(--case-brand);
-      flex-shrink: 0;
-    }
-    @media (max-width: 992px){
-      .case-badges{ grid-template-columns: 1fr; }
-    }
-
-    .case-list{
-      margin: 14px 0;
-      padding: 0;
-      color: var(--case-muted);
-      line-height: 1.65;
-      font-size: 14.5px;
-      list-style: none;
-    }
-    .case-list li{
-      margin-bottom: 12px;
-      padding-left: 24px;
-      position: relative;
-    }
-    .case-list li:last-child{ margin-bottom: 0; }
-    .case-list li::before{
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--case-brand);
-      font-weight: 900;
-    }
-    .case-list b{ color: var(--case-text); font-weight: 800; }
-
-    .case-media{
-      margin-top: 16px;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.14);
-      background:
-        radial-gradient(850px 260px at 20% 10%, rgba(47,107,255,.25), transparent 55%),
-        rgba(255,255,255,.03);
-      box-shadow: 0 14px 36px rgba(0,0,0,.45);
-      height: 260px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .case-media img{
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 14px;
-      display: block;
-      cursor: zoom-in;
-      pointer-events: auto;
-    }
-    .case-media .ph{
-      position:absolute;
-      inset: 0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
-      text-align:center;
-      color: rgba(255,255,255,.78);
-      font-weight: 800;
-      letter-spacing: .02em;
-      font-size: 13px;
-    }
-
-    /* RESULTADOS */
-    .case-results-grid{
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 22px;
-      align-items: start;
-      margin-top: 10px;
-    }
-    @media (max-width: 900px){
-      .case-results-grid{ grid-template-columns: 1fr; }
-    }
-
-    /* BOTÕES */
-    .btnx{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 14px 26px;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 15px;
-      line-height: 1;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-      border: 2px solid transparent;
-      white-space: nowrap;
-      min-height: 50px;
-      will-change: transform;
-    }
-
-    .btnx--primary{
-      background: linear-gradient(135deg, var(--case-brand), var(--case-brand2));
-      color: white;
-      box-shadow: 0 8px 30px rgba(47,107,255,.4);
-    }
-    .btnx--primary:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(47,107,255,.5);
-      background: linear-gradient(135deg, var(--case-brand2), var(--case-brand));
-    }
-
-    .btnx--secondary{
-      background: rgba(255,255,255,.10);
-      border-color: rgba(255,255,255,.25);
-      color: var(--case-text);
-      backdrop-filter: blur(10px);
-    }
-    .btnx--secondary:hover{
-      background: rgba(255,255,255,.15);
-      border-color: rgba(255,255,255,.35);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0,0,0,.3);
-    }
-
-    .case-footer{
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      padding: 22px;
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid rgba(255,255,255,.1);
-      background: rgba(10, 15, 25, 0.4);
-    }
-
-    /* animação pós-loaded */
-    @keyframes fadeInUp{
-      from{ opacity: 0; transform: translateY(10px); }
-      to{ opacity: 1; transform: translateY(0); }
-    }
-
-    body .case-head,
-    body .case-kpis,
-    body .case-panel,
-    body .case-footer{
-      opacity: 0;
-      transform: translateY(10px);
-    }
-
-    body.loaded .case-head,
-    body.loaded .case-kpis,
-    body.loaded .case-panel,
-    body.loaded .case-footer{
-      animation: fadeInUp 0.6s ease-out both;
-    }
-
-    body.loaded .case-head{ animation-delay: 0.06s; }
-    body.loaded .case-kpis{ animation-delay: 0.12s; }
-    body.loaded .case-panel:nth-of-type(1){ animation-delay: 0.18s; }
-    body.loaded .case-panel:nth-of-type(2){ animation-delay: 0.24s; }
-    body.loaded .case-panel:nth-of-type(3){ animation-delay: 0.30s; }
-    body.loaded .case-panel:nth-of-type(4){ animation-delay: 0.36s; }
-    body.loaded .case-footer{ animation-delay: 0.42s; }
-
-    /* mobile-menu flash fix */
-    .mobile-menu{
-      position: fixed;
-      inset: 0;
-      transform: translateX(110%);
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: none !important;
-      will-change: transform;
-    }
-    body.loaded .mobile-menu{
-      transition: transform .28s ease, opacity .18s ease, visibility 0s linear .28s !important;
-    }
-    .mobile-menu.active{
-      transform: translateX(0);
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-    .navbar{ transform: translateX(0) !important; animation: none !important; }
-
-    @media (prefers-reduced-motion: reduce){
-      *{ animation: none !important; transition: none !important; }
-    }
-
-    @media (max-width: 1200px){
-      .case-wrap{ padding: calc(var(--nav-offset) + 14px) 18px 46px; }
-    }
-
-    /* ===== LIGHTBOX IMAGENS CASE ===== */
-    .case-lightbox{
-      position: fixed;
-      inset: 0;
-      background: rgba(5,10,18,.92);
-      backdrop-filter: blur(6px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity .25s ease, visibility .25s ease;
-    }
-    .case-lightbox.active{
-      opacity: 1;
-      visibility: visible;
-    }
-    .case-lightbox img{
-      max-width: 92vw;
-      max-height: 92vh;
-      object-fit: contain;
-      border-radius: 16px;
-      box-shadow: 0 30px 80px rgba(0,0,0,.8);
-      animation: lightboxZoom .25s ease;
-    }
-    @keyframes lightboxZoom{
-      from{ transform: scale(.96); opacity: 0; }
-      to{ transform: scale(1); opacity: 1; }
-    }
-    .case-lightbox-close{
-      position: absolute;
-      top: 22px;
-      right: 22px;
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.25);
-      background: rgba(255,255,255,.1);
-      color: #fff;
-      font-size: 22px;
-      font-weight: 900;
-      cursor: pointer;
-      backdrop-filter: blur(6px);
-      transition: background .2s ease, transform .2s ease;
-    }
-    .case-lightbox-close:hover{
-      background: rgba(255,255,255,.2);
-      transform: scale(1.05);
-    }
-  </style>
 </head>
 
 <body>
-
-  <!-- NAV (IGUAL HOME/CASE) -->
+  <!-- NAVIGATION -->
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
-      <a href="/index.html#home" class="logo">
-        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo" width="120" height="40" loading="eager">
-        <span class="logo-text">
-          <span class="logo-title">MAXPROD</span>
-          <span class="logo-sub">Soluções Empresariais</span>
-        </span>
-      </a>
-
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      <a href="#home" class="logo">
+  <img src="assets/img/logo-imagem1.png" alt="MaxProd Logo">
+  <span class="logo-text">
+    <span class="logo-title">MAXPROD</span>
+    <span class="logo-sub">Soluções Empresariais</span>
+  </span>
+</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        ☰
+      </button>
 
       <ul class="nav-menu">
-        <li><a href="/index.html#home" class="nav-link">Home</a></li>
-        <li><a href="/index.html#cases" class="nav-link active">Cases</a></li>
-        <li><a href="/index.html#methodology" class="nav-link">Metodologia</a></li>
-        <li><a href="/index.html#services" class="nav-link">Serviços</a></li>
-        <li><a href="/index.html#about" class="nav-link">Sobre</a></li>
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#cases" class="nav-link">Cases</a></li>
+        <li><a href="#methodology" class="nav-link">Metodologia</a></li>
+        <li><a href="#services" class="nav-link">Serviços</a></li>
+        <li><a href="#about" class="nav-link">Sobre</a></li>
       </ul>
 
       <div class="nav-cta">
-        <a href="/index.html#contact" class="btn btn-outline">Fale Conosco</a>
-        <a href="/index.html#calculator" class="btn btn-primary">Calcular ROI</a>
+        <a href="#contact" class="btn btn-outline">Fale Conosco</a>
+        <a href="#calculator" class="btn btn-primary">Calcular ROI</a>
       </div>
     </div>
   </nav>
 
   <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-header">
-      <a href="/index.html#home" class="logo">
-        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
-        <span class="logo-text">
-          <span class="logo-title">MAXPROD</span>
-          <span class="logo-sub">Soluções Empresariais</span>
-        </span>
-      </a>
-      <button id="closeMobileMenu" aria-label="Fechar menu">✕</button>
+     <a href="#home" class="logo">
+  <img src="assets/img/logo-imagem1.png" alt="MaxProd Logo">
+  <span class="logo-text">
+    <span class="logo-title">MAXPROD</span>
+    <span class="logo-sub">Soluções Empresariais</span>
+  </span>
+</a>
+      <button id="closeMobileMenu">✕</button>
     </div>
-
+    
     <ul class="mobile-nav">
-      <li><a href="/index.html#home">Home</a></li>
-      <li><a href="/index.html#cases">Cases</a></li>
-      <li><a href="/index.html#methodology">Metodologia</a></li>
-      <li><a href="/index.html#services">Serviços</a></li>
-      <li><a href="/index.html#about">Sobre</a></li>
-      <li><a href="/index.html#contact">Contato</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#cases">Cases</a></li>
+      <li><a href="#methodology">Metodologia</a></li>
+      <li><a href="#services">Serviços</a></li>
+      <li><a href="#about">Sobre</a></li>
+      <li><a href="#contact">Contato</a></li>
     </ul>
 
     <div style="margin-top: var(--space-32);">
-      <a href="/index.html#calculator" class="btn btn-primary" style="width:100%; margin-bottom: var(--space-16);">
+      <a href="#calculator" class="btn btn-primary" style="width: 100%; margin-bottom: var(--space-16);">
         Calcular ROI
       </a>
-      <a href="/index.html#contact" class="btn btn-secondary" style="width:100%;">
+      <a href="#contact" class="btn btn-secondary" style="width: 100%;">
         Fale Conosco
       </a>
     </div>
   </div>
 
-  <main class="case-wrap">
-
-    <div class="case-breadcrumb">
-      <a href="/index.html#cases">Cases</a>
-      <span class="separator">/</span>
-      <span>Case 4 — Eliminação de Risco de Parada (Capacidade)</span>
+  <!-- HERO SECTION -->
+  <section id="home" class="hero section">
+    <div class="hero-bg"></div>
+    
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="overline">CONSULTORIA INDUSTRIAL FOCADA EM RESULTADOS </div>
+          <h1>
+            Transformamos <span class="text-gradient">problemas complexos</span> em 
+            <span class="text-gradient">resultados mensuráveis</span>
+          </h1>
+          
+          <p class="text-lead">
+            Com experiência prática em ambos os lados da cadeia, como cliente e fornecedor, 
+            entregamos soluções que impactam diretamente seu P&L: redução de custos, aumento 
+            de produtividade e qualidade robusta.
+          </p>
+          <div class="hero-stats">
+  <div class="stat">
+    <div
+      class="stat-number"
+      data-value="35"
+      data-prefix="+R$"
+      data-suffix="M"
+    >
+      +R$35M
     </div>
-
-    <section class="case-shell">
-
-      <!-- HEADER -->
-      <div class="case-head">
-        <div class="case-tag"><span class="dot"></span> Case 4 • Capacidade • Tier 1 — Stellantis</div>
-
-        <div class="case-hero-grid">
-          <div>
-            <h1 class="case-title">
-              Quando o mix muda abruptamente, não dá tempo de “comprar capacidade”. Dá tempo de executar.
-            </h1>
-
-            <p class="case-sub">
-              Uma restrição em célula automatizada ameaçava parar a linha por falta de peças.
-              A solução foi redesenhar o processo com validação técnica completa, deslocando parte da operação
-              para uma estação manual <b>sem degradar qualidade</b> e com ganho real de capacidade.
-            </p>
-          </div>
-
-          <div class="case-hero-image" aria-label="Imagem do Case 4">
-            <!-- Se você subir /assets/img/case4-hero.png, essa imagem aparece.
-                 Caso contrário, fica o placeholder (gradiente) -->
-            <img src="/assets/img/case4-hero.png" alt="Case 4 — Capacidade / Estruturas" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='flex';">
-            <div class="ph" style="display:none;">Adicione <b>/assets/img/case4-hero.png</b><br>para exibir a arte do case</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- KPIs -->
-      <div class="case-kpis">
-        <!-- KPI 1 -->
-        <div class="case-kpi">
-          <span class="case-kpi__label">Capacidade (Jobs per Day)</span>
-          <div class="case-kpi__value">
-            <span class="kpi-before">+0</span><span class="kpi-arrow">→</span><span class="kpi-after kpi-glow">+50 JPD</span>
-          </div>
-          <div class="case-kpi__note">Incremento direto de produção (flexível ao mix)</div>
-        </div>
-
-        <!-- KPI 2 -->
-        <div class="case-kpi">
-          <span class="case-kpi__label">Hard saving anual</span>
-          <div class="case-kpi__value">
-            <span class="kpi-before">R$ 0</span><span class="kpi-arrow">→</span><span class="kpi-after kpi-glow">R$ 2,115M</span>
-          </div>
-          <div class="case-kpi__note">Base: DMC R$ 141 × 25 dias × 12 meses</div>
-        </div>
-
-        <!-- KPI 3 -->
-        <div class="case-kpi">
-          <span class="case-kpi__label">Cost avoidance (CAPEX)</span>
-          <div class="case-kpi__value">
-            <span class="kpi-after kpi-glow">~R$ 2MM</span>
-          </div>
-          <div class="case-kpi__note">Evita duplicação de célula para atender demanda</div>
-        </div>
-
-        <!-- KPI 4 -->
-        <div class="case-kpi">
-          <span class="case-kpi__label">Risco de parada</span>
-          <div class="case-kpi__value">
-            <span class="kpi-after kpi-glow">Eliminado</span>
-          </div>
-          <div class="case-kpi__note">Sem risco de ruptura por</div>
-        </div>
-      </div>
-
-      <!-- BODY -->
-      <div class="case-body">
-        <div class="case-grid">
-
-          <!-- COLUNA ESQUERDA -->
-          <div class="case-panel">
-            <h3 class="case-h" data-step="0">Contexto</h3>
-            <p class="case-p">
-              Uma mudança de cenário elevou a demanda e pressionou a capacidade instalada. O ponto crítico era que as
-              células que produziam as peças eram <b>compartilhadas entre dois produtos</b>, criando uma restrição real.
-              Quando a capacidade vira gargalo, o risco não é “perder eficiência”: é <b>parar a linha</b>.
-            </p>
-
-            <h3 class="case-h" data-step="1" style="margin-top:18px;">Problema</h3>
-            <div class="case-card">
-              <div class="case-card__kicker">Risco operacional</div>
-              <div class="case-card__big">Ruptura por capacidade insuficiente</div>
-              <p class="case-mini">
-                Gargalo em célula automatizada para estruturas, com necessidade de resposta rápida a variação de mix.
-                A solução tradicional (duplicar célula) é lenta e cara — e não resolve “para ontem”.
-              </p>
-            </div>
-
-            <p class="case-p" style="margin-top:14px;">
-              A abordagem foi estruturar o raciocínio e encontrar uma alternativa que aumentasse capacidade
-              <b>sem comprometer qualidade e funcionalidade</b>, com aprovação técnica completa.
-            </p>
-
-            <h3 class="case-h" data-step="2" style="margin-top:18px;">Solução (Proposta)</h3>
-            <p class="case-p">
-              <b>Retirar parte da operação</b> executada dentro da célula automatizada e realizar a mesma atividade em
-              uma célula manual (respot), liberando a restrição e criando flexibilidade de ajuste conforme a demanda.
-            </p>
-
-            <div class="case-media" aria-label="Diagrama da transferência de operação (Op.20 → Op.25)">
-              <img src="/assets/img/case4-transfer.png" alt="Transferência Op. 20 (robótica) para Op. 25 (respot manual)" loading="lazy"
-                   onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='flex';">
-              <div class="ph" style="display:none;">
-                Adicione <b>/assets/img/case4-transfer.png</b><br>para exibir o diagrama/print
-              </div>
-            </div>
-          </div>
-
-          <!-- COLUNA DIREITA -->
-          <div class="case-panel">
-            <h3 class="case-h" data-step="3">Execução e governança técnica</h3>
-
-            <div class="case-badges">
-              <div class="case-badge"><i></i> Aprovação: EQF → Engenharia → Qualidade</div>
-              <div class="case-badge"><i></i> Integração com fornecedor (sem custo adicional)</div>
-              <div class="case-badge"><i></i> 5PQ + mapeamento de processo</div>
-              <div class="case-badge"><i></i> Sustentação: alternativa válida até hoje</div>
-            </div>
-
-            <ul class="case-list">
-              <li><b>Mapeamento do processo</b> e estudo do sistema para localizar o ponto exato da restrição</li>
-              <li><b>Redesenho de operação</b>: transferir pontos de solda da célula robótica para respot manual</li>
-              <li><b>Validação técnica</b>: provar que não haveria degradação de qualidade/funcionalidade</li>
-              <li><b>Alinhamento multiáreas</b>: fornecedor, EQF, Eng. Produto, SCM, Qualidade Planta</li>
-            </ul>
-
-            <div class="case-card" style="margin-top:16px;">
-              <div class="case-card__kicker">Ponto sensível</div>
-              <div class="case-card__big">Aceitação do fornecedor</div>
-              <p class="case-mini">
-                A mudança exigia alterar o processo produtivo do fornecedor, destacando operador para atividade manual
-                — sem custo adicional — e com garantias de qualidade sustentadas.
-              </p>
-            </div>
-          </div>
-
-          <!-- RESULTADOS -->
-          <div class="case-panel" style="grid-column: 1 / -1;">
-            <h3 class="case-h" data-step="4">Resultados e replicabilidade</h3>
-            <p class="case-p">
-              O projeto aumentou capacidade em <b>+50 peças/dia</b> e eliminou o risco de parada produtiva,
-              com <b>hard saving anual de R$ 2.115.000</b> (base DMC R$ 141) e <b>cost avoidance ~R$ 2MM</b> ao evitar duplicação de célula.
-            </p>
-
-            <div class="case-results-grid">
-              <div>
-                <ul class="case-list">
-                  <li><b>Agilidade</b>: ajuste rápido do volume conforme variação de demanda</li>
-                  <li><b>Flexibilidade operacional</b>: solução manual absorve mudanças sem CAPEX imediato</li>
-                  <li><b>Qualidade mantida</b>: sem demérito de índices, com validação técnica</li>
-                  <li><b>Escalabilidade</b>: aplicável a outros fornecedores com gargalos em células automatizadas</li>
-                  <li><b>Proteção de marca</b>: evita atrasos de entrega e exposição negativa</li>
-                </ul>
-              </div>
-
-              <div class="case-card">
-                <div class="case-card__kicker">Tese do case</div>
-                <div class="case-card__big">Capacidade não é só máquina — é arquitetura do processo</div>
-                <p class="case-mini">
-                  Quando o mix muda, a solução vencedora é a que entrega capacidade
-                  com aprovação técnica e execução rápida.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- FOOTER DO CASE -->
-      <div class="case-footer">
-        <a class="btnx btnx--primary" href="/index.html#contact">Quero eliminar risco de parada no meu processo</a>
-        <a class="btnx btnx--secondary" href="/index.html#cases">Voltar aos Cases</a>
-      </div>
-
-    </section>
-  </main>
-
-  <!-- LIGHTBOX -->
-  <div class="case-lightbox" id="caseLightbox" aria-hidden="true">
-    <button class="case-lightbox-close" id="caseLightboxClose" aria-label="Fechar">✕</button>
-    <img id="caseLightboxImg" alt="">
+    <div class="stat-label">em savings</div>
   </div>
 
+  <div class="stat">
+    <div
+      class="stat-number"
+      data-value="20"
+      data-prefix="+"
+      data-suffix=""
+    >
+      +20
+    </div>
+    <div class="stat-label">empresas atendidas</div>
+  </div>
+
+  <div class="stat">
+    <div
+      class="stat-number"
+      data-value="70"
+      data-prefix="+"
+      data-suffix="%"
+    >
+      +70%
+    </div>
+    <div class="stat-label">produtividade</div>
+    <div class="stat-label">em média</div>
+  </div>
+</div>
+
+          <div style="display: flex; gap: var(--space-16); flex-wrap: wrap;">
+            <a href="#cases" class="btn btn-primary">
+              Ver Cases Reais
+              <span style="font-size: 20px;">→</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              Diagnosticar Meu Caso
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+  <!-- ASSESSMENT INTERATIVO - Versão Premium -->
+  <div class="visual-card" style="position: relative; overflow: hidden;">
+    
+    <!-- Glow effect -->
+    <div style="position: absolute; top: -50%; left: -50%; right: -50%; bottom: -50%; 
+                background: radial-gradient(circle at 50% 50%, rgba(0,102,255,0.15) 0%, transparent 70%);
+                z-index: 0; pointer-events: none;"></div>
+    
+    <div style="position: relative; z-index: 1;">
+      <div style="margin-bottom: var(--space-16);">
+        <div style="font-size: var(--text-sm); color: var(--brand-secondary); font-weight: 600; 
+                    margin-bottom: var(--space-8); letter-spacing: 0.05em;">
+          AUTOAVALIAÇÃO RÁPIDA
+        </div>
+        <h4 style="margin-bottom: var(--space-8); color: var(--text-primary);">
+          Seu desafio é complexo?
+        </h4>
+        <p style="font-size: var(--text-sm); margin-bottom: var(--space-16); color: var(--text-secondary);">
+          Avalie em 60 segundos se seu caso precisa de nossa abordagem especializada.
+        </p>
+      </div>
+      
+      <!-- Progress Bar -->
+      <div style="margin-bottom: var(--space-12);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-8);">
+          <span style="font-size: var(--text-xs); color: var(--text-tertiary);">
+            <strong id="assessCount" style="color: var(--text-primary);">0</strong>/5 indicadores
+          </span>
+          <span style="font-size: var(--text-xs); color: var(--brand-secondary);" id="assessHint">
+          </span>
+        </div>
+        
+        <div style="height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden;">
+          <div id="assessBarFill" style="height: 100%; width: 0%; 
+                    background: linear-gradient(90deg, var(--brand-primary), var(--brand-secondary));
+                    transition: width 0.3s ease; border-radius: 3px;"></div>
+        </div>
+      </div>
+      
+      <!-- Assessment Items -->
+      <div style="margin-bottom: var(--space-12);">
+        <div class="assess-list" style="display: grid; gap: var(--space-8);">
+          
+          <label class="assess-item" style="display: flex; align-items: flex-start; gap: var(--space-12); 
+                    padding: var(--space-12); background: rgba(255,255,255,0.03); 
+                    border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);
+                    cursor: pointer; transition: all 0.2s ease;">
+            <input type="checkbox" class="assessCheck" style="margin-top: 2px;">
+            <span style="font-size: var(--text-sm); line-height: 1.4;">
+              <strong style="color: var(--text-primary);">O problema já impacta</strong> 
+              custo, entrega ou qualidade de forma mensurável.
+            </span>
+          </label>
+          
+          <label class="assess-item" style="display: flex; align-items: flex-start; gap: var(--space-12); 
+                    padding: var(--space-12); background: rgba(255,255,255,0.03); 
+                    border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);
+                    cursor: pointer; transition: all 0.2s ease;">
+            <input type="checkbox" class="assessCheck" style="margin-top: 2px;">
+            <span style="font-size: var(--text-sm); line-height: 1.4;">
+              <strong style="color: var(--text-primary);">A causa não é óbvia</strong> 
+              ou envolve múltiplos fatores/departamentos.
+            </span>
+          </label>
+          
+          <label class="assess-item" style="display: flex; align-items: flex-start; gap: var(--space-12); 
+                    padding: var(--space-12); background: rgba(255,255,255,0.03); 
+                    border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);
+                    cursor: pointer; transition: all 0.2s ease;">
+            <input type="checkbox" class="assessCheck" style="margin-top: 2px;">
+            <span style="font-size: var(--text-sm); line-height: 1.4;">
+              <strong style="color: var(--text-primary);">Tentativas anteriores</strong> 
+              sem sustentação ou com resultados limitados.
+            </span>
+          </label>
+          
+          <label class="assess-item" style="display: flex; align-items: flex-start; gap: var(--space-12); 
+                    padding: var(--space-12); background: rgba(255,255,255,0.03); 
+                    border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);
+                    cursor: pointer; transition: all 0.2s ease;">
+            <input type="checkbox" class="assessCheck" style="margin-top: 2px;">
+            <span style="font-size: var(--text-sm); line-height: 1.4;">
+              <strong style="color: var(--text-primary);">Dependência excessiva</strong> 
+              de pessoas específicas ou rotinas não padronizadas.
+            </span>
+          </label>
+          
+          <label class="assess-item" style="display: flex; align-items: flex-start; gap: var(--space-12); 
+                    padding: var(--space-12); background: rgba(255,255,255,0.03); 
+                    border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);
+                    cursor: pointer; transition: all 0.2s ease;">
+            <input type="checkbox" class="assessCheck" style="margin-top: 2px;">
+            <span style="font-size: var(--text-sm); line-height: 1.4;">
+              <strong style="color: var(--text-primary);">O que busca é decisão e execução</strong>, 
+              não apenas diagnóstico ou relatório.
+            </span>
+          </label>
+          
+        </div>
+      </div>
+      
+      <!-- Result Message -->
+      <div id="assessMsg" style="text-align: center; margin-bottom: var(--space-12); 
+                padding: var(--space-10); background: rgba(0,102,255,0.08); 
+                border-radius: var(--radius-md); border: 1px solid rgba(0,102,255,0.15);">
+        <p style="font-size: var(--text-sm); margin: 0; color: var(--text-secondary);">
+          Se você se identificou com 2 ou + desafios, sua operação tem alto potencial de melhoria.
+        </p>
+      </div>
+      
+      <!-- CTA Buttons -->
+      <div class="assess-actions" style="display: grid; gap: var(--space-8);">
+        <a href="#contact" id="assessCta" 
+           class="btn btn-primary" 
+           style="width: 100%; justify-content: center; text-decoration: none;">
+          Solicitar diagnóstico personalizado
+        </a>
+        
+        <a href="#cases" id="assessAlt" 
+           class="btn btn-secondary" 
+           style="width: 100%; justify-content: center; text-decoration: none;">
+          Ver cases similares primeiro
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES SECTION -->
+  <section id="cases" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="overline">RESULTADOS COMPROVADOS</div>
+        <h2>Transformamos desafios em <span class="text-gradient">números concretos</span></h2>
+        <p class="text-lead" style="max-width: 800px; margin: 0 auto;">
+          Cada projeto começa com um problema complexo e termina com métricas de impacto direto 
+          no seu negócio.
+        </p>
+      </div>
+
+      <!-- NOVO LAYOUT: CTA acima do card 4 + 4 cards na mesma linha -->
+      <div class="cases-stage">
+        <div class="cases-cta-float">
+          <a href="#contact" class="btn btn-primary">
+            Quero Resultados Similares
+            <span style="font-size: 20px;">→</span>
+          </a>
+        </div>
+
+        <div class="cases-grid cases-grid--4">
+          
+          <!-- Case 1 -->
+          <div class="case-card animate-on-scroll">
+            <div class="case-image">
+              <div class="case-client">Stellantis × Tier 1</div>
+            </div>
+            <div class="case-content">
+              <div class="case-tags">
+                <span class="case-tag">Supply Chain</span>
+                <span class="case-tag">Produtividade</span>
+                <span class="case-tag">OEE</span>
+              </div>
+              <h4>Menos interrupções. Mais fluxo.</h4>
+              <p>
+                A eliminação das causas reais de instabilidade 
+                removeu o risco de ruptura no cliente final.
+              </p>
+              
+              <div class="case-results">
+                <div class="result-item">
+                  <span class="result-label">Aumento Produtividade</span>
+                  <span class="result-value">+75%</span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">Melhoria no OEE</span>
+                  <span class="result-value"> +30% </span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">Vida útil do eletrodo</span>
+                  <span class="result-value">+50%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case 2 -->
+<div class="case-card animate-on-scroll">
+  <div class="case-image">
+    <div class="case-client">Tier 1 Automotivo</div>
+  </div>
+  <div class="case-content">
+    <div class="case-tags">
+      <span class="case-tag">DOE na prática</span>
+      <span class="case-tag">Qualidade</span>
+      <span class="case-tag">Processo</span>
+    </div>
+    <h4>Refugo deixou de ser problema</h4>
+    <p>
+      Aplicação de DOE e indústria 4.0 para reduzir variação de processo.
+    </p>
+    
+    <div class="case-results">
+      <div class="result-item">
+        <span class="result-label">Refugo crítico</span>
+        <span class="result-value">0,45% → &lt;0,15%</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Retorno</span>
+        <span class="result-value">B/C ≈ 40</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Resultado</span>
+        <span class="result-value">Processo padronizado</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <!-- Case 3 -->
+<div class="case-card animate-on-scroll">
+  <div class="case-image">
+    <div class="case-client">Tier 1 Automotivo</div>
+  </div>
+  <div class="case-content">
+    <div class="case-tags">
+      <span class="case-tag">Qualidade</span>
+      <span class="case-tag">Poka-Yoke</span>
+      <span class="case-tag">Prevenção de Falhas</span>
+    </div>
+    <h4>Erro não passa mais</h4>
+    <p>
+      Aplicação de Occurrence & Release para reforçar controles de processo.
+    </p>
+    
+    <div class="case-results">
+      <div class="result-item">
+        <span class="result-label">Modos de falha</span>
+        <span class="result-value">Descobertos → controlados</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Abrangência</span>
+        <span class="result-value">63 células analisadas</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Resultado</span>
+        <span class="result-value">Defeitos contidos na origem</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <!-- Case 4 -->
+<div class="case-card animate-on-scroll">
+  <div class="case-image">
+    <div class="case-client">Fornecedor Estratégico</div>
+  </div>
+
+  <div class="case-content">
+    <div class="case-tags">
+      <span class="case-tag">Risco Operacional</span>
+      <span class="case-tag">Capacidade</span>
+      <span class="case-tag">Supply Chain</span>
+    </div>
+    <h4>Parada evitada a tempo</h4>
+    <p>
+      Redesenho de processo para eliminar risco de ruptura em cenário crítico.
+    </p>
+
+    <div class="case-results">
+      <div class="result-item">
+        <span class="result-label">Capacidade</span>
+        <span class="result-value">+50 peças/dia</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Saving anual</span>
+        <span class="result-value">R$ 2,1 MM</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Impacto</span>
+        <span class="result-value">Risco de ruptura eliminado</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+         
+
+          
+      <!-- /NOVO LAYOUT -->
+    </div>
+  </section>
+
+  <!-- METHODOLOGY SECTION -->
+  <section id="methodology" class="section" style="background: rgba(0,0,0,0.2);">
+    <div class="container">
+      <div class="section-header">
+        <div class="overline">METODOLOGIA EXCLUSIVA</div>
+        <h2>Arquitetura de <span class="text-gradient">execução garantida</span></h2>
+        <p class="text-lead" style="max-width: 800px; margin: 0 auto;">
+          Combinamos visão estratégica com execução técnica rigorosa, baseada em ferramentas 
+          de ponta e experiência prática.
+        </p>
+      </div>
+
+      <div class="methodology-steps">
+        <div class="step animate-on-scroll">
+          <div class="step-number">1</div>
+          <h5>Diagnóstico Imersivo</h5>
+          <p>
+            Análise in loco com ferramentas O&R, mapeamento de valor e identificação 
+            de causas raiz.
+          </p>
+        </div>
+
+        <div class="step animate-on-scroll">
+          <div class="step-number">2</div>
+          <h5>Plano Tático</h5>
+          <p>
+            Definição clara de KPIs, responsáveis e cronograma. Nada de relatórios 
+            genéricos, apenas ações concretas.
+          </p>
+        </div>
+
+        <div class="step animate-on-scroll">
+          <div class="step-number">3</div>
+          <h5>Implementação</h5>
+          <p>
+            Atuação lado a lado com sua equipe. Implementação de soluções que vão de poka-yokes mecânicos a sistemas IoT 
+            low-cost, conforme a necessidade do processo.
+          </p>
+        </div>
+
+        <div class="step animate-on-scroll">
+          <div class="step-number">4</div>
+          <h5>Sustentação</h5>
+          <p>
+            Padronização, treinamento e indicadores de controle. Garantimos que o 
+            resultado permaneça e evolua.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-48);">
+        <a href="#contact" class="btn btn-outline">
+          Baixar Whitepaper da Metodologia
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI CALCULATOR -->
+  <section id="calculator" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="overline">CALCULADORA DE IMPACTO</div>
+        <h2>Quanto sua <span class="text-gradient">ineficiência custa</span>?</h2>
+        <p class="text-lead" style="max-width: 800px; margin: 0 auto;">
+          Use nossa calculadora baseada em dados reais de +500 projetos para estimar 
+          o potencial de melhoria na sua operação.
+        </p>
+      </div>
+
+      <div class="visual-card" style="max-width: 600px; margin: 0 auto;">
+        <div style="margin-bottom: var(--space-32);">
+          <h4 style="margin-bottom: var(--space-16);">Simule seu potencial de economia</h4>
+          
+          <div style="margin-bottom: var(--space-24);">
+            <label style="display: block; margin-bottom: var(--space-8); font-size: var(--text-sm);">
+              Setor da sua empresa:
+            </label>
+            <select style="width: 100%; padding: var(--space-12); background: var(--space-3); 
+                         border: 1px solid var(--glass-border); border-radius: var(--radius-md);
+                         color: var(--text-primary);">
+              <option>Manufatura Automotiva</option>
+              <option>Autopeças</option>
+              <option>Metalurgia</option>
+              <option>Plásticos</option>
+              <option>Outro</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: var(--space-24);">
+            <label style="display: block; margin-bottom: var(--space-8); font-size: var(--text-sm);">
+              Faturamento anual aproximado:
+            </label>
+            <input type="range" min="1" max="100" value="50" style="width: 100%;">
+            <div style="display: flex; justify-content: space-between; font-size: var(--text-sm); 
+                      color: var(--text-tertiary); margin-top: var(--space-8);">
+              <span>R$ 1M</span>
+              <span id="revenueValue">R$ 50M</span>
+              <span>R$ 100M+</span>
+            </div>
+          </div>
+
+          <div style="margin-bottom: var(--space-24);">
+            <label style="display: block; margin-bottom: var(--space-8); font-size: var(--text-sm);">
+              Seu maior desafio atual:
+            </label>
+            <div style="display: flex; flex-wrap: wrap; gap: var(--space-8);">
+              <button class="btn" style="padding: var(--space-8) var(--space-16); font-size: var(--text-sm); 
+                                       background: var(--glass-bg);">Baixa Produtividade</button>
+              <button class="btn" style="padding: var(--space-8) var(--space-16); font-size: var(--text-sm);
+                                       background: var(--glass-bg);">Custos Elevados</button>
+              <button class="btn" style="padding: var(--space-8) var(--space-16); font-size: var(--text-sm);
+                                       background: var(--glass-bg);">Problemas Qualidade</button>
+              <button class="btn" style="padding: var(--space-8) var(--space-16); font-size: var(--text-sm);
+                                       background: var(--glass-bg);">Falta de Capacidade</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; padding: var(--space-32); background: rgba(0,102,255,0.1); 
+                   border-radius: var(--radius-lg); border: 1px solid rgba(0,102,255,0.2);">
+          <div style="font-size: var(--text-sm); color: var(--text-tertiary); margin-bottom: var(--space-8);">
+            POTENCIAL DE ECONOMIA ANUAL
+          </div><div id="roiValue" class="stat-number" style="font-size: var(--text-5xl); margin-bottom: var(--space-16);">
+  R$ 1,2M - R$ 3,5M
+</div>
+          <p style="font-size: var(--text-sm); margin-bottom: var(--space-24);">
+            Baseado em médias setoriais e casos similares. Valor exato requer diagnóstico específico.
+          </p>
+          <a href="#contact" class="btn btn-primary" style="width: 100%;">
+            Quero Um Diagnóstico Preciso
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background: rgba(0,0,0,0.2);">
+    <div class="container">
+      <div class="section-header">
+        <div class="overline">CONFIANÇA DE LÍDERES</div>
+        <h2>O que dizem <span class="text-gradient">quem já implementou</span></h2>
+      </div>
+
+      <div class="testimonial-slider">
+        <div class="testimonial">
+          <div class="testimonial-quote">
+            "A MaxProd trouxe uma visão única por ter experiência prática como cliente e fornecedor. 
+            Em 6 semanas, identificamos R$ 850k/ano em savings que estavam completamente invisíveis."
+          </div>
+          <div class="testimonial-author">Diretor Industrial</div>
+          <div class="testimonial-role">Fornecedor Tier 1 Automotivo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="contact" class="cta-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 style="color: white;">Pronto para <span class="text-gradient">transformar números</span>?</h2>
+        <p class="text-lead" style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
+          Solicite um diagnóstico inicial sem compromisso. Em 30 minutos, mapearemos seu problema, 
+          impacto potencial e próximos passos claros.
+        </p>
+      </div>
+
+      <div style="max-width: 500px; margin: var(--space-48) auto 0;">
+        <div style="display: grid; gap: var(--space-16);">
+          <a href="mailto:maxprodsolucoes@gmail.com?subject=Diagnóstico MaxProd&body=Olá,%0A%0AGostaria de agendar um diagnóstico inicial.%0A%0AMeu maior desafio atual é:%0A%0AIndique melhor horário para contato:" 
+             class="btn btn-primary" style="justify-content: center;">
+            📧 Agendar por E-mail
+          </a>
+          
+          <a href="https://wa.me/5531992793411?text=Olá!%20Gostaria%20de%20agendar%20um%20diagnóstico%20inicial%20com%20a%20MaxProd." 
+             target="_blank" 
+             class="btn" 
+             style="background: #25D366; color: white; justify-content: center;">
+            💬 WhatsApp Direto
+          </a>
+          
+          <a href="tel:+5531992793411" 
+             class="btn btn-secondary" 
+             style="justify-content: center;">
+            📞 Ligar Agora: (31) 99279-3411
+          </a>
+        </div>
+        
+        <div style="text-align: center; margin-top: var(--space-32);">
+          <p style="font-size: var(--text-sm); color: var(--text-tertiary);">
+            CNPJ: 58.892.549/0001-18<br>
+            Resposta em até 24h úteis
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">MAXPROD</div>
+          <p style="font-size: var(--text-sm); color: var(--text-tertiary); max-width: 300px;">
+            Consultoria industrial premium com foco em resultados mensuráveis e execução garantida.
+          </p>
+        </div>
+
+        <div>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Serviços</h6>
+          <ul class="footer-links">
+            <li><a href="#cases">Consultoria Industrial</a></li>
+            <li><a href="#methodology">Melhoria Contínua</a></li>
+            <li><a href="#calculator">Otimização de Custos</a></li>
+            <li><a href="#cases">Qualidade & Confiabilidade</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Empresa</h6>
+          <ul class="footer-links">
+            <li><a href="#about">Sobre Nós</a></li>
+            <li><a href="#cases">Cases</a></li>
+            <li><a href="#methodology">Metodologia</a></li>
+            <li><a href="#contact">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Conecte-se</h6>
+          <ul class="footer-links">
+            <li><a href="https://linkedin.com/company/maxprod" target="_blank">LinkedIn</a></li>
+            <li><a href="mailto:maxprodsolucoes@gmail.com">E-mail</a></li>
+            <li><a href="tel:+5531992793411">Telefone</a></li>
+            <li><a href="#contact">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="currentYear"></span> MaxProd Soluções Empresariais. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
   <script>
+    // Current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
       const navbar = document.getElementById('navbar');
-      if (!navbar) return;
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
     });
 
     // Mobile menu toggle
@@ -908,73 +714,298 @@
     const closeMobileMenu = document.getElementById('closeMobileMenu');
     const mobileMenu = document.getElementById('mobileMenu');
 
-    if (mobileMenuBtn && mobileMenu) {
-      mobileMenuBtn.addEventListener('click', function() {
-        mobileMenu.classList.add('active');
-        mobileMenu.setAttribute('aria-hidden','false');
-        document.body.style.overflow = 'hidden';
-        mobileMenuBtn.setAttribute('aria-expanded', 'true');
-      });
-    }
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
 
-    if (closeMobileMenu && mobileMenu) {
-      closeMobileMenu.addEventListener('click', function() {
+    closeMobileMenu.addEventListener('click', function() {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    // Close mobile menu when clicking outside
+    mobileMenu.addEventListener('click', function(e) {
+      if (e.target === mobileMenu) {
         mobileMenu.classList.remove('active');
-        mobileMenu.setAttribute('aria-hidden','true');
         document.body.style.overflow = '';
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-      });
-    }
+      }
+    });
 
-    if (mobileMenu) {
-      mobileMenu.addEventListener('click', function(e) {
-        if (e.target === mobileMenu) {
-          mobileMenu.classList.remove('active');
-          mobileMenu.setAttribute('aria-hidden','true');
-          document.body.style.overflow = '';
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    // Revenue calculator
+   const revenueSlider = document.querySelector('#calculator input[type="range"]');
+    const revenueValue = document.getElementById('revenueValue');
+
+    if (revenueSlider && revenueValue) {
+      revenueSlider.addEventListener('input', function() {
+        const value = parseInt(this.value);
+        let revenue = value * 1000000; // Convert to millions
+        
+        if (value >= 90) {
+          revenueValue.textContent = 'R$ 100M+';
+        } else {
+          revenueValue.textContent = `R$ ${(revenue / 1000000).toFixed(0)}M`;
         }
       });
     }
 
-    // Loaded class
-    document.addEventListener('DOMContentLoaded', function() {
-      document.body.classList.add('loaded');
-    });
-
-    // ===== Lightbox (zoom) =====
-    const lightbox = document.getElementById('caseLightbox');
-    const lightboxImg = document.getElementById('caseLightboxImg');
-    const lightboxClose = document.getElementById('caseLightboxClose');
-
-    function openLightbox(src, alt){
-      if (!lightbox || !lightboxImg) return;
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || '';
-      lightbox.classList.add('active');
-      lightbox.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
+    // Scroll animations
+    function checkScroll() {
+      const elements = document.querySelectorAll('.animate-on-scroll');
+      
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight * 0.85) {
+          element.classList.add('visible');
+        }
+      });
     }
 
-    function closeLightbox(){
-      if (!lightbox || !lightboxImg) return;
-      lightbox.classList.remove('active');
-      lightbox.setAttribute('aria-hidden','true');
-      lightboxImg.src = '';
-      document.body.style.overflow = '';
-    }
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('load', checkScroll);
 
-    document.querySelectorAll('.case-media img, .case-hero-image img').forEach(img => {
-      img.addEventListener('click', () => {
-        if (!img || !img.src || img.style.display === 'none') return;
-        openLightbox(img.src, img.alt);
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          // Close mobile menu if open
+          mobileMenu.classList.remove('active');
+          document.body.style.overflow = '';
+          
+          // Smooth scroll
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
       });
     });
 
-    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-    if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-  </script>
+    // ROI Calculator buttons
+    document.querySelectorAll('.btn[style*="background: var(--glass-bg);"]').forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Remove active state from all buttons
+        document.querySelectorAll('.btn[style*="background: var(--glass-bg);"]').forEach(b => {
+          b.style.background = 'var(--glass-bg)';
+          b.style.color = 'var(--text-primary)';
+        });
+        
+        // Set active state for clicked button
+        this.style.background = 'var(--brand-primary)';
+        this.style.color = 'white';
+        
+        // Update ROI calculation
+        updateROICalculation();
+      });
+    });
+function updateROICalculation() {
+  // This is a simplified calculation
+  const slider = document.querySelector('#calculator input[type="range"]');
+  if (!slider) return;
 
+  const revenue = parseInt(slider.value, 10);
+  const potential = revenue * 20000; // Simplified calculation
+
+  // IMPORTANTE: atualiza SOMENTE o ROI da calculadora
+  const roiElement = document.getElementById('roiValue');
+
+  if (roiElement) {
+    roiElement.textContent = `R$ ${(potential / 1000000).toFixed(1)}M`;
+  }
+}
+
+    // Initialize ROI calculation
+    if (revenueSlider) {
+      revenueSlider.addEventListener('input', updateROICalculation);
+      updateROICalculation();
+    }
+        // Assessment Interativo
+    (function(){
+      const checks = document.querySelectorAll(".assessCheck");
+      const countEl = document.getElementById("assessCount");
+      const barFill = document.getElementById("assessBarFill");
+      const msgEl = document.getElementById("assessMsg");
+      const hintEl = document.getElementById("assessHint");
+      const ctaEl = document.getElementById("assessCta");
+      const altEl = document.getElementById("assessAlt");
+      const card = document.querySelector(".visual-card");
+
+      if(!checks.length) return;
+
+      const total = checks.length;
+      let wasFit = false;
+
+      function update(){
+        const selected = [...checks].filter(c => c.checked).length;
+        countEl.textContent = selected;
+        barFill.style.width = (selected/total)*100 + "%";
+
+        const isFit = selected >= 2;
+
+        if(isFit){
+          msgEl.innerHTML = '<p style="font-size: var(--text-sm); margin: 0; color: var(--success);"><strong>✅ Alto potencial identificado!</strong> Sua operação se beneficia com nossa abordagem.</p>';
+          if(hintEl) hintEl.textContent = "✅ Alto potencial (2+)";
+          hintEl.style.color = "var(--success)";
+          ctaEl.textContent = "Solicitar diagnóstico personalizado";
+          ctaEl.href = "#contact";
+          altEl.textContent = "Ver nossa metodologia detalhada";
+          altEl.href = "#methodology";
+        }else{
+          msgEl.innerHTML = '<p style="font-size: var(--text-sm); margin: 0; color: var(--text-secondary);">Veja como transformamos diagnósticos em resultados reais em nossos cases.</p>';
+          if(hintEl) {
+            hintEl.textContent = "Selecione 2+ para alto potencial";
+            hintEl.style.color = "var(--brand-secondary)";
+          }
+          ctaEl.textContent = "Explorar cases de sucesso";
+          ctaEl.href = "#cases";
+          altEl.textContent = "Conhecer nossos serviços";
+          altEl.href = "#services";
+        }
+
+        if(isFit && !wasFit && card){
+          // Adiciona efeito visual sutil
+          card.style.boxShadow = "0 0 0 2px var(--success), var(--shadow-lg)";
+          setTimeout(() => {
+            card.style.boxShadow = "var(--shadow-lg)";
+          }, 1000);
+        }
+        wasFit = isFit;
+      }
+
+      checks.forEach(c => {
+        c.addEventListener("change", update);
+        
+        // Adiciona efeito visual ao clicar
+        c.addEventListener("change", function() {
+          const parent = this.closest('.assess-item');
+          if(this.checked) {
+            parent.style.background = "rgba(0,102,255,0.08)";
+            parent.style.borderColor = "var(--brand-primary)";
+            parent.style.transform = "translateY(-2px)";
+          } else {
+            parent.style.background = "rgba(255,255,255,0.03)";
+            parent.style.borderColor = "rgba(255,255,255,0.05)";
+            parent.style.transform = "none";
+          }
+        });
+      });
+      
+      update();
+    })();
+    /* ===============================
+   HERO STATS COUNTER + PULSE (PATCH)
+   =============================== */
+(function(){
+  const nodes = document.querySelectorAll(".hero .stat-number[data-value]");
+  if(!nodes.length) return;
+
+  const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+  function animateOne(el){
+    const raw = Number(el.getAttribute("data-value") || "0");
+    const prefix = el.getAttribute("data-prefix") || "";
+    const suffix = el.getAttribute("data-suffix") || "";
+
+    // fallback: se reduce motion, só imprime direto
+    if(prefersReduced){
+      el.textContent = `${prefix}${raw}${suffix}`;
+      return;
+    }
+
+    const duration = 1100; // ms
+    const start = performance.now();
+    const from = 0;
+
+    // garante que começa do zero visualmente
+    el.textContent = `${prefix}${from}${suffix}`;
+
+    function frame(now){
+      const p = Math.min(1, (now - start) / duration);
+      const v = Math.round(from + (raw - from) * easeOutCubic(p));
+
+      el.textContent = `${prefix}${v}${suffix}`;
+
+      if(p < 1){
+        requestAnimationFrame(frame);
+      }else{
+        // dispara pulse 1x quando termina
+        el.classList.remove("pulse"); // reset
+        // força reflow para garantir reinício da animação
+        void el.offsetWidth;
+        el.classList.add("pulse");
+        setTimeout(() => el.classList.remove("pulse"), 950);
+      }
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  // dispara quando o hero entra na tela
+  let fired = false;
+  const hero = document.querySelector("#home.hero");
+  if(!hero){
+    nodes.forEach(animateOne);
+    return;
+  }
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && !fired){
+        fired = true;
+        nodes.forEach(animateOne);
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.35 });
+
+  io.observe(hero);
+})();
+
+/* ===============================
+   NAV ACTIVE LINK (SCROLL + CLICK)
+   =============================== */
+(function () {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  function activateNavLink() {
+    let scrollY = window.pageYOffset + 120; // offset do menu fixo
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute("id");
+
+      if (
+        scrollY >= sectionTop &&
+        scrollY < sectionTop + sectionHeight
+      ) {
+        navLinks.forEach(link => link.classList.remove("active"));
+
+        const activeLink = document.querySelector(
+          `.nav-link[href="#${sectionId}"]`
+        );
+        if (activeLink) activeLink.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", activateNavLink);
+
+  // Ativa imediatamente ao carregar
+  activateNavLink();
+})();
+    
+  </script>
 </body>
 </html>
