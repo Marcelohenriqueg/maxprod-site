@@ -1234,3 +1234,10 @@
     linear-gradient(135deg, rgba(20,30,60,.55), rgba(20,30,60,.78)),
     url("/assets/img/case4-transfer.png") center / cover no-repeat;
 }
+
+
+.case-card{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
