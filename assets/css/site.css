@@ -1245,3 +1245,12 @@
 #methodology.section{
   padding-top: 24px;
 }
+
+/* Metodologia — aproxima cards do CTA */
+#methodology .methodology-steps{
+  margin-bottom: 24px;
+}
+
+#methodology .btn-outline{
+  margin-top: 0;
+}
