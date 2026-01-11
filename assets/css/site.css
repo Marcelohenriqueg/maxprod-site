@@ -1241,3 +1241,7 @@
   text-decoration: none;
   color: inherit;
 }
+
+#methodology.section{
+  padding-top: 48px;
+}
