@@ -1126,7 +1126,103 @@ function updateROICalculation() {
   // Ativa imediatamente ao carregar
   activateNavLink();
 })();
-    
+
+
+    // ===============================
+// SERVICES — Diagnóstico Sistêmico (Mapa de Decisões)
+// ===============================
+(function(){
+  const data = {
+    limite: {
+      title: "Produzindo no limite",
+      mini: "Capacidade e risco estão acoplados — o sistema “pede parada”.",
+      context: "Metas crescem mais rápido que a maturidade do processo. O sistema roda no limite, qualquer variação vira microparada, retrabalho ou quebra de fluxo. A operação parece ‘ok’ até o dia em que colapsa.",
+      immediate: "Estabilizar o fluxo: atacar as 2–3 maiores fontes de instabilidade (microparadas, setup, abastecimento, variação operacional) e criar rotina diária de contenção.",
+      structural: "Redesenhar o sistema de capacidade: balanceamento, padronização crítica, controle de variabilidade, e plano de robustez (poka-yokes, parâmetros e governança de decisão).",
+      outcome: "Capacidade previsível, menos interrupções, OEE sustentado e risco de ruptura reduzido.",
+      dot: { x: 70, y: 22 } // mais p/ direita e p/ cima (Capacidade + Risco)
+    },
+    qualidade: {
+      title: "Qualidade instável",
+      mini: "Qualidade não é ‘taxa’. É previsibilidade do processo.",
+      context: "O processo opera com variabilidade escondida: parâmetros sem janela robusta, inspeção que pega tarde e dependência de ‘quem sabe fazer’. O defeito aparece em ondas, não em tendência.",
+      immediate: "Conter escape e estabilizar: fortalecer retenção (gate/inspeção inteligente), definir critérios, e eliminar o modo de falha dominante de maior criticidade.",
+      structural: "Robustez do processo: O&R/FMEA aplicado, DOE quando necessário, e controles que previnem/retêm na origem (mecânico + digital + rotina).",
+      outcome: "Redução de variabilidade, menos retrabalho/refugo, e qualidade consistente sem “heroísmo”.",
+      dot: { x: 28, y: 50 } // esquerda (Qualidade)
+    },
+    custo: {
+      title: "Custo vazando",
+      mini: "O custo real não aparece no orçamento — aparece no desperdício diário.",
+      context: "Existe dinheiro vazando por perdas pequenas e recorrentes: consumo, refugo oculto, retrabalho, energia, tempo improdutivo e decisões locais que empurram custo para ‘fora do radar’.",
+      immediate: "Mapear e travar as sangrias: medir perdas onde ninguém mede (sucata real, horas improdutivas, consumo anormal, retrabalho) e agir nos top drivers.",
+      structural: "Sistema de custo operacional: padrão + indicadores + governança. Eliminar causas raiz (layout, método, parâmetros, abastecimento, especificação, manutenção).",
+      outcome: "Margem recuperada com evidência: custo unitário menor e previsível, sem ‘corte cego’.",
+      dot: { x: 54, y: 78 } // baixo (Custo & Margem)
+    },
+    auditoria: {
+      title: "Auditoria chegando",
+      mini: "Preparar auditoria não é ‘montar pasta’ — é fechar gaps com evidência.",
+      context: "O time sabe o que deveria existir, mas as evidências não estão consistentes: padrões, rastreabilidade, rotinas, registros e accountability. A auditoria vira estresse e correção em cima da hora.",
+      immediate: "Gap assessment rápido: identificar não conformidades prováveis, fechar os 5 gaps críticos e criar trilha de evidências (o que mostrar, onde está, quem responde).",
+      structural: "Sustentação e maturidade: padronização, treinamento, rotinas, indicadores e auditorias internas. Preparação real para IATF/VDA/cliente.",
+      outcome: "Auditoria com segurança: conformidade demonstrável, menos risco e time alinhado.",
+      dot: { x: 56, y: 34 } // centro-alto (Risco + Qualidade)
+    },
+    cronico: {
+      title: "Problema crônico",
+      mini: "Quando o problema vira ‘normal’, ele já está no sistema.",
+      context: "O problema se repete porque a solução sempre foi local: apaga incêndio, muda turno, troca pessoa. Sem leitura sistêmica, ele volta com outra cara.",
+      immediate: "Isolar o mecanismo real: definir o modo de falha, medir, travar variação e impedir recorrência com contenção inteligente.",
+      structural: "Decisão e execução: causas raiz (processo + método + gestão), ações com dono e prazo, e sustentação com treinamento + auditoria interna.",
+      outcome: "Recorrência eliminada e operação menos dependente de pessoas específicas.",
+      dot: { x: 46, y: 56 } // centro (sistêmico)
+    }
+  };
+
+  const pills = document.querySelectorAll('#services .svc-pill');
+  const dot = document.getElementById('svcDot');
+  const mapHint = document.getElementById('svcMapHint');
+
+  const title = document.getElementById('svcTitle');
+  const mini = document.getElementById('svcMini');
+  const context = document.getElementById('svcContext');
+  const immediate = document.getElementById('svcImmediate');
+  const structural = document.getElementById('svcStructural');
+  const outcome = document.getElementById('svcOutcome');
+
+  function setActive(key){
+    const d = data[key];
+    if(!d) return;
+
+    pills.forEach(p => {
+      const on = p.dataset.svc === key;
+      p.classList.toggle('is-active', on);
+      p.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+
+    title.textContent = d.title;
+    mini.textContent = d.mini;
+    context.textContent = d.context;
+    immediate.textContent = d.immediate;
+    structural.textContent = d.structural;
+    outcome.textContent = d.outcome;
+
+    // posiciona dot (% relativo ao mapa)
+    dot.style.left = d.dot.x + '%';
+    dot.style.top = d.dot.y + '%';
+
+    mapHint.textContent = "Ponto crítico destacado no mapa — do jeito que executivos decidem.";
+  }
+
+  pills.forEach(p => {
+    p.addEventListener('click', () => setActive(p.dataset.svc));
+  });
+
+  // default
+  setActive('limite');
+})();
+
   </script>
 </body>
 </html>
