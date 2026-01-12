@@ -1795,3 +1795,29 @@
     max-width: 420px;
   }
 }
+
+/* =========================================
+   SERVICES — SUBIR HEADER (PATCH 1)
+   ========================================= */
+
+#services.section{
+  padding-top: 44px !important;   /* antes normalmente é bem maior */
+  padding-bottom: 64px !important;
+}
+
+#services .section-header{
+  margin-bottom: 18px !important; /* diminui o “respiro” após o título */
+}
+
+#services .section-header .overline{
+  margin-bottom: 8px !important;
+}
+
+#services .section-header h2{
+  margin-bottom: 10px !important;
+}
+
+#services .section-header .text-lead{
+  margin-top: 0 !important;
+}
+
