@@ -1821,3 +1821,252 @@
   margin-top: 0 !important;
 }
 
+
+/* ADICIONE ESTE CÓDIGO NO FINAL DO site.css */
+
+/* =========================================
+   SERVICES - OPTIMIZED FOLD VERSION
+   ========================================= */
+
+/* 1. SECTION COMPACT */
+#services.section {
+  padding-top: 48px !important;
+  padding-bottom: 56px !important;
+}
+
+/* 2. HEADER MAIS APERTADO */
+#services .section-header {
+  margin-bottom: 22px !important;
+}
+
+#services .section-header .overline {
+  margin-bottom: 6px !important;
+}
+
+#services .section-header h2 {
+  margin-bottom: 8px !important;
+}
+
+#services .section-header .text-lead {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+}
+
+/* 3. SHELL COMPACT */
+#services .svc-shell {
+  padding: 20px !important;
+  border-radius: 24px !important;
+}
+
+/* 4. PILLS MAIS COMPACTAS */
+#services .svc-situations {
+  gap: 8px !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 4px !important;
+}
+
+#services .svc-pill {
+  padding: 8px 12px !important;
+  font-size: 0.9rem !important;
+  white-space: nowrap;
+}
+
+/* 5. GRID OTIMIZADO - MAPA MENOR, CONTEÚDO MAIOR */
+#services .svc-grid {
+  grid-template-columns: 1fr 1.2fr !important;
+  gap: 20px !important;
+  align-items: start;
+}
+
+/* 6. MAPA REDIMENSIONADO (CHAVE!) */
+#services .svc-map-wrap {
+  padding: 16px !important;
+}
+
+#services .svc-map {
+  aspect-ratio: 4/3 !important; /* ANTES: 1/1 (quadrado grande) */
+  max-height: 320px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* 7. ELEMENTOS INTERNOS DO MAPA REDUZIDOS PROPORCIONALMENTE */
+#services .svc-dot {
+  width: 14px !important;
+  height: 14px !important;
+  box-shadow: 0 0 0 4px rgba(0,212,170,0.12), 0 12px 32px rgba(0,212,170,0.15) !important;
+}
+
+#services .svc-cross {
+  width: 65% !important;
+  height: 65% !important;
+}
+
+#services .svc-axis span {
+  font-size: 0.8rem !important;
+  padding: 5px 8px !important;
+}
+
+/* 8. CONTEÚDO DO LADO DIREITO MAIS COMPACTO */
+#services .svc-solution {
+  padding: 18px !important;
+}
+
+#services .svc-solution-title {
+  font-size: 1.1rem !important;
+  margin-bottom: 6px !important;
+}
+
+#services .svc-solution-mini {
+  font-size: 0.95rem !important;
+  line-height: 1.4 !important;
+  margin-bottom: 12px !important;
+}
+
+#services .svc-rows {
+  gap: 12px !important;
+  margin-top: 14px !important;
+}
+
+#services .svc-row {
+  padding: 12px !important;
+}
+
+#services .svc-row-label {
+  font-size: 0.8rem !important;
+  margin-bottom: 4px !important;
+}
+
+#services .svc-row-text {
+  font-size: 0.92rem !important;
+  line-height: 1.45 !important;
+}
+
+/* 9. DELIVERY COMPACT */
+#services .svc-delivery {
+  margin-top: 16px !important;
+  padding-top: 14px !important;
+}
+
+#services .svc-delivery-title {
+  font-size: 0.9rem !important;
+  margin-bottom: 8px !important;
+}
+
+#services .svc-delivery-grid {
+  gap: 10px !important;
+}
+
+#services .svc-chip {
+  padding: 10px !important;
+}
+
+#services .svc-chip-top {
+  font-size: 0.9rem !important;
+  margin-bottom: 4px !important;
+}
+
+#services .svc-chip-sub {
+  font-size: 0.85rem !important;
+  line-height: 1.35 !important;
+}
+
+/* 10. CTA COMPACT */
+#services .svc-cta {
+  margin-top: 16px !important;
+  gap: 10px !important;
+}
+
+#services .svc-cta .btn {
+  padding: 10px 16px !important;
+  font-size: 0.95rem !important;
+}
+
+#services .svc-footnote {
+  font-size: 0.82rem !important;
+  line-height: 1.4 !important;
+  margin-top: 6px !important;
+}
+
+/* 11. CONTEXTO ABAIXO DO MAPA */
+#services .svc-context {
+  margin-top: 14px !important;
+  padding-top: 12px !important;
+}
+
+#services .svc-context-kicker {
+  font-size: 0.8rem !important;
+  margin-bottom: 6px !important;
+}
+
+#services .svc-context-text {
+  font-size: 0.9rem !important;
+  line-height: 1.45 !important;
+}
+
+/* 12. RESPONSIVIDADE OTIMIZADA */
+@media (max-width: 1024px) {
+  #services .svc-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  
+  #services .svc-map {
+    max-height: 280px !important;
+    aspect-ratio: 16/9 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #services.section {
+    padding-top: 40px !important;
+    padding-bottom: 48px !important;
+  }
+  
+  #services .svc-shell {
+    padding: 16px !important;
+  }
+  
+  #services .svc-situations {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  
+  #services .svc-map {
+    max-height: 240px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #services .svc-pill {
+    font-size: 0.85rem !important;
+    padding: 6px 10px !important;
+  }
+  
+  #services .svc-map {
+    max-height: 200px !important;
+  }
+  
+  #services .svc-axis span {
+    font-size: 0.75rem !important;
+    padding: 4px 6px !important;
+  }
+}
+
+/* 13. POSIÇÕES DO DOT AJUSTADAS (proporcional ao novo tamanho) */
+#services .svc-dot[style*="left: 70%"] { left: 68% !important; }
+#services .svc-dot[style*="top: 22%"] { top: 20% !important; }
+
+#services .svc-dot[style*="left: 28%"] { left: 26% !important; }
+#services .svc-dot[style*="top: 50%"] { top: 48% !important; }
+
+#services .svc-dot[style*="left: 54%"] { left: 52% !important; }
+#services .svc-dot[style*="top: 78%"] { top: 76% !important; }
+
+#services .svc-dot[style*="left: 56%"] { left: 54% !important; }
+#services .svc-dot[style*="top: 34%"] { top: 32% !important; }
+
+#services .svc-dot[style*="left: 46%"] { left: 44% !important; }
+#services .svc-dot[style*="top: 56%"] { top: 54% !important; }
