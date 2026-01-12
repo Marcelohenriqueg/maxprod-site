@@ -1254,3 +1254,89 @@
 #methodology .btn-outline{
   margin-top: 0px;
 }
+
+/* ===============================
+   PATCH 2+3+4 — DOBRA + ESPAÇAMENTOS (HOME)
+   2) reduzir padding top da metodologia
+   3) reduzir distância entre cards e CTA
+   4) trazer metodologia "pra dobra" (compactar)
+   =============================== */
+
+/* ---------- (3) CASES: CTA mais colado no grid + grid mais compacto ---------- */
+.cases-stage{
+  margin-top: var(--space-16) !important;
+}
+
+.cases-cta-float{
+  margin-bottom: var(--space-12) !important; /* aproxima CTA do grid */
+}
+
+/* Se seu layout usa position absolute/fixed no CTA, isso evita "flutuar" alto demais */
+.cases-cta-float .btn{
+  padding: 12px 18px !important;
+}
+
+/* Compacta o grid (distância entre cards) */
+.cases-grid.cases-grid--4{
+  gap: var(--space-16) !important; /* era maior; reduz o "respiro" */
+}
+
+/* ---------- (2) METODOLOGIA: reduzir padding top (e geral) ---------- */
+#methodology.section{
+  padding-top: 64px !important;   /* sobe a seção */
+  padding-bottom: 72px !important;
+}
+
+/* ---------- (4) METODOLOGIA NA DOBRA: compactar header + steps + CTA ---------- */
+#methodology .section-header{
+  margin-bottom: var(--space-20) !important;
+}
+
+#methodology .section-header .overline{
+  margin-bottom: 10px !important;
+}
+
+#methodology .section-header h2{
+  margin-bottom: 10px !important;
+}
+
+#methodology .section-header .text-lead{
+  margin-top: 0 !important;
+  line-height: 1.45 !important;
+}
+
+/* Steps mais compactos */
+#methodology .methodology-steps{
+  gap: var(--space-16) !important;
+}
+
+#methodology .methodology-steps .step{
+  padding: var(--space-16) !important;
+}
+
+#methodology .methodology-steps .step .step-number{
+  width: 44px !important;
+  height: 44px !important;
+  font-size: 16px !important;
+  margin-bottom: 10px !important;
+}
+
+/* CTA do whitepaper sobe (tira aquele “vazio” grande) */
+#methodology .container > div[style*="margin-top: var(--space-48)"]{
+  margin-top: var(--space-20) !important;
+}
+
+/* Mobile: ainda mais compacto pra realmente caber na dobra */
+@media (max-width: 768px){
+  #methodology.section{
+    padding-top: 48px !important;
+    padding-bottom: 56px !important;
+  }
+  #methodology .section-header{
+    margin-bottom: var(--space-16) !important;
+  }
+  #methodology .methodology-steps .step{
+    padding: var(--space-14) !important;
+  }
+}
+
