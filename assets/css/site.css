@@ -1637,3 +1637,85 @@
   #services .svc-grid{ grid-template-columns: 1fr; }
   #services .svc-delivery-grid{ grid-template-columns: 1fr; }
 }
+
+
+/* ===============================
+   SERVICES — DOBRA PREMIUM (sem cortar texto)
+   Cole no FINAL do site.css
+   =============================== */
+
+:root{
+  --nav-h: 88px; /* ajuste fino: 80/88/96 conforme seu navbar real */
+}
+
+/* 1) Alvo de dobra (não corta) */
+#services.section{
+  min-height: calc(100svh - var(--nav-h));
+  padding-top: 24px !important;
+  padding-bottom: 34px !important;
+}
+
+/* 2) Header mais compacto (sem mexer no texto) */
+#services .section-header{
+  margin-bottom: 16px !important;
+}
+#services .section-header .overline{ margin-bottom: 6px !important; }
+#services .section-header h2{ margin-bottom: 10px !important; }
+#services .section-header .text-lead{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* 3) “Card” principal mais enxuto */
+#services .svc-shell{
+  padding: 18px !important; /* era 32 */
+}
+
+/* 4) Pills ocupam menos vertical */
+#services .svc-situations{
+  margin-bottom: 12px !important;
+  gap: 8px !important;
+}
+#services .svc-pill{
+  padding: 9px 12px !important;
+}
+
+/* 5) Grid: menos gap, mais “cheio” */
+#services .svc-grid{
+  gap: 14px !important;
+}
+
+/* 6) Map card e Solution card: menos padding */
+#services .svc-map-wrap,
+#services .svc-solution{
+  padding: 16px !important;
+}
+
+/* 7) Mapa: ocupa mais do card (mata sobra lateral) */
+#services .svc-map{
+  max-width: 520px !important; /* deixa crescer dentro do card */
+}
+
+/* 8) Blocos internos: compactar “ar” */
+#services .svc-rows{ gap: 10px !important; margin-top: 10px !important; }
+#services .svc-row{ padding: 12px !important; }
+#services .svc-row-label{ margin-bottom: 6px !important; }
+
+/* 9) Contexto e Delivery: menos separação */
+#services .svc-context{
+  margin-top: 10px !important;
+  padding-top: 10px !important;
+}
+#services .svc-delivery{
+  margin-top: 12px !important;
+  padding-top: 10px !important;
+}
+#services .svc-delivery-title{ margin-bottom: 8px !important; }
+#services .svc-delivery-grid{ gap: 10px !important; }
+#services .svc-chip{ padding: 12px !important; }
+
+/* 10) CTAs: compactar */
+#services .svc-cta{ margin-top: 12px !important; gap: 8px !important; }
+#services .svc-cta .btn{ padding: 10px 14px !important; }
+#services .svc-footnote{ margin-top: 4px !important; }
+
