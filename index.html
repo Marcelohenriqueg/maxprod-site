@@ -507,7 +507,7 @@
       <div class="overline">SERVIÇOS</div>
       <h2>Diagnóstico <span class="text-gradient">sistêmico</span> da operação</h2>
       <p class="text-lead" style="max-width: 860px; margin: 0 auto;">
-        Em vez de “catálogo de serviços”, você escolhe uma situação real — e nós mostramos o ponto crítico,
+        Em vez de "catálogo de serviços", você escolhe uma situação real — e nós mostramos o ponto crítico,
         o porquê sistêmico e o que muda com intervenção certa.
       </p>
     </div>
@@ -562,7 +562,7 @@
         <div class="svc-solution glass">
           <div class="svc-solution-head">
             <div class="svc-solution-title" id="svcTitle">Produzindo no limite</div>
-            <div class="svc-solution-mini" id="svcMini">Capacidade e risco estão acoplados — o sistema “pede parada”.</div>
+            <div class="svc-solution-mini" id="svcMini">Capacidade e risco estão acoplados — o sistema "pede parada".</div>
           </div>
 
           <div class="svc-rows">
@@ -584,20 +584,9 @@
 
           <!-- Formas de entrega (inclui treinamentos e auditoria) -->
           <div class="svc-delivery">
-            <div class="svc-delivery-title">Como entregamos:</div>
-            <div class="svc-delivery-grid">
-              <div class="svc-chip">
-                <div class="svc-chip-top">Consultoria in loco</div>
-                <div class="svc-chip-sub">Diagnóstico + plano tático + execução com o time.</div>
-              </div>
-              <div class="svc-chip">
-                <div class="svc-chip-top">Treinamentos</div>
-                <div class="svc-chip-sub">Formação prática + padronização + sustentação.</div>
-              </div>
-              <div class="svc-chip">
-                <div class="svc-chip-top">Preparação para auditorias</div>
-                <div class="svc-chip-sub">Gap assessment + plano + evidências e rotina.</div>
-              </div>
+            <div class="svc-delivery-title" id="svcDeliveryTitle">Como entregamos:</div>
+            <div class="svc-delivery-grid" id="svcDeliveryGrid">
+              <!-- Os chips serão gerados dinamicamente pelo JavaScript -->
             </div>
           </div>
 
@@ -1125,54 +1114,99 @@ function updateROICalculation() {
 
 
     // ===============================
-// SERVICES — Diagnóstico Sistêmico (Mapa de Decisões)
+// SERVICES — Diagnóstico Sistêmico (Mapa de Decisões) - VERSÃO ATUALIZADA
 // ===============================
 (function(){
   const data = {
     limite: {
       title: "Produzindo no limite",
-      mini: "Capacidade e risco estão acoplados — o sistema “pede parada”.",
-      context: "Metas crescem mais rápido que a maturidade do processo. O sistema roda no limite, qualquer variação vira microparada, retrabalho ou quebra de fluxo. A operação parece ‘ok’ até o dia em que colapsa.",
+      mini: "Capacidade e risco estão acoplados — o sistema 'pede parada'.",
+      context: "Metas crescem mais rápido que a maturidade do processo. O sistema roda no limite, qualquer variação vira microparada, retrabalho ou quebra de fluxo. A operação parece 'ok' até o dia em que colapsa.",
       immediate: "Estabilizar o fluxo: atacar as 2–3 maiores fontes de instabilidade (microparadas, setup, abastecimento, variação operacional) e criar rotina diária de contenção.",
       structural: "Redesenhar o sistema de capacidade: balanceamento, padronização crítica, controle de variabilidade, e plano de robustez (poka-yokes, parâmetros e governança de decisão).",
       outcome: "Capacidade previsível, menos interrupções, OEE sustentado e risco de ruptura reduzido.",
-      dot: { x: 70, y: 22 } // mais p/ direita e p/ cima (Capacidade + Risco)
+      dot: { x: 70, y: 22 },
+      // CONTEÚDO PARA "COMO ENTREGAMOS"
+      deliveryTitle: "Como entregamos:",
+      deliveryChips: [
+        { top: "Consultoria in loco", sub: "Diagnóstico + plano tático + execução com o time." },
+        { top: "Treinamentos específicos", sub: "Capacitação em otimização de capacidade e gestão de risco." },
+        { top: "Plano de contingência", sub: "Desenvolvimento de planos de ação para cenários críticos." }
+      ],
+      ctaPrimary: "Solucionar este ponto crítico",
+      ctaSecondary: "Estimar impacto (ROI)"
     },
     qualidade: {
       title: "Qualidade instável",
-      mini: "Qualidade não é ‘taxa’. É previsibilidade do processo.",
-      context: "O processo opera com variabilidade escondida: parâmetros sem janela robusta, inspeção que pega tarde e dependência de ‘quem sabe fazer’. O defeito aparece em ondas, não em tendência.",
+      mini: "Qualidade não é 'taxa'. É previsibilidade do processo.",
+      context: "O processo opera com variabilidade escondida: parâmetros sem janela robusta, inspeção que pega tarde e dependência de 'quem sabe fazer'. O defeito aparece em ondas, não em tendência.",
       immediate: "Conter escape e estabilizar: fortalecer retenção (gate/inspeção inteligente), definir critérios, e eliminar o modo de falha dominante de maior criticidade.",
       structural: "Robustez do processo: O&R/FMEA aplicado, DOE quando necessário, e controles que previnem/retêm na origem (mecânico + digital + rotina).",
-      outcome: "Redução de variabilidade, menos retrabalho/refugo, e qualidade consistente sem “heroísmo”.",
-      dot: { x: 28, y: 50 } // esquerda (Qualidade)
+      outcome: "Redução de variabilidade, menos retrabalho/refugo, e qualidade consistente sem 'heroísmo'.",
+      dot: { x: 28, y: 50 },
+      // CONTEÚDO PARA "COMO ENTREGAMOS"
+      deliveryTitle: "Como entregamos:",
+      deliveryChips: [
+        { top: "Consultoria em qualidade", sub: "Aplicação prática de O&R/FMEA com equipe." },
+        { top: "Treinamentos técnicos", sub: "Capacitação em controle estatístico e análise de dados." },
+        { top: "Auditoria de processo", sub: "Avaliação e correção de desvios na rotina." }
+      ],
+      ctaPrimary: "Solucionar este ponto crítico",
+      ctaSecondary: "Estimar impacto (ROI)"
     },
     custo: {
       title: "Custo vazando",
       mini: "O custo real não aparece no orçamento — aparece no desperdício diário.",
-      context: "Existe dinheiro vazando por perdas pequenas e recorrentes: consumo, refugo oculto, retrabalho, energia, tempo improdutivo e decisões locais que empurram custo para ‘fora do radar’.",
+      context: "Existe dinheiro vazando por perdas pequenas e recorrentes: consumo, refugo oculto, retrabalho, energia, tempo improdutivo e decisões locais que empurram custo para 'fora do radar'.",
       immediate: "Mapear e travar as sangrias: medir perdas onde ninguém mede (sucata real, horas improdutivas, consumo anormal, retrabalho) e agir nos top drivers.",
       structural: "Sistema de custo operacional: padrão + indicadores + governança. Eliminar causas raiz (layout, método, parâmetros, abastecimento, especificação, manutenção).",
-      outcome: "Margem recuperada com evidência: custo unitário menor e previsível, sem ‘corte cego’.",
-      dot: { x: 54, y: 78 } // baixo (Custo & Margem)
+      outcome: "Margem recuperada com evidência: custo unitário menor e previsível, sem 'corte cego'.",
+      dot: { x: 54, y: 78 },
+      // CONTEÚDO PARA "COMO ENTREGAMOS"
+      deliveryTitle: "Como entregamos:",
+      deliveryChips: [
+        { top: "Diagnóstico de custos", sub: "Mapeamento completo de perdas e oportunidades." },
+        { top: "Otimização de processos", sub: "Redesenho para eliminar desperdícios." },
+        { top: "Gestão de indicadores", sub: "Implementação de KPIs de custo operacional." }
+      ],
+      ctaPrimary: "Solucionar este ponto crítico",
+      ctaSecondary: "Estimar impacto (ROI)"
     },
     auditoria: {
       title: "Auditoria chegando",
-      mini: "Preparar auditoria não é ‘montar pasta’ — é fechar gaps com evidência.",
+      mini: "Preparar auditoria não é 'montar pasta' — é fechar gaps com evidência.",
       context: "O time sabe o que deveria existir, mas as evidências não estão consistentes: padrões, rastreabilidade, rotinas, registros e accountability. A auditoria vira estresse e correção em cima da hora.",
       immediate: "Gap assessment rápido: identificar não conformidades prováveis, fechar os 5 gaps críticos e criar trilha de evidências (o que mostrar, onde está, quem responde).",
       structural: "Sustentação e maturidade: padronização, treinamento, rotinas, indicadores e auditorias internas. Preparação real para ISO/IATF/VDA/Auditoria do cliente.",
       outcome: "Auditoria com segurança: conformidade demonstrável, menos risco e time alinhado.",
-      dot: { x: 56, y: 34 } // centro-alto (Risco + Qualidade)
+      dot: { x: 56, y: 34 },
+      // CONTEÚDO PARA "COMO ENTREGAMOS"
+      deliveryTitle: "Como entregamos:",
+      deliveryChips: [
+        { top: "Consultoria in loco", sub: "Diagnóstico + plano tático + execução com o time." },
+        { top: "Treinamentos", sub: "Formação prática + padronização + sustentação." },
+        { top: "Preparação para auditorias", sub: "Gap assessment + plano + evidências e rotina." }
+      ],
+      ctaPrimary: "Solucionar este ponto crítico",
+      ctaSecondary: "Estimar impacto (ROI)"
     },
     cronico: {
       title: "Problema crônico",
-      mini: "Quando o problema vira ‘normal’, ele já está no sistema.",
+      mini: "Quando o problema vira 'normal', ele já está no sistema.",
       context: "O problema se repete porque a solução sempre foi local: apaga incêndio, muda turno, troca pessoa. Sem leitura sistêmica, ele volta com outra cara.",
       immediate: "Isolar o mecanismo real: definir o modo de falha, medir, travar variação e impedir recorrência com contenção inteligente.",
       structural: "Decisão e execução: causas raiz (processo + método + gestão), ações com dono e prazo, e sustentação com treinamento + auditoria interna.",
       outcome: "Recorrência eliminada e operação menos dependente de pessoas específicas.",
-      dot: { x: 46, y: 56 } // centro (sistêmico)
+      dot: { x: 46, y: 56 },
+      // CONTEÚDO PARA "COMO ENTREGAMOS"
+      deliveryTitle: "Como entregamos:",
+      deliveryChips: [
+        { top: "Análise de causa raiz", sub: "Investigação profunda e sistemática do problema." },
+        { top: "Implementação de soluções", sub: "Ações corretivas com acompanhamento." },
+        { top: "Sustentação", sub: "Monitoramento e ajustes para evitar recorrência." }
+      ],
+      ctaPrimary: "Solucionar este ponto crítico",
+      ctaSecondary: "Estimar impacto (ROI)"
     }
   };
 
@@ -1186,6 +1220,12 @@ function updateROICalculation() {
   const immediate = document.getElementById('svcImmediate');
   const structural = document.getElementById('svcStructural');
   const outcome = document.getElementById('svcOutcome');
+  
+  // NOVOS ELEMENTOS PARA "COMO ENTREGAMOS"
+  const deliveryTitle = document.getElementById('svcDeliveryTitle');
+  const deliveryGrid = document.getElementById('svcDeliveryGrid');
+  const primaryCta = document.getElementById('svcPrimaryCta');
+  const secondaryCta = document.getElementById('svcSecondaryCta');
 
   function setActive(key){
     const d = data[key];
@@ -1207,6 +1247,35 @@ function updateROICalculation() {
     // posiciona dot (% relativo ao mapa)
     dot.style.left = d.dot.x + '%';
     dot.style.top = d.dot.y + '%';
+
+    // ATUALIZA A SEÇÃO "COMO ENTREGAMOS"
+    if (deliveryTitle && d.deliveryTitle) {
+      deliveryTitle.textContent = d.deliveryTitle;
+    }
+
+    if (deliveryGrid && d.deliveryChips) {
+      // Limpa o conteúdo atual
+      deliveryGrid.innerHTML = '';
+      
+      // Adiciona os novos chips
+      d.deliveryChips.forEach(chip => {
+        const chipElement = document.createElement('div');
+        chipElement.className = 'svc-chip';
+        chipElement.innerHTML = `
+          <div class="svc-chip-top">${chip.top}</div>
+          <div class="svc-chip-sub">${chip.sub}</div>
+        `;
+        deliveryGrid.appendChild(chipElement);
+      });
+    }
+
+    if (primaryCta && d.ctaPrimary) {
+      primaryCta.textContent = d.ctaPrimary + ' <span style="font-size: 20px;">→</span>';
+    }
+
+    if (secondaryCta && d.ctaSecondary) {
+      secondaryCta.textContent = d.ctaSecondary;
+    }
 
     mapHint.textContent = "Ponto crítico destacado no mapa.";
   }
