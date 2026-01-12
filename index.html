@@ -504,6 +504,127 @@
     </div>
   </section>
 
+<!-- SERVICES (DIAGNÓSTICO SISTÊMICO) -->
+<section id="services" class="section" style="background: rgba(0,0,0,0.08);">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">SERVIÇOS</div>
+      <h2>Diagnóstico <span class="text-gradient">sistêmico</span> da operação</h2>
+      <p class="text-lead" style="max-width: 860px; margin: 0 auto;">
+        Em vez de “catálogo de serviços”, você escolhe uma situação real — e nós mostramos o ponto crítico,
+        o porquê sistêmico e o que muda com intervenção certa.
+      </p>
+    </div>
+
+    <div class="svc-shell glass">
+      <!-- Situações -->
+      <div class="svc-situations" role="tablist" aria-label="Situações da operação">
+        <button class="svc-pill is-active" data-svc="limite" role="tab" aria-selected="true">
+          Produzindo no limite
+        </button>
+        <button class="svc-pill" data-svc="qualidade" role="tab" aria-selected="false">
+          Qualidade instável
+        </button>
+        <button class="svc-pill" data-svc="custo" role="tab" aria-selected="false">
+          Custo vazando
+        </button>
+        <button class="svc-pill" data-svc="auditoria" role="tab" aria-selected="false">
+          Auditoria chegando
+        </button>
+        <button class="svc-pill" data-svc="cronico" role="tab" aria-selected="false">
+          Problema crônico
+        </button>
+      </div>
+
+      <div class="svc-grid">
+        <!-- MAPA -->
+        <div class="svc-map-wrap">
+          <div class="svc-map-head">
+            <div class="svc-map-title">Mapa de decisões</div>
+            <div class="svc-map-sub" id="svcMapHint">Clique em uma situação para ver o ponto crítico.</div>
+          </div>
+
+          <div class="svc-map" aria-label="Mapa sistêmico">
+            <div class="svc-axis axis-top"><span>Risco &amp; Ruptura</span></div>
+            <div class="svc-axis axis-right"><span>Capacidade</span></div>
+            <div class="svc-axis axis-bottom"><span>Custo &amp; Margem</span></div>
+            <div class="svc-axis axis-left"><span>Qualidade</span></div>
+
+            <div class="svc-center">
+              <div class="svc-dot" id="svcDot" aria-hidden="true"></div>
+              <div class="svc-cross" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="svc-context">
+            <div class="svc-context-kicker">Esta situação geralmente surge quando:</div>
+            <p class="svc-context-text" id="svcContext"></p>
+          </div>
+        </div>
+
+        <!-- SOLUÇÕES -->
+        <div class="svc-solution glass">
+          <div class="svc-solution-head">
+            <div class="svc-solution-title" id="svcTitle">Produzindo no limite</div>
+            <div class="svc-solution-mini" id="svcMini">Capacidade e risco estão acoplados — o sistema “pede parada”.</div>
+          </div>
+
+          <div class="svc-rows">
+            <div class="svc-row">
+              <div class="svc-row-label">Ação imediata</div>
+              <div class="svc-row-text" id="svcImmediate"></div>
+            </div>
+
+            <div class="svc-row">
+              <div class="svc-row-label">Solução estrutural</div>
+              <div class="svc-row-text" id="svcStructural"></div>
+            </div>
+
+            <div class="svc-row">
+              <div class="svc-row-label">Resultado esperado</div>
+              <div class="svc-row-text" id="svcOutcome"></div>
+            </div>
+          </div>
+
+          <!-- Formas de entrega (inclui treinamentos e auditoria) -->
+          <div class="svc-delivery">
+            <div class="svc-delivery-title">Como entregamos</div>
+            <div class="svc-delivery-grid">
+              <div class="svc-chip">
+                <div class="svc-chip-top">Consultoria in loco</div>
+                <div class="svc-chip-sub">Diagnóstico + plano tático + execução com o time.</div>
+              </div>
+              <div class="svc-chip">
+                <div class="svc-chip-top">Treinamentos</div>
+                <div class="svc-chip-sub">Formação prática + padronização + sustentação.</div>
+              </div>
+              <div class="svc-chip">
+                <div class="svc-chip-top">Preparação para auditorias</div>
+                <div class="svc-chip-sub">Gap assessment + plano + evidências e rotina.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="svc-cta">
+            <a href="#contact" class="btn btn-primary" id="svcPrimaryCta">
+              Solucionar este ponto crítico <span style="font-size: 20px;">→</span>
+            </a>
+            <a href="#calculator" class="btn btn-secondary" id="svcSecondaryCta">
+              Estimar impacto (ROI)
+            </a>
+
+            <div class="svc-footnote">
+              Sem diagnóstico genérico: mapeamos impacto em custo, qualidade, capacidade e risco — e deixamos próximos passos claros.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+        
   <!-- ROI CALCULATOR -->
   <section id="calculator" class="section">
     <div class="container">
