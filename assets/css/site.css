@@ -2070,3 +2070,48 @@
 
 #services .svc-dot[style*="left: 46%"] { left: 44% !important; }
 #services .svc-dot[style*="top: 56%"] { top: 54% !important; }
+
+
+/* =========================================
+   SERVICES - MAP HOVER FEEDBACK (MICRO-INTERACTION)
+   ========================================= */
+
+/* 1. MAPA COM TRANSITION SUAVE */
+#services .svc-map {
+  transition: all var(--transition-base);
+  transition-property: box-shadow, border-color;
+}
+
+/* 2. QUANDO QUALQUER PILL RECEBE HOVER (exceto a ativa) */
+#services .svc-pill:not(.is-active):hover ~ .svc-grid .svc-map,
+#services .svc-pill:not(.is-active):hover ~ .svc-grid .svc-map {
+  border-color: rgba(0, 102, 255, 0.25) !important;
+  box-shadow: 
+    0 0 0 1px rgba(0, 102, 255, 0.15),
+    inset 0 0 40px rgba(0, 102, 255, 0.03),
+    var(--shadow-md) !important;
+}
+
+/* 3. EFEITO ESPECÍFICO NO DOT (opcional - premium extra) */
+#services .svc-pill:not(.is-active):hover ~ .svc-grid .svc-dot {
+  filter: brightness(1.1) saturate(1.2);
+  box-shadow: 
+    0 0 0 6px rgba(0, 212, 170, 0.15),
+    0 0 20px rgba(0, 212, 170, 0.25),
+    0 18px 44px rgba(0, 212, 170, 0.2) !important;
+}
+
+/* 4. PILL ATIVA TEM EFEITO DIFERENCIADO (reforça seleção) */
+#services .svc-pill.is-active ~ .svc-grid .svc-map {
+  border-color: rgba(0, 102, 255, 0.35) !important;
+  box-shadow: 
+    inset 0 0 50px rgba(0, 102, 255, 0.05),
+    var(--shadow-md) !important;
+}
+
+/* 5. RESPONSIVE: só aplica em desktop (mouse) */
+@media (hover: hover) and (pointer: fine) {
+  #services .svc-pill:not(.is-active):hover {
+    transform: translateY(-1px) scale(1.02);
+  }
+}
