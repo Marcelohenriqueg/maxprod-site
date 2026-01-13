@@ -1968,3 +1968,12 @@
     padding: 4px 8px !important;
   }
 }
+
+/* SERVICES — 1px visual sem alterar layout */
+#services .svc-map-wrap,
+#services .svc-solution,
+#services .svc-chip,
+#services .svc-row{
+  outline: 1px solid rgba(255,255,255,0.08);
+  outline-offset: -1px;
+}
