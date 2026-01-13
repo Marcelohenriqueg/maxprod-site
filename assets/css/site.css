@@ -2042,14 +2042,18 @@
 
 /* CARD 1 - AÇÃO IMEDIATA (Urgência) */
 #services .svc-row:nth-child(1) {
-  border-left: 3px solid var(--brand-primary); /* #0066FF */
-  background: rgba(0, 102, 255, 0.03);
-}
-
-/* CARD 2 - SOLUÇÃO ESTRUTURAL (Estratégia/Transição) */
-#services .svc-row:nth-child(2) {
   border-left: 3px solid #FF6B35; /* Laranja da paleta */
   background: rgba(255, 107, 53, 0.03);
+
+}
+
+#services .svc-row:nth-child(2) {
+  border-left: 3px solid var(--warning); /* #FFB224 - AMARELO */
+  background: linear-gradient(
+    90deg,
+    rgba(255, 178, 36, 0.06) 0%,    /* Mais visível */
+    rgba(255, 178, 36, 0.01) 100%
+  );
 }
 
 /* CARD 3 - RESULTADO ESPERADO (Sucesso/Conclusão) */
