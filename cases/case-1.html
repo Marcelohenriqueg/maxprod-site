@@ -696,7 +696,22 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 30px rgba(0,0,0,.3);
     }
-
+/* =========================================================
+   CONFIDENCIALIDADE (substitui DOWNLOAD)
+   ========================================================= */
+.case-confidential{
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03);
+  color: rgba(255,255,255,.72);
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+    
     /* =========================================================
        FOOTER DO CASE
        ========================================================= */
@@ -1083,38 +1098,10 @@
             </div>
           </div>
 
-          <!-- DOWNLOAD SECTION (corrigido: sem div duplicada) -->
-          <div class="case-download">
-            <div class="case-download-grid">
-              <div class="case-download__content">
-                <div class="case-download__label">MATERIAL COMPLETO</div>
-                <h3>Baixar o case completo (PDF)</h3>
-                <p>Para ver gráficos, evidências e detalhes técnicos, baixe a versão completa do material.</p>
-              </div>
-
-              <div class="case-download-right">
-                <div class="case-download-image">
-                  <img src="/assets/img/download.png"
-                       alt="download"
-                       loading="lazy">
-                </div>
-
-                <div class="case-download__actions">
-                  <a class="btn btn--primary"
-                     href="/assets/cases/case-1-aumento-oee-maxion.pdf"
-                     download
-                     target="_blank"
-                     rel="noopener">
-                    Baixar PDF do Case
-                  </a>
-
-                  <a class="btn btn--secondary" href="/index.html#cases">
-                    Ver Outros Cases
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- CONFIDENCIALIDADE (sem download público) -->
+<div class="case-confidential">
+  Projetos conduzidos sob confidencialidade, com foco em impacto real no processo produtivo.
+</div>
 
         </div>
       </div>
