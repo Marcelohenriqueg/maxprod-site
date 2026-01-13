@@ -1719,3 +1719,235 @@
 #services .svc-cta .btn{ padding: 10px 14px !important; }
 #services .svc-footnote{ margin-top: 4px !important; }
 
+/* ===============================
+   SERVICES - DOBRA ULTRA COMPACTA (100% visível)
+   =============================== */
+
+/* 1) Container principal otimizado */
+#services.section {
+  min-height: auto !important;
+  padding-top: 20px !important;
+  padding-bottom: 24px !important;
+  scroll-margin-top: 80px;
+}
+
+/* 2) Header super compacto */
+#services .section-header {
+  margin-bottom: 12px !important;
+}
+
+#services .section-header .overline { 
+  margin-bottom: 4px !important;
+  font-size: var(--text-xs) !important;
+}
+
+#services .section-header h2 { 
+  margin-bottom: 6px !important;
+  font-size: var(--text-3xl) !important;
+  line-height: 1.1 !important;
+}
+
+#services .section-header .text-lead {
+  font-size: var(--text-base) !important;
+  line-height: 1.4 !important;
+  margin-top: 0 !important;
+  margin-bottom: 4px !important;
+}
+
+/* 3) Shell principal - menos padding */
+#services .svc-shell {
+  padding: 12px !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+/* 4) Pills - linha única compacta */
+#services .svc-situations {
+  margin-bottom: 8px !important;
+  gap: 6px !important;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+#services .svc-pill {
+  padding: 6px 10px !important;
+  font-size: var(--text-xs) !important;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* 5) Grid principal - gap mínimo */
+#services .svc-grid {
+  gap: 12px !important;
+  grid-template-columns: 1fr 1fr !important;
+  align-items: stretch !important;
+}
+
+/* 6) Cards interiores - padding reduzido */
+#services .svc-map-wrap,
+#services .svc-solution {
+  padding: 12px !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* 7) Mapa - altura fixa menor */
+#services .svc-map {
+  height: 280px !important;
+  aspect-ratio: 1 / 1 !important;
+}
+
+#services .svc-axis {
+  font-size: 10px !important;
+}
+
+#services .svc-axis span {
+  padding: 4px 6px !important;
+}
+
+/* 8) Títulos internos compactos */
+#services .svc-map-title,
+#services .svc-solution-title {
+  font-size: var(--text-base) !important;
+  margin-bottom: 4px !important;
+}
+
+#services .svc-map-sub,
+#services .svc-solution-mini {
+  font-size: var(--text-xs) !important;
+  line-height: 1.3 !important;
+  margin-bottom: 6px !important;
+}
+
+/* 9) Contexto - menos espaço */
+#services .svc-context {
+  margin-top: 8px !important;
+  padding-top: 8px !important;
+}
+
+#services .svc-context-kicker {
+  font-size: 10px !important;
+  margin-bottom: 4px !important;
+}
+
+#services .svc-context-text {
+  font-size: var(--text-xs) !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
+}
+
+/* 10) Linhas de conteúdo - ultra compactas */
+#services .svc-rows {
+  gap: 6px !important;
+  margin-top: 8px !important;
+}
+
+#services .svc-row {
+  padding: 8px !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+#services .svc-row-label {
+  font-size: 10px !important;
+  margin-bottom: 2px !important;
+}
+
+#services .svc-row-text {
+  font-size: var(--text-xs) !important;
+  line-height: 1.3 !important;
+  margin: 0 !important;
+}
+
+/* 11) Entrega - 3 colunas compactas */
+#services .svc-delivery {
+  margin-top: 8px !important;
+  padding-top: 8px !important;
+}
+
+#services .svc-delivery-title {
+  font-size: var(--text-sm) !important;
+  margin-bottom: 6px !important;
+}
+
+#services .svc-delivery-grid {
+  gap: 6px !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+#services .svc-chip {
+  padding: 8px !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+#services .svc-chip-top {
+  font-size: var(--text-xs) !important;
+  margin-bottom: 2px !important;
+}
+
+#services .svc-chip-sub {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+}
+
+/* 12) CTAs - linha única */
+#services .svc-cta {
+  margin-top: 8px !important;
+  gap: 6px !important;
+}
+
+#services .svc-cta .btn {
+  padding: 8px 12px !important;
+  font-size: var(--text-xs) !important;
+  height: auto !important;
+  line-height: 1.1 !important;
+}
+
+#services .svc-cta .btn span[style*="font-size: 20px"] {
+  font-size: 16px !important;
+}
+
+#services .svc-footnote {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  margin-top: 2px !important;
+}
+
+/* 13) Responsivo mobile - empilha tudo */
+@media (max-width: 1024px) {
+  #services .svc-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  
+  #services .svc-delivery-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  #services .svc-map {
+    height: 250px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #services.section {
+    padding-top: 16px !important;
+    padding-bottom: 20px !important;
+  }
+  
+  #services .section-header h2 {
+    font-size: var(--text-2xl) !important;
+  }
+  
+  #services .section-header .text-lead {
+    font-size: var(--text-sm) !important;
+  }
+  
+  #services .svc-situations {
+    gap: 4px !important;
+    padding-bottom: 2px;
+  }
+  
+  #services .svc-pill {
+    padding: 4px 8px !important;
+  }
+}
