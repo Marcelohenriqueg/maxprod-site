@@ -2061,4 +2061,134 @@
   border-left: 3px solid var(--success); /* #00C781 */
   background: rgba(0, 199, 129, 0.03);
 }
-   
+
+
+/* ===============================
+   NAV DROPDOWN / MEGA MENU — PREMIUM
+   (cole no FINAL do site.css)
+   =============================== */
+
+.nav-item{ position: relative; }
+
+.nav-dd-toggle{
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-caret{
+  font-size: 12px;
+  opacity: .8;
+  transform: translateY(1px);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+.has-dropdown.is-open .nav-caret{
+  transform: rotate(180deg) translateY(-1px);
+  opacity: 1;
+}
+
+/* Dropdown shell */
+.nav-dropdown{
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 260px;
+  z-index: 2000;
+
+  background: rgba(10,14,22,0.92);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+
+  padding: 12px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
+}
+
+.has-dropdown.is-open > .nav-dropdown{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Dropdown simples (Insights) */
+.nav-drop{
+  width: 280px;
+}
+
+.nav-drop-item{
+  display: block;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  border: 1px solid transparent;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav-drop-item:hover{
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.10);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+/* Mega menu (ESG & Inovação) */
+.nav-mega{
+  width: min(720px, calc(100vw - 48px));
+  padding: 14px;
+}
+
+.nav-mega-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.nav-mega-item{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.nav-mega-item:hover{
+  transform: translateY(-2px);
+  border-color: rgba(0,102,255,0.35);
+  background: rgba(0,102,255,0.08);
+}
+
+.nav-mega-title{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.nav-mega-sub{
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text-tertiary);
+}
+
+/* Evita dropdown em telas pequenas (vamos usar mobile menu) */
+@media (max-width: 1024px){
+  .nav-dropdown{ display: none !important; }
+}
+
