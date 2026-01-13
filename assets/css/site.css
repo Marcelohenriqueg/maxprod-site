@@ -2240,3 +2240,33 @@
   #cases .cases-grid.cases-grid--4{ grid-template-columns: 1fr; }
   #cases .cases-cta-float{ max-width: none; }
 }
+
+/* =========================================================
+   CASES — BLOCO DE CONFIDENCIALIDADE (ÚNICO / PADRÃO FINAL)
+   Usar com:
+   <div class="case-download">
+     <p>Projetos conduzidos sob confidencialidade...</p>
+   </div>
+   ========================================================= */
+
+.case-download{
+  margin-top: 20px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.14);
+  background:
+    radial-gradient(800px 260px at 15% 20%, rgba(47,107,255,.18), transparent 60%),
+    radial-gradient(600px 220px at 85% 80%, rgba(60,255,200,.10), transparent 60%),
+    rgba(255,255,255,.03);
+  box-shadow: 0 16px 44px rgba(0,0,0,.45);
+}
+
+.case-download p{
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.72);
+  max-width: 90ch;
+}
+
