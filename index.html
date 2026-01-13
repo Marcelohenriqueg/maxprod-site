@@ -764,52 +764,7 @@
 
 
       
-         <div style="margin-bottom: var(--space-24);">
-            <label style="display: block; margin-bottom: var(--space-8); font-size: var(--text-sm);">
-              Faturamento anual aproximado:
-            </label>
-            <input type="range" min="1" max="100" value="50" style="width: 100%;">
-            <div style="display: flex; justify-content: space-between; font-size: var(--text-sm); 
-                      color: var(--text-tertiary); margin-top: var(--space-8);">
-              <span>R$ 1M</span>
-              <span id="revenueValue">R$ 50M</span>
-              <span>R$ 100M+</span>
-            </div>
-          </div>
-
-          <div style="margin-bottom: var(--space-24);">
-            <label style="display: block; margin-bottom: var(--space-8); font-size: var(--text-sm);">
-              Seu maior desafio atual:
-            </label>
-            <div style="display: flex; flex-wrap: wrap; gap: var(--space-8);">
-              <button class="btn" style="padding: var(--space-8) var(--space-16); font-size: var(--text-sm); 
-                                       background: var(--glass-bg);">Baixa Produtividade</button>
-              <button class="btn" style="padding: var(--space-8) var(--space-16); font-size: var(--text-sm);
-                                       background: var(--glass-bg);">Custos Elevados</button>
-              <button class="btn" style="padding: var(--space-8) var(--space-16); font-size: var(--text-sm);
-                                       background: var(--glass-bg);">Problemas Qualidade</button>
-              <button class="btn" style="padding: var(--space-8) var(--space-16); font-size: var(--text-sm);
-                                       background: var(--glass-bg);">Falta de Capacidade</button>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align: center; padding: var(--space-32); background: rgba(0,102,255,0.1); 
-                   border-radius: var(--radius-lg); border: 1px solid rgba(0,102,255,0.2);">
-          <div style="font-size: var(--text-sm); color: var(--text-tertiary); margin-bottom: var(--space-8);">
-            POTENCIAL DE ECONOMIA ANUAL
-          </div><div id="roiValue" class="stat-number" style="font-size: var(--text-5xl); margin-bottom: var(--space-16);">
-  R$ 1,2M - R$ 3,5M
-</div>
-          <p style="font-size: var(--text-sm); margin-bottom: var(--space-24);">
-            Baseado em médias setoriais e casos similares. Valor exato requer diagnóstico específico.
-          </p>
-          <a href="#contact" class="btn btn-primary" style="width: 100%;">
-            Quero Um Diagnóstico Preciso
-          </a>
-        </div>
-      </div>
-    </div>
+  
   </section>
 
   <!-- TESTIMONIALS -->
@@ -960,23 +915,6 @@
         document.body.style.overflow = '';
       }
     });
-
-    // Revenue calculator
-   const revenueSlider = document.querySelector('#calculator input[type="range"]');
-    const revenueValue = document.getElementById('revenueValue');
-
-    if (revenueSlider && revenueValue) {
-      revenueSlider.addEventListener('input', function() {
-        const value = parseInt(this.value);
-        let revenue = value * 1000000; // Convert to millions
-        
-        if (value >= 90) {
-          revenueValue.textContent = 'R$ 100M+';
-        } else {
-         revenueValue.textContent = `R$ ${(revenue / 1000000).toFixed(0)}M`;
-        }
-      });
-    }
 
     // Scroll animations
     function checkScroll() {
