@@ -2040,32 +2040,21 @@
 }
 
 
-/* ===============================
-   SERVICES - CARDS SEMÂNTICOS
-   =============================== */
+/* CARD 1 - AÇÃO IMEDIATA (Urgência) */
 #services .svc-row:nth-child(1) {
-  border-left: 3px solid var(--brand-primary);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 102, 255, 0.05) 0%,
-    rgba(0, 102, 255, 0.01) 100%
-  );
+  border-left: 3px solid var(--brand-primary); /* #0066FF */
+  background: rgba(0, 102, 255, 0.03);
 }
 
+/* CARD 2 - SOLUÇÃO ESTRUTURAL (Estratégia/Transição) */
 #services .svc-row:nth-child(2) {
-  border-left: 3px solid var(--brand-secondary);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 150, 170, 0.05) 0%,
-    rgba(0, 150, 170, 0.01) 100%
-  );
+  border-left: 3px solid #FF6B35; /* Laranja da paleta */
+  background: rgba(255, 107, 53, 0.03);
 }
 
+/* CARD 3 - RESULTADO ESPERADO (Sucesso/Conclusão) */
 #services .svc-row:nth-child(3) {
-  border-left: 3px solid var(--success);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 199, 129, 0.05) 0%,
-    rgba(0, 199, 129, 0.01) 100%
-  );
+  border-left: 3px solid var(--success); /* #00C781 */
+  background: rgba(0, 199, 129, 0.03);
 }
+   
