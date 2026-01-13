@@ -2270,3 +2270,71 @@
   max-width: 90ch;
 }
 
+
+/* ===============================
+   ROI CALC — SPLIT CARD (PATCH)
+   =============================== */
+.roi-card{
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: var(--space-24);
+  align-items: start;
+}
+
+.roi-left .roi-title{
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin-bottom: var(--space-12);
+}
+
+.roi-right{
+  padding: var(--space-24);
+  border-radius: var(--radius-xl);
+  background: rgba(0,102,255,0.10);
+  border: 1px solid rgba(0,102,255,0.22);
+}
+
+.roi-kicker{
+  font-size: var(--text-xs);
+  letter-spacing: .08em;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-8);
+}
+
+.roi-big{
+  font-size: var(--text-5xl);
+  line-height: 1;
+  font-weight: 800;
+  margin-bottom: var(--space-12);
+}
+
+.roi-meta{
+  display: grid;
+  gap: var(--space-10);
+  margin: var(--space-12) 0 var(--space-20);
+}
+
+.roi-meta .row{
+  display:flex;
+  justify-content: space-between;
+  gap: var(--space-12);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.roi-actions{
+  display: grid;
+  gap: var(--space-10);
+}
+
+.roi-actions .btn{
+  justify-content: center;
+  width: 100%;
+}
+
+/* responsivo */
+@media (max-width: 980px){
+  .roi-card{ grid-template-columns: 1fr; }
+  .roi-right{ margin-top: var(--space-16); }
+}
+
