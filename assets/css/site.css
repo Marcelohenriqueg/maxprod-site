@@ -2192,3 +2192,51 @@
   .nav-dropdown{ display: none !important; }
 }
 
+/* ===============================
+   FIX FINAL — CASES (estabiliza após vários patches)
+   Cole NO FINAL do site.css
+   =============================== */
+
+#cases .cases-stage{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: start;
+  margin-top: 10px;
+}
+
+#cases .cases-cta-float{
+  grid-column: 4;
+  grid-row: 1;
+  align-self: start;
+  margin: 0; /* neutraliza margens conflitantes */
+}
+
+#cases .cases-grid.cases-grid--4{
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0;
+}
+
+@media (max-width: 1200px){
+  #cases .cases-stage{ grid-template-columns: repeat(2, 1fr); }
+  #cases .cases-cta-float{
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    max-width: 460px;
+    width: 100%;
+  }
+  #cases .cases-grid.cases-grid--4{
+    grid-template-columns: repeat(2, 1fr);
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 640px){
+  #cases .cases-grid.cases-grid--4{ grid-template-columns: 1fr; }
+  #cases .cases-cta-float{ max-width: none; }
+}
