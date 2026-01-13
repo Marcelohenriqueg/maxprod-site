@@ -902,7 +902,7 @@
         if (value >= 90) {
           revenueValue.textContent = 'R$ 100M+';
         } else {
-          revenueValue.textContent = `R$ ${(revenue / 1000000).toFixed(0)}M`;
+         revenueValue.textContent = `R$ ${(revenue / 1000000).toFixed(0)}M`;
         }
       });
     }
@@ -1085,14 +1085,12 @@ function updateROICalculation() {
     const from = 0;
 
     // garante que começa do zero visualmente
-    el.textContent = `${prefix}${from}${suffix}`;
-
+   el.textContent = `${prefix}${from}${suffix}`;
     function frame(now){
       const p = Math.min(1, (now - start) / duration);
       const v = Math.round(from + (raw - from) * easeOutCubic(p));
 
-      el.textContent = `${prefix}${v}${suffix}`;
-
+   el.textContent = `${prefix}${v}${suffix}`;
       if(p < 1){
         requestAnimationFrame(frame);
       }else{
@@ -1150,9 +1148,7 @@ function updateROICalculation() {
       ) {
         navLinks.forEach(link => link.classList.remove("active"));
 
-        const activeLink = document.querySelector(
-          `.nav-link[href="#${sectionId}"]`
-        );
+      const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
         if (activeLink) activeLink.classList.add("active");
       }
     });
@@ -1313,10 +1309,13 @@ function updateROICalculation() {
       d.deliveryChips.forEach(chip => {
         const chipElement = document.createElement('div');
         chipElement.className = 'svc-chip';
+
         chipElement.innerHTML = `
-          <div class="svc-chip-top">${chip.top}</div>
-          <div class="svc-chip-sub">${chip.sub}</div>
-        `;
+  <div class="svc-chip-top">${chip.top}</div>
+  <div class="svc-chip-sub">${chip.sub}</div>
+`;
+
+        
         deliveryGrid.appendChild(chipElement);
       });
     }
