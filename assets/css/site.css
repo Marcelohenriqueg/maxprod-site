@@ -1977,3 +1977,9 @@
   outline: 1px solid rgba(255,255,255,0.08);
   outline-offset: -1px;
 }
+
+
+/* FAILSAFE — não deixa HTML “vazar” no CTA de Serviços */
+#services .svc-cta .btn span[style]{
+  display: none !important;
+}
