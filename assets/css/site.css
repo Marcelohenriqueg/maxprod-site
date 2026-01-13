@@ -1983,3 +1983,65 @@
 #services .svc-cta .btn span[style]{
   display: none !important;
 }
+
+/* Já existe, mas pode ser intensificado */
+#services .svc-pill.is-active {
+  background: rgba(0,102,255,0.15); /* aumentar opacidade */
+  border-color: var(--brand-primary);
+  box-shadow: 0 6px 20px rgba(0,102,255,0.25); /* mais intenso */
+  transform: scale(1.02); /* leve destaque */
+}
+
+#services .svc-dot {
+  animation: svcPulse 1.6s ease-in-out infinite;
+}
+
+#services .svc-dot {
+  box-shadow: 0 0 0 8px rgba(0,212,170,0.1), 
+              0 12px 32px rgba(0,212,170,0.2);
+}
+
+#services .svc-row:nth-child(3) {
+  border-left: 3px solid var(--success);
+  background: rgba(0,199,129,0.05);
+}
+
+@media (max-width: 768px) {
+  #services .svc-map {
+    margin-bottom: 20px;
+  }
+  #services .svc-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  #services .svc-map-wrap {
+    order: -1; /* mapa primeiro */
+  }
+}
+
+#services .svc-cta .btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+#services .svc-cta .btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255,255,255,0) 45%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0) 55%
+  );
+  transform: rotate(30deg);
+  animation: shine 3s infinite linear;
+}
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(30deg); }
+}
+
+
