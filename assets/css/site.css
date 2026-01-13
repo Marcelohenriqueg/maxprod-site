@@ -1603,10 +1603,27 @@
   border: 1px solid rgba(255,255,255,0.08);
   background: rgba(255,255,255,0.02);
 }
+
 #services .svc-chip-top{
   font-weight: 800;
   margin-bottom: 6px;
+  color: var(--brand-secondary); /* verde serviços */
 }
+
+#services .svc-chip-top{
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--brand-secondary);
+  letter-spacing: -0.01em;
+}
+
+#services .svc-chip-sub{
+  color: var(--text-secondary);
+}
+
+
+
+
 #services .svc-chip-sub{
   color: var(--text-tertiary);
   font-size: var(--text-xs);
