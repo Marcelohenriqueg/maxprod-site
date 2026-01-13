@@ -120,7 +120,7 @@
       <li><a href="#cases">Cases</a></li>
       <li><a href="#methodology">Metodologia</a></li>
       <li><a href="#services">Serviços</a></li>
-      <li><a href="#about">Sobre</a></li>
+      <li><a href="/sobre.html">Sobre</a></li>
       <li><a href="#contact">Contato</a></li>
     </ul>
 
@@ -357,6 +357,10 @@
         </div>
 
         <div class="cases-grid cases-grid--4">
+          </a>
+</div>
+</div>
+
           
           <!-- Case 1 -->
           <a href="/cases/case-1.html" class="case-card animate-on-scroll">
@@ -970,7 +974,7 @@ function updateROICalculation() {
   if (!slider) return;
 
   const revenue = parseInt(slider.value, 10);
-  const potential = revenue * 20000; // Simplified calculation
+  const potential = (revenue * 1000000) * 0.02; // exemplo: 2% do faturamento
 
   // IMPORTANTE: atualiza SOMENTE o ROI da calculadora
   const roiElement = document.getElementById('roiValue');
@@ -1011,7 +1015,7 @@ function updateROICalculation() {
         if(isFit){
           msgEl.innerHTML = '<p style="font-size: var(--text-sm); margin: 0; color: var(--success);"><strong>✅ Alto potencial identificado!</strong> Sua operação se beneficia com nossa abordagem.</p>';
           if(hintEl) hintEl.textContent = "✅ Alto potencial (2+)";
-          hintEl.style.color = "var(--success)";
+         if(hintEl) hintEl.style.color = "var(--success)";
           ctaEl.textContent = "Solicitar diagnóstico personalizado";
           ctaEl.href = "#contact";
           altEl.textContent = "Ver nossa metodologia detalhada";
@@ -1020,7 +1024,7 @@ function updateROICalculation() {
           msgEl.innerHTML = '<p style="font-size: var(--text-sm); margin: 0; color: var(--text-secondary);">Veja como transformamos diagnósticos em resultados reais em nossos cases.</p>';
           if(hintEl) {
             hintEl.textContent = "Selecione 2+ para alto potencial";
-            hintEl.style.color = "var(--brand-secondary)";
+            if(hintEl) hintEl.style.color = "var(--brand-secondary)";
           }
           ctaEl.textContent = "Explorar cases de sucesso";
           ctaEl.href = "#cases";
