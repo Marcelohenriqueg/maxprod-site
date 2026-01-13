@@ -507,8 +507,7 @@
       <div class="overline">SERVIÇOS</div>
       <h2>Diagnóstico <span class="text-gradient">sistêmico</span> da operação</h2>
       <p class="text-lead" style="max-width: 860px; margin: 0 auto;">
-        Em vez de "catálogo de serviços", você escolhe uma situação real e nós mostramos o ponto crítico,
-        o porquê sistêmico e o que muda com intervenção certa.
+        Escolha uma situação real e veja o ponto crítico, o porquê sistêmico e a solução.
       </p>
     </div>
 
@@ -933,6 +932,34 @@ function updateROICalculation() {
       revenueSlider.addEventListener('input', updateROICalculation);
       updateROICalculation();
     }
+
+  // Verificador de dobra
+    function checkServicesFold() {
+      const servicesSection = document.getElementById('services');
+      if (!servicesSection) return;
+      
+      const sectionRect = servicesSection.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const navHeight = document.querySelector('.navbar').offsetHeight;
+      
+      // Verifica se a seção inteira está visível
+      if (sectionRect.height <= (viewportHeight - navHeight - 40)) {
+        console.log('✅ Seção Serviços cabe na dobra!');
+      } else {
+        console.log('⚠️ Ainda precisa de ajustes finos');
+        // Log para debug
+        console.log('Altura da seção:', sectionRect.height);
+        console.log('Altura disponível:', viewportHeight - navHeight);
+      }
+    }
+
+    // Executar após carregamento e redimensionamento
+    window.addEventListener('load', checkServicesFold);
+    window.addEventListener('resize', checkServicesFold);
+    // ==================== ATÉ AQUI ====================
+    
+        // Assessment Interativo
+    (function(){
         // Assessment Interativo
     (function(){
       const checks = document.querySelectorAll(".assessCheck");
