@@ -3155,3 +3155,38 @@
 #sobre .glass[style*="position: relative; overflow: hidden"]{
   background: rgba(255,255,255,0.03) !important;
 }
+
+
+/* =========================================
+   SOBRE — AJUSTE DE ESPAÇO VERTICAL (FIX)
+   ========================================= */
+
+/* 1) Reduz padding vertical dos cards grandes */
+#sobre .visual-card{
+  padding-top: clamp(20px, 2.2vw, 28px) !important;
+  padding-bottom: clamp(24px, 2.6vw, 32px) !important;
+}
+
+/* 2) Kicker (CONECTE-SE / PRÓXIMO PASSO) — cola no topo */
+#sobre .visual-card .overline,
+#sobre .visual-card .kicker{
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
+  opacity: 0.85;
+}
+
+/* 3) Título logo após o kicker */
+#sobre .visual-card h2,
+#sobre .visual-card h3{
+  margin-top: 0 !important;
+}
+
+/* 4) Primeiro parágrafo não “empurrar” */
+#sobre .visual-card p:first-of-type{
+  margin-top: 6px;
+}
+
+/* 5) Remove qualquer espaçador invisível */
+#sobre .visual-card > *:first-child{
+  margin-top: 0 !important;
+}
