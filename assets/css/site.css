@@ -2560,3 +2560,84 @@
 /* ===============================
    ABOUT / SOBRE — MaxProd
    =============================== */
+
+/* =========================================================
+   ABOUT / SOBRE — PATCH PREMIUM
+   (Responsivo + refinamento visual)
+   ========================================================= */
+
+/* Grid principal do hero do Sobre */
+#sobre section:first-of-type > .visual-card > div > div {
+  grid-template-columns: 1.15fr .85fr;
+}
+
+@media (max-width: 960px) {
+  #sobre section:first-of-type > .visual-card > div > div {
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+  }
+}
+
+/* Ajuste fino de títulos no Sobre */
+#sobre h1,
+#sobre h2 {
+  letter-spacing: -0.02em;
+}
+
+/* Cards glass do Sobre */
+#sobre .glass {
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--shadow-md);
+}
+
+/* Grids de 3 colunas → responsivo */
+#sobre section [style*="grid-template-columns: repeat(3"] {
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+
+@media (max-width: 1024px) {
+  #sobre section [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  #sobre section [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Grids de 2 colunas (Prêmios) → mobile */
+#sobre section [style*="grid-template-columns: repeat(2"] {
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+
+@media (max-width: 768px) {
+  #sobre section [style*="grid-template-columns: repeat(2"] {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Imagem do fundador — refino */
+#sobre img[alt*="Marcelo"] {
+  filter: contrast(1.05) saturate(1.05);
+}
+
+/* CTA final com mais presença */
+#sobre section:last-of-type .btn-primary {
+  box-shadow: 0 0 0 1px rgba(0,102,255,0.35), var(--shadow-lg);
+}
+
+/* Espaçamento vertical consistente */
+#sobre section {
+  margin-bottom: var(--space-24);
+}
+
+/* Overline mais elegante no Sobre */
+#sobre .overline {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.85;
+}
+
