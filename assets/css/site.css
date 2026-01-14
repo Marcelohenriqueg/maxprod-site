@@ -2379,3 +2379,35 @@
   background: linear-gradient(180deg, rgba(0,212,170,.08), rgba(0,0,0,0));
   box-shadow: 0 0 0 1px rgba(0,212,170,.18), var(--shadow-lg);
 }
+
+
+/* ===============================
+   ROI CALC — MICROCOPY (GLASS)
+   =============================== */
+.roi-microcopy-box {
+  margin-top: 8px;
+  padding: 10px 12px;
+
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  display: none;
+
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.roi-microcopy-box.is-visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
