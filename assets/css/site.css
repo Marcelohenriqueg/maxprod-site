@@ -2538,3 +2538,21 @@
   opacity: 0.85;
 }
 
+/* ===============================
+   ROI CALC — AJUSTE DE TEXTO LEAD
+   =============================== */
+#calculator .text-lead{
+  font-size: 14px;       /* ↓ reduz impacto visual */
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+/* ===============================
+   ROI CALC — ESPAÇAMENTO HEADER → CARD
+   =============================== */
+#calculator .section-header{
+  margin-bottom: var(--space-24); /* antes era bem maior */
+}
+#calculator .visual-card{
+  margin-top: var(--space-8);
+}
