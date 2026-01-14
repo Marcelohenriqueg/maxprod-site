@@ -956,45 +956,9 @@
       });
     });
 
-    // ROI Calculator buttons
-    document.querySelectorAll('.btn[style*="background: var(--glass-bg);"]').forEach(btn => {
-      btn.addEventListener('click', function() {
-        // Remove active state from all buttons
-        document.querySelectorAll('.btn[style*="background: var(--glass-bg);"]').forEach(b => {
-          b.style.background = 'var(--glass-bg)';
-          b.style.color = 'var(--text-primary)';
-        });
-        
-        // Set active state for clicked button
-        this.style.background = 'var(--brand-primary)';
-        this.style.color = 'white';
-        
-        // Update ROI calculation
-        updateROICalculation();
-      });
-    });
-function updateROICalculation() {
-  // This is a simplified calculation
-  const slider = document.querySelector('#calculator input[type="range"]');
-  if (!slider) return;
-
-  const revenue = parseInt(slider.value, 10);
-  const potential = (revenue * 1000000) * 0.02; // exemplo: 2% do faturamento
-
-  // IMPORTANTE: atualiza SOMENTE o ROI da calculadora
-  const roiElement = document.getElementById('roiValue');
-
-  if (roiElement) {
-    roiElement.textContent = `R$ ${(potential / 1000000).toFixed(1)}M`;
-  }
-}
-
-    // Initialize ROI calculation
-    if (revenueSlider) {
-      revenueSlider.addEventListener('input', updateROICalculation);
-      updateROICalculation();
-    }
-        // Assessment Interativo
+    
+    
+    // Assessment Interativo
     (function(){
       const checks = document.querySelectorAll(".assessCheck");
       const countEl = document.getElementById("assessCount");
@@ -1482,7 +1446,8 @@ const mail =
   + "?subject=" + encodeURIComponent("Simulação ROI — MaxProd")
   + "&body=" + encodeURIComponent(msg);
 
-if (btnSend) {
+if (btnSend && !btnSend.dataset.bound) {
+  btnSend.dataset.bound = "true";
   btnSend.href = wa;
 
   // dica: clique com ALT abre e-mail (fallback simples e opcional)
