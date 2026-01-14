@@ -3084,3 +3084,74 @@
     background: rgba(255, 255, 255, 0.05);
   }
 }
+
+/* =========================================================
+   SOBRE — REDUZ GLOW + REDUZ TIPOGRAFIA (SAFE)
+   Cole no FINAL do site.css
+   ========================================================= */
+
+/* 0) Mata o “background fixo” do GALAXY no Sobre */
+#sobre::before{ display:none !important; }
+
+/* 1) Neutraliza glow/sombra exagerada somente no Sobre */
+#sobre .visual-card,
+#sobre .glass{
+  box-shadow: var(--shadow-md) !important; /* era shadow-lg/2xl + glow */
+  border-color: rgba(255,255,255,0.10) !important;
+}
+
+#sobre .visual-card:first-of-type{
+  box-shadow: var(--shadow-lg) !important; /* mantém premium, sem neon */
+  border-color: rgba(255,255,255,0.12) !important;
+}
+
+/* 2) Botões no Sobre: sem glow forte */
+#sobre .btn-primary{
+  box-shadow: 0 10px 26px rgba(0,0,0,0.35) !important; /* tira o --shadow-glow */
+}
+#sobre .btn-primary:hover{
+  box-shadow: 0 14px 34px rgba(0,0,0,0.45) !important;
+  transform: translateY(-1px) !important; /* menos “saltitante” */
+}
+
+/* 3) Texto: reduz tudo no Sobre (hierarquia mais executiva) */
+#sobre h1{
+  font-size: clamp(26px, 3.0vw, 40px) !important;
+  line-height: 1.08 !important;
+  margin-bottom: var(--space-12) !important;
+}
+#sobre h2{
+  font-size: clamp(20px, 2.2vw, 30px) !important;
+  line-height: 1.12 !important;
+}
+#sobre h3{
+  font-size: clamp(16px, 1.7vw, 22px) !important;
+  line-height: 1.2 !important;
+}
+#sobre .text-lead{
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+#sobre p{
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+}
+#sobre li{
+  font-size: 13.5px !important;
+  line-height: 1.7 !important;
+}
+
+/* 4) Cards: menos “inflado” */
+#sobre .visual-card{
+  padding: 22px !important; /* estava 28/32 */
+}
+#sobre .glass{
+  padding: 16px !important; /* estava 18/20 */
+}
+
+/* 5) Prêmios: remove o glow interno (inline) de forma indireta
+   (se não remover do HTML, isso reduz o impacto)
+*/
+#sobre .glass[style*="position: relative; overflow: hidden"]{
+  background: rgba(255,255,255,0.03) !important;
+}
