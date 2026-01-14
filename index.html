@@ -706,24 +706,9 @@
         </label>
 
         <div id="roiChallenges" style="display:flex;flex-wrap:wrap;gap:var(--space-8);">
-          <button class="btn roi-ch" data-ch="prod" type="button"
-                  style="padding:var(--space-8) var(--space-16);font-size:var(--text-sm);background:var(--glass-bg);">
-            Baixa Produtividade
-          </button>
-          <button class="btn roi-ch" data-ch="custo" type="button"
-                  style="padding:var(--space-8) var(--space-16);font-size:var(--text-sm);background:var(--glass-bg);">
-            Custos Elevados
-          </button>
-          <button class="btn roi-ch" data-ch="qual" type="button"
-                  style="padding:var(--space-8) var(--space-16);font-size:var(--text-sm);background:var(--glass-bg);">
-            Problemas Qualidade
-          </button>
-          <button class="btn roi-ch" data-ch="cap" type="button"
-                  style="padding:var(--space-8) var(--space-16);font-size:var(--text-sm);background:var(--glass-bg);">
-            Falta de Capacidade
-          </button>
-        </div>
-
+  <!-- desafios gerados via JS -->
+</div>
+        
         <p style="margin-top:var(--space-12);font-size:var(--text-sm);color:var(--text-tertiary);">
           *Usamos a seleção para ajustar a estimativa e preparar a mensagem no WhatsApp.
         </p>
@@ -1385,32 +1370,62 @@ const SECTOR_MICROCOPY = {
   const roiRevLabelEl = document.getElementById("roiRevLabel");
 
   const btnSend = document.getElementById("roiCtaSend");
+  const challengesWrap = document.getElementById("roiChallenges");
 
-  const challengeBtns = document.querySelectorAll(".roi-ch");
+  if(!sectorEl || !revenueEl || !roiValueEl || !challengesWrap) return;
 
-  if(!sectorEl || !revenueEl || !roiValueEl) return;
+  // ===============================
+  // 1) CATÁLOGO DE DESAFIOS (por área)
+  // min/max = % do faturamento anual (faixa típica)
+  // ===============================
+  const CHALLENGES = {
+    // Industrial & Operações
+    prod:   { label: "Baixa Produtividade",        min: 0.012, max: 0.030 },
+    cap:    { label: "Falta de Capacidade",        min: 0.010, max: 0.028 },
+    setup:  { label: "Setup alto / trocas lentas", min: 0.008, max: 0.020 },
+    paradas:{ label: "Paradas / microparadas",     min: 0.010, max: 0.026 },
 
-  // multipliers simples por desafio (p/ faixa de potencial)
-  const CH = {
-    prod: { label: "Baixa Produtividade", min: 0.012, max: 0.030 },
-    custo:{ label: "Custos Elevados",      min: 0.010, max: 0.025 },
-    qual: { label: "Problemas Qualidade",  min: 0.008, max: 0.020 },
-    cap:  { label: "Falta de Capacidade",  min: 0.010, max: 0.028 }
+    // Qualidade
+    qual:   { label: "Problemas de Qualidade",     min: 0.008, max: 0.020 },
+    refugo: { label: "Refugo / retrabalho",        min: 0.010, max: 0.024 },
+    escape: { label: "Risco de escape (cliente)",  min: 0.006, max: 0.018 },
+
+    // Custos / Corporativo
+    custo:  { label: "Custos Elevados",            min: 0.010, max: 0.025 },
+    indiretos:{ label:"Custos indiretos / SG&A",   min: 0.004, max: 0.012 },
+    compras:{ label:"Compras / renegociação",      min: 0.006, max: 0.018 },
+
+    // Comercial & Receita
+    margem: { label: "Margem pressionada",         min: 0.006, max: 0.018 },
+    perdasrec:{label:"Perda de receita / conversão",min: 0.005, max: 0.016 },
+    prazo:  { label: "Prazo / nível de serviço",   min: 0.004, max: 0.014 },
+
+    // Estratégia & Diretoria
+    risco:  { label: "Risco operacional / ruptura",min: 0.004, max: 0.016 },
+    exec:   { label: "Execução travada",           min: 0.004, max: 0.014 },
+    port:   { label: "Portfólio / foco errado",    min: 0.003, max: 0.012 },
+
+    // ESG & Inovação
+    energia:{ label: "Energia / utilidades",       min: 0.003, max: 0.012 },
+    residuos:{label:"Resíduos / perdas ambientais",min: 0.002, max: 0.010 },
+    digital:{ label: "Digitalização / automação",  min: 0.003, max: 0.014 }
   };
 
-const SECTOR_LABEL = {
-  operacoes: "Industrial & Operações",
-  qualidade: "Qualidade",
-  comercial: "Comercial & Receita",
-  estrategia: "Estratégia & Diretoria",
-  esg: "ESG & Inovação",
-  corporativo: "Corporativo & Suporte"
-};
+  // ===============================
+  // 2) MAPA setor -> desafios exibidos
+  // ===============================
+  const CH_BY_SECTOR = {
+    operacoes:   ["prod", "cap", "setup", "paradas"],
+    qualidade:   ["qual", "refugo", "escape"],
+    comercial:   ["margem", "perdasrec", "prazo"],
+    estrategia:  ["risco", "exec", "port"],
+    esg:         ["energia", "residuos", "digital"],
+    corporativo: ["indiretos", "compras", "custo"]
+  };
 
   let selectedCh = null;
 
   function formatBRLcompact(v){
-    // v em reais
     if(v >= 1e9) return "R$ " + (v/1e9).toFixed(1).replace(".", ",") + "B";
     if(v >= 1e6) return "R$ " + (v/1e6).toFixed(1).replace(".", ",") + "M";
     if(v >= 1e3) return "R$ " + (v/1e3).toFixed(0) + "k";
@@ -1418,97 +1433,53 @@ const SECTOR_LABEL = {
   }
 
   function revenueToLabel(value){
-    // slider 1..100 => milhões
     if(value >= 90) return "R$ 100M+";
     return `R$ ${value}M`;
   }
-sectorEl.addEventListener("change", () => {
-  const key = sectorEl.value;
-  const txt = SECTOR_MICROCOPY[key];
 
-  if (sectorMicrocopyEl && txt) {
-  sectorMicrocopyEl.textContent = txt;
-  sectorMicrocopyEl.classList.add("is-visible");
-} else if (sectorMicrocopyEl) {
-  sectorMicrocopyEl.textContent = "";
-  sectorMicrocopyEl.classList.remove("is-visible");
-}
-});
+  function renderChallengesForSector(sectorKey){
+    const list = CH_BY_SECTOR[sectorKey] || ["prod", "custo", "qual", "cap"];
+    challengesWrap.innerHTML = "";
 
-  function update(){
-    const revM = parseInt(revenueEl.value, 10);         // milhões
-    const revenueBRL = revM * 1000000;
+    list.forEach((key) => {
+      const ch = CHALLENGES[key];
+      if(!ch) return;
 
-    // labels
-    const sectorKey = sectorEl.value;
-    const sectorLabel = SECTOR_LABEL[sectorKey] || sectorEl.options[sectorEl.selectedIndex].text;
+      const btn = document.createElement("button");
+      btn.className = "btn roi-ch";
+      btn.type = "button";
+      btn.dataset.ch = key;
+      btn.style.padding = "var(--space-8) var(--space-16)";
+      btn.style.fontSize = "var(--text-sm)";
+      btn.style.background = "var(--glass-bg)";
+      btn.textContent = ch.label;
 
-    const revLabel = revenueToLabel(revM);
-    if(revenueValueEl) revenueValueEl.textContent = revLabel;
-    if(roiSectorLabelEl) roiSectorLabelEl.textContent = sectorLabel;
-    if(roiRevLabelEl) roiRevLabelEl.textContent = revLabel;
+      btn.addEventListener("click", () => setChallenge(key, btn));
+      challengesWrap.appendChild(btn);
+    });
 
-    // se não escolheu desafio ainda, usa um default neutro
-    const chKey = selectedCh || "prod";
-    const ch = CH[chKey];
-
-    if(roiChLabelEl) roiChLabelEl.textContent = selectedCh ? ch.label : "Selecione um desafio";
-
-    // faixa anual
-    const min = revenueBRL * ch.min;
-    const max = revenueBRL * ch.max;
-
-    roiValueEl.textContent = `${formatBRLcompact(min)} – ${formatBRLcompact(max)}`;
-// Feedback visual (verde) por nível de potencial
-const rightCard = document.querySelector("#calculator .roi-right");
-if (rightCard) {
-  rightCard.classList.remove("roi-mid", "roi-high");
-
-  // ajuste simples: considera o "max" como potencial
-  if (max >= 2000000) {
-    rightCard.classList.add("roi-high");
-  } else if (max >= 800000) {
-    rightCard.classList.add("roi-mid");
-  }
-}
-    // montar mensagem p/ você receber no Whats/E-mail
-    const msg =
-`Olá! Fiz a simulação no site da MaxProd.
-
-Setor: ${sectorLabel}
-Faturamento anual: ${revLabel}
-Desafio: ${selectedCh ? ch.label : "não selecionado"}
-Potencial estimado (anual): ${roiValueEl.textContent}
-
-Quero conversar para validar esse potencial no meu cenário.`;
-// Link único: WhatsApp por padrão; se o usuário não tiver, o navegador ainda pode abrir o mailto manualmente.
-const wa = "https://wa.me/5531992793411?text=" + encodeURIComponent(msg);
-
-if (btnSend) {
-  btnSend.href = wa;
-  btnSend.target = "_blank";
-  btnSend.rel = "noopener";
-
-  // Força abrir mesmo quando o navegador não “segue” o href atualizado
-  btnSend.onclick = (e) => {
-    e.preventDefault();
-    const url = btnSend.href || wa;
-
-    const win = window.open(url, "_blank", "noopener");
-    if (!win) {
-      // fallback se popup for bloqueado
-      window.location.href = url;
+    // Se o desafio selecionado não existe nesse setor, reseta
+    if(selectedCh && !list.includes(selectedCh)){
+      selectedCh = null;
     }
-  };
-}
 
+    // Reaplica estilo selecionado se existir
+    if(selectedCh){
+      const active = challengesWrap.querySelector(`.roi-ch[data-ch="${selectedCh}"]`);
+      if(active){
+        active.style.background = "var(--brand-primary)";
+        active.style.color = "white";
+      }
+    }
+
+    update();
   }
 
-  // desafio — visual + estado
   function setChallenge(key, btn){
     selectedCh = key;
 
-    challengeBtns.forEach(b=>{
+    const all = challengesWrap.querySelectorAll(".roi-ch");
+    all.forEach(b=>{
       b.style.background = "var(--glass-bg)";
       b.style.color = "var(--text-primary)";
     });
@@ -1516,20 +1487,93 @@ if (btnSend) {
     btn.style.background = "var(--brand-primary)";
     btn.style.color = "white";
 
-    
+    // BUGFIX: recalcula na hora
+    update();
   }
 
-  challengeBtns.forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      setChallenge(btn.dataset.ch, btn);
-    });
+  function update(){
+    const revM = parseInt(revenueEl.value, 10);
+    const revenueBRL = revM * 1000000;
+
+    const sectorKey = sectorEl.value;
+    const sectorLabel = SECTOR_LABEL[sectorKey] || sectorEl.options[sectorEl.selectedIndex]?.text || "—";
+
+    const revLabel = revenueToLabel(revM);
+    if(revenueValueEl) revenueValueEl.textContent = revLabel;
+    if(roiSectorLabelEl) roiSectorLabelEl.textContent = sectorLabel;
+    if(roiRevLabelEl) roiRevLabelEl.textContent = revLabel;
+
+    // Desafio default (se não selecionou, não assume "prod" silenciosamente)
+    if(!selectedCh){
+      if(roiChLabelEl) roiChLabelEl.textContent = "Selecione um desafio";
+      roiValueEl.textContent = "—";
+      // ainda atualiza link do Whats com o resto
+    } else {
+      const ch = CHALLENGES[selectedCh];
+      if(roiChLabelEl) roiChLabelEl.textContent = ch.label;
+
+      const min = revenueBRL * ch.min;
+      const max = revenueBRL * ch.max;
+      roiValueEl.textContent = `${formatBRLcompact(min)} – ${formatBRLcompact(max)}`;
+
+      // Feedback visual (verde) por nível de potencial (baseado no max)
+      const rightCard = document.querySelector("#calculator .roi-right");
+      if (rightCard) {
+        rightCard.classList.remove("roi-mid", "roi-high");
+        if (max >= 2000000) rightCard.classList.add("roi-high");
+        else if (max >= 800000) rightCard.classList.add("roi-mid");
+      }
+    }
+
+    const msg =
+`Olá! Fiz a simulação no site da MaxProd.
+
+Setor: ${sectorLabel}
+Faturamento anual: ${revLabel}
+Desafio: ${selectedCh ? CHALLENGES[selectedCh].label : "não selecionado"}
+Potencial estimado (anual): ${roiValueEl.textContent}
+
+Quero conversar para validar esse potencial no meu cenário.`;
+
+    const wa = "https://wa.me/5531992793411?text=" + encodeURIComponent(msg);
+
+    if (btnSend) {
+      btnSend.href = wa;
+      btnSend.target = "_blank";
+      btnSend.rel = "noopener";
+
+      btnSend.onclick = (e) => {
+        e.preventDefault();
+        const url = btnSend.href || wa;
+        const win = window.open(url, "_blank", "noopener");
+        if (!win) window.location.href = url;
+      };
+    }
+  }
+
+  // Microcopy do setor (mantém seu comportamento atual)
+  sectorEl.addEventListener("change", () => {
+    const key = sectorEl.value;
+    const txt = SECTOR_MICROCOPY[key];
+
+    if (sectorMicrocopyEl && txt) {
+      sectorMicrocopyEl.textContent = txt;
+      sectorMicrocopyEl.classList.add("is-visible");
+    } else if (sectorMicrocopyEl) {
+      sectorMicrocopyEl.textContent = "";
+      sectorMicrocopyEl.classList.remove("is-visible");
+    }
+
+    // Renderiza desafios conforme setor
+    renderChallengesForSector(key);
   });
 
-  sectorEl.addEventListener("change", update);
   revenueEl.addEventListener("input", update);
 
-  
-})();
+  // Init: se já tiver setor selecionado, renderiza; senão, mostra um set default
+  renderChallengesForSector(sectorEl.value || "operacoes");
+  update();
+
 
     
     
