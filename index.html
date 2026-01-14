@@ -748,12 +748,8 @@
       </p>
 
 <div class="roi-actions">
-  <a href="#contact" class="btn btn-primary" id="roiCtaDiag">
-    Quero um diagnóstico preciso
-  </a>
-
-  <a href="#" target="_blank" class="btn btn-secondary" id="roiCtaSend">
-    Enviar simulação (WhatsApp ou E-mail)
+  <a href="#" target="_blank" rel="noopener" class="btn btn-primary" id="roiCtaSend">
+    Enviar simulação (WhatsApp)
   </a>
 </div>
      
@@ -1428,7 +1424,18 @@
     const max = revenueBRL * ch.max;
 
     roiValueEl.textContent = `${formatBRLcompact(min)} – ${formatBRLcompact(max)}`;
+// Feedback visual (verde) por nível de potencial
+const rightCard = document.querySelector("#calculator .roi-right");
+if (rightCard) {
+  rightCard.classList.remove("roi-mid", "roi-high");
 
+  // ajuste simples: considera o "max" como potencial
+  if (max >= 2000000) {
+    rightCard.classList.add("roi-high");
+  } else if (max >= 800000) {
+    rightCard.classList.add("roi-mid");
+  }
+}
     // montar mensagem p/ você receber no Whats/E-mail
     const msg =
 `Olá! Fiz a simulação no site da MaxProd.
@@ -1441,22 +1448,23 @@ Potencial estimado (anual): ${roiValueEl.textContent}
 Quero conversar para validar esse potencial no meu cenário.`;
 // Link único: WhatsApp por padrão; se o usuário não tiver, o navegador ainda pode abrir o mailto manualmente.
 const wa = "https://wa.me/5531992793411?text=" + encodeURIComponent(msg);
-const mail =
-  "mailto:maxprodsolucoes@gmail.com"
-  + "?subject=" + encodeURIComponent("Simulação ROI — MaxProd")
-  + "&body=" + encodeURIComponent(msg);
 
-if (btnSend && !btnSend.dataset.bound) {
-  btnSend.dataset.bound = "true";
+if (btnSend) {
   btnSend.href = wa;
+  btnSend.target = "_blank";
+  btnSend.rel = "noopener";
 
-  // dica: clique com ALT abre e-mail (fallback simples e opcional)
-  btnSend.addEventListener("click", (e) => {
-    if (e.altKey) {
-      e.preventDefault();
-      window.location.href = mail;
+  // Força abrir mesmo quando o navegador não “segue” o href atualizado
+  btnSend.onclick = (e) => {
+    e.preventDefault();
+    const url = btnSend.href || wa;
+
+    const win = window.open(url, "_blank", "noopener");
+    if (!win) {
+      // fallback se popup for bloqueado
+      window.location.href = url;
     }
-  }, { once: true });
+  };
 }
 
   }
