@@ -679,9 +679,11 @@
   <option value="corporativo">Corporativo &amp; Suporte</option>
 
 </select>
-      <p id="roiSectorMicrocopy"
-   style="margin-top:6px;font-size:13px;color:var(--text-tertiary);display:none;">
-</p>
+
+        <div id="roiSectorMicrocopy" class="roi-microcopy-box">
+  <!-- texto inserido via JS -->
+</div>
+
 
  </div>
 
@@ -1424,12 +1426,12 @@ sectorEl.addEventListener("change", () => {
   const txt = SECTOR_MICROCOPY[key];
 
   if (sectorMicrocopyEl && txt) {
-    sectorMicrocopyEl.textContent = txt;
-    sectorMicrocopyEl.style.display = "block";
-  } else if (sectorMicrocopyEl) {
-    sectorMicrocopyEl.textContent = "";
-    sectorMicrocopyEl.style.display = "none";
-  }
+  sectorMicrocopyEl.textContent = txt;
+  sectorMicrocopyEl.classList.add("is-visible");
+} else if (sectorMicrocopyEl) {
+  sectorMicrocopyEl.textContent = "";
+  sectorMicrocopyEl.classList.remove("is-visible");
+}
 });
 
   function update(){
