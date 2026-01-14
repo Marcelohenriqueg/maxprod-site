@@ -3208,3 +3208,80 @@
 #sobre .visual-card [style*="Sem teatro"]{
   margin-top: 0; /* garante que o espaço vem de cima */
 }
+/* ===============================
+   PATCH — SOBRE (ajustes de espaçamento)
+   Cole no FINAL do site.css
+   =============================== */
+
+/* 1) Cards grandes: reduz padding top e remove margem do primeiro elemento */
+.about-card,
+.section-card,
+.glass-card,
+.glass-panel,
+.hero-card {
+  padding-top: clamp(22px, 3vw, 34px) !important;
+  padding-bottom: clamp(22px, 3vw, 34px) !important;
+}
+
+.about-card > :first-child,
+.section-card > :first-child,
+.glass-card > :first-child,
+.glass-panel > :first-child,
+.hero-card > :first-child {
+  margin-top: 0 !important;
+}
+
+/* 2) “eyebrow / label” tipo CONECTE-SE, PRÓXIMO PASSO etc */
+.eyebrow,
+.kicker,
+.section-label,
+.section-overline {
+  margin-bottom: 10px !important;
+}
+
+/* 3) Título + subtítulo (reduz respiro entre eles) */
+.about-card h1,
+.about-card h2,
+.section-card h1,
+.section-card h2,
+.glass-card h1,
+.glass-card h2 {
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+}
+
+.about-card .lead,
+.about-card p,
+.section-card .lead,
+.section-card p {
+  margin-top: 0 !important;
+  margin-bottom: 16px !important;
+}
+/* Espaço entre as pills (Dono/Prazo/Indicador/Sustentação) e a frase “Sem teatro…” */
+.pills,
+.pill-row,
+.chips,
+.tag-row {
+  margin-bottom: 18px !important;
+}
+
+/* A frase/pill inferior */
+.bottom-pill,
+.about-bottom-pill,
+.about-claim,
+.callout-pill {
+  margin-top: 18px !important;
+}
+/* Botões no card Trajetória: descer e dar respiro */
+.cta-row,
+.card-ctas,
+.actions,
+.button-row {
+  margin-top: 18px !important;
+  padding-top: 6px !important;
+}
+
+/* Se os botões estiverem colados no rodapé do card */
+.cta-row {
+  padding-bottom: 8px !important;
+}
