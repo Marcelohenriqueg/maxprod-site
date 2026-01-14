@@ -3190,3 +3190,21 @@
 #sobre .visual-card > *:first-child{
   margin-top: 0 !important;
 }
+
+
+/* =========================================
+   SOBRE — ESPAÇO ENTRE PILLS E PILL FINAL
+   ========================================= */
+
+/* bloco das pills (Dono / Prazo / Indicador / Sustentação) */
+#sobre .visual-card .pill-group,
+#sobre .visual-card [class*="pill"]{
+  margin-bottom: 28px; /* ajuste fino aqui (24–36px) */
+}
+
+/* pill final "Sem teatro..." */
+#sobre .visual-card .pill-final,
+#sobre .visual-card [class*="sem-teatro"],
+#sobre .visual-card [style*="Sem teatro"]{
+  margin-top: 0; /* garante que o espaço vem de cima */
+}
