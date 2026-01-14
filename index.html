@@ -745,7 +745,7 @@
 
 
 <div class="roi-actions">
-  <a href="#" target="_blank" rel="noopener" class="btn btn-primary" id="roiCtaSend">
+  <a href="https://wa.me/5531992793411" target="_blank" rel="noopener" class="btn btn-primary" id="roiCtaSend">
     Enviar simulação (WhatsApp)
   </a>
 </div>
@@ -1346,20 +1346,11 @@
 
 
 /* ===============================
-   ROI CALC — LIVE + SEND (PATCH)
+   ROI CALC — LIVE + SEND (FIX)
    =============================== */
 (function(){
   const sectorEl = document.getElementById("roiSector");
   const sectorMicrocopyEl = document.getElementById("roiSectorMicrocopy");
-
-const SECTOR_MICROCOPY = {
-  operacoes: "Onde processos, recursos e capacidade se alinham para aumentar eficiência, estabilidade e produtividade sustentável.",
-  qualidade: "Onde risco de escape, custo da não qualidade e exigências de cliente são tratados de forma estrutural e definitiva.",
-  comercial: "Onde engenharia, operação e contrato se alinham para proteger margem e acelerar receita sustentável.",
-  estrategia: "Onde decisões estratégicas são sustentadas por dados operacionais, redução de riscos e impacto direto no P&L.",
-  esg: "Onde eficiência operacional, sustentabilidade e tecnologia se conectam para gerar valor econômico e reputacional.",
-  corporativo: "Onde governança, custos indiretos e processos de suporte são estruturados para sustentar a operação e o crescimento."
-};
 
   const revenueEl = document.getElementById("roiRevenue");
   const revenueValueEl = document.getElementById("revenueValue");
@@ -1374,46 +1365,59 @@ const SECTOR_MICROCOPY = {
 
   if(!sectorEl || !revenueEl || !roiValueEl || !challengesWrap) return;
 
-  // ===============================
-  // 1) CATÁLOGO DE DESAFIOS (por área)
-  // min/max = % do faturamento anual (faixa típica)
-  // ===============================
-  const CHALLENGES = {
-    // Industrial & Operações
-    prod:   { label: "Baixa Produtividade",        min: 0.012, max: 0.030 },
-    cap:    { label: "Falta de Capacidade",        min: 0.010, max: 0.028 },
-    setup:  { label: "Setup alto / trocas lentas", min: 0.008, max: 0.020 },
-    paradas:{ label: "Paradas / microparadas",     min: 0.010, max: 0.026 },
-
-    // Qualidade
-    qual:   { label: "Problemas de Qualidade",     min: 0.008, max: 0.020 },
-    refugo: { label: "Refugo / retrabalho",        min: 0.010, max: 0.024 },
-    escape: { label: "Risco de escape (cliente)",  min: 0.006, max: 0.018 },
-
-    // Custos / Corporativo
-    custo:  { label: "Custos Elevados",            min: 0.010, max: 0.025 },
-    indiretos:{ label:"Custos indiretos / SG&A",   min: 0.004, max: 0.012 },
-    compras:{ label:"Compras / renegociação",      min: 0.006, max: 0.018 },
-
-    // Comercial & Receita
-    margem: { label: "Margem pressionada",         min: 0.006, max: 0.018 },
-    perdasrec:{label:"Perda de receita / conversão",min: 0.005, max: 0.016 },
-    prazo:  { label: "Prazo / nível de serviço",   min: 0.004, max: 0.014 },
-
-    // Estratégia & Diretoria
-    risco:  { label: "Risco operacional / ruptura",min: 0.004, max: 0.016 },
-    exec:   { label: "Execução travada",           min: 0.004, max: 0.014 },
-    port:   { label: "Portfólio / foco errado",    min: 0.003, max: 0.012 },
-
-    // ESG & Inovação
-    energia:{ label: "Energia / utilidades",       min: 0.003, max: 0.012 },
-    residuos:{label:"Resíduos / perdas ambientais",min: 0.002, max: 0.010 },
-    digital:{ label: "Digitalização / automação",  min: 0.003, max: 0.014 }
+  // LABEL DO SELECT (BUGFIX: isso não existia no seu código)
+  const SECTOR_LABEL = {
+    operacoes: "Industrial & Operações",
+    qualidade: "Qualidade",
+    comercial: "Comercial & Receita",
+    estrategia: "Estratégia & Diretoria",
+    esg: "ESG & Inovação",
+    corporativo: "Corporativo & Suporte"
   };
 
-  // ===============================
-  // 2) MAPA setor -> desafios exibidos
-  // ===============================
+  const SECTOR_MICROCOPY = {
+    operacoes: "Onde processos, recursos e capacidade se alinham para aumentar eficiência, estabilidade e produtividade sustentável.",
+    qualidade: "Onde risco de escape, custo da não qualidade e exigências de cliente são tratados de forma estrutural e definitiva.",
+    comercial: "Onde engenharia, operação e contrato se alinham para proteger margem e acelerar receita sustentável.",
+    estrategia: "Onde decisões estratégicas são sustentadas por dados operacionais, redução de riscos e impacto direto no P&L.",
+    esg: "Onde eficiência operacional, sustentabilidade e tecnologia se conectam para gerar valor econômico e reputacional.",
+    corporativo: "Onde governança, custos indiretos e processos de suporte são estruturados para sustentar a operação e o crescimento."
+  };
+
+  // min/max = % do faturamento anual (faixa típica)
+  const CHALLENGES = {
+    // Operações
+    prod:    { label: "Baixa Produtividade",         min: 0.012, max: 0.030 },
+    cap:     { label: "Falta de Capacidade",         min: 0.010, max: 0.028 },
+    setup:   { label: "Setup alto / trocas lentas",  min: 0.008, max: 0.020 },
+    paradas: { label: "Paradas / microparadas",      min: 0.010, max: 0.026 },
+
+    // Qualidade
+    qual:    { label: "Problemas de Qualidade",      min: 0.008, max: 0.020 },
+    refugo:  { label: "Refugo / retrabalho",         min: 0.010, max: 0.024 },
+    escape:  { label: "Risco de escape (cliente)",   min: 0.006, max: 0.018 },
+
+    // Comercial
+    margem:  { label: "Margem pressionada",          min: 0.006, max: 0.018 },
+    perdasrec:{label:"Perda de receita / conversão", min: 0.005, max: 0.016 },
+    prazo:   { label: "Prazo / nível de serviço",    min: 0.004, max: 0.014 },
+
+    // Estratégia
+    risco:   { label: "Risco operacional / ruptura", min: 0.004, max: 0.016 },
+    exec:    { label: "Execução travada",            min: 0.004, max: 0.014 },
+    port:    { label: "Portfólio / foco errado",     min: 0.003, max: 0.012 },
+
+    // ESG
+    energia: { label: "Energia / utilidades",        min: 0.003, max: 0.012 },
+    residuos:{ label:"Resíduos / perdas ambientais", min: 0.002, max: 0.010 },
+    digital: { label: "Digitalização / automação",   min: 0.003, max: 0.014 },
+
+    // Corporativo
+    indiretos:{label:"Custos indiretos / SG&A",      min: 0.004, max: 0.012 },
+    compras: { label:"Compras / renegociação",       min: 0.006, max: 0.018 },
+    custo:   { label: "Custos Elevados",             min: 0.010, max: 0.025 }
+  };
+
   const CH_BY_SECTOR = {
     operacoes:   ["prod", "cap", "setup", "paradas"],
     qualidade:   ["qual", "refugo", "escape"],
@@ -1437,6 +1441,18 @@ const SECTOR_MICROCOPY = {
     return `R$ ${value}M`;
   }
 
+  function setChallenge(key){
+    selectedCh = key;
+
+    const all = challengesWrap.querySelectorAll(".roi-ch");
+    all.forEach(b => b.classList.remove("is-active"));
+
+    const active = challengesWrap.querySelector(`.roi-ch[data-ch="${key}"]`);
+    if(active) active.classList.add("is-active");
+
+    update();
+  }
+
   function renderChallengesForSector(sectorKey){
     const list = CH_BY_SECTOR[sectorKey] || ["prod", "custo", "qual", "cap"];
     challengesWrap.innerHTML = "";
@@ -1449,88 +1465,62 @@ const SECTOR_MICROCOPY = {
       btn.className = "btn roi-ch";
       btn.type = "button";
       btn.dataset.ch = key;
-      btn.style.padding = "var(--space-8) var(--space-16)";
-      btn.style.fontSize = "var(--text-sm)";
-      btn.style.background = "var(--glass-bg)";
       btn.textContent = ch.label;
 
-      btn.addEventListener("click", () => setChallenge(key, btn));
+      btn.addEventListener("click", () => setChallenge(key));
       challengesWrap.appendChild(btn);
     });
 
-    // Se o desafio selecionado não existe nesse setor, reseta
-    if(selectedCh && !list.includes(selectedCh)){
-      selectedCh = null;
+    // BUGFIX: se não tiver desafio selecionado, seleciona o 1º automaticamente
+    if(!selectedCh || !list.includes(selectedCh)){
+      selectedCh = list[0];
     }
-
-    // Reaplica estilo selecionado se existir
-    if(selectedCh){
-      const active = challengesWrap.querySelector(`.roi-ch[data-ch="${selectedCh}"]`);
-      if(active){
-        active.style.background = "var(--brand-primary)";
-        active.style.color = "white";
-      }
-    }
-
-    update();
-  }
-
-  function setChallenge(key, btn){
-    selectedCh = key;
-
-    const all = challengesWrap.querySelectorAll(".roi-ch");
-    all.forEach(b=>{
-      b.style.background = "var(--glass-bg)";
-      b.style.color = "var(--text-primary)";
-    });
-
-    btn.style.background = "var(--brand-primary)";
-    btn.style.color = "white";
-
-    // BUGFIX: recalcula na hora
-    update();
+    setChallenge(selectedCh);
   }
 
   function update(){
     const revM = parseInt(revenueEl.value, 10);
     const revenueBRL = revM * 1000000;
 
-    const sectorKey = sectorEl.value;
-    const sectorLabel = SECTOR_LABEL[sectorKey] || sectorEl.options[sectorEl.selectedIndex]?.text || "—";
+    const sectorKey = sectorEl.value || "";
+    const sectorLabel =
+      SECTOR_LABEL[sectorKey] ||
+      (sectorEl.options[sectorEl.selectedIndex] ? sectorEl.options[sectorEl.selectedIndex].text : "—");
 
     const revLabel = revenueToLabel(revM);
+
     if(revenueValueEl) revenueValueEl.textContent = revLabel;
     if(roiSectorLabelEl) roiSectorLabelEl.textContent = sectorLabel;
     if(roiRevLabelEl) roiRevLabelEl.textContent = revLabel;
 
-    // Desafio default (se não selecionou, não assume "prod" silenciosamente)
-    if(!selectedCh){
-      if(roiChLabelEl) roiChLabelEl.textContent = "Selecione um desafio";
+    const ch = selectedCh ? CHALLENGES[selectedCh] : null;
+
+    if(!ch){
+      if(roiChLabelEl) roiChLabelEl.textContent = "—";
       roiValueEl.textContent = "—";
-      // ainda atualiza link do Whats com o resto
     } else {
-      const ch = CHALLENGES[selectedCh];
       if(roiChLabelEl) roiChLabelEl.textContent = ch.label;
 
       const min = revenueBRL * ch.min;
       const max = revenueBRL * ch.max;
       roiValueEl.textContent = `${formatBRLcompact(min)} – ${formatBRLcompact(max)}`;
 
-      // Feedback visual (verde) por nível de potencial (baseado no max)
+      // “fica verde” (mid/high)
       const rightCard = document.querySelector("#calculator .roi-right");
       if (rightCard) {
-        rightCard.classList.remove("roi-mid", "roi-high");
+        rightCard.classList.remove("roi-mid","roi-high");
         if (max >= 2000000) rightCard.classList.add("roi-high");
         else if (max >= 800000) rightCard.classList.add("roi-mid");
       }
     }
 
+    // WhatsApp (sempre abre)
     const msg =
 `Olá! Fiz a simulação no site da MaxProd.
 
 Setor: ${sectorLabel}
 Faturamento anual: ${revLabel}
-Desafio: ${selectedCh ? CHALLENGES[selectedCh].label : "não selecionado"}
+Desafio: ${ch ? ch.label : "—"}
 Potencial estimado (anual): ${roiValueEl.textContent}
 
 Quero conversar para validar esse potencial no meu cenário.`;
@@ -1551,31 +1541,39 @@ Quero conversar para validar esse potencial no meu cenário.`;
     }
   }
 
-  // Microcopy do setor (mantém seu comportamento atual)
+  // Eventos
   sectorEl.addEventListener("change", () => {
     const key = sectorEl.value;
-    const txt = SECTOR_MICROCOPY[key];
 
-    if (sectorMicrocopyEl && txt) {
-      sectorMicrocopyEl.textContent = txt;
-      sectorMicrocopyEl.classList.add("is-visible");
-    } else if (sectorMicrocopyEl) {
-      sectorMicrocopyEl.textContent = "";
-      sectorMicrocopyEl.classList.remove("is-visible");
+    // microcopy
+    const txt = SECTOR_MICROCOPY[key];
+    if(sectorMicrocopyEl){
+      if(txt){
+        sectorMicrocopyEl.textContent = txt;
+        sectorMicrocopyEl.classList.add("is-visible");
+      } else {
+        sectorMicrocopyEl.textContent = "";
+        sectorMicrocopyEl.classList.remove("is-visible");
+      }
     }
 
-    // Renderiza desafios conforme setor
     renderChallengesForSector(key);
   });
 
   revenueEl.addEventListener("input", update);
 
-  // Init: se já tiver setor selecionado, renderiza; senão, mostra um set default
-  renderChallengesForSector(sectorEl.value || "operacoes");
+  // INIT (estado inicial)
+  // Se nada selecionado, não força setor — mas já deixa slider/labels OK
+  if(roiSectorLabelEl) roiSectorLabelEl.textContent = "—";
+  if(roiChLabelEl) roiChLabelEl.textContent = "—";
   update();
 
+})();
 
-    
+
+
+
+
     
   </script>
 </body>
