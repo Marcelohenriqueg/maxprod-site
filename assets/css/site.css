@@ -2338,3 +2338,44 @@
   .roi-right{ margin-top: var(--space-16); }
 }
 
+
+/* ===============================
+   ROI — PILLS GRID (ALINHAMENTO)
+   =============================== */
+#roiChallenges{
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8);
+}
+
+@media (min-width: 900px){
+  #roiChallenges{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+#roiChallenges .roi-ch{
+  width: 100%;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+
+/* ===============================
+   ROI — FEEDBACK VISUAL (VERDE)
+   =============================== */
+.roi-right{
+  transition: box-shadow .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.roi-right.roi-high{
+  border-color: rgba(0,199,129,.35);
+  background: linear-gradient(180deg, rgba(0,199,129,.10), rgba(0,0,0,0));
+  box-shadow: 0 0 0 1px rgba(0,199,129,.25), var(--shadow-lg);
+}
+
+.roi-right.roi-mid{
+  border-color: rgba(0,212,170,.28);
+  background: linear-gradient(180deg, rgba(0,212,170,.08), rgba(0,0,0,0));
+  box-shadow: 0 0 0 1px rgba(0,212,170,.18), var(--shadow-lg);
+}
