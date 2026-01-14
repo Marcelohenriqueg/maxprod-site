@@ -2658,3 +2658,382 @@
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* =========================================================
+   MAXPROD GALAXY CSS - Design System Premium
+   ========================================================= */
+
+/* 1. PALETA PREMIUM EXPANDIDA */
+:root {
+  /* Cores principais otimizadas */
+  --brand-primary: #0066ff;
+  --brand-primary-rgb: 0, 102, 255;
+  --brand-secondary: #00d4aa;
+  --brand-secondary-rgb: 0, 212, 170;
+  --success: #00c781;
+  
+  /* Tons de fundo sofisticados */
+  --bg-primary: #0a0f1c;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1a2332;
+  
+  /* Textos com mais contraste */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-quaternary: #64748b;
+  
+  /* Gradientes premium */
+  --gradient-primary: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+  --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  
+  /* Sombras premium */
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --shadow-2xl: 0 50px 100px -20px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 60px rgba(var(--brand-primary-rgb), 0.3);
+  --shadow-glow-secondary: 0 0 40px rgba(var(--brand-secondary-rgb), 0.3);
+  
+  /* Bordas premium */
+  --border-glow: 1px solid rgba(var(--brand-primary-rgb), 0.3);
+  --border-glow-secondary: 1px solid rgba(var(--brand-secondary-rgb), 0.3);
+  
+  /* Espaçamento expandido */
+  --space-96: 6rem;
+  --space-128: 8rem;
+}
+
+/* 2. ANIMAÇÕES PREMIUM */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 3. COMPONENTES PREMIUM */
+.glass-premium {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-glass);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-2xl), var(--shadow-glow);
+  border: var(--border-glow);
+}
+
+.glow-container {
+  position: relative;
+}
+
+.glow-container::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: var(--gradient-primary);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.glow-container:hover::after {
+  opacity: 0.3;
+}
+
+/* 4. BOTÕES PREMIUM */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid transparent;
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl), var(--shadow-glow);
+}
+
+.btn-premium::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%) rotate(45deg);
+  transition: transform 0.6s ease;
+}
+
+.btn-premium:hover::after {
+  transform: translateX(100%) rotate(45deg);
+}
+
+/* 5. TYPOGRAPHY ENHANCEMENT */
+.text-gradient-premium {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  display: inline-block;
+}
+
+.text-gradient-premium::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(8px);
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.overline-premium {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--brand-secondary);
+  position: relative;
+  display: inline-block;
+  padding-left: 1rem;
+}
+
+.overline-premium::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0.5rem;
+  height: 2px;
+  background: var(--gradient-primary);
+  transform: translateY(-50%);
+}
+
+/* 6. SOBRE PAGE SPECIFIC ENHANCEMENTS */
+#sobre {
+  padding-top: calc(var(--space-96) + 32px) !important;
+  position: relative;
+}
+
+#sobre::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(var(--brand-primary-rgb), 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(var(--brand-secondary-rgb), 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Hero section premium */
+#sobre .visual-card:first-of-type {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  border: var(--border-glow);
+  box-shadow: var(--shadow-2xl), var(--shadow-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+#sobre .visual-card:first-of-type::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(var(--brand-primary-rgb), 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(var(--brand-secondary-rgb), 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Credibility cards premium */
+#sobre .glass[style*="padding: var(--space-16)"] {
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+#sobre .glass[style*="padding: var(--space-16)"]:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.05);
+  border: var(--border-glow-secondary);
+}
+
+/* Awards section enhancement */
+#sobre .glass[style*="position:absolute; inset:-45%"] {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+/* Stats counters */
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Timeline/milestones */
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--gradient-primary);
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  position: absolute;
+  left: -5px;
+  top: 4px;
+  box-shadow: 0 0 20px rgba(var(--brand-primary-rgb), 0.5);
+}
+
+/* 7. RESPONSIVE ENHANCEMENTS */
+@media (max-width: 768px) {
+  #sobre {
+    padding-top: calc(var(--space-72) + 48px) !important;
+  }
+  
+  #sobre .visual-card {
+    padding: var(--space-24) !important;
+  }
+  
+  #sobre .glass {
+    padding: var(--space-16) !important;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #sobre h1 {
+    font-size: 2rem;
+  }
+  
+  #sobre h2 {
+    font-size: 1.75rem;
+  }
+  
+  .btn-premium {
+    padding: 0.875rem 1.5rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* 8. PERFORMANCE OPTIMIZATIONS */
+@media (prefers-reduced-motion: reduce) {
+  .card-hover,
+  .btn-premium,
+  .glass {
+    transition: none;
+  }
+  
+  .float,
+  .glow-pulse {
+    animation: none;
+  }
+}
+
+/* 9. PRINT STYLES */
+@media print {
+  #sobre .glass,
+  #sobre .visual-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    background: white !important;
+    color: black !important;
+  }
+  
+  .text-gradient-premium {
+    background: none !important;
+    -webkit-text-fill-color: black !important;
+    color: black !important;
+  }
+}
