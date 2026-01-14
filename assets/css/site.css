@@ -2388,12 +2388,11 @@
   margin-top: 8px;
   padding: 10px 12px;
 
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.45;
   color: var(--text-secondary);
 
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
   border-radius: var(--radius-sm);
 
   backdrop-filter: blur(6px);
