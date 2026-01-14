@@ -3037,3 +3037,50 @@
     color: black !important;
   }
 }
+/* PATCH FINAL - Correções críticas */
+#sobre .visual-card:first-of-type > div:first-child {
+  padding: var(--space-32) !important;
+}
+
+#sobre .glass img {
+  transition: transform 0.3s ease;
+}
+
+#sobre .glass:hover img {
+  transform: scale(1.05);
+}
+
+#sobre .btn-outline {
+  position: relative;
+  overflow: hidden;
+}
+
+#sobre .btn-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+#sobre .btn-outline:hover::before {
+  opacity: 0.1;
+}
+
+/* Ajuste de performance */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Suporte para navegadores antigos */
+@supports not (backdrop-filter: blur(20px)) {
+  .glass-premium {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
