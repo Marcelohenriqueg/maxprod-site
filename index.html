@@ -643,7 +643,7 @@
 
         
   <!-- ROI CALCULATOR -->
-  <section id="calculator" class="section">
+ <section id="calculator" class="section" style="padding-top: 56px;">
     <div class="container">
       <div class="section-header">
         <div class="overline">CALCULADORA DE IMPACTO</div>
@@ -655,7 +655,7 @@
       </div>
 
 
-      <div class="visual-card" style="max-width: 980px; margin: 0 auto;">
+    <div class="visual-card" style="max-width: 1180px; margin: 0 auto;">
   <div class="roi-card">
 
     <!-- ESQUERDA: SIMULAÇÃO -->
@@ -722,7 +722,10 @@
     <!-- DIREITA: RESULTADO -->
     <div class="roi-right">
       <div class="roi-kicker">POTENCIAL DE ECONOMIA ANUAL</div>
-      <div id="roiValue" class="roi-big">R$ 1,2M – R$ 3,5M</div>
+      <div id="roiValue" class="roi-big" style="font-size: clamp(28px, 3.2vw, 44px); line-height: 1.05;">
+  R$ 1,2M – R$ 3,5M
+</div>
+
 
       <div class="roi-meta">
         <div class="row">
@@ -744,19 +747,16 @@
         O valor exato depende do diagnóstico.
       </p>
 
-      <div class="roi-actions">
-        <a href="#contact" class="btn btn-primary" id="roiCtaDiag">
-          Quero um diagnóstico preciso
-        </a>
+<div class="roi-actions">
+  <a href="#contact" class="btn btn-primary" id="roiCtaDiag">
+    Quero um diagnóstico preciso
+  </a>
 
-        <a href="#" target="_blank" class="btn btn-secondary" id="roiCtaWhats">
-          Enviar simulação no WhatsApp
-        </a>
-
-        <a href="#" class="btn btn-outline" id="roiCtaEmail">
-          Enviar simulação por E-mail
-        </a>
-      </div>
+  <a href="#" target="_blank" class="btn btn-secondary" id="roiCtaSend">
+    Enviar simulação (WhatsApp ou E-mail)
+  </a>
+</div>
+     
     </div>
 
   </div>
@@ -1401,8 +1401,7 @@ function updateROICalculation() {
   const roiSectorLabelEl = document.getElementById("roiSectorLabel");
   const roiRevLabelEl = document.getElementById("roiRevLabel");
 
-  const btnWhats = document.getElementById("roiCtaWhats");
-  const btnEmail = document.getElementById("roiCtaEmail");
+  const btnSend = document.getElementById("roiCtaSend");
 
   const challengeBtns = document.querySelectorAll(".roi-ch");
 
@@ -1476,16 +1475,25 @@ Desafio: ${selectedCh ? ch.label : "não selecionado"}
 Potencial estimado (anual): ${roiValueEl.textContent}
 
 Quero conversar para validar esse potencial no meu cenário.`;
+// Link único: WhatsApp por padrão; se o usuário não tiver, o navegador ainda pode abrir o mailto manualmente.
+const wa = "https://wa.me/5531992793411?text=" + encodeURIComponent(msg);
+const mail =
+  "mailto:maxprodsolucoes@gmail.com"
+  + "?subject=" + encodeURIComponent("Simulação ROI — MaxProd")
+  + "&body=" + encodeURIComponent(msg);
 
-    // WhatsApp (substitui pelo seu número se mudar no futuro)
-    const wa = "https://wa.me/5531992793411?text=" + encodeURIComponent(msg);
-    if(btnWhats) btnWhats.href = wa;
+if (btnSend) {
+  btnSend.href = wa;
 
-    const mail =
-"mailto:maxprodsolucoes@gmail.com"
-+ "?subject=" + encodeURIComponent("Simulação ROI — MaxProd")
-+ "&body=" + encodeURIComponent(msg);
-    if(btnEmail) btnEmail.href = mail;
+  // dica: clique com ALT abre e-mail (fallback simples e opcional)
+  btnSend.addEventListener("click", (e) => {
+    if (e.altKey) {
+      e.preventDefault();
+      window.location.href = mail;
+    }
+  }, { once: true });
+}
+
   }
 
   // desafio — visual + estado
