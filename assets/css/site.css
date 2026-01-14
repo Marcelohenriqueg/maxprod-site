@@ -3347,3 +3347,61 @@
     grid-template-columns: 1fr !important;
   }
 }
+
+/* =========================================================
+   GLOBAL — COMPACT LAYOUT (SITE TODO)
+   Menos “respiro” em cards/sections
+   EXCEÇÃO: NÃO mexe no HERO do Sobre (primeiro .visual-card dentro de #sobre)
+   Cole no FINAL do site.css
+   ========================================================= */
+
+/* 1) Cards principais (global) */
+.visual-card{
+  padding: 22px !important;          /* estava grande */
+}
+
+/* 2) EXCEÇÃO — mantém o HERO do Sobre do jeito que está */
+#sobre .visual-card:first-of-type{
+  padding: var(--space-32) !important;  /* preserva o hero "SOBRE A MAXPROD" */
+}
+
+/* 3) Títulos e textos dentro de cards: reduz margens (global) */
+.visual-card .overline{
+  margin-bottom: 8px !important;
+}
+
+.visual-card h1,
+.visual-card h2,
+.visual-card h3{
+  margin-top: 8px !important;
+  margin-bottom: 10px !important;
+}
+
+.visual-card p,
+.visual-card .text-lead{
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+}
+
+/* 4) Grids dentro de cards: aproxima do texto (global) */
+.visual-card > div[style*="grid"]{
+  margin-top: 12px !important;
+}
+
+/* 5) Espaço entre seções (global) — reduz aqueles “var(--space-24)” do HTML */
+main .container > section{
+  margin-top: 16px !important;
+}
+main .container > section:first-child{
+  margin-top: 0 !important;
+}
+
+/* 6) Botões/CTAs dentro de cards: menos espaço acima (global) */
+.visual-card [style*="display:flex"][style*="gap"]{
+  margin-top: 10px !important;
+}
+
+/* 7) Pills/chips (global): menos respiro */
+.visual-card [style*="flex-wrap: wrap"]{
+  row-gap: 10px !important;
+}
