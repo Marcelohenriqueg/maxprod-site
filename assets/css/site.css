@@ -3285,3 +3285,65 @@
 .cta-row {
   padding-bottom: 8px !important;
 }
+/* =========================================================
+   SOBRE — PATCH FINAL (APENAS #sobre)
+   Resolve:
+   1) Espaço feio no topo dentro dos cards (.visual-card)
+   2) Gap entre título (h2) e subtítulo (.text-lead)
+   3) “Sem teatro...” mais abaixo (desencostar)
+   4) Botões Trajetória mais abaixo (desencostar)
+   ========================================================= */
+
+/* 0) Segurança */
+#sobre, #sobre * { box-sizing: border-box; }
+
+/* 1) Cards do Sobre: reduzir respiro superior interno (o “vazio feio”) */
+#sobre .sobre-card.visual-card{
+  padding-top: 22px !important;     /* reduz o topo */
+  padding-bottom: 30px !important;  /* mantém premium sem “murchar” */
+}
+
+/* 2) Overline: encostar mais no topo e reduzir espaço até o título */
+#sobre .sobre-card .overline{
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
+}
+
+/* 3) Título vs subtítulo: reduzir gap em TODOS os cards do Sobre */
+#sobre .sobre-title{
+  margin-top: 6px !important;
+  margin-bottom: 12px !important;
+}
+#sobre .sobre-sub{
+  margin-top: 0 !important;
+}
+
+/* 4) “Por que existe”: separar pills da frase “Sem teatro...” (descer) */
+#sobre .sobre-pills{
+  margin-bottom: 18px !important;
+}
+#sobre .sobre-claim{
+  margin-top: 26px !important; /* desce a frase */
+}
+
+/* 5) Trajetória: descer os botões “Ver cases / Estimar impacto (ROI)” */
+#sobre .sobre-actions{
+  margin-top: 26px !important;    /* desce os botões */
+  padding-top: 6px !important;
+  padding-bottom: 4px !important;
+}
+
+/* 6) Anti “conteúdo encostando na borda” por margens padrão de H2/P */
+#sobre .sobre-card h1,
+#sobre .sobre-card h2,
+#sobre .sobre-card h3,
+#sobre .sobre-card p{
+  max-width: 100%;
+}
+
+/* 7) Responsivo: grid vira 1 coluna sem quebrar */
+@media (max-width: 960px){
+  #sobre .sobre-card [style*="grid-template-columns"]{
+    grid-template-columns: 1fr !important;
+  }
+}
