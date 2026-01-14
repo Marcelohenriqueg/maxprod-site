@@ -666,22 +666,23 @@
         <label style="display:block;margin-bottom:var(--space-8);font-size:var(--text-sm);">
           Setor da sua empresa:
         </label>
-        <select id="roiSector" style="width:100%;padding:var(--space-12);background:var(--space-3);
-                border:1px solid var(--glass-border);border-radius:var(--radius-md);color:var(--text-primary);">
 <select id="roiSector" style="width:100%;padding:var(--space-12);background:var(--space-3);
         border:1px solid var(--glass-border);border-radius:var(--radius-md);color:var(--text-primary);">
 
   <option value="" disabled selected>Selecione a área impactada</option>
 
-  <option value="operacoes">Industrial & Operações</option>
+  <option value="operacoes">Industrial &amp; Operações</option>
   <option value="qualidade">Qualidade</option>
-  <option value="comercial">Comercial & Receita</option>
-  <option value="estrategia">Estratégia & Diretoria</option>
-  <option value="esg">ESG & Inovação</option>
-  <option value="governo">Governamental & Institucional</option>
-  <option value="corporativo">Corporativo & Suporte</option>
+  <option value="comercial">Comercial &amp; Receita</option>
+  <option value="estrategia">Estratégia &amp; Diretoria</option>
+  <option value="esg">ESG &amp; Inovação</option>
+  <option value="corporativo">Corporativo &amp; Suporte</option>
 
 </select>
+      <p id="roiSectorMicrocopy"
+   style="margin-top:6px;font-size:13px;color:var(--text-tertiary);display:none;">
+</p>
+
  </div>
 
       <div style="margin-bottom: var(--space-20);">
@@ -1033,7 +1034,7 @@
         });
       });
       
-      update();
+      
     })();
     /* ===============================
    HERO STATS COUNTER + PULSE (PATCH)
@@ -1361,6 +1362,17 @@
    =============================== */
 (function(){
   const sectorEl = document.getElementById("roiSector");
+  const sectorMicrocopyEl = document.getElementById("roiSectorMicrocopy");
+
+const SECTOR_MICROCOPY = {
+  operacoes: "Onde processos, recursos e capacidade se alinham para aumentar eficiência, estabilidade e produtividade sustentável.",
+  qualidade: "Onde risco de escape, custo da não qualidade e exigências de cliente são tratados de forma estrutural e definitiva.",
+  comercial: "Onde engenharia, operação e contrato se alinham para proteger margem e acelerar receita sustentável.",
+  estrategia: "Onde decisões estratégicas são sustentadas por dados operacionais, redução de riscos e impacto direto no P&L.",
+  esg: "Onde eficiência operacional, sustentabilidade e tecnologia se conectam para gerar valor econômico e reputacional.",
+  corporativo: "Onde governança, custos indiretos e processos de suporte são estruturados para sustentar a operação e o crescimento."
+};
+
   const revenueEl = document.getElementById("roiRevenue");
   const revenueValueEl = document.getElementById("revenueValue");
 
@@ -1383,14 +1395,14 @@
     cap:  { label: "Falta de Capacidade",  min: 0.010, max: 0.028 }
   };
 
-  // (opcional) ajuste por setor (bem leve)
-  const SECTOR_LABEL = {
-    auto: "Manufatura Automotiva",
-    autopecas: "Autopeças",
-    metal: "Metalurgia",
-    plast: "Plásticos",
-    outro: "Outro"
-  };
+const SECTOR_LABEL = {
+  operacoes: "Industrial & Operações",
+  qualidade: "Qualidade",
+  comercial: "Comercial & Receita",
+  estrategia: "Estratégia & Diretoria",
+  esg: "ESG & Inovação",
+  corporativo: "Corporativo & Suporte"
+};
 
   let selectedCh = null;
 
@@ -1407,6 +1419,18 @@
     if(value >= 90) return "R$ 100M+";
     return `R$ ${value}M`;
   }
+sectorEl.addEventListener("change", () => {
+  const key = sectorEl.value;
+  const txt = SECTOR_MICROCOPY[key];
+
+  if (sectorMicrocopyEl && txt) {
+    sectorMicrocopyEl.textContent = txt;
+    sectorMicrocopyEl.style.display = "block";
+  } else if (sectorMicrocopyEl) {
+    sectorMicrocopyEl.textContent = "";
+    sectorMicrocopyEl.style.display = "none";
+  }
+});
 
   function update(){
     const revM = parseInt(revenueEl.value, 10);         // milhões
@@ -1489,7 +1513,7 @@ if (btnSend) {
     btn.style.background = "var(--brand-primary)";
     btn.style.color = "white";
 
-    update();
+    
   }
 
   challengeBtns.forEach(btn=>{
@@ -1501,7 +1525,7 @@ if (btnSend) {
   sectorEl.addEventListener("change", update);
   revenueEl.addEventListener("input", update);
 
-  update();
+  
 })();
 
     
