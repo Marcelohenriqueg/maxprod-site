@@ -2464,7 +2464,7 @@
 
 #roiChallenges .roi-ch{
   /* tipografia e espaçamento */
-  font-size: 13px;               /* ↓ um pouco menor */
+  font-size: 11px;               /* ↓ um pouco menor */
   font-weight: 650;
   letter-spacing: .01em;
   padding: 10px 14px;
@@ -2527,5 +2527,14 @@
 @media (max-width: 900px){
   .roi-card{ align-items: stretch; }
   .roi-right{ justify-content: flex-start; }
+}
+
+/* ===============================
+   ROI — MICROCOPY SETOR (AJUSTE FINO)
+   =============================== */
+#roiSectorMicrocopy{
+  font-size: 12.5px;          /* ↓ menor e mais elegante */
+  line-height: 1.45;
+  opacity: 0.85;
 }
 
