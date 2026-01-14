@@ -2557,87 +2557,104 @@
   margin-top: var(--space-8);
 }
 
-/* ===============================
-   ABOUT / SOBRE — MaxProd
-   =============================== */
-
 /* =========================================================
-   ABOUT / SOBRE — PATCH PREMIUM
-   (Responsivo + refinamento visual)
+   SOBRE — PATCH PREMIUM (SAFE)
+   Corrige: bordas feias, overflow de texto, tipografia e espaçamento topo
    ========================================================= */
 
-/* Grid principal do hero do Sobre */
-#sobre section:first-of-type > .visual-card > div > div {
-  grid-template-columns: 1.15fr .85fr;
+/* 1) Distância do topo (navbar fixa) */
+#sobre{
+  padding-top: calc(var(--space-72) + 84px) !important;
 }
-
-@media (max-width: 960px) {
-  #sobre section:first-of-type > .visual-card > div > div {
-    grid-template-columns: 1fr;
-    gap: var(--space-24);
+@media (max-width: 768px){
+  #sobre{
+    padding-top: calc(var(--space-72) + 64px) !important;
   }
 }
 
-/* Ajuste fino de títulos no Sobre */
-#sobre h1,
-#sobre h2 {
+/* 2) Tipografia padronizada */
+#sobre h1{
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.06;
   letter-spacing: -0.02em;
 }
+#sobre h2{
+  font-size: clamp(24px, 3.0vw, 40px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+#sobre .text-lead{
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.55;
+}
+#sobre p{
+  line-height: 1.6;
+}
 
-/* Cards glass do Sobre */
-#sobre .glass {
+/* 3) Anti “texto passando da borda” */
+#sobre, #sobre *{
+  box-sizing: border-box;
+}
+#sobre p, 
+#sobre li, 
+#sobre h1, 
+#sobre h2, 
+#sobre h3{
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+}
+
+/* 4) Bordas e cards: mais premium, menos “borda dura” */
+#sobre .visual-card{
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden; /* impede vazamento visual */
+}
+#sobre .glass{
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
   background: rgba(255,255,255,0.035);
-  border: 1px solid rgba(255,255,255,0.08);
   box-shadow: var(--shadow-md);
+  overflow: hidden; /* impede textos/elementos vazarem */
 }
 
-/* Grids de 3 colunas → responsivo */
-#sobre section [style*="grid-template-columns: repeat(3"] {
-  grid-template-columns: repeat(3, minmax(0,1fr));
+/* 5) Layout do HERO do Sobre (evita “apertar” e quebrar) */
+#sobre .visual-card > div{
+  padding: 0 !important; /* mantém o padding do seu próprio bloco */
 }
 
-@media (max-width: 1024px) {
-  #sobre section [style*="grid-template-columns: repeat(3"] {
-    grid-template-columns: repeat(2, minmax(0,1fr));
+/* 6) Coluna direita (card do Marcelo) mais “limpa” */
+#sobre .glass [style*="padding: var(--space-12)"]{
+  border-radius: 14px;
+}
+
+/* 7) Botões/CTAs não estourarem */
+#sobre .btn{
+  white-space: nowrap;
+}
+@media (max-width: 520px){
+  #sobre .btn{
+    width: 100%;
+    justify-content: center;
   }
 }
 
-@media (max-width: 640px) {
-  #sobre section [style*="grid-template-columns: repeat(3"] {
-    grid-template-columns: 1fr;
+/* 8) Ajuste fino do bloco do hero para respirar mais */
+#sobre section.visual-card,
+#sobre .visual-card[style*="padding: var(--space-32)"]{
+  padding: clamp(18px, 2.2vw, 32px) !important;
+}
+
+/* 9) Ajuste: listas do “check” sem desalinhamento */
+#sobre [style*="width: 26px; height: 26px"]{
+  flex: 0 0 26px;
+}
+
+/* 10) Grids responsivos do Sobre (sem depender de style*=repeat) */
+@media (max-width: 960px){
+  #sobre .container > section .visual-card [style*="grid-template-columns"]{
+    grid-template-columns: 1fr !important;
   }
 }
-
-/* Grids de 2 colunas (Prêmios) → mobile */
-#sobre section [style*="grid-template-columns: repeat(2"] {
-  grid-template-columns: repeat(2, minmax(0,1fr));
-}
-
-@media (max-width: 768px) {
-  #sobre section [style*="grid-template-columns: repeat(2"] {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Imagem do fundador — refino */
-#sobre img[alt*="Marcelo"] {
-  filter: contrast(1.05) saturate(1.05);
-}
-
-/* CTA final com mais presença */
-#sobre section:last-of-type .btn-primary {
-  box-shadow: 0 0 0 1px rgba(0,102,255,0.35), var(--shadow-lg);
-}
-
-/* Espaçamento vertical consistente */
-#sobre section {
-  margin-bottom: var(--space-24);
-}
-
-/* Overline mais elegante no Sobre */
-#sobre .overline {
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  opacity: 0.85;
-}
-
