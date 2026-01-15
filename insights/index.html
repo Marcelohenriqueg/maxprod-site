@@ -117,6 +117,50 @@
       text-align:center;
       margin-top: var(--space-12);
     }
+
+    /* ===== Expansão (Ler completo) ===== */
+.article summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: var(--space-12);
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.22);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  user-select: none;
+}
+.article summary::-webkit-details-marker { display: none; }
+
+.article details[open] summary {
+  border-color: rgba(255,255,255,0.18);
+  color: var(--text-primary);
+}
+
+.article summary .chev {
+  display: inline-block;
+  transform: translateY(1px);
+  opacity: .9;
+  transition: transform .18s ease;
+}
+.article details[open] summary .chev {
+  transform: rotate(180deg) translateY(-1px);
+}
+
+.article .fulltext {
+  margin-top: var(--space-14);
+  padding-top: var(--space-14);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.article .lead {
+  color: var(--text-secondary);
+}
+
   </style>
 </head>
 
@@ -270,10 +314,29 @@
       <section class="article" id="artigo-1">
         <div class="kicker">Governança</div>
         <h2>Governança Regulatória e Previsibilidade Institucional</h2>
-        <p><strong>Resumo executivo.</strong> A previsibilidade regulatória é um fator decisivo para decisões de investimento e planejamento de longo prazo. A governança regulatória organiza o processo decisório, reduz incertezas e amplia a legitimidade das ações institucionais.</p>
-        <p>A governança regulatória pode ser entendida como a integração entre instrumentos de planejamento, análise e participação social. Ao estruturar prioridades, avaliar impactos e incorporar contribuições, o regulador aumenta a transparência e reduz a assimetria de informações entre Estado, mercado e sociedade.</p>
-        <p>Quando bem aplicada, essa lógica favorece decisões mais estáveis, com menor risco institucional, maior previsibilidade e maior confiança na atuação regulatória. O resultado é um ambiente mais propício a investimentos de longo prazo, com regras mais claras e processos mais consistentes.</p>
+        <p class="lead"><strong>Resumo executivo.</strong> A governança regulatória integra planejamento, análise e participação social para aumentar transparência, reduzir incerteza e fortalecer a legitimidade das decisões públicas.</p>
 
+<details>
+  <summary>Leia o artigo completo <span class="chev">▾</span></summary>
+
+  <div class="fulltext">
+    <p>O texto aborda a governança regulatória e a forma como seu tripé, composto pela Agenda Regulatória (AR), pela Análise de Impacto Regulatório (AIR) e pelo Processo de Participação e Controle Social (PPCS), se integra em um contexto no qual a sociedade e o mercado demandam maior transparência e previsibilidade na regulação.</p>
+
+    <p>Essas três ferramentas estão diretamente relacionadas ao cumprimento da missão institucional da Agência Nacional de Transportes Terrestres (ANTT), especialmente no que se refere à organização, planejamento e legitimidade das ações regulatórias.</p>
+
+    <p>A Agenda Regulatória, considerada a principal ferramenta de planejamento estratégico da ANTT, é construída com a contribuição da sociedade e dos agentes regulados por meio do Processo de Participação e Controle Social (PPCS). Esse processo permite a indicação de temas relevantes e significativos, organizados em cinco eixos temáticos definidos de forma colaborativa.</p>
+
+    <p>Os projetos enquadrados nesses eixos passam por uma Análise de Impacto Regulatório (AIR), cuja finalidade é identificar de forma preventiva os desafios associados às propostas regulatórias, bem como avaliar alternativas e propor soluções para o enfrentamento desses desafios.</p>
+
+    <p>Ao ampliar os canais de participação, a governança regulatória incorpora a sociedade como parte do processo decisório, contribuindo para a mitigação de possíveis efeitos adversos da regulação e favorecendo maior aceitabilidade das novas regras e normativos.</p>
+
+    <p>A participação dos agentes regulados nesse processo também assume papel relevante, uma vez que o envolvimento do setor privado contribui para a construção de soluções mais aderentes à realidade operacional, além de permitir que as empresas se antecipem às tendências regulatórias e se adequem de forma planejada às mudanças normativas.</p>
+
+    <p>Com a definição e a divulgação da Agenda Regulatória, os regulados passam a dispor de uma visão mais clara e estruturada sobre as regulamentações futuras, o que contribui para a redução de incertezas e para a estabilidade do ambiente regulatório.</p>
+
+    <p>Nesse contexto, ambientes regulatórios mais previsíveis tendem a estimular investimentos e decisões de longo prazo, uma vez que a clareza das regras e a transparência dos processos reduzem riscos e fortalecem a confiança institucional.</p>
+  </div>
+</details>
         <div class="author-box">
           <!-- TROQUE o src pela sua foto real quando subir em /assets/img/ -->
           <img class="author-photo" src="/assets/img/foto-institucional.png" alt="Foto do autor">
@@ -288,10 +351,31 @@
       <section class="article" id="artigo-2">
         <div class="kicker">Regulação</div>
         <h2>Regulação Responsiva na Administração Pública</h2>
-        <p><strong>Resumo executivo.</strong> Modelos de comando e controle nem sempre produzem os melhores resultados. A regulação responsiva propõe um equilíbrio entre persuasão, incentivos e sanção proporcional, com foco em eficiência e conformidade.</p>
-        <p>A regulação responsiva parte da ideia de que a fiscalização deve ser orientada por risco e comportamento. Ao reconhecer boas práticas e concentrar energia onde o risco é maior, o regulador racionaliza recursos e melhora o desempenho institucional.</p>
-        <p>Desde que aplicada com critérios objetivos e transparência, essa abordagem preserva o princípio da legalidade e o princípio da isonomia. Além disso, tende a estimular cooperação, disseminar lições aprendidas e reduzir custos sistêmicos associados ao modelo puramente punitivo.</p>
+        <p class="lead"><strong>Resumo executivo.</strong> A regulação responsiva propõe uma atuação do Estado mais proporcional e orientada por risco, combinando persuasão, incentivos e sanção quando necessário, com ganhos de eficiência e cooperação.</p>
 
+<details>
+  <summary>Leia o artigo completo <span class="chev">▾</span></summary>
+
+  <div class="fulltext">
+    <p>O texto aborda a regulação responsiva na Administração Pública, seus conceitos, sua importância no contexto atual e os desafios associados à sua aplicação.</p>
+
+    <p>O conceito de regulação responsiva está relacionado à transição de uma abordagem predominantemente sancionatória e punitiva, baseada em modelos de comando e controle, para uma atuação mais colaborativa do regulador, com foco em persuasão e incentivo ao cumprimento normativo. Nesse modelo, a Administração Pública busca fomentar a motivação dos regulados para agir de forma correta, reduzindo a dependência exclusiva de mecanismos repressivos.</p>
+
+    <p>Em um cenário marcado por restrições orçamentárias e por uma crescente demanda da sociedade por maior eficácia da gestão pública, a adoção da regulação responsiva se apresenta como uma alternativa relevante a ser considerada. Essa abordagem permite racionalizar esforços fiscalizatórios e direcionar recursos públicos de maneira mais eficiente.</p>
+
+    <p>A regulação responsiva pode ser aplicada em mercados caracterizados por elevado grau de controle ou que demandam maior compreensão de suas particularidades operacionais. Um exemplo é o mercado bancário, no qual a autorregulação é exercida pela Federação Brasileira de Bancos (Febraban), sob a supervisão e regulação do Banco Central do Brasil (BACEN). Nesse modelo, a autorregulação tende a apresentar maior abrangência e profundidade nos processos fiscalizatórios, uma vez que é conduzida por especialistas com amplo conhecimento do setor.</p>
+
+    <p>Além disso, a autorregulação contribui para a redução do risco de captura regulatória, na medida em que a regulação responsiva estimula os regulados a adotarem condutas adequadas de forma voluntária e alinhada às normas.</p>
+
+    <p>Entretanto, alguns aspectos merecem atenção, especialmente aqueles relacionados ao princípio da legalidade e ao princípio da isonomia. No que se refere ao princípio da legalidade, é importante considerar que o ordenamento jurídico brasileiro é composto por um vasto conjunto de leis, normas, regulamentos e instruções, que devem ser observados tanto nos modelos tradicionais de regulação quanto nas abordagens mais flexíveis, como a regulação responsiva.</p>
+
+    <p>Quanto ao princípio da isonomia, discute-se a possibilidade de alguns regulados receberem maior grau de flexibilidade e autonomia do que outros. Sobre esse ponto, o Supremo Tribunal Federal (STF) já firmou entendimento no sentido de que a aplicação dessa abordagem não viola o referido princípio, desde que sejam observados critérios objetivos, tratando-se os iguais como iguais e os desiguais como desiguais. Nesse contexto, é possível adotar critérios uniformes de avaliação, recompensando condutas adequadas e aplicando sanções proporcionais às infrações cometidas.</p>
+
+    <p>Adicionalmente, ao estimular os regulados a atuarem de forma colaborativa e em conformidade com as normas, cria-se um ambiente favorável ao compartilhamento de boas práticas e lições aprendidas. Esse movimento tende a ampliar os benefícios da regulação responsiva, permitindo que outros agentes também evoluam em direção a ambientes regulatórios mais eficientes, com reflexos positivos na qualidade dos serviços prestados à sociedade.</p>
+
+    <p>Nesse contexto, a regulação responsiva se apresenta como uma abordagem complementar aos modelos tradicionais, com potencial para ampliar a eficiência regulatória, promover maior cooperação institucional e gerar benefícios sistêmicos nos mercados regulados.</p>
+  </div>
+</details>
         <div class="author-box">
           <img class="author-photo" src="/assets/img/foto-institucional.png" alt="Foto do autor">
           <div>
@@ -305,10 +389,29 @@
       <section class="article" id="artigo-3">
         <div class="kicker">Economia</div>
         <h2>Métodos de Tarifação em Mercados Regulados</h2>
-        <p><strong>Resumo executivo.</strong> Modelos tarifários definem incentivos econômicos e impactam diretamente qualidade, eficiência e comportamento das empresas reguladas. A escolha do método não é apenas técnica: é estratégica.</p>
-        <p>O modelo de taxa de retorno (custo do serviço) busca garantir cobertura de custos e remuneração do capital. Apesar de útil em ambientes estáveis, pode ampliar assimetria de informação e não criar incentivos claros para melhoria contínua e eficiência operacional.</p>
-        <p>Já modelos baseados em incentivos, como o <em>price-cap</em>, limitam tarifas e estimulam produtividade: quanto maior a eficiência, maior o retorno. Para funcionar bem, exige indicadores de desempenho, monitoramento e capacidade técnica para reduzir riscos de qualidade e captura regulatória.</p>
+        <p class="lead"><strong>Resumo executivo.</strong> A escolha do método de tarifação molda incentivos, qualidade e eficiência nos serviços regulados. Modelos por incentivo, como price-cap, tendem a estimular produtividade e inovação.</p>
 
+<details>
+  <summary>Leia o artigo completo <span class="chev">▾</span></summary>
+
+  <div class="fulltext">
+    <p>O texto apresenta uma análise sobre os métodos de tarifação empregados em mercados regulados e sobre possíveis soluções para fragilidades associadas ao método conhecido como taxa de retorno.</p>
+
+    <p>Inicialmente, faz-se necessária a contextualização do cenário no qual os métodos de tarifação são adotados pelas Agências Reguladoras no Brasil. Com a transferência da prestação de serviços públicos da iniciativa estatal para a iniciativa privada, tornou-se indispensável a definição de mecanismos regulatórios capazes de disciplinar as tarifas cobradas dos usuários, assegurando equilíbrio entre sustentabilidade econômica e interesse público.</p>
+
+    <p>Entre os métodos utilizados, destaca-se o método da taxa de retorno, também denominado custo do serviço. Nesse modelo, as tarifas devem ser suficientes para cobrir os custos incorridos e garantir uma margem de lucro à empresa regulada. Trata-se de um método adequado em contextos nos quais receitas e custos apresentam baixa volatilidade, permitindo a remuneração considerada justa do capital investido.</p>
+
+    <p>Entretanto, o método da taxa de retorno apresenta fragilidades e limitações relevantes. Uma delas é o risco de assimetria de informações, associado à teoria do agente - principal, na qual as informações sobre os custos internos permanecem sob controle das empresas reguladas. Nesse contexto, os custos reportados às autoridades regulatórias podem não refletir integralmente os custos efetivamente praticados.</p>
+
+    <p>Outra fragilidade relacionada ao uso da taxa de retorno refere-se ao risco de prestação do serviço em níveis de qualidade inferiores aos parâmetros desejáveis. Além disso, esse método não impõe incentivos claros à adoção de práticas de melhoria contínua, uma vez que a elevação das tarifas pode, em determinados casos, assegurar a rentabilidade das empresas independentemente de ganhos de eficiência.</p>
+
+    <p>Em comparação com o método de custo do serviço, destaca-se o método conhecido como price-cap, ou preço-teto. Nesse modelo, a tarifa não pode ultrapassar um valor máximo previamente definido pela entidade reguladora. Trata-se de um método baseado em incentivos, no qual a empresa é estimulada a reduzir seus custos para ampliar sua margem de lucro. O órgão regulador define a taxa regulatória a partir de comparações internacionais, por meio de benchmarks, estabelecendo metas de redução de custos: quanto maior a eficiência alcançada, maior o retorno econômico para a empresa.</p>
+
+    <p>Diante dessas características, algumas alternativas podem ser consideradas para mitigar as fragilidades associadas aos modelos tradicionais de tarifação. No caso da assimetria de informações e do risco de perda de qualidade, tais efeitos podem ser reduzidos por meio da definição e do monitoramento de indicadores, incluindo reclamações dos usuários, bem como pela atuação de corpos técnicos especializados em análise de custos, capazes de avaliar a rentabilidade das empresas reguladas.</p>
+
+    <p>A adoção do método price-cap se apresenta como uma resposta às limitações relacionadas à ausência de incentivos à eficiência, na medida em que estimula o aumento da produtividade, reduz o risco de captura regulatória e favorece a inovação tecnológica nos setores regulados.</p>
+  </div>
+</details>
         <div class="author-box">
           <img class="author-photo" src="/assets/img/foto-institucional.png" alt="Foto do autor">
           <div>
@@ -322,10 +425,35 @@
       <section class="article" id="artigo-4">
         <div class="kicker">Tecnologia</div>
         <h2>Inteligência Artificial, Monitoramento Operacional e Sandbox Regulatório</h2>
-        <p><strong>Resumo executivo.</strong> A IA aplicada ao monitoramento operacional pode elevar eficiência, reduzir custos e mitigar riscos, mas requer validação contínua, transparência e mecanismos institucionais para testes controlados.</p>
-        <p>Em ambientes regulados, o sandbox é um caminho para testar inovação com governança: define escopo, indicadores, acompanhamento e evidências. Esse formato permite aprender, ajustar e reduzir incertezas antes de uma adoção ampla.</p>
-        <p>Uma abordagem responsável prioriza dados operacionais e preserva privacidade, evitando uso de imagens para identificação pessoal. Relatórios periódicos e publicizados, com desafios e estratégias de mitigação, formam um acervo de lições aprendidas e permitem medir, de forma objetiva, eficiência, custos e segurança ao longo do piloto.</p>
+        <p class="lead"><strong>Resumo executivo.</strong> A adoção de IA em ambientes regulados exige testes controlados, transparência e validação contínua. O sandbox regulatório viabiliza inovação com segurança jurídica e confiança institucional.</p>
 
+<details>
+  <summary>Leia o artigo completo <span class="chev">▾</span></summary>
+
+  <div class="fulltext">
+    <p>O texto apresenta uma análise técnica no âmbito regulatório, fundamentada em uma proposta de utilização de Inteligência Artificial (IA) para monitoramento de postos operacionais.</p>
+
+    <p>O objetivo desta análise é avaliar o atendimento da proposta aos requisitos da Resolução ANTT nº 5999/2022.</p>
+
+    <p>A referida Resolução estabelece procedimentos, como um conjunto de regras e requisitos, para a aprovação e dispensa de periodicidade, observando as normas regulatórias aplicáveis ao setor.</p>
+
+    <p>A partir de uma análise comparativa de verificação de riscos e impactos inerentes à atuação da ANTT, a proposta de um projeto piloto de digitalização e automação dos controles se mostra inovadora ao empregar Inteligência Artificial (IA) no monitoramento de dados operacionais.</p>
+
+    <p>A proposta tem como objetivos aumentar a eficiência dos processos internos, reduzir os custos operacionais e minimizar os riscos relacionados à qualidade.</p>
+
+    <p>Para avaliar a aderência da proposta à Resolução, realizou-se a análise dos documentos, formulários e registros apresentados, de forma individualizada, com verificação de suas respectivas pertinências.</p>
+
+    <p>Ademais, identifica-se um ponto de atenção relacionado ao cronograma apresentado pela empresa X, estruturado em 36 meses, em comparação ao prazo de 24 meses previsto na Resolução, o que reforça a importância de ajustes e alinhamentos ao longo do desenvolvimento do projeto.</p>
+
+    <p>Quanto à utilização da Inteligência Artificial (IA) para o monitoramento da frota da empresa X, a proposta prevê uma abordagem mais transparente e menos invasiva, na qual as imagens não serão utilizadas para identificação pessoal de quaisquer indivíduos envolvidos.</p>
+
+    <p>Para assegurar a qualidade e a conformidade com o disposto na Resolução, o projeto prevê o envio de relatórios periódicos à comissão de sandbox, com o objetivo de acompanhar a evolução dos trabalhos, os desafios identificados e as estratégias adotadas para sua resolução, formando um acervo de lições aprendidas.</p>
+
+    <p>Com base nesses relatórios, torna-se possível o estabelecimento de indicadores que servirão como parâmetros para avaliar o comportamento dos objetivos anteriormente elencados, tais como melhoria da eficiência, minimização de custos e aumento da segurança observados pela empresa. Esses relatórios deverão ter publicidade, permanecendo disponíveis no site da empresa, acompanhados de texto explicativo informando que se trata de um projeto em fase de teste.</p>
+
+    <p>Nesse contexto, a adoção de soluções baseadas em Inteligência Artificial em ambientes regulados evidencia a necessidade de validações contínuas e testes controlados, de modo a fortalecer a segurança jurídica, a previsibilidade regulatória e a confiança institucional antes de uma eventual adoção em caráter mais amplo.</p>
+  </div>
+</details>
         <div class="author-box">
           <img class="author-photo" src="/assets/img/foto-institucional.png" alt="Foto do autor">
           <div>
@@ -470,5 +598,16 @@
       });
     });
   </script>
+  <script>
+  // Fecha outros artigos quando um abrir
+  document.querySelectorAll('.article details').forEach((d) => {
+    d.addEventListener('toggle', () => {
+      if (!d.open) return;
+      document.querySelectorAll('.article details').forEach((other) => {
+        if (other !== d) other.open = false;
+      });
+    });
+  });
+</script>
 </body>
 </html>
