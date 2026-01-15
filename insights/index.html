@@ -1,1 +1,474 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="description" content="Insights MaxProd — artigos técnicos sobre governança regulatória, regulação responsiva, tarifação e IA em ambientes regulados." />
+  <title>Insights | Artigos Técnicos — MaxProd</title>
 
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Insights | Artigos Técnicos — MaxProd" />
+  <meta property="og:description" content="Governança, regulação, tarifação e IA aplicadas a ambientes regulados, com linguagem institucional e foco em decisão." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://maxprod.com.br/assets/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="/assets/css/site.css">
+
+  <style>
+    /* ===== INSIGHTS (somente local, não mexe no site todo) ===== */
+    .page-hero{
+      padding-top: clamp(84px, 8vw, 110px);
+      padding-bottom: var(--space-40);
+      text-align: center;
+    }
+    .page-hero .overline{ margin-bottom: var(--space-12); }
+    .page-hero h1{ margin-bottom: var(--space-12); }
+    .page-hero p{ max-width: 860px; margin: 0 auto; }
+
+    .insights-grid{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: var(--space-20);
+      margin-top: var(--space-28);
+    }
+    @media (max-width: 900px){
+      .insights-grid{ grid-template-columns: 1fr; }
+    }
+
+    .insight-card{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      padding: var(--space-20);
+      box-shadow: var(--shadow-md);
+    }
+    .insight-meta{
+      display:flex;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-12);
+    }
+    .insight-tag{
+      font-size: var(--text-xs);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.18);
+      color: var(--text-secondary);
+    }
+    .insight-card h3{ margin: 0 0 var(--space-10); }
+    .insight-card p{ margin: 0 0 var(--space-16); color: var(--text-secondary); }
+
+    .divider{
+      margin: var(--space-48) 0;
+      border: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .article{
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      padding: var(--space-24);
+      box-shadow: var(--shadow-md);
+      margin-bottom: var(--space-20);
+    }
+    .article h2{
+      margin-top: 0;
+      margin-bottom: var(--space-10);
+    }
+    .article .kicker{
+      color: var(--brand-secondary);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      margin-bottom: var(--space-8);
+    }
+    .article p{ color: var(--text-secondary); }
+
+    .author-box{
+      display:flex;
+      align-items:center;
+      gap: var(--space-14);
+      margin-top: var(--space-20);
+      padding-top: var(--space-16);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .author-photo{
+      width: 52px; height: 52px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow-sm);
+      background: rgba(255,255,255,0.04);
+    }
+    .author-name{ font-weight: 700; color: var(--text-primary); }
+    .author-role{ font-size: var(--text-sm); color: var(--text-tertiary); }
+
+    .toc-note{
+      font-size: var(--text-sm);
+      color: var(--text-tertiary);
+      text-align:center;
+      margin-top: var(--space-12);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVIGATION (mesma do seu site, com paths ajustados) -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="/#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+
+      <ul class="nav-menu">
+        <li><a href="/#home" class="nav-link">Home</a></li>
+        <li><a href="/#cases" class="nav-link">Cases</a></li>
+        <li><a href="/#methodology" class="nav-link">Metodologia</a></li>
+        <li><a href="/#services" class="nav-link">Serviços</a></li>
+
+        <!-- ESG & INOVAÇÃO -->
+        <li class="nav-item has-dropdown">
+          <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
+            ESG &amp; Inovação <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-dropdown nav-drop" role="menu" aria-label="ESG & Inovação">
+            <a class="nav-drop-item" href="/esg/projeto-doacao.html">Projeto Doação</a>
+            <a class="nav-drop-item" href="/esg/opera-guard.html">Opera Guard (IA)</a>
+            <a class="nav-drop-item" href="/esg/startup-planta-produtiva.html">Startup Produtiva</a>
+            <a class="nav-drop-item" href="/esg/economia-circular.html">Economia Circular</a>
+          </div>
+        </li>
+
+        <li><a href="/#calculator" class="nav-link">ROI Calc</a></li>
+
+        <!-- INSIGHTS -->
+        <li class="nav-item has-dropdown">
+          <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
+            Insights <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-dropdown nav-drop" role="menu" aria-label="Insights">
+            <a class="nav-drop-item" href="/insights/">Artigos Técnicos</a>
+            <a class="nav-drop-item" href="/insights/white-papers.html">White Papers</a>
+          </div>
+        </li>
+
+        <li><a href="/sobre.html" class="nav-link">Sobre</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="/#contact" class="btn btn-primary">Fale Conosco</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="/#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
+      <button id="closeMobileMenu">✕</button>
+    </div>
+
+    <ul class="mobile-nav">
+      <li><a href="/#home">Home</a></li>
+      <li><a href="/#cases">Cases</a></li>
+      <li><a href="/#methodology">Metodologia</a></li>
+      <li><a href="/#services">Serviços</a></li>
+      <li><a href="/#calculator">ROI Calc</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/sobre.html">Sobre</a></li>
+      <li><a href="/#contact">Fale Conosco</a></li>
+    </ul>
+
+    <div style="margin-top: var(--space-32);">
+      <a href="/#calculator" class="btn btn-primary" style="width: 100%; margin-bottom: var(--space-16);">
+        Calcular ROI
+      </a>
+      <a href="/#contact" class="btn btn-secondary" style="width: 100%;">
+        Fale Conosco
+      </a>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <main class="section">
+    <div class="container">
+      <header class="page-hero">
+        <div class="overline">INSIGHTS</div>
+        <h1>Artigos Técnicos</h1>
+        <p class="text-lead">
+          Conteúdo institucional sobre governança regulatória, eficiência econômica e adoção segura de tecnologia em ambientes regulados.
+        </p>
+        <div class="toc-note">Selecione um tema abaixo para ir direto ao artigo.</div>
+      </header>
+
+      <!-- GRID DE CARDS -->
+      <section class="insights-grid">
+        <article class="insight-card">
+          <div class="insight-meta">
+            <span class="insight-tag">Governança</span>
+            <span class="insight-tag">Previsibilidade</span>
+          </div>
+          <h3>Governança Regulatória e Previsibilidade Institucional</h3>
+          <p>Como agenda regulatória, AIR e participação social estruturam decisões, reduzem incerteza e fortalecem a confiança institucional.</p>
+          <a class="btn btn-primary" href="#artigo-1">Ler artigo →</a>
+        </article>
+
+        <article class="insight-card">
+          <div class="insight-meta">
+            <span class="insight-tag">Regulação</span>
+            <span class="insight-tag">Eficiência</span>
+          </div>
+          <h3>Regulação Responsiva na Administração Pública</h3>
+          <p>Da lógica punitiva para uma atuação orientada por risco, proporcionalidade e cooperação, preservando legalidade e isonomia.</p>
+          <a class="btn btn-primary" href="#artigo-2">Ler artigo →</a>
+        </article>
+
+        <article class="insight-card">
+          <div class="insight-meta">
+            <span class="insight-tag">Tarifação</span>
+            <span class="insight-tag">Incentivos</span>
+          </div>
+          <h3>Métodos de Tarifação em Mercados Regulados</h3>
+          <p>Trade-offs entre taxa de retorno e modelos por incentivo (price-cap), e como indicadores reduzem assimetria e protegem a qualidade.</p>
+          <a class="btn btn-primary" href="#artigo-3">Ler artigo →</a>
+        </article>
+
+        <article class="insight-card">
+          <div class="insight-meta">
+            <span class="insight-tag">IA</span>
+            <span class="insight-tag">Sandbox</span>
+          </div>
+          <h3>Inteligência Artificial, Monitoramento Operacional e Sandbox Regulatório</h3>
+          <p>Por que testes controlados, transparência e lições aprendidas são essenciais para adoção segura de IA em ambientes regulados.</p>
+          <a class="btn btn-primary" href="#artigo-4">Ler artigo →</a>
+        </article>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ARTIGO 1 -->
+      <section class="article" id="artigo-1">
+        <div class="kicker">Governança</div>
+        <h2>Governança Regulatória e Previsibilidade Institucional</h2>
+        <p><strong>Resumo executivo.</strong> A previsibilidade regulatória é um fator decisivo para decisões de investimento e planejamento de longo prazo. A governança regulatória organiza o processo decisório, reduz incertezas e amplia a legitimidade das ações institucionais.</p>
+        <p>A governança regulatória pode ser entendida como a integração entre instrumentos de planejamento, análise e participação social. Ao estruturar prioridades, avaliar impactos e incorporar contribuições, o regulador aumenta a transparência e reduz a assimetria de informações entre Estado, mercado e sociedade.</p>
+        <p>Quando bem aplicada, essa lógica favorece decisões mais estáveis, com menor risco institucional, maior previsibilidade e maior confiança na atuação regulatória. O resultado é um ambiente mais propício a investimentos de longo prazo, com regras mais claras e processos mais consistentes.</p>
+
+        <div class="author-box">
+          <!-- TROQUE o src pela sua foto real quando subir em /assets/img/ -->
+          <img class="author-photo" src="/assets/img/marcelo.jpg" alt="Foto do autor">
+          <div>
+            <div class="author-name">Marcelo Gonçalves</div>
+            <div class="author-role">Engenheiro de Produção | Consultor em Estratégia, Governança e Eficiência Operacional</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARTIGO 2 -->
+      <section class="article" id="artigo-2">
+        <div class="kicker">Regulação</div>
+        <h2>Regulação Responsiva na Administração Pública</h2>
+        <p><strong>Resumo executivo.</strong> Modelos de comando e controle nem sempre produzem os melhores resultados. A regulação responsiva propõe um equilíbrio entre persuasão, incentivos e sanção proporcional, com foco em eficiência e conformidade.</p>
+        <p>A regulação responsiva parte da ideia de que a fiscalização deve ser orientada por risco e comportamento. Ao reconhecer boas práticas e concentrar energia onde o risco é maior, o regulador racionaliza recursos e melhora o desempenho institucional.</p>
+        <p>Desde que aplicada com critérios objetivos e transparência, essa abordagem preserva o princípio da legalidade e o princípio da isonomia. Além disso, tende a estimular cooperação, disseminar lições aprendidas e reduzir custos sistêmicos associados ao modelo puramente punitivo.</p>
+
+        <div class="author-box">
+          <img class="author-photo" src="/assets/img/marcelo.jpg" alt="Foto do autor">
+          <div>
+            <div class="author-name">Marcelo Gonçalves</div>
+            <div class="author-role">Engenheiro de Produção | Consultor em Estratégia, Governança e Eficiência Operacional</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARTIGO 3 -->
+      <section class="article" id="artigo-3">
+        <div class="kicker">Economia</div>
+        <h2>Métodos de Tarifação em Mercados Regulados</h2>
+        <p><strong>Resumo executivo.</strong> Modelos tarifários definem incentivos econômicos e impactam diretamente qualidade, eficiência e comportamento das empresas reguladas. A escolha do método não é apenas técnica: é estratégica.</p>
+        <p>O modelo de taxa de retorno (custo do serviço) busca garantir cobertura de custos e remuneração do capital. Apesar de útil em ambientes estáveis, pode ampliar assimetria de informação e não criar incentivos claros para melhoria contínua e eficiência operacional.</p>
+        <p>Já modelos baseados em incentivos, como o <em>price-cap</em>, limitam tarifas e estimulam produtividade: quanto maior a eficiência, maior o retorno. Para funcionar bem, exige indicadores de desempenho, monitoramento e capacidade técnica para reduzir riscos de qualidade e captura regulatória.</p>
+
+        <div class="author-box">
+          <img class="author-photo" src="/assets/img/marcelo.jpg" alt="Foto do autor">
+          <div>
+            <div class="author-name">Marcelo Gonçalves</div>
+            <div class="author-role">Engenheiro de Produção | Consultor em Estratégia, Governança e Eficiência Operacional</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARTIGO 4 -->
+      <section class="article" id="artigo-4">
+        <div class="kicker">Tecnologia</div>
+        <h2>Inteligência Artificial, Monitoramento Operacional e Sandbox Regulatório</h2>
+        <p><strong>Resumo executivo.</strong> A IA aplicada ao monitoramento operacional pode elevar eficiência, reduzir custos e mitigar riscos, mas requer validação contínua, transparência e mecanismos institucionais para testes controlados.</p>
+        <p>Em ambientes regulados, o sandbox é um caminho para testar inovação com governança: define escopo, indicadores, acompanhamento e evidências. Esse formato permite aprender, ajustar e reduzir incertezas antes de uma adoção ampla.</p>
+        <p>Uma abordagem responsável prioriza dados operacionais e preserva privacidade, evitando uso de imagens para identificação pessoal. Relatórios periódicos e publicizados, com desafios e estratégias de mitigação, formam um acervo de lições aprendidas e permitem medir, de forma objetiva, eficiência, custos e segurança ao longo do piloto.</p>
+
+        <div class="author-box">
+          <img class="author-photo" src="/assets/img/marcelo.jpg" alt="Foto do autor">
+          <div>
+            <div class="author-name">Marcelo Gonçalves</div>
+            <div class="author-role">Engenheiro de Produção | Consultor em Estratégia, Governança e Eficiência Operacional</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER (mesmo do seu site, com anchors ajustados) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">MAXPROD</div>
+          <p style="font-size: var(--text-sm); color: var(--text-tertiary); max-width: 300px;">
+            Consultoria industrial premium com foco em resultados mensuráveis e execução garantida.
+          </p>
+        </div>
+
+        <div>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Serviços</h6>
+          <ul class="footer-links">
+            <li><a href="/#cases">Consultoria Industrial</a></li>
+            <li><a href="/#methodology">Melhoria Contínua</a></li>
+            <li><a href="/#calculator">Otimização de Custos</a></li>
+            <li><a href="/#cases">Qualidade & Confiabilidade</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Empresa</h6>
+          <ul class="footer-links">
+            <li><a href="/sobre.html">Sobre</a></li>
+            <li><a href="/#cases">Cases</a></li>
+            <li><a href="/#methodology">Metodologia</a></li>
+            <li><a href="/#contact">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Conecte-se</h6>
+          <ul class="footer-links">
+            <li><a href="https://linkedin.com/company/maxprod" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:maxprodsolucoes@gmail.com">E-mail</a></li>
+            <li><a href="tel:+5531992793411">Telefone</a></li>
+            <li><a href="/#contact">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="currentYear"></span> MaxProd Soluções Empresariais. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS (somente os necessários aqui) -->
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeMobileMenu.addEventListener('click', function() {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    mobileMenu.addEventListener('click', function(e) {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Dropdown toggle (igual ao seu)
+    (function(){
+      const items = document.querySelectorAll(".navbar .has-dropdown");
+      if(!items.length) return;
+
+      function closeAll(except){
+        items.forEach(it => {
+          if(it !== except){
+            it.classList.remove("is-open");
+            const btn = it.querySelector(".nav-dd-toggle");
+            if(btn) btn.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      items.forEach(it => {
+        const btn = it.querySelector(".nav-dd-toggle");
+        if(!btn) return;
+
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = it.classList.contains("is-open");
+          closeAll(it);
+          it.classList.toggle("is-open", !isOpen);
+          btn.setAttribute("aria-expanded", (!isOpen).toString());
+        });
+      });
+
+      document.addEventListener("click", () => closeAll(null));
+      document.addEventListener("keydown", (e) => {
+        if(e.key === "Escape") closeAll(null);
+      });
+    })();
+
+    // Smooth scroll apenas para âncoras da própria página (artigos)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if(!href || href === '#') return;
+        const target = document.querySelector(href);
+        if(!target) return;
+
+        e.preventDefault();
+        window.scrollTo({
+          top: target.offsetTop - 72,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
