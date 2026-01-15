@@ -811,7 +811,7 @@
 </nav>
 
 <!-- MOBILE MENU (IGUAL HOME, LINKS AJUSTADOS PARA /index.html#...) -->
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <div class="mobile-menu-header">
     <a href="/index.html#home" class="logo">
       <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
@@ -820,12 +820,33 @@
         <span class="logo-sub">Soluções Empresariais</span>
       </span>
     </a>
-    <button id="closeMobileMenu">✕</button>
+    <button id="closeMobileMenu" aria-label="Fechar menu">✕</button>
   </div>
 
+  <ul class="mobile-nav">
+    <li><a href="/index.html#home">Home</a></li>
+    <li><a href="/index.html#cases">Cases</a></li>
+    <li><a href="/index.html#methodology">Metodologia</a></li>
+    <li><a href="/index.html#services">Serviços</a></li>
+    <li><a href="/index.html#calculator">ROI Calc</a></li>
+    <li><a href="/insights/">Insights</a></li>
+    <li><a href="/sobre.html">Sobre</a></li>
+    <li><a href="/index.html#contact">Contato</a></li>
+  </ul>
 
-  <main class="case-wrap">
-    <div class="case-breadcrumb">
+  <div style="margin-top: var(--space-32);">
+    <a href="/index.html#calculator" class="btn btn-primary" style="width:100%; margin-bottom: var(--space-16);">
+      Calcular ROI
+    </a>
+    <a href="/index.html#contact" class="btn btn-secondary" style="width:100%;">
+      Fale Conosco
+    </a>
+  </div>
+</div>
+<!-- /MOBILE MENU -->
+
+<main class="case-wrap">
+  <div class="case-breadcrumb">
       <a href="/index.html">Home</a>
       <span class="separator">/</span>
       <a href="/index.html#cases">Cases</a>
