@@ -1,1 +1,273 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="description" content="White Papers MaxProd — em desenvolvimento." />
+  <title>Insights | White Papers — MaxProd</title>
+
+  <meta property="og:title" content="Insights | White Papers — MaxProd" />
+  <meta property="og:description" content="White papers técnicos e aplicados — em desenvolvimento." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://maxprod.com.br/assets/og-image.jpg" />
+
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/site.css">
+
+  <style>
+    .page-hero{
+      padding-top: clamp(84px, 8vw, 110px);
+      padding-bottom: var(--space-40);
+      text-align: center;
+    }
+    .page-hero p{ max-width: 860px; margin: 0 auto; }
+
+    .coming{
+      max-width: 980px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      padding: var(--space-28);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+    .coming h2{ margin-top: 0; }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.22);
+      color: var(--text-secondary);
+      font-size: var(--text-xs);
+      margin-bottom: var(--space-14);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV (igual ao insights/index.html) -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="/#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+
+      <ul class="nav-menu">
+        <li><a href="/#home" class="nav-link">Home</a></li>
+        <li><a href="/#cases" class="nav-link">Cases</a></li>
+        <li><a href="/#methodology" class="nav-link">Metodologia</a></li>
+        <li><a href="/#services" class="nav-link">Serviços</a></li>
+
+        <li class="nav-item has-dropdown">
+          <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
+            ESG &amp; Inovação <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-dropdown nav-drop" role="menu" aria-label="ESG & Inovação">
+            <a class="nav-drop-item" href="/esg/projeto-doacao.html">Projeto Doação</a>
+            <a class="nav-drop-item" href="/esg/opera-guard.html">Opera Guard (IA)</a>
+            <a class="nav-drop-item" href="/esg/startup-planta-produtiva.html">Startup Produtiva</a>
+            <a class="nav-drop-item" href="/esg/economia-circular.html">Economia Circular</a>
+          </div>
+        </li>
+
+        <li><a href="/#calculator" class="nav-link">ROI Calc</a></li>
+
+        <li class="nav-item has-dropdown">
+          <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
+            Insights <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-dropdown nav-drop" role="menu" aria-label="Insights">
+            <a class="nav-drop-item" href="/insights/">Artigos Técnicos</a>
+            <a class="nav-drop-item" href="/insights/white-papers.html">White Papers</a>
+          </div>
+        </li>
+
+        <li><a href="/sobre.html" class="nav-link">Sobre</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="/#contact" class="btn btn-primary">Fale Conosco</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="/#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
+      <button id="closeMobileMenu">✕</button>
+    </div>
+
+    <ul class="mobile-nav">
+      <li><a href="/#home">Home</a></li>
+      <li><a href="/#cases">Cases</a></li>
+      <li><a href="/#methodology">Metodologia</a></li>
+      <li><a href="/#services">Serviços</a></li>
+      <li><a href="/#calculator">ROI Calc</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/sobre.html">Sobre</a></li>
+      <li><a href="/#contact">Fale Conosco</a></li>
+    </ul>
+
+    <div style="margin-top: var(--space-32);">
+      <a href="/#calculator" class="btn btn-primary" style="width: 100%; margin-bottom: var(--space-16);">
+        Calcular ROI
+      </a>
+      <a href="/#contact" class="btn btn-secondary" style="width: 100%;">
+        Fale Conosco
+      </a>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+      <header class="page-hero">
+        <div class="overline">INSIGHTS</div>
+        <h1>White Papers</h1>
+        <p class="text-lead">
+          White papers técnicos e aplicados sobre IA, monitoramento operacional, governança e eficiência em ambientes industriais e regulados.
+        </p>
+      </header>
+
+      <section class="coming">
+        <div class="badge">⏳ Em desenvolvimento</div>
+        <h2>Coming soon</h2>
+        <p style="color: var(--text-secondary); margin-bottom: var(--space-16);">
+          Estamos preparando materiais aprofundados, com foco em aplicabilidade, validação e governança.
+        </p>
+        <a class="btn btn-secondary" href="/insights/">Voltar para Artigos Técnicos</a>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">MAXPROD</div>
+          <p style="font-size: var(--text-sm); color: var(--text-tertiary); max-width: 300px;">
+            Consultoria industrial premium com foco em resultados mensuráveis e execução garantida.
+          </p>
+        </div>
+
+        <div>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Serviços</h6>
+          <ul class="footer-links">
+            <li><a href="/#cases">Consultoria Industrial</a></li>
+            <li><a href="/#methodology">Melhoria Contínua</a></li>
+            <li><a href="/#calculator">Otimização de Custos</a></li>
+            <li><a href="/#cases">Qualidade & Confiabilidade</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Empresa</h6>
+          <ul class="footer-links">
+            <li><a href="/sobre.html">Sobre</a></li>
+            <li><a href="/#cases">Cases</a></li>
+            <li><a href="/#methodology">Metodologia</a></li>
+            <li><a href="/#contact">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Conecte-se</h6>
+          <ul class="footer-links">
+            <li><a href="https://linkedin.com/company/maxprod" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:maxprodsolucoes@gmail.com">E-mail</a></li>
+            <li><a href="tel:+5531992793411">Telefone</a></li>
+            <li><a href="/#contact">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="currentYear"></span> MaxProd Soluções Empresariais. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeMobileMenu.addEventListener('click', function() {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    mobileMenu.addEventListener('click', function(e) {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    (function(){
+      const items = document.querySelectorAll(".navbar .has-dropdown");
+      if(!items.length) return;
+
+      function closeAll(except){
+        items.forEach(it => {
+          if(it !== except){
+            it.classList.remove("is-open");
+            const btn = it.querySelector(".nav-dd-toggle");
+            if(btn) btn.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      items.forEach(it => {
+        const btn = it.querySelector(".nav-dd-toggle");
+        if(!btn) return;
+
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = it.classList.contains("is-open");
+          closeAll(it);
+          it.classList.toggle("is-open", !isOpen);
+          btn.setAttribute("aria-expanded", (!isOpen).toString());
+        });
+      });
+
+      document.addEventListener("click", () => closeAll(null));
+      document.addEventListener("keydown", (e) => {
+        if(e.key === "Escape") closeAll(null);
+      });
+    })();
+  </script>
+</body>
+</html>
 
