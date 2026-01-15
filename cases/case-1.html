@@ -744,47 +744,99 @@
 
 <body>
 
-  <!-- NAV (IGUAL HOME) -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-container">
-      <a href="/index.html#home" class="logo">
-        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo" width="120" height="40" loading="eager">
-        <span class="logo-text">
-          <span class="logo-title">MAXPROD</span>
-          <span class="logo-sub">Soluções Empresariais</span>
-        </span>
-      </a>
+<!-- NAVIGATION (IGUAL HOME, LINKS AJUSTADOS PARA /index.html#...) -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-container">
+    <a href="/index.html#home" class="logo">
+      <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+      <span class="logo-text">
+        <span class="logo-title">MAXPROD</span>
+        <span class="logo-sub">Soluções Empresariais</span>
+      </span>
+    </a>
 
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu">☰</button>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
 
-      <ul class="nav-menu">
-        <li><a href="/index.html#home" class="nav-link">Home</a></li>
-        <li><a href="/index.html#cases" class="nav-link active">Cases</a></li>
-        <li><a href="/index.html#methodology" class="nav-link">Metodologia</a></li>
-        <li><a href="/index.html#services" class="nav-link">Serviços</a></li>
-        <li><a href="/index.html#about" class="nav-link">Sobre</a></li>
-      </ul>
+    <ul class="nav-menu">
+      <li><a href="/index.html#home" class="nav-link">Home</a></li>
+      <li><a href="/index.html#cases" class="nav-link active">Cases</a></li>
+      <li><a href="/index.html#methodology" class="nav-link">Metodologia</a></li>
+      <li><a href="/index.html#services" class="nav-link">Serviços</a></li>
 
-      <div class="nav-cta">
-        <a href="/index.html#contact" class="btn btn-outline">Fale Conosco</a>
-        <a href="/index.html#calculator" class="btn btn-primary">Calcular ROI</a>
-      </div>
+      <!-- ESG & INOVAÇÃO (Dropdown simples igual Insights) -->
+      <li class="nav-item has-dropdown">
+        <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
+          ESG &amp; Inovação <span class="nav-caret" aria-hidden="true">▾</span>
+        </button>
+
+        <div class="nav-dropdown nav-drop" role="menu" aria-label="ESG & Inovação">
+          <a class="nav-drop-item" href="/esg/projeto-doacao.html">Projeto Doação</a>
+          <a class="nav-drop-item" href="/esg/opera-guard.html">Opera Guard (IA)</a>
+          <a class="nav-drop-item" href="/esg/startup-planta-produtiva.html">Startup Produtiva</a>
+          <a class="nav-drop-item" href="/esg/economia-circular.html">Economia Circular</a>
+        </div>
+      </li>
+
+      <li><a href="/index.html#calculator" class="nav-link">ROI Calc</a></li>
+
+      <!-- INSIGHTS -->
+      <li class="nav-item has-dropdown">
+        <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
+          Insights <span class="nav-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-dropdown nav-drop" role="menu" aria-label="Insights">
+          <a class="nav-drop-item" href="/insights/">Artigos Técnicos</a>
+          <a class="nav-drop-item" href="/insights/white-papers.html">White Papers</a>
+        </div>
+      </li>
+
+      <li><a href="/sobre.html" class="nav-link">Sobre</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="/index.html#contact" class="btn btn-primary">Fale Conosco</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- MOBILE MENU (IGUAL HOME) -->
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <div class="mobile-menu-header">
-      <a href="/index.html#home" class="logo">
-        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
-        <span class="logo-text">
-          <span class="logo-title">MAXPROD</span>
-          <span class="logo-sub">Soluções Empresariais</span>
-        </span>
-      </a>
-      <button id="closeMobileMenu" aria-label="Fechar menu">✕</button>
-    </div>
+<!-- MOBILE MENU (IGUAL HOME, LINKS AJUSTADOS PARA /index.html#...) -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <a href="/index.html#home" class="logo">
+      <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+      <span class="logo-text">
+        <span class="logo-title">MAXPROD</span>
+        <span class="logo-sub">Soluções Empresariais</span>
+      </span>
+    </a>
+    <button id="closeMobileMenu">✕</button>
+  </div>
 
+  <ul class="mobile-nav">
+    <li><a href="/index.html#home">Home</a></li>
+    <li><a href="/index.html#cases">Cases</a></li>
+    <li><a href="/index.html#methodology">Metodologia</a></li>
+    <li><a href="/index.html#services">Serviços</a></li>
+    <li><a href="/index.html#calculator">ROI Calc</a></li>
+    <li><a href="/insights/">Insights</a></li>
+    <li><a href="/sobre.html">Sobre</a></li>
+    <li><a href="/index.html#contact">Fale Conosco</a></li>
+  </ul>
+
+  <div style="margin-top: var(--space-32);">
+    <a href="/index.html#calculator" class="btn btn-primary" style="width: 100%; margin-bottom: var(--space-16);">
+      Calcular ROI
+    </a>
+    <a href="/index.html#contact" class="btn btn-secondary" style="width: 100%;">
+      Fale Conosco
+    </a>
+  </div>
+</div>
+
+
+  
+  
+  
     <ul class="mobile-nav">
       <li><a href="/index.html#home">Home</a></li>
       <li><a href="/index.html#cases">Cases</a></li>
