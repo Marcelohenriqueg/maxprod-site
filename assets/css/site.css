@@ -3405,3 +3405,7 @@ main .container > section:first-child{
 .visual-card [style*="flex-wrap: wrap"]{
   row-gap: 10px !important;
 }
+
+
+.has-dropdown:hover > .nav-dropdown, .has-dropdown:focus-within > .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);} @media (max-width:1024px){.nav-dropdown{display:block !important;}}
+
