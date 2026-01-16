@@ -6,6 +6,9 @@
    ========================================================= */
 
 (function(){
+     const y = document.getElementById('currentYear');
+  if (y) y.textContent = new Date().getFullYear();
+
   // ========= CONFIG (edite aqui se quiser) =========
   // Referência do projeto: 10 t -> 7 a 15 tCO2 (faixa), então:
   const CO2_MIN_PER_TON = 0.7;
