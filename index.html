@@ -27,97 +27,107 @@
 </head>
 
 <body>
-  <!-- NAVIGATION -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-container">
-      <a href="#home" class="logo">
-  <img src="assets/img/logo-imagem1.png" alt="MaxProd Logo">
-  <span class="logo-text">
-    <span class="logo-title">MAXPROD</span>
-    <span class="logo-sub">Soluções Empresariais</span>
-  </span>
-</a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn">
-        ☰
-      </button>
 
-<ul class="nav-menu">
-  <li><a href="#home" class="nav-link active">Home</a></li>
-  <li><a href="#cases" class="nav-link">Cases</a></li>
-  <li><a href="#methodology" class="nav-link">Metodologia</a></li>
-  <li><a href="#services" class="nav-link">Serviços</a></li>
 
-  <!-- ESG & INOVAÇÃO (Dropdown simples igual Insights) -->
-  <li class="nav-item has-dropdown">
-    <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
-      ESG &amp; Inovação <span class="nav-caret" aria-hidden="true">▾</span>
-    </button>
+<!-- NAVIGATION (PADRÃO GLOBAL — 100% compatível) -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-container">
+    <a href="/#home" class="logo">
+      <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+      <span class="logo-text">
+        <span class="logo-title">MAXPROD</span>
+        <span class="logo-sub">Soluções Empresariais</span>
+      </span>
+    </a>
 
- <div class="nav-dropdown nav-drop" role="menu" aria-label="ESG & Inovação">
-  <a class="nav-drop-item" href="/esg/projeto-doacao.html">Projeto Doação</a>
-  <a class="nav-drop-item" href="/esg/opera-guard.html">IA Aplicada: Opera Guard</a>
-  <a class="nav-drop-item" href="/esg/startup-planta-produtiva.html">Startup Produtiva</a>
-</div>
-  </li>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
 
-  <li><a href="#calculator" class="nav-link">ROI Calc</a></li>
+    <ul class="nav-menu">
+      <li><a href="/#home" class="nav-link">Home</a></li>
+      <li><a href="/#cases" class="nav-link">Cases</a></li>
+      <li><a href="/#methodology" class="nav-link">Metodologia</a></li>
+      <li><a href="/#services" class="nav-link">Serviços</a></li>
 
-<!-- INSIGHTS -->
-<li class="nav-item has-dropdown">
-  <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
-    Insights <span class="nav-caret" aria-hidden="true">▾</span>
-  </button>
-  <div class="nav-dropdown nav-drop" role="menu" aria-label="Insights">
-    <a class="nav-drop-item" href="/insights/">Artigos Técnicos</a>
-    <a class="nav-drop-item" href="/insights/white-papers.html">White Papers</a>
-  </div>
-</li>
+      <!-- ESG & INOVAÇÃO -->
+      <li class="nav-item has-dropdown">
+        <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
+          ESG &amp; Inovação <span class="nav-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-dropdown nav-drop" role="menu" aria-label="ESG & Inovação">
+          <a class="nav-drop-item" href="/esg/projeto-doacao.html">Projeto Doação</a>
+          <a class="nav-drop-item" href="/esg/opera-guard.html">IA Aplicada: Opera Guard</a>
+          <a class="nav-drop-item" href="/esg/startup-planta-produtiva.html">Startup Produtiva</a>
+        </div>
+      </li>
 
-  <li><a href="/sobre.html" class="nav-link">Sobre</a></li>
-</ul>
+      <li><a href="/#calculator" class="nav-link">ROI Calc</a></li>
 
-<div class="nav-cta">
-  <a href="#contact" class="btn btn-primary">Fale Conosco</a>
-</div>
-</div>
-  </nav>
+      <!-- INSIGHTS -->
+      <li class="nav-item has-dropdown">
+        <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
+          Insights <span class="nav-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-dropdown nav-drop" role="menu" aria-label="Insights">
+          <a class="nav-drop-item" href="/insights/">Artigos Técnicos</a>
+          <a class="nav-drop-item" href="/insights/white-papers.html">White Papers</a>
+        </div>
+      </li>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-header">
-     <a href="#home" class="logo">
-  <img src="assets/img/logo-imagem1.png" alt="MaxProd Logo">
-  <span class="logo-text">
-    <span class="logo-title">MAXPROD</span>
-    <span class="logo-sub">Soluções Empresariais</span>
-  </span>
-</a>
-      <button id="closeMobileMenu">✕</button>
-    </div>
+      <li><a href="/sobre.html" class="nav-link">Sobre</a></li>
+    </ul>
 
-<ul class="mobile-nav">
-  <li><a href="#home">Home</a></li>
-  <li><a href="#cases">Cases</a></li>
-  <li><a href="#methodology">Metodologia</a></li>
-  <li><a href="#services">Serviços</a></li>
-  <li><a href="#calculator">ROI Calc</a></li>
-  <li><a href="/insights/artigos-tecnicos.html">Insights</a></li>
-  <li><a href="/sobre.html">Sobre</a></li>
-  <li><a href="#contact">Fale Conosco</a></li>
-</ul>
-   
-    
-
-    <div style="margin-top: var(--space-32);">
-      <a href="#calculator" class="btn btn-primary" style="width: 100%; margin-bottom: var(--space-16);">
-        Calcular ROI
-      </a>
-      <a href="#contact" class="btn btn-secondary" style="width: 100%;">
-        Fale Conosco
-      </a>
+    <div class="nav-cta">
+      <a href="/#contact" class="btn btn-primary">Fale Conosco</a>
     </div>
   </div>
+</nav>
 
+<!-- MOBILE MENU (PADRÃO GLOBAL — 100% compatível) -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <a href="/#home" class="logo">
+      <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+      <span class="logo-text">
+        <span class="logo-title">MAXPROD</span>
+        <span class="logo-sub">Soluções Empresariais</span>
+      </span>
+    </a>
+    <button id="closeMobileMenu">✕</button>
+  </div>
+
+  <ul class="mobile-nav">
+    <li><a href="/#home">Home</a></li>
+    <li><a href="/#cases">Cases</a></li>
+    <li><a href="/#methodology">Metodologia</a></li>
+    <li><a href="/#services">Serviços</a></li>
+    <li><a href="/#calculator">ROI Calc</a></li>
+    <li><a href="/insights/">Insights</a></li>
+    <li><a href="/sobre.html">Sobre</a></li>
+    <li><a href="/#contact">Fale Conosco</a></li>
+  </ul>
+
+  <div style="margin-top: var(--space-32);">
+    <a href="/#calculator" class="btn btn-primary" style="width: 100%; margin-bottom: var(--space-16);">
+      Calcular ROI
+    </a>
+    <a href="/#contact" class="btn btn-secondary" style="width: 100%;">
+      Fale Conosco
+    </a>
+  </div>
+</div>
+
+
+
+
+  
+
+
+
+
+
+
+
+  
   <!-- HERO SECTION -->
   <section id="home" class="hero section">
     <div class="hero-bg"></div>
@@ -931,29 +941,38 @@
     window.addEventListener('scroll', checkScroll);
     window.addEventListener('load', checkScroll);
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          // Close mobile menu if open
-          mobileMenu.classList.remove('active');
-          document.body.style.overflow = '';
-          
-          // Smooth scroll
-          window.scrollTo({
-            top: targetElement.offsetTop - 56,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
+// Smooth scroll (HOME) — suporta "#..." e "/#..."
+document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href || href === '#' || href === '/#') return;
 
+    // Só aplica smooth scroll se o destino existir na página atual
+    const targetId = href.startsWith('/#') ? href.slice(1) : href; // "/#cases" -> "#cases"
+    const targetElement = document.querySelector(targetId);
+
+    if (targetElement) {
+      e.preventDefault();
+
+      // Close mobile menu if open
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu) mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+
+      window.scrollTo({
+        top: targetElement.offsetTop - 56,
+        behavior: 'smooth'
+      });
+    }
+    // Se não existir (página interna), o navegador navega normalmente para "/#..."
+  });
+});
+
+
+
+
+
+    
     
     
     // Assessment Interativo
