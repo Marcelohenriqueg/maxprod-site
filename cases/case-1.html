@@ -744,10 +744,10 @@
 
 <body>
 
-<!-- NAVIGATION (IGUAL HOME, LINKS AJUSTADOS PARA /index.html#...) -->
+<!-- NAVIGATION (PADRÃO GLOBAL) -->
 <nav class="navbar" id="navbar">
   <div class="container nav-container">
-    <a href="/index.html#home" class="logo">
+    <a href="/#home" class="logo">
       <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
       <span class="logo-text">
         <span class="logo-title">MAXPROD</span>
@@ -755,15 +755,15 @@
       </span>
     </a>
 
-    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
 
     <ul class="nav-menu">
-      <li><a href="/index.html#home" class="nav-link">Home</a></li>
-      <li><a href="/index.html#cases" class="nav-link active">Cases</a></li>
-      <li><a href="/index.html#methodology" class="nav-link">Metodologia</a></li>
-      <li><a href="/index.html#services" class="nav-link">Serviços</a></li>
+      <li><a href="/#home" class="nav-link">Home</a></li>
+      <li><a href="/#cases" class="nav-link">Cases</a></li>
+      <li><a href="/#methodology" class="nav-link">Metodologia</a></li>
+      <li><a href="/#services" class="nav-link">Serviços</a></li>
 
-      <!-- ESG & INOVAÇÃO (Dropdown simples igual Insights) -->
+      <!-- ESG & INOVAÇÃO -->
       <li class="nav-item has-dropdown">
         <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
           ESG &amp; Inovação <span class="nav-caret" aria-hidden="true">▾</span>
@@ -771,13 +771,12 @@
 
         <div class="nav-dropdown nav-drop" role="menu" aria-label="ESG & Inovação">
           <a class="nav-drop-item" href="/esg/projeto-doacao.html">Projeto Doação</a>
-          <a class="nav-drop-item" href="/esg/opera-guard.html">Opera Guard (IA)</a>
+          <a class="nav-drop-item" href="/esg/opera-guard.html">IA Aplicada: Opera Guard</a>
           <a class="nav-drop-item" href="/esg/startup-planta-produtiva.html">Startup Produtiva</a>
-          <a class="nav-drop-item" href="/esg/economia-circular.html">Economia Circular</a>
         </div>
       </li>
 
-      <li><a href="/index.html#calculator" class="nav-link">ROI Calc</a></li>
+      <li><a href="/#calculator" class="nav-link">ROI Calc</a></li>
 
       <!-- INSIGHTS -->
       <li class="nav-item has-dropdown">
@@ -794,15 +793,15 @@
     </ul>
 
     <div class="nav-cta">
-      <a href="/index.html#contact" class="btn btn-primary">Fale Conosco</a>
+      <a href="/#contact" class="btn btn-primary">Fale Conosco</a>
     </div>
   </div>
 </nav>
 
-<!-- MOBILE MENU (IGUAL HOME, LINKS AJUSTADOS PARA /index.html#...) -->
+<!-- MOBILE MENU (PADRÃO GLOBAL) -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <div class="mobile-menu-header">
-    <a href="/index.html#home" class="logo">
+    <a href="/#home" class="logo">
       <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
       <span class="logo-text">
         <span class="logo-title">MAXPROD</span>
@@ -813,331 +812,311 @@
   </div>
 
   <ul class="mobile-nav">
-    <li><a href="/index.html#home">Home</a></li>
-    <li><a href="/index.html#cases">Cases</a></li>
-    <li><a href="/index.html#methodology">Metodologia</a></li>
-    <li><a href="/index.html#services">Serviços</a></li>
-    <li><a href="/index.html#calculator">ROI Calc</a></li>
+    <li><a href="/#home">Home</a></li>
+    <li><a href="/#cases">Cases</a></li>
+    <li><a href="/#methodology">Metodologia</a></li>
+    <li><a href="/#services">Serviços</a></li>
+    <li><a href="/#calculator">ROI Calc</a></li>
     <li><a href="/insights/">Insights</a></li>
     <li><a href="/sobre.html">Sobre</a></li>
-    <li><a href="/index.html#contact">Contato</a></li>
+    <li><a href="/#contact">Fale Conosco</a></li>
   </ul>
 
   <div style="margin-top: var(--space-32);">
-    <a href="/index.html#calculator" class="btn btn-primary" style="width:100%; margin-bottom: var(--space-16);">
+    <a href="/#calculator" class="btn btn-primary" style="width:100%; margin-bottom: var(--space-16);">
       Calcular ROI
     </a>
-    <a href="/index.html#contact" class="btn btn-secondary" style="width:100%;">
+    <a href="/#contact" class="btn btn-secondary" style="width:100%;">
       Fale Conosco
     </a>
   </div>
 </div>
 <!-- /MOBILE MENU -->
 
-  <main class="case-wrap">
-    <div class="case-breadcrumb">
-      <a href="/index.html">Home</a>
-      <span class="separator">/</span>
-      <a href="/index.html#cases">Cases</a>
-      <span class="separator">/</span>
-      <span>Case 1</span>
+<main class="case-wrap">
+  <div class="case-breadcrumb">
+    <a href="/#home">Home</a>
+    <span class="separator">/</span>
+    <a href="/#cases">Cases</a>
+    <span class="separator">/</span>
+    <span>Case 1</span>
+  </div>
+
+  <section class="case-shell">
+    <header class="case-head">
+      <div class="case-tag"><span class="dot"></span> RESULTADOS COMPROVADOS</div>
+
+      <div class="case-hero-grid">
+        <div class="case-hero-text">
+          <h1 class="case-title">
+            Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva.
+          </h1>
+
+          <p class="case-sub">
+            Projeto de excelência operacional em célula de solda robotizada,
+            focado em confiabilidade do fornecimento e estabilidade do processo —
+            sem CAPEX pesado.
+          </p>
+        </div>
+
+        <div class="case-hero-image">
+          <img src="/assets/img/robo-case1.png"
+               alt="Célula de solda robotizada"
+               loading="eager">
+        </div>
+      </div>
+    </header>
+
+    <!-- KPIs -->
+    <div class="case-kpis">
+      <div class="case-kpi">
+        <span class="case-kpi__label">OEE</span>
+        <div class="case-kpi__value">
+          <span class="kpi-before">52%</span>
+          <span class="kpi-arrow">→</span>
+          <span class="kpi-after">73%</span>
+        </div>
+        <p class="case-kpi__note">Média mensal pós-ações</p>
+      </div>
+
+      <div class="case-kpi">
+        <span class="case-kpi__label">Capacidade</span>
+        <div class="case-kpi__value">
+          <span class="kpi-before">16</span>
+          <span class="kpi-arrow">→</span>
+          <span class="kpi-after">28 JPH</span>
+        </div>
+        <p class="case-kpi__note">Liberação de capacidade efetiva</p>
+      </div>
+
+      <div class="case-kpi">
+        <span class="case-kpi__label">Consumível</span>
+        <div class="case-kpi__value">
+          <span class="kpi-good">+50%</span>
+        </div>
+        <p class="case-kpi__note">3.000 → 4.500 pontos por eletrodo</p>
+      </div>
+
+      <div class="case-kpi">
+        <span class="case-kpi__label">Qualidade</span>
+        <div class="case-kpi__value">
+          <span class="kpi-good">92%</span>
+        </div>
+        <p class="case-kpi__note">Aderência "Zero Defeitos" em durabilidade</p>
+      </div>
     </div>
 
-    <section class="case-shell">
-      <header class="case-head">
-        <div class="case-tag"><span class="dot"></span> RESULTADOS COMPROVADOS</div>
-
-        <div class="case-hero-grid">
-          <div class="case-hero-text">
-            <h1 class="case-title">
-              Evitamos ruptura na Stellantis: elevamos o OEE de um Tier 1 em 90 dias e liberamos +40% de capacidade efetiva.
-            </h1>
-
-            <p class="case-sub">
-              Projeto de excelência operacional em célula de solda robotizada,
-              focado em confiabilidade do fornecimento e estabilidade do processo —
-              sem CAPEX pesado.
-            </p>
-          </div>
-
-          <div class="case-hero-image">
-            <img src="/assets/img/robo-case1.png"
-                 alt="Célula de solda robotizada"
-                 loading="eager">
-          </div>
-        </div>
-      </header>
-
-      <!-- KPIs -->
-      <div class="case-kpis">
-        <div class="case-kpi">
-          <span class="case-kpi__label">OEE</span>
-          <div class="case-kpi__value">
-            <span class="kpi-before">52%</span>
-            <span class="kpi-arrow">→</span>
-            <span class="kpi-after">73%</span>
-          </div>
-          <p class="case-kpi__note">Média mensal pós-ações</p>
-        </div>
-
-        <div class="case-kpi">
-          <span class="case-kpi__label">Capacidade</span>
-          <div class="case-kpi__value">
-            <span class="kpi-before">16</span>
-            <span class="kpi-arrow">→</span>
-            <span class="kpi-after">28 JPH</span>
-          </div>
-          <p class="case-kpi__note">Liberação de capacidade efetiva</p>
-        </div>
-
-        <div class="case-kpi">
-          <span class="case-kpi__label">Consumível</span>
-          <div class="case-kpi__value">
-            <span class="kpi-good">+50%</span>
-          </div>
-          <p class="case-kpi__note">3.000 → 4.500 pontos por eletrodo</p>
-        </div>
-
-        <div class="case-kpi">
-          <span class="case-kpi__label">Qualidade</span>
-          <div class="case-kpi__value">
-            <span class="kpi-good">92%</span>
-          </div>
-          <p class="case-kpi__note">Aderência "Zero Defeitos" em durabilidade</p>
-        </div>
-      </div>
-
-      <div class="case-body">
-        <div class="case-grid">
-          <!-- PROBLEMA E IMPACTO -->
-          <div class="case-panel">
-            <div class="case-h">1) Problema e impacto no cliente</div>
-            <p class="case-p">
-              A célula de solda automatizada apresentava um <b>OEE crítico de 52%</b>.
-              A operação real entregava apenas <b>16 peças por hora (JPH)</b>,
-              enquanto o contrato exigia <b>34 JPH</b>.
-              O cenário indicava <b>alto risco de ruptura</b> e potencial
-              <b>parada total da linha do cliente final a partir de julho/2022</b>.
-            </p>
-
-            <div class="case-compare">
-              <div class="case-card">
-                <div class="case-card__kicker">SITUAÇÃO INICIAL</div>
-                <div class="case-card__big">OEE 52% • 16 JPH</div>
-                <p class="case-mini">
-                  Microparadas recorrentes • Trocas excessivas de eletrodos •
-                  Baixa estabilidade do processo • Capacidade inferior à demanda contratada •
-                  Risco iminente de ruptura de fornecimento.
-                </p>
-
-                <div class="case-problem-image">
-                  <img
-                    src="/assets/img/calendario.problema3.case1.png"
-                    alt="Linha do tempo de risco de ruptura do fornecimento"
-                    loading="lazy">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- METODOLOGIA -->
-          <div class="case-panel case-methodology">
-            <div class="case-h">2) Metodologia (rigor analítico)</div>
-            <p class="case-p">
-              Framework de melhoria contínua baseado em <b>PDCA</b> integrado
-              com diagnóstico de alta precisão, priorizando as maiores perdas
-              e validando causa raiz com evidência em campo.
-            </p>
-
-            <div class="case-pdca-image">
-              <img src="/assets/img/pdca-maxprod.png"
-                   alt="Metodologia PDCA MaxProd - Ciclo Plan-Do-Check-Act"
-                   loading="lazy"
-                   width="800"
-                   height="170">
-            </div>
-
-            <div class="case-badges" aria-label="Ferramentas aplicadas">
-              <span class="case-badge"><i></i> PDCA (Plan-Do-Check-Act)</span>
-              <span class="case-badge"><i></i> OEE + Pareto de perdas</span>
-              <span class="case-badge"><i></i> 4M + 1D (Design)</span>
-              <span class="case-badge"><i></i> Ishikawa</span>
-              <span class="case-badge"><i></i> 5 Porquês (Deep Dive)</span>
-              <span class="case-badge"><i></i> Zero Defeitos (durabilidade)</span>
-            </div>
-
-            <ul class="case-list">
-              <li><b>Análise de Fenômeno 4M+1D:</b> Mão de obra, Máquina, Material, Método e Design.</li>
-              <li><b>Deep Dive (5 Porquês):</b> Falha de concepção no posicionamento dos eletrodos e obsolescência de materiais.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- SOLUÇÃO -->
+    <div class="case-body">
+      <div class="case-grid">
+        <!-- PROBLEMA E IMPACTO -->
         <div class="case-panel">
-          <div class="case-h">3) A solução (inovação em engenharia)</div>
+          <div class="case-h">1) Problema e impacto no cliente</div>
           <p class="case-p">
-            A estratégia foi dividida em dois eixos de ataque para estabilizar o processo
-            e remover as perdas estruturais que limitavam a capacidade real.
+            A célula de solda automatizada apresentava um <b>OEE crítico de 52%</b>.
+            A operação real entregava apenas <b>16 peças por hora (JPH)</b>,
+            enquanto o contrato exigia <b>34 JPH</b>.
+            O cenário indicava <b>alto risco de ruptura</b> e potencial
+            <b>parada total da linha do cliente final a partir de julho/2022</b>.
           </p>
 
-          <div class="solution-grid">
-            <div class="solution-card">
-              <div class="solution-card__header">
-                <div class="solution-card__kicker">Eixo A • Manutenção robótica</div>
-                <h3 class="solution-card__title">Estabilidade do posicionamento</h3>
-              </div>
-              <div class="solution-card__content">
-                Instalação de <b>chavetas de precisão</b> e <b>transdutores lineares</b>
-                para garantir posicionamento mecânico ideal e controle de distância entre
-                partes móveis, reduzindo microparadas por instabilidade do processo.
-              </div>
-            </div>
+          <div class="case-compare">
+            <div class="case-card">
+              <div class="case-card__kicker">SITUAÇÃO INICIAL</div>
+              <div class="case-card__big">OEE 52% • 16 JPH</div>
+              <p class="case-mini">
+                Microparadas recorrentes • Trocas excessivas de eletrodos •
+                Baixa estabilidade do processo • Capacidade inferior à demanda contratada •
+                Risco iminente de ruptura de fornecimento.
+              </p>
 
-            <div class="solution-card">
-              <div class="solution-card__header">
-                <div class="solution-card__kicker">Eixo B • Ciclo de vida de consumíveis</div>
-                <h3 class="solution-card__title">+50% vida útil do eletrodo</h3>
-              </div>
-              <div class="solution-card__content">
-                Benchmarking de mercado e substituição de eletrodos (<b>Fornecedor B</b>),
-                elevando a vida útil de <b>3.000 → 4.500 pontos</b> por eletrodo (ganho de 50%),
-                com ajustes de parâmetros e treinamento operacional.
+              <div class="case-problem-image">
+                <img
+                  src="/assets/img/calendario.problema3.case1.png"
+                  alt="Linha do tempo de risco de ruptura do fornecimento"
+                  loading="lazy">
               </div>
             </div>
           </div>
         </div>
 
-        <!-- RESULTADOS -->
-        <div class="case-panel">
-          <div class="case-h">4) Resultados e impacto (ROI & saving)</div>
+        <!-- METODOLOGIA -->
+        <div class="case-panel case-methodology">
+          <div class="case-h">2) Metodologia (rigor analítico)</div>
+          <p class="case-p">
+            Framework de melhoria contínua baseado em <b>PDCA</b> integrado
+            com diagnóstico de alta precisão, priorizando as maiores perdas
+            e validando causa raiz com evidência em campo.
+          </p>
 
-          <div class="case-results-grid">
-            <div class="case-results-text">
-              <ul class="case-list">
-                <li><b>Aumento de eficiência:</b> OEE de <b>52% → 73%</b> (média mensal pós-ações).</li>
-                <li><b>Ganho de capacidade:</b> liberação de capacidade efetiva, elevando entrega de <b>16 → 28 JPH</b>.</li>
-                <li><b>Consumíveis otimizados:</b> <b>+50%</b> vida útil do eletrodo (3.000 → 4.500 pontos).</li>
-                <li><b>Qualidade:</b> evolução para nível de <b>"Zero Defeitos"</b>, com <b>92%</b> de conformidade em durabilidade.</li>
-                <li><b>Impacto no cliente:</b> mitigação do risco de ruptura e preservação do fornecimento a partir de julho/2022.</li>
-              </ul>
+          <div class="case-pdca-image">
+            <img src="/assets/img/pdca-maxprod.png"
+                 alt="Metodologia PDCA MaxProd - Ciclo Plan-Do-Check-Act"
+                 loading="lazy"
+                 width="800"
+                 height="170">
+          </div>
 
-              <p class="case-p">
-                <b>ROI:</b> retorno rápido, sustentado por ações de baixo investimento relativo e alto impacto em disponibilidade e estabilidade.
-                <span style="color:rgba(255,255,255,.6);">Valores absolutos disponíveis sob consulta.</span>
-              </p>
+          <div class="case-badges" aria-label="Ferramentas aplicadas">
+            <span class="case-badge"><i></i> PDCA (Plan-Do-Check-Act)</span>
+            <span class="case-badge"><i></i> OEE + Pareto de perdas</span>
+            <span class="case-badge"><i></i> 4M + 1D (Design)</span>
+            <span class="case-badge"><i></i> Ishikawa</span>
+            <span class="case-badge"><i></i> 5 Porquês (Deep Dive)</span>
+            <span class="case-badge"><i></i> Zero Defeitos (durabilidade)</span>
+          </div>
+
+          <ul class="case-list">
+            <li><b>Análise de Fenômeno 4M+1D:</b> Mão de obra, Máquina, Material, Método e Design.</li>
+            <li><b>Deep Dive (5 Porquês):</b> Falha de concepção no posicionamento dos eletrodos e obsolescência de materiais.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SOLUÇÃO -->
+      <div class="case-panel">
+        <div class="case-h">3) A solução (inovação em engenharia)</div>
+        <p class="case-p">
+          A estratégia foi dividida em dois eixos de ataque para estabilizar o processo
+          e remover as perdas estruturais que limitavam a capacidade real.
+        </p>
+
+        <div class="solution-grid">
+          <div class="solution-card">
+            <div class="solution-card__header">
+              <div class="solution-card__kicker">Eixo A • Manutenção robótica</div>
+              <h3 class="solution-card__title">Estabilidade do posicionamento</h3>
             </div>
-
-            <div class="case-results-media">
-              <img src="/assets/img/calendario.resultados.case1.png"
-                   alt="Calendário e marcos dos resultados do Case 1"
-                   loading="lazy">
+            <div class="solution-card__content">
+              Instalação de <b>chavetas de precisão</b> e <b>transdutores lineares</b>
+              para garantir posicionamento mecânico ideal e controle de distância entre
+              partes móveis, reduzindo microparadas por instabilidade do processo.
             </div>
           </div>
 
-         <!-- CONFIDENCIALIDADE -->
-<div class="case-download">
-  <p>
-    Projetos conduzidos sob confidencialidade, com foco em impacto real no processo produtivo.
-  </p>
-</div>
-
-      <div class="case-footer">
-        <a class="btn btn--primary" href="/index.html#contact">Quero Resultados Similares</a>
-        <a class="btn btn--secondary" href="/index.html#cases">Voltar aos Cases</a>
+          <div class="solution-card">
+            <div class="solution-card__header">
+              <div class="solution-card__kicker">Eixo B • Ciclo de vida de consumíveis</div>
+              <h3 class="solution-card__title">+50% vida útil do eletrodo</h3>
+            </div>
+            <div class="solution-card__content">
+              Benchmarking de mercado e substituição de eletrodos (<b>Fornecedor B</b>),
+              elevando a vida útil de <b>3.000 → 4.500 pontos</b> por eletrodo (ganho de 50%),
+              com ajustes de parâmetros e treinamento operacional.
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
-  </main>
 
-  <script>
-    // Navbar scroll effect
-    window.addEventListener('scroll', function() {
-      const navbar = document.getElementById('navbar');
-      if (!navbar) return;
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      <!-- RESULTADOS -->
+      <div class="case-panel">
+        <div class="case-h">4) Resultados e impacto (ROI & saving)</div>
+
+        <div class="case-results-grid">
+          <div class="case-results-text">
+            <ul class="case-list">
+              <li><b>Aumento de eficiência:</b> OEE de <b>52% → 73%</b> (média mensal pós-ações).</li>
+              <li><b>Ganho de capacidade:</b> liberação de capacidade efetiva, elevando entrega de <b>16 → 28 JPH</b>.</li>
+              <li><b>Consumíveis otimizados:</b> <b>+50%</b> vida útil do eletrodo (3.000 → 4.500 pontos).</li>
+              <li><b>Qualidade:</b> evolução para nível de <b>"Zero Defeitos"</b>, com <b>92%</b> de conformidade em durabilidade.</li>
+              <li><b>Impacto no cliente:</b> mitigação do risco de ruptura e preservação do fornecimento a partir de julho/2022.</li>
+            </ul>
+
+            <p class="case-p">
+              <b>ROI:</b> retorno rápido, sustentado por ações de baixo investimento relativo e alto impacto em disponibilidade e estabilidade.
+              <span style="color:rgba(255,255,255,.6);">Valores absolutos disponíveis sob consulta.</span>
+            </p>
+          </div>
+
+          <div class="case-results-media">
+            <img src="/assets/img/calendario.resultados.case1.png"
+                 alt="Calendário e marcos dos resultados do Case 1"
+                 loading="lazy">
+          </div>
+        </div>
+
+        <!-- CONFIDENCIALIDADE -->
+        <div class="case-download">
+          <p>
+            Projetos conduzidos sob confidencialidade, com foco em impacto real no processo produtivo.
+          </p>
+        </div>
+      </div> <!-- /case-panel (Resultados) -->
+
+    </div> <!-- /case-body -->
+
+    <div class="case-footer">
+      <a class="btn btn--primary" href="/#contact">Quero Resultados Similares</a>
+      <a class="btn btn--secondary" href="/#cases">Voltar aos Cases</a>
+    </div>
+
+  </section>
+</main>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const closeMobileMenu = document.getElementById('closeMobileMenu');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.classList.add('active');
+      mobileMenu.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
     });
+  }
 
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const closeMobileMenu = document.getElementById('closeMobileMenu');
-    const mobileMenu = document.getElementById('mobileMenu');
+  if (closeMobileMenu && mobileMenu) {
+    closeMobileMenu.addEventListener('click', function() {
+      mobileMenu.classList.remove('active');
+      mobileMenu.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    });
+  }
 
-    if (mobileMenuBtn && mobileMenu) {
-      mobileMenuBtn.addEventListener('click', function() {
-        mobileMenu.classList.add('active');
-        mobileMenu.setAttribute('aria-hidden','false');
-        document.body.style.overflow = 'hidden';
-        mobileMenuBtn.setAttribute('aria-expanded', 'true');
-      });
-    }
-
-    if (closeMobileMenu && mobileMenu) {
-      closeMobileMenu.addEventListener('click', function() {
+  if (mobileMenu) {
+    mobileMenu.addEventListener('click', function(e) {
+      if (e.target === mobileMenu) {
         mobileMenu.classList.remove('active');
         mobileMenu.setAttribute('aria-hidden','true');
         document.body.style.overflow = '';
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
-      });
-    }
+      }
+    });
+  }
 
-    if (mobileMenu) {
-      mobileMenu.addEventListener('click', function(e) {
-        if (e.target === mobileMenu) {
-          mobileMenu.classList.remove('active');
-          mobileMenu.setAttribute('aria-hidden','true');
-          document.body.style.overflow = '';
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  // Loaded class (para evitar flash e habilitar animações só depois)
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('loaded');
+  });
+
+  // Intersection Observer (mantido)
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
         }
       });
-    }
-
-    // Smooth scroll (mantido)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href.startsWith('#') && href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            if (mobileMenu) {
-              mobileMenu.classList.remove('active');
-              mobileMenu.setAttribute('aria-hidden','true');
-              document.body.style.overflow = '';
-              if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            }
-
-            window.scrollTo({
-              top: target.offsetTop - 100,
-              behavior: 'smooth'
-            });
-          }
-        }
-      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     });
 
-    // Loaded class (para evitar flash e habilitar animações só depois)
-    document.addEventListener('DOMContentLoaded', function() {
-      document.body.classList.add('loaded');
+    document.querySelectorAll('.case-panel, .case-card, .solution-card').forEach(el => {
+      observer.observe(el);
     });
-
-    // Intersection Observer (mantido)
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      });
-
-      document.querySelectorAll('.case-panel, .case-card, .solution-card').forEach(el => {
-        observer.observe(el);
-      });
-    }
-  </script>
+  }
+</script>
 
 </body>
 </html>
