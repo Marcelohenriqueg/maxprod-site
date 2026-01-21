@@ -1227,3 +1227,23 @@
 .pd-final-actions .btn{
   min-width: 240px;
 }
+
+/* ============================
+   OVERRIDES (SEM RETROAGIR)
+   - Centraliza pills do CTA final
+   - Centraliza texto da metodologia de cálculo
+   ============================ */
+
+/* Pills do CTA final (Forvia & Lear etc.) */
+.pd-final-chips{
+  justify-content: center;
+  width: 100%;
+}
+
+/* Metodologia de cálculo — centralizar texto no card */
+.pd-section .pd-lead{
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
