@@ -734,6 +734,321 @@
   transform: translateY(0);
 }
 
+/* ===== MELHORIAS VISUAIS AVANÇADAS ===== */
+
+/* Efeitos de profundidade e brilho */
+.pd-mission-phase {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.15);
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pd-mission-phase:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    0 0 60px rgba(0,212,170,0.1);
+}
+
+.pd-phase-header {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,.02) 0%,
+    rgba(255,255,255,.05) 50%,
+    rgba(255,255,255,.02) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.pd-phase-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.05) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.pd-phase-number {
+  background: linear-gradient(135deg, 
+    rgba(255,255,255,.2) 0%, 
+    rgba(255,255,255,.05) 100%);
+  box-shadow: 
+    0 8px 24px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    0 0 20px rgba(0,212,170,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.pd-phase-number::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent,
+    rgba(255,255,255,0.1),
+    transparent 30%
+  );
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pd-phase-metric {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.03) 0%,
+    rgba(255,255,255,.01) 100%
+  );
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+}
+
+.pd-phase-metric:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0,212,170,0.3);
+  box-shadow: 
+    0 8px 20px rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 0 30px rgba(0,212,170,0.1);
+}
+
+.pd-tech-pill {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.06) 0%,
+    rgba(255,255,255,.02) 100%
+  );
+  border: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.pd-tech-pill:hover {
+  transform: scale(1.05);
+  border-color: rgba(0,212,170,0.4);
+  background: linear-gradient(
+    135deg,
+    rgba(0,212,170,.1) 0%,
+    rgba(0,212,170,.05) 100%
+  );
+  box-shadow: 0 4px 12px rgba(0,212,170,0.2);
+}
+
+.pd-phase-insight {
+  background: linear-gradient(
+    90deg,
+    rgba(0,212,170,.08) 0%,
+    rgba(0,212,170,.04) 100%
+  );
+  border: 1px solid rgba(0,212,170,.2);
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+}
+
+.pd-phase-insight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,212,170,0.8),
+    rgba(0,102,255,0.8)
+  );
+}
+
+.pd-visual-map {
+  background: 
+    radial-gradient(circle at 30% 60%, rgba(0,212,170,.15), transparent 50%),
+    radial-gradient(circle at 45% 40%, rgba(255,107,53,.15), transparent 50%),
+    linear-gradient(135deg, rgba(10,14,22,.4) 0%, rgba(10,14,22,.6) 100%);
+  border: 1px solid rgba(255,255,255,.1);
+  position: relative;
+}
+
+.pd-visual-map::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 60%, transparent 30%, rgba(0,212,170,.05) 70%),
+    radial-gradient(circle at 45% 40%, transparent 30%, rgba(255,107,53,.05) 70%);
+  pointer-events: none;
+}
+
+.pd-map-label {
+  background: linear-gradient(
+    135deg,
+    rgba(10,14,22,.95) 0%,
+    rgba(20,25,35,.95) 100%
+  );
+  border: 1px solid rgba(255,255,255,.2);
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+
+.pd-map-label:hover {
+  transform: scale(1.05);
+  border-color: rgba(0,212,170,0.5);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.pd-flow-step {
+  background: linear-gradient(
+    135deg,
+    rgba(0,212,170,.15) 0%,
+    rgba(0,212,170,.05) 100%
+  );
+  border: 1px solid rgba(0,212,170,.3);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.pd-flow-step:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,212,170,0.2);
+}
+
+.pd-flow-step:nth-child(2) {
+  background: linear-gradient(
+    135deg,
+    rgba(0,102,255,.15) 0%,
+    rgba(0,102,255,.05) 100%
+  );
+  border-color: rgba(0,102,255,.3);
+}
+
+.pd-flow-step:nth-child(2):hover {
+  box-shadow: 0 8px 20px rgba(0,102,255,0.2);
+}
+
+.pd-flow-step:nth-child(4) {
+  background: linear-gradient(
+    135deg,
+    rgba(180,80,255,.15) 0%,
+    rgba(180,80,255,.05) 100%
+  );
+  border-color: rgba(180,80,255,.3);
+}
+
+.pd-flow-step:nth-child(4):hover {
+  box-shadow: 0 8px 20px rgba(180,80,255,0.2);
+}
+
+.pd-flow-step:nth-child(6) {
+  background: linear-gradient(
+    135deg,
+    rgba(255,107,53,.15) 0%,
+    rgba(255,107,53,.05) 100%
+  );
+  border-color: rgba(255,107,53,.3);
+}
+
+.pd-flow-step:nth-child(6):hover {
+  box-shadow: 0 8px 20px rgba(255,107,53,0.2);
+}
+
+.pd-flow-step:nth-child(8) {
+  background: linear-gradient(
+    135deg,
+    rgba(0,212,100,.15) 0%,
+    rgba(0,212,100,.05) 100%
+  );
+  border-color: rgba(0,212,100,.3);
+}
+
+.pd-flow-step:nth-child(8):hover {
+  box-shadow: 0 8px 20px rgba(0,212,100,0.2);
+}
+
+.pd-summary-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.04) 0%,
+    rgba(255,255,255,.01) 100%
+  );
+  border: 1px solid rgba(255,255,255,.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pd-summary-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(0,212,170,0.3);
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.3),
+    0 0 60px rgba(0,212,170,0.15);
+}
+
+.pd-summary-icon {
+  transition: all 0.3s ease;
+}
+
+.pd-summary-card:hover .pd-summary-icon {
+  transform: scale(1.2) rotate(5deg);
+  box-shadow: 0 0 30px currentColor;
+}
+
+/* Efeitos de brilho sutil */
+.pd-mission-phase::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at top right,
+    rgba(0,212,170,0.03) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Garantir que o conteúdo fique acima dos efeitos */
+.pd-phase-header,
+.pd-phase-content {
+  position: relative;
+  z-index: 1;
+}
+
+
 @media (max-width: 768px) {
   .pd-phase-header {
     grid-template-columns: 1fr;
@@ -786,4 +1101,75 @@
   }
   .pd-metrics{ grid-template-columns: 1fr; }
   .pd-final-card{ flex-direction: column; }
+}
+/* ===== RESPONSIVE: MISSION CONTROL DASHBOARD ===== */
+@media (max-width: 768px) {
+  /* Adaptações para o Mission Control Dashboard */
+  .pd-phase-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .pd-phase-number {
+    margin: 0 auto;
+  }
+  
+  .pd-phase-status {
+    align-items: center;
+  }
+  
+  .pd-phase-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pd-flow-animation {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .pd-flow-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .pd-mission-summary {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Adaptações para as melhorias visuais */
+  .pd-mission-phase:hover {
+    transform: translateY(-2px);
+  }
+  
+  .pd-phase-header::after {
+    animation: shimmer-mobile 4s infinite;
+  }
+  
+  @keyframes shimmer-mobile {
+    0% { left: -100%; }
+    100% { left: 300%; }
+  }
+  
+  .pd-phase-number::before {
+    display: none; /* Desativa animação pesada em mobile */
+  }
+  
+  .pd-summary-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  .pd-tech-pill {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+  
+  .pd-phase-insight {
+    padding: 12px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .pd-insight-icon {
+    margin-bottom: 8px;
+  }
 }
