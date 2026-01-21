@@ -6,7 +6,7 @@
    ========================================================= */
 
 (function(){
-     const y = document.getElementById('currentYear');
+  const y = document.getElementById('currentYear');
   if (y) y.textContent = new Date().getFullYear();
 
   // ========= CONFIG (edite aqui se quiser) =========
@@ -16,6 +16,9 @@
 
   // Custo de incineração indicado: R$ 900 / ton
   const INCINERATION_R_PER_TON = 900;
+
+  // Emissões tóxicas evitadas (estimativa conservadora em kg/ton)
+  const TOXIC_EMISSIONS_PER_TON = 15; // kg
 
   // Equivalência aproximada (bem conservadora): 1 árvore/ano ~ 20 kg CO2 (~0,02 t)
   // => árvores = tCO2 / 0,02 = tCO2 * 50
@@ -102,6 +105,7 @@
   const co2MaxEl = document.getElementById('co2Max');
   const costAvoidEl = document.getElementById('costAvoid');
   const treesEqEl = document.getElementById('treesEq');
+  const toxicEmissionsEl = document.getElementById('toxicEmissions');
 
   const ctaMission = document.getElementById('ctaMission');
   const ctaCopy = document.getElementById('ctaCopy');
@@ -119,14 +123,15 @@
     const co2Min = t * CO2_MIN_PER_TON;
     const co2Max = t * CO2_MAX_PER_TON;
     const avoided = t * INCINERATION_R_PER_TON;
+    const toxicAvoided = t * TOXIC_EMISSIONS_PER_TON;
     // use média para equivalência
     const co2Avg = (co2Min + co2Max) / 2;
     const treesEq = Math.round(co2Avg * TREES_PER_TCO2);
-    return { t, co2Min, co2Max, avoided, treesEq };
+    return { t, co2Min, co2Max, avoided, treesEq, toxicAvoided };
   }
 
   function render(){
-    const { t, co2Min, co2Max, avoided, treesEq } = calc(range ? range.value : 10);
+    const { t, co2Min, co2Max, avoided, treesEq, toxicAvoided } = calc(range ? range.value : 10);
 
     if (tonsLabel) tonsLabel.textContent = `${t} t`;
     if (tonsRangeValue) tonsRangeValue.textContent = String(t);
@@ -134,8 +139,9 @@
     if (co2MaxEl) co2MaxEl.textContent = `${fmtBR(co2Max, 1)} tCO₂`;
     if (costAvoidEl) costAvoidEl.textContent = fmtMoney(avoided);
     if (treesEqEl) treesEqEl.textContent = `${treesEq.toLocaleString('pt-BR')} árvores`;
+    if (toxicEmissionsEl) toxicEmissionsEl.textContent = `${fmtBR(toxicAvoided, 0)} kg`;
 
-    return { t, co2Min, co2Max, avoided, treesEq };
+    return { t, co2Min, co2Max, avoided, treesEq, toxicAvoided };
   }
 
   if (range) range.addEventListener('input', render);
@@ -154,14 +160,19 @@
 
   // ========= Copy report =========
   function buildReport(){
-    const { t, co2Min, co2Max, avoided, treesEq } = render();
+    const { t, co2Min, co2Max, avoided, treesEq, toxicAvoided } = render();
     const lines = [
       "MAXPROD • ESG & Inovação — Projeto Doação (Telemetria)",
       "-----------------------------------------------------",
       `Lote (toneladas): ${t} t`,
       `CO₂ evitado (estimativa): ${fmtBR(co2Min,1)} → ${fmtBR(co2Max,1)} tCO₂`,
       `Custo evitado (incineração): ${fmtMoney(avoided)} (base: R$ ${INCINERATION_R_PER_TON}/ton)`,
+      `Emissões tóxicas evitadas: ${fmtBR(toxicAvoided,0)} kg (dioxinas, furanos, metais pesados)`,
       `Equivalente aproximado: ${treesEq.toLocaleString('pt-BR')} árvores/ano`,
+      "",
+      "Projetos Impactados:",
+      "- Projeto Roda (Recife - PE): +15 famílias impactadas, geração de renda sustentável",
+      "- Árvore da Vida (Betim - MG): +25 jovens capacitados, oficinas de design sustentável",
       "",
       "Nota: valores estimados para simulação executiva; o método (governança+rastreabilidade) é o ativo replicável."
     ];
@@ -199,11 +210,17 @@
   }
 
   // ========= small pulse style hook =========
-  // (sem mexer no CSS global)
   const style = document.createElement('style');
   style.textContent = `
-    .pd-pulse{ box-shadow: 0 0 0 4px rgba(0,212,170,.14), 0 0 44px rgba(0,212,170,.16) !important; }
+    .pd-pulse{ 
+      box-shadow: 0 0 0 4px rgba(0,212,170,.14), 0 0 44px rgba(0,212,170,.16) !important;
+      animation: pd-pulse-anim 0.65s ease;
+    }
+    @keyframes pd-pulse-anim {
+      0% { box-shadow: 0 0 0 0 rgba(0,212,170,.3); }
+      70% { box-shadow: 0 0 0 12px rgba(0,212,170,0); }
+      100% { box-shadow: 0 0 0 0 rgba(0,212,170,0); }
+    }
   `;
   document.head.appendChild(style);
 })();
-
