@@ -1196,3 +1196,34 @@
 .pd-final-actions .btn{
   min-width: 220px;
 }
+
+
+/* CTA FINAL — ocupar todo o container e centralizar conteúdo */
+.pd-final-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.pd-final-left{
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+.pd-final-left h2,
+.pd-final-left p{
+  max-width: 900px; /* controla leitura sem criar vazio */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.pd-final-actions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+.pd-final-actions .btn{
+  min-width: 240px;
+}
