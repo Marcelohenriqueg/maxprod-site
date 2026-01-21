@@ -223,4 +223,301 @@
     }
   `;
   document.head.appendChild(style);
+
+// ========= MISSION CONTROL DASHBOARD INTERATIVO =========
+
+// Animação dos pontos no mapa
+function initMapAnimation() {
+  const mapDots = document.querySelectorAll('.pd-map-dot');
+  mapDots.forEach(dot => {
+    dot.style.animation = 'pulse-dot 2s infinite';
+  });
+}
+
+// Contador animado para as métricas
+function animateCounters() {
+  const counters = document.querySelectorAll('.pd-metric-value');
+  counters.forEach(counter => {
+    if (!counter.dataset.animated) {
+      const originalText = counter.textContent;
+      counter.dataset.animated = 'true';
+      
+      // Se for um número, anima
+      if (originalText.match(/\d/)) {
+        const finalValue = parseFloat(originalText.replace(/[^\d.]/g, ''));
+        const isCurrency = originalText.includes('R$');
+        const hasPlus = originalText.includes('+');
+        const suffix = originalText.replace(/[\d.,R$\s]/g, '');
+        
+        let current = 0;
+        const increment = finalValue / 30;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= finalValue) {
+            current = finalValue;
+            clearInterval(timer);
+          }
+          
+          if (isCurrency) {
+            counter.textContent = `R$ ${Math.round(current).toLocaleString('pt-BR')}${hasPlus ? '+' : ''} ${suffix}`;
+          } else if (originalText.includes('ton')) {
+            counter.textContent = `${Math.round(current)}+ ${suffix}`;
+          } else {
+            counter.textContent = `${Math.round(current)}${hasPlus ? '+' : ''} ${suffix}`;
+          }
+        }, 50);
+      }
+    }
+  });
+}
+
+// Scroll reveal para as fases da missão
+function initMissionReveal() {
+  const missionPhases = document.querySelectorAll('.pd-mission-phase');
+  const phaseObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        
+        // Animação sequencial para conteúdo dentro da fase
+        const phase = entry.target;
+        setTimeout(() => {
+          const metrics = phase.querySelectorAll('.pd-phase-metric');
+          metrics.forEach((metric, index) => {
+            setTimeout(() => {
+              metric.classList.add('animate-in');
+            }, index * 200);
+          });
+          
+          const pills = phase.querySelectorAll('.pd-tech-pill');
+          pills.forEach((pill, index) => {
+            setTimeout(() => {
+              pill.classList.add('animate-in');
+            }, metrics.length * 200 + index * 100);
+          });
+          
+          const insight = phase.querySelector('.pd-phase-insight');
+          if (insight) {
+            setTimeout(() => {
+              insight.classList.add('animate-in');
+            }, (metrics.length * 200) + (pills.length * 100) + 200);
+          }
+        }, 300);
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  missionPhases.forEach(phase => phaseObserver.observe(phase));
+}
+
+// Animar o fluxo de execução
+function initFlowAnimation() {
+  const flowSteps = document.querySelectorAll('.pd-flow-step');
+  if (flowSteps.length > 0) {
+    let stepIndex = 0;
+    
+    function animateNextStep() {
+      if (stepIndex < flowSteps.length) {
+        flowSteps[stepIndex].classList.add('active');
+        stepIndex++;
+        setTimeout(animateNextStep, 400);
+      } else {
+        // Reinicia após 3 segundos
+        setTimeout(() => {
+          flowSteps.forEach(step => step.classList.remove('active'));
+          stepIndex = 0;
+          setTimeout(animateNextStep, 1000);
+        }, 3000);
+      }
+    }
+    
+    // Começar animação após 1 segundo
+    setTimeout(animateNextStep, 1000);
+  }
+}
+
+// Hover effects para os cards de resumo
+function initSummaryCards() {
+  const summaryCards = document.querySelectorAll('.pd-summary-card');
+  summaryCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-8px)';
+      card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0)';
+      card.style.boxShadow = 'none';
+    });
+  });
+}
+
+// Inicializar tudo quando a página carregar
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    initMapAnimation();
+    initMissionReveal();
+    initFlowAnimation();
+    initSummaryCards();
+    
+    // Animar contadores quando visíveis
+    const missionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(animateCounters, 500);
+          missionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    const missionDashboard = document.querySelector('.pd-mission-dashboard');
+    if (missionDashboard) {
+      missionObserver.observe(missionDashboard);
+    }
+  }, 500);
+});
+
+// Adicionar estilos CSS dinâmicos para as animações
+const missionStyles = document.createElement('style');
+missionStyles.textContent = `
+  /* Animações para o Mission Control Dashboard */
+  
+  .pd-mission-phase.in-view {
+    animation: slideInPhase 0.8s ease forwards;
+  }
+  
+  @keyframes slideInPhase {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .pd-phase-metric {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .pd-phase-metric.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .pd-tech-pill {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .pd-tech-pill.animate-in {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .pd-phase-insight {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .pd-phase-insight.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .pd-flow-step {
+    opacity: 0.6;
+    transform: scale(0.95);
+    transition: all 0.5s ease;
+  }
+  
+  .pd-flow-step.active {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(0,212,170,0.3);
+  }
+  
+  .pd-flow-step:nth-child(2).active {
+    box-shadow: 0 0 30px rgba(0,102,255,0.3);
+  }
+  
+  .pd-flow-step:nth-child(4).active {
+    box-shadow: 0 0 30px rgba(180,80,255,0.3);
+  }
+  
+  .pd-flow-step:nth-child(6).active {
+    box-shadow: 0 0 30px rgba(255,107,53,0.3);
+  }
+  
+  .pd-flow-step:nth-child(8).active {
+    box-shadow: 0 0 30px rgba(0,212,100,0.3);
+  }
+  
+  .pd-summary-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Efeito de brilho nos badges LIVE */
+  @keyframes live-glow {
+    0%, 100% { 
+      box-shadow: 0 0 10px rgba(0,212,170,0.5),
+                  0 0 20px rgba(0,212,170,0.3),
+                  0 0 30px rgba(0,212,170,0.1);
+    }
+    50% { 
+      box-shadow: 0 0 20px rgba(0,212,170,0.8),
+                  0 0 30px rgba(0,212,170,0.5),
+                  0 0 40px rgba(0,212,170,0.2);
+    }
+  }
+  
+  .pd-status-badge.live {
+    animation: live-glow 2s infinite;
+  }
+  
+  /* Animação dos pontos do mapa */
+  @keyframes pulse-dot {
+    0%, 100% { 
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(0,212,170,0.7),
+                  0 0 0 0 rgba(0,212,170,0.5);
+    }
+    50% { 
+      transform: scale(1.1);
+      box-shadow: 0 0 0 10px rgba(0,212,170,0),
+                  0 0 0 20px rgba(0,212,170,0);
+    }
+  }
+  
+  .pd-map-point:nth-child(2) .pd-map-dot {
+    animation-delay: 0.5s;
+  }
+  
+  /* Loading skeleton para as métricas */
+  .pd-metric-value:empty::before {
+    content: '...';
+    display: inline-block;
+    width: 60px;
+    height: 28px;
+    background: linear-gradient(90deg, 
+      rgba(255,255,255,0.1) 25%, 
+      rgba(255,255,255,0.2) 50%, 
+      rgba(255,255,255,0.1) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+  }
+  
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+`;
+document.head.appendChild(missionStyles);
+   
 })();
