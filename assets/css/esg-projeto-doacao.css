@@ -411,11 +411,12 @@
 }
 
 .pd-social-icon img{
-  width: 28px;
-  height: 28px;
+  width: 42px;
+  height: 42px;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(0,212,170,.35));
+  filter: drop-shadow(0 0 8px rgba(0,212,170,.45));
 }
+
 
 .pd-social-location{
   font-size: 12px;
