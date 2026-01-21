@@ -315,246 +315,151 @@
       </div>
     </section>
 
-<!-- SECTION: MISSION CONTROL DASHBOARD -->
-<section class="pd-section pd-reveal">
+<!-- SECTION: MISSION CONTROL DASHBOARD (ONE FOLD) -->
+<section class="pd-section pd-reveal" id="mission-control">
   <div class="pd-section-h">
     <h2>Mission Control Dashboard</h2>
     <span class="pd-section-sub">Trilha executiva do zero ao impacto — com telemetria em tempo real</span>
   </div>
 
   <div class="pd-section-b">
-    <div class="pd-mission-dashboard">
-      
-      <!-- FASE 1: DISCOVERY -->
-      <div class="pd-mission-phase active">
-        <div class="pd-phase-header">
-          <div class="pd-phase-number">01</div>
-          <div class="pd-phase-title">
-            <h3>DISCOVERY PHASE</h3>
-            <div class="pd-phase-sub">Identificação do Passivo Ambiental</div>
-          </div>
-          <div class="pd-phase-status">
-            <span class="pd-status-badge completed">COMPLETED</span>
-            <div class="pd-status-time">T-0</div>
-          </div>
+    <div class="pd-mc">
+      <div class="pd-mc-top">
+        <div class="pd-mc-kicker">
+          <span class="pd-mc-dot"></span>
+          MISSION CONTROL • ESG • EXECUTIVO
         </div>
-        
-        <div class="pd-phase-content">
-          <div class="pd-phase-grid">
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">Forvia & Lear</div>
-              <div class="pd-metric-label">Fornecedores Engajados</div>
-            </div>
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">10+ ton</div>
-              <div class="pd-metric-label">Material Identificado</div>
-            </div>
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">R$ 9K+</div>
-              <div class="pd-metric-label">Custo Oculto Anual</div>
-            </div>
-          </div>
-          
-          <div class="pd-phase-pills">
-            <span class="pd-tech-pill">🔍 Inventário ESG</span>
-            <span class="pd-tech-pill">📊 Análise de Ciclo de Vida</span>
-            <span class="pd-tech-pill">💰 Custo Oculto Mapping</span>
-          </div>
-          
-          <div class="pd-phase-insight">
-            <div class="pd-insight-icon">💡</div>
-            <p><b>Insight Executivo:</b> Descobrimos que 100% dos tecidos obsoletos eram destinados à incineração — criando um passivo ambiental e financeiro mensurável.</p>
-          </div>
+
+        <div class="pd-mc-badges">
+          <span class="pd-mc-badge">LIVE</span>
+          <span class="pd-mc-badge ghost">Auditável</span>
+          <span class="pd-mc-badge ghost">Rastreável</span>
+          <span class="pd-mc-badge ghost">Replicável</span>
         </div>
       </div>
-      
-      <!-- FASE 2: GOVERNANCE -->
-      <div class="pd-mission-phase active">
-        <div class="pd-phase-header">
-          <div class="pd-phase-number">02</div>
-          <div class="pd-phase-title">
-            <h3>GOVERNANCE ENGINEERING</h3>
-            <div class="pd-phase-sub">Engenharia Fiscal e Compliance</div>
+
+      <div class="pd-mc-grid">
+        <!-- LEFT: pipeline + detail -->
+        <div class="pd-mc-left">
+          <div class="pd-mc-track" role="tablist" aria-label="Fases da missão">
+            <button class="pd-mc-step active" type="button" data-step="1" role="tab" aria-selected="true">
+              <span class="n">01</span>
+              <span class="t">Discovery</span>
+              <span class="s">Passivo Ambiental</span>
+              <span class="tag ok">COMPLETED</span>
+            </button>
+
+            <div class="pd-mc-link" aria-hidden="true"></div>
+
+            <button class="pd-mc-step" type="button" data-step="2" role="tab" aria-selected="false">
+              <span class="n">02</span>
+              <span class="t">Governance</span>
+              <span class="s">Fiscal & Compliance</span>
+              <span class="tag ok">COMPLETED</span>
+            </button>
+
+            <div class="pd-mc-link" aria-hidden="true"></div>
+
+            <button class="pd-mc-step" type="button" data-step="3" role="tab" aria-selected="false">
+              <span class="n">03</span>
+              <span class="t">Partnership</span>
+              <span class="s">ONGs Validadas</span>
+              <span class="tag ok">COMPLETED</span>
+            </button>
+
+            <div class="pd-mc-link" aria-hidden="true"></div>
+
+            <button class="pd-mc-step live" type="button" data-step="4" role="tab" aria-selected="false">
+              <span class="n">04</span>
+              <span class="t">Execution</span>
+              <span class="s">Traceability</span>
+              <span class="tag live">LIVE</span>
+            </button>
           </div>
-          <div class="pd-phase-status">
-            <span class="pd-status-badge completed">COMPLETED</span>
-            <div class="pd-status-time">T+14</div>
-          </div>
-        </div>
-        
-        <div class="pd-phase-content">
-          <div class="pd-phase-grid">
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">0%</div>
-              <div class="pd-metric-label">Risco Fiscal Residual</div>
+
+          <div class="pd-mc-detail" id="mcDetail" role="tabpanel">
+            <!-- conteúdo preenchido pelo JS -->
+            <div class="pd-mc-detail-head">
+              <div class="pd-mc-detail-title">DISCOVERY PHASE</div>
+              <div class="pd-mc-detail-time">T-0</div>
             </div>
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">100%</div>
-              <div class="pd-metric-label">Protocolos Auditáveis</div>
-            </div>
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">4</div>
-              <div class="pd-metric-label">Diretorias Alinhadas</div>
-            </div>
-          </div>
-          
-          <div class="pd-phase-pills">
-            <span class="pd-tech-pill">⚖️ Compliance Fiscal</span>
-            <span class="pd-tech-pill">🏛️ Governança Corporativa</span>
-            <span class="pd-tech-pill">🔐 Due Diligence</span>
-          </div>
-          
-          <div class="pd-phase-insight">
-            <div class="pd-insight-icon">⚡</div>
-            <p><b>Breakthrough:</b> Criamos a distinção legal "doação ≠ venda" que se tornou o padrão global para operações similares na Stellantis.</p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- FASE 3: PARTNERSHIP -->
-      <div class="pd-mission-phase active">
-        <div class="pd-phase-header">
-          <div class="pd-phase-number">03</div>
-          <div class="pd-phase-title">
-            <h3>PARTNERSHIP VALIDATION</h3>
-            <div class="pd-phase-sub">Seleção e Validação de Parceiros</div>
-          </div>
-          <div class="pd-phase-status">
-            <span class="pd-status-badge completed">COMPLETED</span>
-            <div class="pd-status-time">T+28</div>
-          </div>
-        </div>
-        
-        <div class="pd-phase-content">
-          <div class="pd-phase-grid">
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">2</div>
-              <div class="pd-metric-label">ONGs Certificadas</div>
-            </div>
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">65+</div>
-              <div class="pd-metric-label">ODS Alinhados</div>
-            </div>
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">12</div>
-              <div class="pd-metric-label">KPIs de Impacto</div>
-            </div>
-          </div>
-          
-          <div class="pd-phase-visual">
-            <div class="pd-visual-map">
-              <div class="pd-map-point" style="left: 30%; top: 60%;">
-                <div class="pd-map-dot"></div>
-                <div class="pd-map-label">Projeto Roda<br><small>Recife - PE</small></div>
+
+            <div class="pd-mc-detail-sub">Identificação do Passivo Ambiental</div>
+
+            <div class="pd-mc-minirow">
+              <div class="pd-mc-mini">
+                <div class="k">Fornecedores</div>
+                <div class="v">Forvia & Lear</div>
               </div>
-              <div class="pd-map-point" style="left: 45%; top: 40%;">
-                <div class="pd-map-dot"></div>
-                <div class="pd-map-label">Árvore da Vida<br><small>Betim - MG</small></div>
+              <div class="pd-mc-mini">
+                <div class="k">Material</div>
+                <div class="v">10+ ton</div>
+              </div>
+              <div class="pd-mc-mini">
+                <div class="k">Custo oculto</div>
+                <div class="v">R$ 9K+</div>
               </div>
             </div>
-          </div>
-          
-          <div class="pd-phase-pills">
-            <span class="pd-tech-pill">🤝 Due Diligence Social</span>
-            <span class="pd-tech-pill">🎯 ODS Alignment</span>
-            <span class="pd-tech-pill">📈 KPIs de Impacto</span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- FASE 4: EXECUTION -->
-      <div class="pd-mission-phase active">
-        <div class="pd-phase-header">
-          <div class="pd-phase-number">04</div>
-          <div class="pd-phase-title">
-            <h3>EXECUTION & TRACEABILITY</h3>
-            <div class="pd-phase-sub">Operacionalização com Rastreabilidade</div>
-          </div>
-          <div class="pd-phase-status">
-            <span class="pd-status-badge live">LIVE</span>
-            <div class="pd-status-time">T+42</div>
-          </div>
-        </div>
-        
-        <div class="pd-phase-content">
-          <div class="pd-phase-grid">
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">100%</div>
-              <div class="pd-metric-label">Rastreabilidade</div>
+
+            <div class="pd-mc-chips" id="mcChips">
+              <span class="pd-mc-chip">🔍 Inventário ESG</span>
+              <span class="pd-mc-chip">📊 LCA</span>
+              <span class="pd-mc-chip">💰 Custo Oculto</span>
             </div>
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">0 delays</div>
-              <div class="pd-metric-label">Logística Reversa</div>
-            </div>
-            <div class="pd-phase-metric">
-              <div class="pd-metric-value">24/7</div>
-              <div class="pd-metric-label">Auditoria Real-time</div>
+
+            <div class="pd-mc-insight" id="mcInsight">
+              <div class="ico">💡</div>
+              <p><b>Insight Executivo:</b> 100% dos tecidos obsoletos iam para incineração — passivo ambiental e financeiro mensurável.</p>
             </div>
           </div>
-          
-          <div class="pd-phase-visual">
-            <div class="pd-flow-animation">
-              <div class="pd-flow-step">Fornecedor</div>
-              <div class="pd-flow-arrow">→</div>
-              <div class="pd-flow-step">Centro de Distribuição</div>
-              <div class="pd-flow-arrow">→</div>
-              <div class="pd-flow-step">ONG</div>
-              <div class="pd-flow-arrow">→</div>
-              <div class="pd-flow-step">Transformação</div>
-              <div class="pd-flow-arrow">→</div>
-              <div class="pd-flow-step">Impacto Social</div>
+        </div>
+
+        <!-- RIGHT: KPIs -->
+        <aside class="pd-mc-right" aria-label="KPIs executivos">
+          <div class="pd-mc-kpis">
+            <div class="pd-mc-kpi">
+              <div class="ico">⏱️</div>
+              <div class="v">42 dias</div>
+              <div class="k">do problema à solução</div>
+            </div>
+            <div class="pd-mc-kpi">
+              <div class="ico">💰</div>
+              <div class="v">R$ 9K+</div>
+              <div class="k">cost avoidance por lote</div>
+            </div>
+            <div class="pd-mc-kpi">
+              <div class="ico">🌍</div>
+              <div class="v">7–15 tCO₂</div>
+              <div class="k">evitadas por ciclo</div>
+            </div>
+            <div class="pd-mc-kpi">
+              <div class="ico">👥</div>
+              <div class="v">40+ famílias</div>
+              <div class="k">renda gerada na comunidade</div>
             </div>
           </div>
-          
-          <div class="pd-phase-pills">
-            <span class="pd-tech-pill">🚚 Logística Reversa</span>
-            <span class="pd-tech-pill">🔗 Blockchain ESG</span>
-            <span class="pd-tech-pill">👁️ Auditoria Real-time</span>
+
+          <div class="pd-mc-proof">
+            <div class="pd-mc-proof-head">
+              <span class="tag">EVIDÊNCIA</span>
+              <span>Economia local + rastreabilidade</span>
+            </div>
+            <div class="pd-mc-proof-body">
+              <div class="pd-mc-proof-pill">Projeto Roda • Recife (PE)</div>
+              <div class="pd-mc-proof-pill">Árvore da Vida • Betim (MG)</div>
+              <div class="pd-mc-proof-note">
+                Impacto social direto: materiais viram produtos com valor agregado — gerando renda para as trabalhadoras dos projetos.
+              </div>
+            </div>
           </div>
-          
-          <div class="pd-phase-insight">
-            <div class="pd-insight-icon">🚀</div>
-            <p><b>Status Atual:</b> Operação em produção com telemetria ativa. Pronto para escalar para outros fluxos e regiões.</p>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-    
-    <div class="pd-mission-summary">
-      <div class="pd-summary-card">
-        <div class="pd-summary-icon">⏱️</div>
-        <div class="pd-summary-content">
-          <div class="pd-summary-value">42 dias</div>
-          <div class="pd-summary-label">do problema à solução</div>
-        </div>
-      </div>
-      <div class="pd-summary-card">
-        <div class="pd-summary-icon">💰</div>
-        <div class="pd-summary-content">
-          <div class="pd-summary-value">R$ 9K+</div>
-          <div class="pd-summary-label">cost avoidance por lote</div>
-        </div>
-      </div>
-      <div class="pd-summary-card">
-        <div class="pd-summary-icon">🌍</div>
-        <div class="pd-summary-content">
-          <div class="pd-summary-value">7-15 tCO₂</div>
-          <div class="pd-summary-label">evitadas por ciclo</div>
-        </div>
-      </div>
-      <div class="pd-summary-card">
-        <div class="pd-summary-icon">👥</div>
-        <div class="pd-summary-content">
-          <div class="pd-summary-value">40+ famílias</div>
-          <div class="pd-summary-label">impacto social direto</div>
-        </div>
+        </aside>
       </div>
     </div>
-    
   </div>
 </section>
 
+
+    
     
     <!-- SECTION: BENEFÍCIOS ESG QUANTIFICADOS -->
     <section class="pd-section pd-reveal">
