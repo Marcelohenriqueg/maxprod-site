@@ -33,14 +33,13 @@
 /* container local */
 .pd-wrap{
   max-width: 1200px;
- pd-final-chips{
+  margin: 0 auto;
+  padding: 110px 22px 64px;
+}
+
+/* breadcrumb */
+.pd-breadcrumb{
   display:flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-  justify-content: center;  /* <-- ADICIONE */
-  width: 100%;              /* <-- ADICIONE (garante centralização no card inteiro) */
-} display:flex;
   gap:10px;
   align-items:center;
   font-size: 13px;
@@ -67,12 +66,10 @@
 
 .pd-hero-grid{
   display:grid;
- .pd-section .pd-lead{
-  max-width: 100%;
-  text-align: center;     /* <-- TROCAR justify por center */
-  margin: 0 auto;         /* <-- ajuda a ficar bem central no card */
-}
-
+  grid-template-columns: 1.2fr .8fr;
+  gap: 18px;
+  padding: 24px;
+  align-items: start;
 }
 
 .pd-kicker{
