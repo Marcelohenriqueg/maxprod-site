@@ -734,6 +734,41 @@
   transform: translateY(0);
 }
 
+@media (max-width: 768px) {
+  .pd-phase-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .pd-phase-number {
+    margin: 0 auto;
+  }
+  
+  .pd-phase-status {
+    align-items: center;
+  }
+  
+  .pd-phase-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pd-flow-animation {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .pd-flow-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .pd-mission-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
 /* Responsive */
 @media (max-width: 980px){
   .pd-hero-grid{ grid-template-columns: 1fr; }
