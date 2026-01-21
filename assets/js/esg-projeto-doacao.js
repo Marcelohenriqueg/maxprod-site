@@ -352,6 +352,121 @@ function initSummaryCards() {
   });
 }
 
+function initMissionOneFold(){
+  const root = document.querySelector('#mission-control');
+  if (!root) return;
+
+  const steps = root.querySelectorAll('.pd-mc-step');
+  const detail = root.querySelector('#mcDetail');
+  const chips = root.querySelector('#mcChips');
+  const insight = root.querySelector('#mcInsight');
+
+  if (!steps.length || !detail || !chips || !insight) return;
+
+  const data = {
+    1: {
+      title: 'DISCOVERY PHASE',
+      time: 'T-0',
+      sub: 'Identificação do Passivo Ambiental',
+      minis: [
+        { k:'Fornecedores', v:'Forvia & Lear' },
+        { k:'Material', v:'10+ ton' },
+        { k:'Custo oculto', v:'R$ 9K+' }
+      ],
+      chips: ['🔍 Inventário ESG','📊 LCA','💰 Custo Oculto'],
+      insightIco: '💡',
+      insightHtml: '<b>Insight Executivo:</b> 100% dos tecidos obsoletos iam para incineração — passivo ambiental e financeiro mensurável.'
+    },
+    2: {
+      title: 'GOVERNANCE ENGINEERING',
+      time: 'T+14',
+      sub: 'Engenharia Fiscal e Compliance',
+      minis: [
+        { k:'Risco residual', v:'0%' },
+        { k:'Protocolos', v:'100%' },
+        { k:'Diretorias', v:'4' }
+      ],
+      chips: ['⚖️ Compliance Fiscal','🏛️ Governança','🔐 Due Diligence'],
+      insightIco: '⚡',
+      insightHtml: '<b>Breakthrough:</b> Distinção legal “doação ≠ venda” — padrão global para operações similares.'
+    },
+    3: {
+      title: 'PARTNERSHIP VALIDATION',
+      time: 'T+28',
+      sub: 'Seleção e Validação de Parceiros',
+      minis: [
+        { k:'ONGs', v:'2' },
+        { k:'ODS', v:'65+' },
+        { k:'KPIs', v:'12' }
+      ],
+      chips: ['🤝 Due Diligence Social','🎯 ODS Alignment','📈 KPIs de Impacto'],
+      insightIco: '🧭',
+      insightHtml: '<b>Critério:</b> parceiros com capacidade real de transformação e rastreabilidade de destino.'
+    },
+    4: {
+      title: 'EXECUTION & TRACEABILITY',
+      time: 'T+42',
+      sub: 'Operação em produção com telemetria ativa',
+      minis: [
+        { k:'Rastreabilidade', v:'100%' },
+        { k:'Delays', v:'0' },
+        { k:'Auditoria', v:'24/7' }
+      ],
+      chips: ['🚚 Logística Reversa','🔗 Cadeia rastreável','👁️ Auditoria Real-time'],
+      insightIco: '🚀',
+      insightHtml: '<b>Status Atual:</b> operação LIVE — pronta para escalar para outros fluxos e regiões.'
+    }
+  };
+
+  function render(step){
+    const d = data[step];
+    if (!d) return;
+
+    // header + sub
+    detail.querySelector('.pd-mc-detail-title').textContent = d.title;
+    detail.querySelector('.pd-mc-detail-time').textContent = d.time;
+    detail.querySelector('.pd-mc-detail-sub').textContent = d.sub;
+
+    // minis
+    const row = detail.querySelector('.pd-mc-minirow');
+    row.innerHTML = d.minis.map(x => `
+      <div class="pd-mc-mini">
+        <div class="k">${x.k}</div>
+        <div class="v">${x.v}</div>
+      </div>
+    `).join('');
+
+    // chips
+    chips.innerHTML = d.chips.map(c => `<span class="pd-mc-chip">${c}</span>`).join('');
+
+    // insight
+    insight.querySelector('.ico').textContent = d.insightIco;
+    insight.querySelector('p').innerHTML = d.insightHtml;
+
+    // pulse effect
+    detail.classList.remove('pd-pulse');
+    void detail.offsetWidth; // reflow
+    detail.classList.add('pd-pulse');
+  }
+
+  steps.forEach(btn => {
+    btn.addEventListener('click', () => {
+      steps.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected','false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      render(btn.dataset.step);
+    });
+  });
+
+  // default
+  render('1');
+}
+
+   
+   
 // Inicializar tudo quando a página carregar
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
@@ -359,6 +474,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initMissionReveal();
     initFlowAnimation();
     initSummaryCards();
+   initMissionOneFold();
+
     
     // Animar contadores quando visíveis
     const missionObserver = new IntersectionObserver((entries) => {
