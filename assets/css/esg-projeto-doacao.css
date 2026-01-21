@@ -1247,3 +1247,10 @@
   margin-right: auto;
   text-align: center;
 }
+
+
+/* Remover CTA e rodapé da telemetria */
+.pd-telemetry-actions,
+.pd-telemetry-foot{
+  display: none;
+}
