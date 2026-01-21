@@ -1162,3 +1162,37 @@
     margin-bottom: 8px;
   }
 }
+
+
+/* Metodologia de cálculo — texto ocupando todo o card */
+.pd-section .pd-lead{
+  max-width: 100%;
+  text-align: justify;
+}
+
+
+/* CTA FINAL — centralização total (texto + chips + botões) */
+.pd-final-card{
+  text-align: center;
+}
+
+.pd-final-left{
+  margin: 0 auto;
+}
+
+.pd-final-left h2,
+.pd-final-left p{
+  text-align: center;
+}
+
+.pd-final-left .pd-final-kicker{
+  justify-content: center;
+}
+
+.pd-final-actions{
+  justify-content: center;
+}
+
+.pd-final-actions .btn{
+  min-width: 220px;
+}
