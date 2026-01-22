@@ -3,127 +3,323 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="description" content="Startup Produtiva — MaxProd. Em breve." />
+  <meta name="description" content="Startup Produtiva — Em breve. MaxProd." />
   <title>Startup Produtiva | Em breve — MaxProd</title>
 
-  <!-- CSS GLOBAL (o mesmo da Home) -->
-  <link rel="preload" href="/assets/css/site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/assets/css/site.css"></noscript>
-
-  <!-- (Opcional) OpenGraph básico -->
+  <!-- Open Graph / Social Media -->
   <meta property="og:title" content="Startup Produtiva | Em breve — MaxProd" />
-  <meta property="og:description" content="Estamos preparando uma experiência completa. Em breve." />
+  <meta property="og:description" content="Estamos preparando uma página completa com método, entregáveis e cases de implementação." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://maxprod.com.br/assets/og-image.jpg" />
+
+  <!-- Favicon (caminho absoluto para funcionar dentro de /esg/) -->
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- CSS GLOBAL (caminho absoluto para não quebrar em páginas internas) -->
+  <link rel="stylesheet" href="/assets/css/site.css">
+
+  <style>
+    /* Evita âncoras cortadas pelo header fixo */
+    html { scroll-behavior: smooth; }
+
+    /* Como esta página não tem #contact/#cases etc, mantemos só um offset seguro */
+    body { padding-top: 84px; } /* ajuste fino caso seu navbar seja mais alto/baixo */
+  </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       HEADER (COPIAR DA HOME)
-       ========================= -->
-  <!-- Cole aqui o MESMO header da sua Home (idêntico). -->
-  <!-- Exemplo: <header class="site-header"> ... </header> -->
-  <!-- >>> INÍCIO HEADER HOME >>> -->
-  <!-- SUBSTITUA este bloco pelo header real da home -->
-  <header class="site-header">
-    <div class="container">
-      <a class="brand" href="/"><span class="brand__name">MaxProd</span></a>
+  <!-- NAVIGATION (PADRÃO GLOBAL — 100% compatível) -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="/#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
 
-      <nav class="nav">
-        <a href="/#cases">Cases</a>
-        <a href="/#servicos">Serviços</a>
-        <a href="/#insights">Insights</a>
-        <a href="/#contato">Contato</a>
-      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
 
-      <div class="header-ctas">
-        <a class="btn btn--ghost" href="/#contato">Contato</a>
+      <ul class="nav-menu">
+        <li><a href="/#home" class="nav-link">Home</a></li>
+        <li><a href="/#cases" class="nav-link">Cases</a></li>
+        <li><a href="/#methodology" class="nav-link">Metodologia</a></li>
+        <li><a href="/#services" class="nav-link">Serviços</a></li>
+
+        <!-- ESG & INOVAÇÃO -->
+        <li class="nav-item has-dropdown">
+          <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
+            ESG &amp; Inovação <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-dropdown nav-drop" role="menu" aria-label="ESG & Inovação">
+            <a class="nav-drop-item" href="/esg/projeto-doacao.html">Projeto Doação</a>
+            <a class="nav-drop-item" href="/esg/opera-guard.html">IA Aplicada: Opera Guard</a>
+            <a class="nav-drop-item" href="/esg/startup-planta-produtiva.html">Startup Produtiva</a>
+          </div>
+        </li>
+
+        <li><a href="/#calculator" class="nav-link">ROI Calc</a></li>
+
+        <!-- INSIGHTS -->
+        <li class="nav-item has-dropdown">
+          <button class="nav-link nav-dd-toggle" type="button" aria-expanded="false">
+            Insights <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-dropdown nav-drop" role="menu" aria-label="Insights">
+            <a class="nav-drop-item" href="/insights/">Artigos Técnicos</a>
+            <a class="nav-drop-item" href="/insights/white-papers.html">White Papers</a>
+          </div>
+        </li>
+
+        <li><a href="/sobre.html" class="nav-link">Sobre</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="/#contact" class="btn btn-primary">Fale Conosco</a>
       </div>
-
-      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"></button>
     </div>
-  </header>
-  <!-- <<< FIM HEADER HOME <<< -->
+  </nav>
 
+  <!-- MOBILE MENU (PADRÃO GLOBAL — 100% compatível) -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="/#home" class="logo">
+        <img src="/assets/img/logo-imagem1.png" alt="MaxProd Logo">
+        <span class="logo-text">
+          <span class="logo-title">MAXPROD</span>
+          <span class="logo-sub">Soluções Empresariais</span>
+        </span>
+      </a>
+      <button id="closeMobileMenu">✕</button>
+    </div>
+
+    <ul class="mobile-nav">
+      <li><a href="/#home">Home</a></li>
+      <li><a href="/#cases">Cases</a></li>
+      <li><a href="/#methodology">Metodologia</a></li>
+      <li><a href="/#services">Serviços</a></li>
+      <li><a href="/#calculator">ROI Calc</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/sobre.html">Sobre</a></li>
+      <li><a href="/#contact">Fale Conosco</a></li>
+    </ul>
+
+    <div style="margin-top: var(--space-32);">
+      <a href="/#calculator" class="btn btn-primary" style="width: 100%; margin-bottom: var(--space-16);">
+        Calcular ROI
+      </a>
+      <a href="/#contact" class="btn btn-secondary" style="width: 100%;">
+        Fale Conosco
+      </a>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO (COMING SOON) -->
   <main>
 
-    <!-- =========================
-         HERO COMING SOON
-         ========================= -->
-    <section class="hero hero--inner">
+    <section class="section" style="padding-top: 28px;">
       <div class="container">
-        <div class="hero__content">
-          <p class="kicker">Startup Produtiva</p>
-          <h1 class="h1">Coming soon.</h1>
-          <p class="lead">
+
+        <div class="section-header" style="text-align:left; max-width: 980px; margin: 0;">
+          <div class="overline">ESG &amp; INOVAÇÃO</div>
+          <h2 style="margin-top: var(--space-10);">
+            Startup Produtiva —
+            <span class="text-gradient">Coming soon.</span>
+          </h2>
+          <p class="text-lead" style="max-width: 900px; margin: var(--space-16) 0 0;">
             Estamos preparando uma página completa com método, entregáveis e cases de implementação.
             Se você quer priorizar uma startup industrial com previsibilidade, me chama no WhatsApp.
           </p>
 
-          <div class="hero__actions">
-            <a class="btn" href="/#contato">Falar com a MaxProd</a>
-            <a class="btn btn--ghost" href="/">Voltar para a Home</a>
+          <div style="display:flex; gap: var(--space-16); flex-wrap: wrap; margin-top: var(--space-20);">
+            <a href="/#contact" class="btn btn-primary">
+              Falar com a MaxProd <span style="font-size: 20px;">→</span>
+            </a>
+            <a href="/" class="btn btn-secondary">
+              Voltar para a Home
+            </a>
           </div>
 
-          <div class="note">
-            <span class="dot"></span>
-            <span>Em breve: trilha de startup, checklists, indicadores e cronograma padrão.</span>
-          </div>
+          <p style="margin-top: var(--space-16); font-size: var(--text-sm); color: var(--text-tertiary);">
+            Em breve: trilha de startup, checklists, indicadores e cronograma padrão.
+          </p>
         </div>
 
-        <!-- Opcional: card lateral estilo premium -->
-        <aside class="card card--glass hero__side">
-          <div class="card__title">O que vai entrar aqui</div>
-          <ul class="list">
-            <li>Diagnóstico de capacidade, gargalos e riscos</li>
-            <li>Plano de 30-60-90 dias (PDCA / WCM / Lean)</li>
-            <li>Governança de rotina + indicadores</li>
-            <li>Treinamento + sustentação</li>
-          </ul>
-          <div class="card__footer">
-            <a class="link" href="/#contato">Quero priorizar esta página →</a>
+        <div class="visual-card" style="margin-top: var(--space-28); max-width: 980px;">
+          <div style="padding: var(--space-24);">
+            <h4 style="margin-bottom: var(--space-12);">O que vai entrar aqui</h4>
+            <ul style="margin: 0; padding-left: 18px; color: var(--text-secondary); line-height: 1.8;">
+              <li>Diagnóstico de capacidade, gargalos e riscos</li>
+              <li>Plano de 30-60-90 dias (PDCA / WCM / Lean)</li>
+              <li>Governança de rotina + indicadores</li>
+              <li>Treinamento + sustentação</li>
+            </ul>
+
+            <div style="margin-top: var(--space-18);">
+              <a href="/#contact" class="btn btn-outline">Quero priorizar esta página →</a>
+            </div>
           </div>
-        </aside>
+        </div>
 
       </div>
     </section>
 
   </main>
 
-  <!-- =========================
-       FOOTER (COPIAR DA HOME)
-       ========================= -->
-  <!-- Cole aqui o MESMO footer da sua Home (idêntico). -->
-  <!-- >>> INÍCIO FOOTER HOME >>> -->
-  <!-- SUBSTITUA este bloco pelo footer real da home -->
-  <footer class="site-footer">
+  <!-- FOOTER -->
+  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="brand brand--footer">MaxProd</div>
-          <p class="muted">Consultoria industrial premium & soluções em melhoria contínua.</p>
+          <div class="footer-logo">MAXPROD</div>
+          <p style="font-size: var(--text-sm); color: var(--text-tertiary); max-width: 300px;">
+            Consultoria industrial premium com foco em resultados mensuráveis e execução garantida.
+          </p>
         </div>
+
         <div>
-          <div class="footer-title">Links</div>
-          <a href="/#cases">Cases</a><br/>
-          <a href="/#servicos">Serviços</a><br/>
-          <a href="/#contato">Contato</a>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Serviços</h6>
+          <ul class="footer-links">
+            <li><a href="/#cases">Consultoria Industrial</a></li>
+            <li><a href="/#methodology">Melhoria Contínua</a></li>
+            <li><a href="/#calculator">Otimização de Custos</a></li>
+            <li><a href="/#cases">Qualidade & Confiabilidade</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Empresa</h6>
+          <ul class="footer-links">
+            <li><a href="/sobre.html">Sobre Nós</a></li>
+            <li><a href="/#cases">Cases</a></li>
+            <li><a href="/#methodology">Metodologia</a></li>
+            <li><a href="/#contact">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h6 style="font-size: var(--text-base); margin-bottom: var(--space-16);">Conecte-se</h6>
+          <ul class="footer-links">
+            <li><a href="https://linkedin.com/company/maxprod" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:maxprodsolucoes@gmail.com">E-mail</a></li>
+            <li><a href="tel:+5531992793411">Telefone</a></li>
+            <li><a href="/#contact">WhatsApp</a></li>
+          </ul>
         </div>
       </div>
-      <div class="footer-bottom muted">© <span id="year"></span> MaxProd. Todos os direitos reservados.</div>
+
+      <div class="footer-bottom">
+        <p>© <span id="currentYear"></span> MaxProd Soluções Empresariais. Todos os direitos reservados.</p>
+      </div>
     </div>
   </footer>
-  <!-- <<< FIM FOOTER HOME <<< -->
 
-  <!-- JS GLOBAL (o mesmo da Home) -->
-  <!-- Ajuste o caminho/nome do arquivo para o mesmo que a Home usa -->
-  <script src="/assets/js/site.js" defer></script>
-
-  <!-- Mini script para ano (se sua home já faz isso via JS global, pode remover) -->
+  <!-- SCRIPTS (essenciais para o header/footer ficarem iguais à Home) -->
   <script>
-    (function(){ var y=document.getElementById('year'); if(y) y.textContent = new Date().getFullYear(); })();
+    // Current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (!navbar) return;
+      if (window.scrollY > 50) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    if (closeMobileMenu && mobileMenu) {
+      closeMobileMenu.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+
+    // Close mobile menu when clicking outside
+    if (mobileMenu) {
+      mobileMenu.addEventListener('click', function(e) {
+        if (e.target === mobileMenu) {
+          mobileMenu.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    // Smooth scroll (HOME) — suporta "#..." e "/#..."
+    document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#' || href === '/#') return;
+
+        // Só aplica smooth scroll se o destino existir na página atual
+        const targetId = href.startsWith('/#') ? href.slice(1) : href; // "/#cases" -> "#cases"
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          e.preventDefault();
+
+          // Close mobile menu if open
+          const mm = document.getElementById('mobileMenu');
+          if (mm) mm.classList.remove('active');
+          document.body.style.overflow = '';
+
+          window.scrollTo({
+            top: targetElement.offsetTop - 56,
+            behavior: 'smooth'
+          });
+        }
+        // Se não existir (página interna), o navegador navega normalmente para "/#..."
+      });
+    });
+
+    /* NAV DROPDOWN — TOGGLE (igual comportamento da Home) */
+    (function(){
+      const items = document.querySelectorAll(".navbar .has-dropdown");
+      if(!items.length) return;
+
+      function closeAll(except){
+        items.forEach(it => {
+          if(it !== except){
+            it.classList.remove("is-open");
+            const btn = it.querySelector(".nav-dd-toggle");
+            if(btn) btn.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      items.forEach(it => {
+        const btn = it.querySelector(".nav-dd-toggle");
+        if(!btn) return;
+
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = it.classList.contains("is-open");
+          closeAll(it);
+          it.classList.toggle("is-open", !isOpen);
+          btn.setAttribute("aria-expanded", (!isOpen).toString());
+        });
+      });
+
+      document.addEventListener("click", () => closeAll(null));
+      document.addEventListener("keydown", (e) => {
+        if(e.key === "Escape") closeAll(null);
+      });
+    })();
   </script>
 
 </body>
 </html>
-
