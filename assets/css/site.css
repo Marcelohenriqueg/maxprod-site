@@ -3409,3 +3409,49 @@ main .container > section:first-child{
 
 .has-dropdown:hover > .nav-dropdown, .has-dropdown:focus-within > .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);} @media (max-width:1024px){.nav-dropdown{display:block !important;}}
 
+
+/* ===============================
+   CONTACT CTA — 1 DOBRA + CENTRALIZADO
+   =============================== */
+
+:root{
+  --nav-h: 88px; /* ajuste fino se seu header for maior/menor */
+}
+
+#contact.cta-section{
+  /* ocupa 1 tela (tirando o header) */
+  min-height: calc(100svh - var(--nav-h));
+  padding: 0 !important;
+
+  /* centraliza vertical e horizontal */
+  display: flex;
+  align-items: center;
+}
+
+#contact.cta-section .container{
+  width: 100%;
+  padding-top: var(--space-32);
+  padding-bottom: var(--space-32);
+}
+
+/* melhora “a sensação” de bloco único */
+#contact.cta-section .section-header{
+  margin-bottom: var(--space-24) !important;
+}
+
+#contact.cta-section .section-header h2{
+  margin-bottom: 10px !important;
+}
+
+#contact.cta-section .section-header .text-lead{
+  margin-top: 0 !important;
+}
+
+/* Mobile: garante respiro e ainda fica 1 dobra */
+@media (max-width: 768px){
+  #contact.cta-section .container{
+    padding-top: var(--space-24);
+    padding-bottom: var(--space-24);
+  }
+}
+
