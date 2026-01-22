@@ -962,10 +962,25 @@ document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
       if (mobileMenu) mobileMenu.classList.remove('active');
       document.body.style.overflow = '';
 
-      window.scrollTo({
-        top: targetElement.offsetTop - 56,
-        behavior: 'smooth'
-      });
+// Scroll suave com offset do header + centralização (quando possível)
+const rootStyles = getComputedStyle(document.documentElement);
+const navH = parseInt(rootStyles.getPropertyValue('--nav-h')) || 88;
+
+const rect = targetElement.getBoundingClientRect();
+const absoluteTop = window.scrollY + rect.top;
+
+// centraliza na tela quando a seção for menor que a viewport
+const canCenter = rect.height > 0 && rect.height < window.innerHeight;
+const centerOffset = canCenter ? Math.max(0, (window.innerHeight - rect.height) / 2) : 0;
+
+const finalTop = absoluteTop - navH - centerOffset;
+
+window.scrollTo({
+  top: finalTop,
+  behavior: 'smooth'
+});
+
+      
     }
     // Se não existir (página interna), o navegador navega normalmente para "/#..."
   });
