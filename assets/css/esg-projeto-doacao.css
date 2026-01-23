@@ -1344,3 +1344,48 @@
     min-width: 100%;
   }
 }
+
+
+/* ===============================
+   DOAÇÃO — MOBILE FIX GLOBAL (SEÇÕES CORTADAS)
+   Corrige grids (2 e 3 colunas) para 1 coluna no mobile
+   =============================== */
+@media (max-width: 900px){
+
+  /* Evita qualquer overflow horizontal em seções */
+  html, body{
+    overflow-x: hidden;
+  }
+
+  /* Qualquer grid multi-coluna vira 1 coluna no mobile */
+  .pd-grid-2,
+  .pd-grid-3{
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Dá um respiro melhor nas seções */
+  .pd-section-b{
+    padding: 14px !important;
+  }
+
+  /* Cards ocupam 100% e não estouram */
+  .pd-card,
+  .pd-esg-card{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Header do card social quebra linha se precisar (evita corte) */
+  .pd-social-header{
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Garante que textos longos não empurrem a tela */
+  .pd-card p,
+  .pd-list,
+  .pd-social-meta{
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
