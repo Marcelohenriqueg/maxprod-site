@@ -1389,3 +1389,70 @@
     word-break: break-word;
   }
 }
+
+
+/* =========================================
+   DOAÇÃO — MOBILE FIX (SEÇÕES CORTADAS)
+   - Impacto Social Dual (pd-grid-2)
+   - Benefícios ESG Quantificados (pd-grid-3)
+   - Antes vs Depois (tabela comparativa)
+   ========================================= */
+@media (max-width: 900px){
+
+  /* 0) Zera qualquer “vazamento” lateral */
+  html, body{ overflow-x: hidden !important; }
+
+  /* 1) Qualquer grid multi-coluna vira 1 coluna */
+  .pd-grid-2,
+  .pd-grid-3{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* 2) Garante que cards ocupem 100% e não “empurrem” para fora */
+  .pd-card,
+  .pd-esg-card,
+  .pd-card-social{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 3) Impacto Social Dual: header do card não pode “estourar” */
+  .pd-social-header{
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+  }
+
+  /* 4) Benefícios ESG Quantificados: se houver listas grandes */
+  .pd-list{
+    padding-left: 18px !important;
+  }
+
+  /* 5) Antes vs Depois — Transformação Mensurável (TABELA)
+        Hoje ela corta porque .pd-comparison-table tem overflow:hidden
+        No mobile: permitir rolagem horizontal (sem quebrar layout) */
+  .pd-comparison-table{
+    overflow: visible !important;     /* libera o corte */
+  }
+
+  .pd-comparison-table table{
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;       /* rolagem horizontal */
+    -webkit-overflow-scrolling: touch; /* inércia iOS */
+    white-space: nowrap !important;    /* evita quebrar e ficar ilegível */
+  }
+
+  /* 6) Deixa colunas com largura mínima para leitura */
+  .pd-comparison-table th,
+  .pd-comparison-table td{
+    min-width: 140px !important;
+  }
+
+  /* primeira coluna (Indicador) um pouco maior */
+  .pd-comparison-table th:first-child,
+  .pd-comparison-table td:first-child{
+    min-width: 170px !important;
+  }
+}
