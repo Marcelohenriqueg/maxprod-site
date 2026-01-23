@@ -1456,3 +1456,34 @@
     min-width: 170px !important;
   }
 }
+
+/* =========================================
+   MOBILE — Hint animado “← deslize →” na tabela (Antes x Depois)
+   Aparece somente no mobile
+   ========================================= */
+@media (max-width: 900px){
+
+  .pd-comparison-table{
+    position: relative;
+  }
+
+  .pd-comparison-table::before{
+    content: "← deslize →";
+    position: absolute;
+    top: -30px;
+    right: 0;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--brand-primary);
+    letter-spacing: .06em;
+    opacity: .85;
+    animation: slideHint 1.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes slideHint{
+    0%,100%{ transform: translateX(0); opacity: .55; }
+    50%{ transform: translateX(-8px); opacity: 1; }
+  }
+}
+
