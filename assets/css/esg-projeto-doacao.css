@@ -1299,3 +1299,48 @@
     min-width: 100%;
   }
 }
+
+
+/* ===============================
+   DOAÇÃO — MOBILE LAYOUT FIX
+   Telemetria embaixo do hero + botões responsivos
+   =============================== */
+@media (max-width: 900px){
+
+  /* respiro correto abaixo do navbar */
+  .pd-wrap{
+    padding: 96px 16px 56px;
+  }
+
+  /* hero não pode “cortar” nada no mobile */
+  .pd-hero{
+    overflow: visible;
+  }
+
+  /* 1 coluna no mobile (telemetria vai naturalmente para baixo) */
+  .pd-hero-grid{
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  /* botões não podem forçar largura */
+  .pd-actions .btn{
+    min-width: 100%;
+  }
+
+  /* telemetria ocupa 100% */
+  .pd-telemetry{
+    width: 100%;
+  }
+
+  /* métricas em 1 coluna (para não esmagar) */
+  .pd-metrics{
+    grid-template-columns: 1fr;
+  }
+
+  /* ações da telemetria em 1 coluna */
+  .pd-telemetry-actions .btn{
+    min-width: 100%;
+  }
+}
