@@ -3543,3 +3543,29 @@ main .container > section:first-child{
   cursor: pointer;
 }
 
+/* ===============================
+   MOBILE MENU — permitir rolagem interna (iOS/Android)
+   =============================== */
+
+.mobile-menu{
+  position: fixed;
+  inset: 0;                 /* top:0 right:0 bottom:0 left:0 */
+  height: 100vh;
+  height: 100svh;           /* iOS moderno: evita corte */
+  overflow: hidden;         /* rolagem fica no conteúdo interno */
+  z-index: 9999;
+}
+
+/* O conteúdo do drawer precisa poder rolar */
+.mobile-menu .mobile-nav{
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* inércia iOS */
+  max-height: calc(100svh - 110px);  /* subtrai o header do drawer + botões */
+  padding-bottom: calc(20px + env(safe-area-inset-bottom));
+}
+
+/* Se você tiver o bloco de botões (Calcular ROI / Fale Conosco) dentro do drawer,
+   garante que ele não “tampa” os últimos links */
+.mobile-menu > div:last-child{
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+}
