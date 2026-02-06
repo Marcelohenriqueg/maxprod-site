@@ -3569,3 +3569,19 @@ main .container > section:first-child{
 .mobile-menu > div:last-child{
   padding-bottom: calc(16px + env(safe-area-inset-bottom));
 }
+
+.testimonial-header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:16px;
+}
+
+.testimonial-avatar{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,0.2);
+}
+
