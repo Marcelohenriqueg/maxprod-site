@@ -3570,6 +3570,12 @@ main .container > section:first-child{
   padding-bottom: calc(16px + env(safe-area-inset-bottom));
 }
 
+
+.testimonial-slider .testimonial{
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+}
+
 .testimonial-header{
   display:flex;
   align-items:center;
@@ -3578,10 +3584,26 @@ main .container > section:first-child{
 }
 
 .testimonial-avatar{
-  width:64px;
-  height:64px;
+  width:96px;
+  height:96px;
   border-radius:50%;
   object-fit:cover;
-  border:2px solid rgba(255,255,255,0.2);
 }
 
+
+.testimonial-header{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.testimonial-author{
+  font-size:1rem;
+  font-weight:600;
+}
+
+.testimonial-role{
+  font-size:0.9rem;
+  color:var(--text-secondary);
+  margin-top:2px;
+}
