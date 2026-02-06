@@ -3607,3 +3607,68 @@ main .container > section:first-child{
   color:var(--text-secondary);
   margin-top:2px;
 }
+
+/* ===============================
+   PATCH FINAL — TESTIMONIAL SLIDER REAL
+   =============================== */
+
+.testimonial-slider{
+  display: flex !important;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 12px;
+}
+
+.testimonial-slider .testimonial{
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+/* Remove centralização herdada */
+.testimonial{
+  text-align: left !important;
+}
+
+/* HEADER COM FOTO */
+.testimonial-header{
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.testimonial-meta{
+  text-align: left;
+}
+
+/* FOTO MAIOR + FOCO NO ROSTO */
+.testimonial-avatar{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 12%;
+  border: 2px solid rgba(255,255,255,0.18);
+}
+
+/* Nome */
+.testimonial-author{
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* Cargo */
+.testimonial-role{
+  font-size: 14px;
+  color: var(--text-tertiary);
+}
+
+/* Texto */
+.testimonial-quote{
+  font-size: var(--text-lg);
+  line-height: 1.6;
+}
+
