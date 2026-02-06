@@ -3685,4 +3685,20 @@ main .container > section:first-child{
   color: var(--brand-secondary);
 }
 
+/* ===== TESTIMONIAL MEDIA (FOTO + LOGO) ===== */
+
+.testimonial-media{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-logo{
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.9;
+}
+
 
