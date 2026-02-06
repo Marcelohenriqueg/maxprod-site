@@ -3672,3 +3672,17 @@ main .container > section:first-child{
   line-height: 1.6;
 }
 
+<div class="testimonial-email">
+  <a href="mailto:david@wiya.com.br">david@wiya.com.br</a>
+</div>
+
+.testimonial-email a{
+  color: var(--text-tertiary);
+  text-decoration: none;
+}
+
+.testimonial-email a:hover{
+  color: var(--brand-secondary);
+}
+
+
