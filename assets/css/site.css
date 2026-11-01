@@ -3717,3 +3717,11 @@ main .container > section:first-child{
   opacity: 0.9;
 }
 
+
+
+/* Clientes Atendidos — mantem o menu responsivo com o novo item */
+@media (max-width: 1280px) {
+  .navbar .nav-menu { display: none !important; }
+  .navbar .mobile-menu-btn { display: inline-flex !important; align-items: center; justify-content: center; }
+  .navbar .nav-cta { display: none !important; }
+}
